@@ -1,0 +1,186 @@
+<css src="water:css/base.css" />
+<css src="water:css/watertable.css" />
+<lib name='jquery'/>
+<div class="w_all">
+
+<!--top-->
+	<div class="w_head">
+		<div class="w_head_top">
+			<div class="w_head_opencomb">
+				<a href="#" class="frontframe-logo"></a>
+			</div>
+			<div class="w_head_user">
+				<if "$aId=\org\jecat\framework\auth\IdManager::singleton()->currentId()">
+				<strong>Hi,</strong>
+				<span class="ico_head_user">
+					<select onchange="window.location.href='?c=org.opencomb.coresystem.user.SwichId&uid=' + this.options[this.selectedOption].value">
+						<foreach for="\org\jecat\framework\auth\IdManager::singleton()->iterator()" item='aId'>
+						<option value="{=$aId->userId()}"{= $aId===$aCurrentId? ' selected': ''}>{=$aId->displayName()}</option>
+						</foreach>
+					</select>
+				</span>
+				<span class="ico_head_setup">
+					<if "\org\opencomb\coresystem\auth\PurviewQuery::singleton()->hasPurview($aId,\org\opencomb\coresystem\auth\Id::PLATFORM_ADMIN,'coresystem')">
+						<a href="?c=control.panel">控制面板</a>
+					</if>
+				</span>
+				<span class="ico_head_out"><a href="?c=logout">退出</a></span>
+					<else />
+				<span class="ico_head_login"><a href="?c=login">登录</a></span>
+					</if>
+			</div>	
+		</div>
+		<div class="w_head_logo"></div>
+		<div class="w_head_menu">
+			<widget id="mainMenu" type='menu' attr.showDepths="1">
+			<item id="index" title="总体情况" controller="org.opencomb.water.index.Index">
+				<item id="4444" title="财务月报" link="?c=org.opencomb.water.output.BaoGao" />
+				<item id="inde45555114x" title="生产月报" link="?c=org.opencomb.water.Dispatch.CaliberStatistics" />
+				<item id="44444" title="企管月报" link="?c=org.opencomb.water.Personnel.Statistics" />
+				<item id="YueB444ao_menu" title="销售水量" link="?c=org.opencomb.water.Business.SalesWater" />
+				<item id="5566666" title="居民用水情况统计" link="?c=org.opencomb.water.Business.ResidentWaterStatistics" />
+				<item id="RecoverDebt4554" title="回收率及清欠完成情况" link="?c=org.opencomb.water.Business.RecoverDebtsList" />
+			</item>
+			<item id="inde44x" title="财务部" link="?c=org.opencomb.water.output.BaoGao">
+				<item id="YongYou_menu" title="用友(C/S软件)" controller="org.opencomb.water.shell.WaterShell&programName=portal&title=用友" />
+				<item id="JinDie_menu" title="金蝶(C/S软件)" controller="org.opencomb.water.shell.WaterShell&programName=Kdwin&title=金蝶" />
+				<item id="CaiWuYueBao_menu" title="财务月报" controller="org.opencomb.water.output.BaoGao">
+					<item id="ShengChanShuJuYiLan_menu" title="生产情况一览" controller="org.opencomb.water.input.ShengChanShuJuYiLan" />
+					<item id="WanChengQingKuangHuiZong_menu" title="完成情况汇总" controller="org.opencomb.water.input.WanChengQingKuangHuiZong" />
+					<item id="GouXiaoChaLvFenJie_menu" title="购销差率分解指标完成情况统计表" controller="org.opencomb.water.input.GouXiaoChaLvFenJie" />
+					<item id="WanChengQingKuangTongJi_menu" title="销售水量完成情况统计表" controller="org.opencomb.water.input.WanChengQingKuangTongJi" />
+					<item id="XiaoShouJieGouDuiBi_menu" title="销售结构与去年同期对比表" controller="org.opencomb.water.input.XiaoShouJieGouDuiBi" />
+					<item id="ShuiLiangDuiBi_menu" title="销售水量与去年同期对比表" controller="org.opencomb.water.input.ShuiLiangDuiBi" />
+					<item id="XiaoShouJieGouXingZhiDuiBi_menu" title="销售结构(按性质分)与去年同期对比" controller="org.opencomb.water.input.XiaoShouJieGouXingZhiDuiBi" />
+					<item id="XiaoShouJieGouShuiJiaDuiBi_menu" title="销售结构(按水价分)与去年同期对比" controller="org.opencomb.water.input.XiaoShouJieGouShuiJiaDuiBi" />
+					<item id="RiJunXiaoShou_menu" title="日均销售水量变化趋势统计表" controller="org.opencomb.water.input.RiJunXiaoShou" />
+					<item id="JingYingZhuangKuangDuiBi_menu" title="财务经营状况对比分析" controller="org.opencomb.water.input.JingYingZhuangKuangDuiBi" />
+					<item id="ChengBenDuiBi_menu" title="成本对比分析" controller="org.opencomb.water.input.ChengBenDuiBi" />
+					<item id="ZhaoDaiFei_menu" title="业务招待费明细表" controller="org.opencomb.water.input.ZhaoDaiFei" />
+					<item id="FuLiFei_menu" title="福利费收支明细表" controller="org.opencomb.water.input.FuLiFei" />
+				</item>
+			</item>
+			<item id="inde4114x" title="生产调度" link="?c=org.opencomb.water.Dispatch.LargeUsers">
+				<item id="DiaoDuXiTong_menu" title="调度系统(B/S软件)" controller="org.opencomb.water.shell.WaterShell&programName=dlsong&title=调度系统" />
+				<item id="BaoBiaoXiTong_menu" title="报表系统(C/S软件)" controller="org.opencomb.water.shell.WaterShell&programName=GRAPH&title=报表系统" />
+				<item id="JianCeChaXun_menu" title="监测查询系统(C/S软件)" controller="org.opencomb.water.shell.WaterShell&programName=statics&title=监测查询系统" />
+				<item id="BaoBiaoXiTongAdmin_menu" title="报表系统(C/S软件)管理员" controller="org.opencomb.water.shell.WaterShell&programName=graph_admin&title=报表系统" />
+				<item id="BaoBiaoLiuLan_menu" title="生产报表" link="?c=org.opencomb.water.Dispatch.CaliberStatistics">
+					<item id="LargeUsers_menu" title="大用户日水量/月水量" controller="org.opencomb.water.Dispatch.LargeUsers" />
+					<item id="CaliberStatistics_menu" title="按口径统计水量" controller="org.opencomb.water.Dispatch.CaliberStatistics" />
+					<item id="WaterStations_menu" title="水站每日数据" controller="org.opencomb.water.Dispatch.WaterStations" />
+					<item id="MinMaxAmount_menu" title=" 原水、供水的最小量、最大量" controller="org.opencomb.water.Dispatch.MinMaxAmount" />
+				</item>
+			</item>
+			<item id="inde344x" title="企管劳人" link="?c=org.opencomb.water.Personnel.Statistics">
+				<item id="Statistics_menu" title="职工状况统计表" controller="org.opencomb.water.Personnel.Statistics" />
+			</item>
+			<item id="inde4w44x" title="营业所" link="?c=org.opencomb.water.Business.ResidentWaterStatistics">
+				<item id="YingYeZongHeGuanLiXiTong_menu" title="营业综合管理系统C/S软件" controller="org.opencomb.water.shell.WaterShell&programName=water_1213&title=营业综合管理系统" />
+				<item id="YueBao_menu" title="营业所报表" link="?c=org.opencomb.water.Business.SalesWater">
+					<item id="SalesWater_menu" title="销售水量" controller="org.opencomb.water.Business.SalesWater" />
+					<item id="ResidentWaterStatistics_menu" title="居民用水情况统计" controller="org.opencomb.water.Business.ResidentWaterStatistics" />
+					<item id="RecoverDebtsList_menu" title="回收率及清欠完成情况" controller="org.opencomb.water.Business.RecoverDebtsList">
+						<query bean.type="string">c=org.opencomb.water.Business.RecoverDebtsList</query>
+						<query bean.type="string">c=org.opencomb.water.Business.RecoverDebtsForm</query>
+					</item>
+				</item>
+			</item>
+			</widget>
+		</div>
+	</div>
+<!--topend-->
+<div class="w_body">
+<!--left-->
+<div class="w_leftall" >
+	<div class="w_left">
+		<!-- <div class="w_left_onbutton"></div> -->
+		<a href="javascript:;" onclick="w_left_offbutton()" id="w_left_button" class="w_left_offbutton">&nbsp;</a>
+		<widget id="mainMenu" type='menu' attr.depth="1" attr.showDepths="2" />
+		<div style="clear:both"></div>
+	</div>
+</div>
+<!--leftend-->
+<!--right-->
+	<div class="w_right">
+		<views />
+	</div>
+<!--rightend--->
+<!--footer-->
+	<div class="clr"></div>
+	<div class="w_footer">
+		<p>大连开发区自来水公司 &copy; 版权所有 2012</p>
+		<p>Water company of dalian economic and technological development zone All Rights Reserved.</p>
+	</div>
+<!--footerend-->
+</div>
+</div>
+
+
+<script>
+/**
+ * 收缩按钮
+ */
+function w_left_offbutton(){
+	
+	//侧边状态
+	var w_left_width = jQuery(".w_left").width();
+	if(w_left_width > 0){
+		jQuery("body").addClass("bodynobg");
+		
+		jQuery(".w_left").animate({width: '0px'}, "slow",function(){
+		});
+		
+		//按钮缩小（需要增加滚动条然偏移量）
+		var leftScroll = parseInt( jQuery(window).scrollLeft() );
+		jQuery("#w_left_button").animate({left: '-'+leftScroll+'px'}, "slow" ,function(){
+			//自定义事件
+			jQuery(".w_left").trigger('afterSlideIn');
+			jQuery("#w_left_button").removeClass("w_left_offbutton");
+			jQuery("#w_left_button").addClass("w_left_onbutton");
+		});
+	}else{
+		jQuery(".w_left").animate({width: '205px'}, "slow",function(){
+			jQuery("body").removeClass("bodynobg");
+		});
+		jQuery("#w_left_button").animate({left: '216px'}, "slow" , function(){
+			jQuery(".w_left").trigger('afterSlideOut');
+			jQuery("#w_left_button").addClass("w_left_offbutton");
+			jQuery("#w_left_button").removeClass("w_left_onbutton");
+		});
+	}
+}
+
+
+/**
+ * 滚动事件
+ */
+function auto_W_left_offbutton ()
+{
+	//侧边状态
+	var w_left_width = jQuery(".w_left").width();
+	if(w_left_width > 0){
+		var divLeft = 216;
+	}else{
+		var divLeft = 0;
+	}
+	var leftScroll = parseInt( jQuery(window).scrollLeft() );
+	var divLeft_now = parseInt( jQuery("#w_left_button").css("left") );
+	if(divLeft_now != divLeft - leftScroll){
+		jQuery("#w_left_button").css("left",divLeft - leftScroll);
+	}
+}
+
+jquery(function(){
+	jquery('.namecard_simple_card_id_select').change(function(){
+		window.location.href='?c=org.opencomb.coresystem.user.SwichId&uid=' + jquery(this).val();
+	});
+
+	auto_W_left_offbutton();
+	jQuery(window).scroll(auto_W_left_offbutton);
+	
+	var w_bodyH = jQuery(".w_body").height();
+	jQuery(".w_left").height(w_bodyH);
+	
+});
+</script>

@@ -1,0 +1,7 @@
+
+.result-cell{
+	background:url(../images/tablebg1.gif) no-repeat right bottom;
+	text-shadow:0 1px 0px rgba(255, 255, 255, 1); 
+}
+.input-cell{ color:#a96e00;text-shadow:0 1px 0px rgba(255, 255, 255, 1); background:url(../images/jbbg.png) center repeat-x
+}

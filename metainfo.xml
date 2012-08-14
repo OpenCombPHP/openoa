@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Extension>
+
+	<name>oa</name>
+	<version>0.1</version>
+	<title>自来水统计系统</title>
+
+	<description>自动统计报表</description>
+	
+	<class>org.opencomb.oa.Oa</class>
+	<package folder="/class" namespace="org.opencomb.oa"/>
+
+	<template folder="/template"/>
+	<template folder="/template_coresystem" for="coresystem"/>
+
+	<publicFolder folder="/public"/>
+	
+	<require type="extension" item="coresystem"><![CDATA[ =0.2 ]]></require>
+	<require type="extension" item="advancedcomponent"><![CDATA[ =0.2 ]]></require>
+	
+	<data>
+		<version>0.1</version>
+		<installer>org\opencomb\oa\setup\DataInstaller</installer>
+	</data>
+</Extension>

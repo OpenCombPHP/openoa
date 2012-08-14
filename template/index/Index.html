@@ -1,0 +1,256 @@
+
+<css src="water:css/datagrid.css" />
+<div class="w_index_info">
+	<div class="w_index_info_b w_index_info_icob">
+		公司日均原水量本月：<span>600.00</span>累计：<span>2000.00</span>；子公司日均原水量本月：<span>450.00</span>累计：<span>1800.00</span>；合计本月：<span>610.00</span>累计：<span>900.00</span>
+	</div>
+	<div class="w_index_info_y w_index_info_icoy">
+		公司日均销售水量本月：<span>680.00</span>累计：<span>1500.00</span>；子公司日均销售水量本月：<span>600.00</span>累计：<span>5000.00</span>；合计本月：<span>620.00</span>累计：<span>6500.00</span>
+	</div>
+	<div class="w_index_info_g w_index_info_icog">
+		公司销售收入总额本月：<span>650000.00</span>累计：<span>2100000.00</span>；子公司销售收入总额本月：<span>600000.00</span>累计：<span>2000000.00</span>；合计本月：<span>1250000.00</span>累计：<span>4100000.00</span>
+	</div>
+</div>
+<div id='leader_index' class="w_index_ico">
+	<div class="w_index_ico_text">
+		<a href='?c=org.opencomb.water.output.BaoGao' class="w_index_ico1">财务月报</a>
+	</div>
+	<div class="w_index_ico_text">
+		<a href="?c=org.opencomb.water.Dispatch.CaliberStatistics" class="w_index_ico2">生产月报</a>
+	</div>
+	<div class="w_index_ico_text">
+		<a href='?c=org.opencomb.water.Personnel.Statistics' class="w_index_ico3">企管月报</a>
+	</div>
+	<div class="w_index_ico_text">
+		<a href="?c=org.opencomb.water.Business.SalesWater" class="w_index_ico4">销售水量</a>
+	</div>
+	<div class="w_index_ico_text">
+		<a href="?c=org.opencomb.water.Business.ResidentWaterStatistics" class="w_index_ico5">居民用水情况统计</a>
+	</div>
+	<div class="w_index_ico_text">
+		<a href="?c=org.opencomb.water.Business.RecoverDebtsList" class="w_index_ico6">回收率及清欠完成情况</a>
+	</div>
+</div>
+
+
+<script>
+jquery(function($){
+	//自适应
+	$(window).resize(resizeBaoGao);
+	jQuery(".w_left").on('afterSlideIn',resizeBaoGao);
+	jQuery(".w_left").on('afterSlideOut',resizeBaoGao);
+	resizeBaoGao();
+	function resizeBaoGao(){
+		var total_width = $('body')[0].clientWidth;
+		var left_width = $('div.w_left').outerWidth(true);
+		//欲设置宽度
+		var new_width = total_width - left_width - 40;
+		//所有表格以new_width为宽
+		$('table').width( new_width -42 );
+		$('div.w_right').width( new_width);
+	}
+});
+</script>
+
+<!--table border="1">
+  <thead>
+    
+    <tr>
+      <th colspan="3" rowspan="2">项目</th>
+      <th  colspan="2">年度</th>
+      <th  colspan="2">年度</th>
+      <th colspan="2">同比</th>
+    </tr>
+    <tr>
+      <th>本月</th>
+      <th>累计</th>
+      <th>本月</th>
+      <th>累计</th>
+      <th>本月</th>
+      <th>累计</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr row="0" >
+      <td width="40" rowspan="3" style="text-align:center" col="AA" row="0" >日均
+          原水量</td>
+      <td colspan="2" col="AB" row="0" style="text-align:center" >公司</td>
+      <td col="B" row="0" style="text-align:center" >{=$theController->doFormatMoney($RS[0]['B']);}</td>
+      <td col="C" row="0" style="text-align:center" >{=$theController->doFormatMoney($RS[0]['C']);}</td>
+      <td col="D" row="0" style="text-align:center" >{=$theController->doFormatMoney($RS[0]['D']);}</td>
+      <td col="E" row="0" style="text-align:center" >{=$theController->doFormatMoney($RS[0]['E']);}</td>
+      <td col="F" row="0" style="text-align:center" >{=$theController->doFormatMoney($RS[0]['F']);}</td>
+      <td col="G" row="0" style="text-align:center" >{=$theController->doFormatMoney($RS[0]['G']);}</td>
+    </tr>
+    <tr row="1" >
+      <td colspan="2" col="AB" row="1" style="text-align:center" >子公司</td>
+      <td col="B" row="1" style="text-align:center" >{=$theController->doFormatMoney($RS[1]['B']);}</td>
+      <td col="C" row="1" style="text-align:center" >{=$theController->doFormatMoney($RS[1]['C']);}</td>
+      <td col="D" row="1" style="text-align:center" >{=$theController->doFormatMoney($RS[1]['D']);}</td>
+      <td col="E" row="1" style="text-align:center" >{=$theController->doFormatMoney($RS[1]['E']);}</td>
+      <td col="F" row="1" style="text-align:center" >{=$theController->doFormatMoney($RS[1]['F']);}</td>
+      <td col="G" row="1" style="text-align:center" >{=$theController->doFormatMoney($RS[1]['G']);}</td>
+    </tr>
+    <tr row="2" >
+      <td colspan="2" col="AB" row="2" style="text-align:center" >合计</td>
+      <td col="B" row="2" style="text-align:center" >{=$theController->doFormatMoney($RS[2]['B']);}</td>
+      <td col="C" row="2" style="text-align:center" >{=$theController->doFormatMoney($RS[2]['C']);}</td>
+      <td col="D" row="2" style="text-align:center" >{=$theController->doFormatMoney($RS[2]['D']);}</td>
+      <td col="E" row="2" style="text-align:center" >{=$theController->doFormatMoney($RS[2]['E']);}</td>
+      <td col="F" row="2" style="text-align:center" >{=$theController->doFormatMoney($RS[2]['F']);}</td>
+      <td col="G" row="2" style="text-align:center" >{=$theController->doFormatMoney($RS[2]['G']);}</td>
+    </tr>
+    <tr row="3" >
+      <td rowspan="3" col="AA" row="3" style="text-align:center" >日均
+          销售
+          水量</td>
+      <td colspan="2" col="AB" row="3" style="text-align:center" >公司</td>
+      <td col="B" row="3" style="text-align:center" >{=$theController->doFormatMoney($RS[3]['B']);}</td>
+      <td col="C" row="3" style="text-align:center" >{=$theController->doFormatMoney($RS[3]['C']);}</td>
+      <td col="D" row="3" style="text-align:center" >{=$theController->doFormatMoney($RS[3]['D']);}</td>
+      <td col="E" row="3" style="text-align:center" >{=$theController->doFormatMoney($RS[3]['E']);}</td>
+      <td col="F" row="3" style="text-align:center" >{=$theController->doFormatMoney($RS[3]['F']);}</td>
+      <td col="G" row="3" style="text-align:center" >{=$theController->doFormatMoney($RS[3]['G']);}</td>
+    </tr>
+    <tr row="4" >
+      <td colspan="2" col="AB" row="4" style="text-align:center" >子公司</td>
+      <td col="B" row="4" style="text-align:center" >{=$theController->doFormatMoney($RS[4]['B']);}</td>
+      <td col="C" row="4" style="text-align:center" >{=$theController->doFormatMoney($RS[4]['C']);}</td>
+      <td col="D" row="4" style="text-align:center" >{=$theController->doFormatMoney($RS[4]['D']);}</td>
+      <td col="E" row="4" style="text-align:center" >{=$theController->doFormatMoney($RS[4]['E']);}</td>
+      <td col="F" row="4" style="text-align:center" >{=$theController->doFormatMoney($RS[4]['F']);}</td>
+      <td col="G" row="4" style="text-align:center" >{=$theController->doFormatMoney($RS[4]['G']);}</td>
+    </tr>
+    <tr row="5" >
+      <td colspan="2" col="AB" row="5" style="text-align:center" >合计</td>
+      <td col="B" row="5" style="text-align:center" >{=$theController->doFormatMoney($RS[5]['B']);}</td>
+      <td col="C" row="5" style="text-align:center" >{=$theController->doFormatMoney($RS[5]['C']);}</td>
+      <td col="D" row="5" style="text-align:center" >{=$theController->doFormatMoney($RS[5]['D']);}</td>
+      <td col="E" row="5" style="text-align:center" >{=$theController->doFormatMoney($RS[5]['E']);}</td>
+      <td col="F" row="5" style="text-align:center" >{=$theController->doFormatMoney($RS[5]['F']);}</td>
+      <td col="G" row="5" style="text-align:center" >{=$theController->doFormatMoney($RS[5]['G']);}</td>
+    </tr>
+    <tr row="6" >
+      <td rowspan="3" col="AA" row="6" style="text-align:center" >管网
+          漏损率</td>
+      <td colspan="2" col="AB" row="6" style="text-align:center" >公司</td>
+      <td col="B" row="6" style="text-align:center" >{=$theController->doFormatMoney($RS[6]['B']);}</td>
+      <td col="C" row="6" style="text-align:center" >{=$theController->doFormatMoney($RS[6]['C']);}</td>
+      <td col="D" row="6" style="text-align:center" >{=$theController->doFormatMoney($RS[6]['D']);}</td>
+      <td col="E" row="6" style="text-align:center" >{=$theController->doFormatMoney($RS[6]['E']);}</td>
+      <td col="F" row="6" style="text-align:center" >{=$theController->doFormatMoney($RS[6]['F']);}</td>
+      <td col="G" row="6" style="text-align:center" >{=$theController->doFormatMoney($RS[6]['G']);}</td>
+    </tr>
+    <tr row="7" >
+      <td colspan="2" col="AB" row="7" style="text-align:center" >子公司</td>
+      <td col="B" row="7" style="text-align:center" >{=$theController->doFormatMoney($RS[7]['B']);}</td>
+      <td col="C" row="7" style="text-align:center" >{=$theController->doFormatMoney($RS[7]['C']);}</td>
+      <td col="D" row="7" style="text-align:center" >{=$theController->doFormatMoney($RS[7]['D']);}</td>
+      <td col="E" row="7" style="text-align:center" >{=$theController->doFormatMoney($RS[7]['E']);}</td>
+      <td col="F" row="7" style="text-align:center" >{=$theController->doFormatMoney($RS[7]['F']);}</td>
+      <td col="G" row="7" style="text-align:center" >{=$theController->doFormatMoney($RS[7]['G']);}</td>
+    </tr>
+    <tr row="8" >
+      <td colspan="2" col="AB" row="8" style="text-align:center" >合计量</td>
+      <td col="B" row="8" style="text-align:center" >{=$theController->doFormatMoney($RS[8]['B']);}</td>
+      <td col="C" row="8" style="text-align:center" >{=$theController->doFormatMoney($RS[8]['C']);}</td>
+      <td col="D" row="8" style="text-align:center" >{=$theController->doFormatMoney($RS[8]['D']);}</td>
+      <td col="E" row="8" style="text-align:center" >{=$theController->doFormatMoney($RS[8]['E']);}</td>
+      <td col="F" row="8" style="text-align:center" >{=$theController->doFormatMoney($RS[8]['F']);}</td>
+      <td col="G" row="8" style="text-align:center" >{=$theController->doFormatMoney($RS[8]['G']);}</td>
+    </tr>
+    <tr row="9" >
+      <td rowspan="3" col="AA" row="9" style="text-align:center" >购销
+          差率</td>
+      <td colspan="2" col="AB" row="9" style="text-align:center" >公司</td>
+      <td col="B" row="9" style="text-align:center" >{=$theController->doFormatMoney($RS[9]['B']);}</td>
+      <td col="C" row="9" style="text-align:center" >{=$theController->doFormatMoney($RS[9]['C']);}</td>
+      <td col="D" row="9" style="text-align:center" >{=$theController->doFormatMoney($RS[9]['D']);}</td>
+      <td col="E" row="9" style="text-align:center" >{=$theController->doFormatMoney($RS[9]['E']);}</td>
+      <td col="F" row="9" style="text-align:center" >{=$theController->doFormatMoney($RS[9]['F']);}</td>
+      <td col="G" row="9" style="text-align:center" >{=$theController->doFormatMoney($RS[9]['G']);}</td>
+    </tr>
+    <tr row="10" >
+      <td colspan="2" col="AB" row="10" style="text-align:center" >子公司</td>
+      <td col="B" row="10" style="text-align:center" >{=$theController->doFormatMoney($RS[10]['B']);}</td>
+      <td col="C" row="10" style="text-align:center" >{=$theController->doFormatMoney($RS[10]['C']);}</td>
+      <td col="D" row="10" style="text-align:center" >{=$theController->doFormatMoney($RS[10]['D']);}</td>
+      <td col="E" row="10" style="text-align:center" >{=$theController->doFormatMoney($RS[10]['E']);}</td>
+      <td col="F" row="10" style="text-align:center" >{=$theController->doFormatMoney($RS[10]['F']);}</td>
+      <td col="G" row="10" style="text-align:center" >{=$theController->doFormatMoney($RS[10]['G']);}</td>
+    </tr>
+    <tr row="11" >
+      <td colspan="2" col="AB" row="11" style="text-align:center" >合计</td>
+      <td col="B" row="11" style="text-align:center" >{=$theController->doFormatMoney($RS[11]['B']);}</td>
+      <td col="C" row="11" style="text-align:center" >{=$theController->doFormatMoney($RS[11]['C']);}</td>
+      <td col="D" row="11" style="text-align:center" >{=$theController->doFormatMoney($RS[11]['D']);}</td>
+      <td col="E" row="11" style="text-align:center" >{=$theController->doFormatMoney($RS[11]['E']);}</td>
+      <td col="F" row="11" style="text-align:center" >{=$theController->doFormatMoney($RS[11]['F']);}</td>
+      <td col="G" row="11" style="text-align:center" >{=$theController->doFormatMoney($RS[11]['G']);}</td>
+    </tr>
+    <tr row="12" >
+      <td rowspan="3" col="AA" row="12" style="text-align:center" >收入
+          总额</td>
+      <td width="15" style="text-align:center" col="AB" row="12" >公司</td>
+      <td width="50" style="text-align:center" col="A" row="12" >销售收入</td>
+      <td col="B" row="12" style="text-align:center" >{=$theController->doFormatMoney($RS[12]['B']);}</td>
+      <td col="C" row="12" style="text-align:center" >{=$theController->doFormatMoney($RS[12]['C']);}</td>
+      <td col="D" row="12" style="text-align:center" >{=$theController->doFormatMoney($RS[12]['D']);}</td>
+      <td col="E" row="12" style="text-align:center" >{=$theController->doFormatMoney($RS[12]['E']);}</td>
+      <td col="F" row="12" style="text-align:center" >{=$theController->doFormatMoney($RS[12]['F']);}</td>
+      <td col="G" row="12" style="text-align:center" >{=$theController->doFormatMoney($RS[12]['G']);}</td>
+    </tr>
+    
+    <tr row="14" >
+      <td col="AB" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['AB']);}</td>
+      <td col="A" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['A']);}</td>
+      <td col="B" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['B']);}</td>
+      <td col="C" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['C']);}</td>
+      <td col="D" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['D']);}</td>
+      <td col="E" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['E']);}</td>
+      <td col="F" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['F']);}</td>
+      <td col="G" row="14" style="text-align:center" >{=$theController->doFormatMoney($RS[14]['G']);}</td>
+    </tr>
+    
+    <tr row="16" >
+      <td col="AB" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['AB']);}</td>
+      <td col="A" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['A']);}</td>
+      <td col="B" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['B']);}</td>
+      <td col="C" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['C']);}</td>
+      <td col="D" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['D']);}</td>
+      <td col="E" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['E']);}</td>
+      <td col="F" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['F']);}</td>
+      <td col="G" row="16" style="text-align:center" >{=$theController->doFormatMoney($RS[16]['G']);}</td>
+    </tr>
+    
+    <tr row="18" >
+      <td rowspan="3" col="AA" row="18" style="text-align:center" >成本
+          总额</td>
+      <td colspan="2" col="AB" row="18" style="text-align:center" >公司</td>
+      <td col="B" row="18" style="text-align:center" >{=$theController->doFormatMoney($RS[18]['B']);}</td>
+      <td col="C" row="18" style="text-align:center" >{=$theController->doFormatMoney($RS[18]['C']);}</td>
+      <td col="D" row="18" style="text-align:center" >{=$theController->doFormatMoney($RS[18]['D']);}</td>
+      <td col="E" row="18" style="text-align:center" >{=$theController->doFormatMoney($RS[18]['E']);}</td>
+      <td col="F" row="18" style="text-align:center" >{=$theController->doFormatMoney($RS[18]['F']);}</td>
+      <td col="G" row="18" style="text-align:center" >{=$theController->doFormatMoney($RS[18]['G']);}</td>
+    </tr>
+    <tr row="19" >
+      <td colspan="2" col="AB" row="19" style="text-align:center" >子公司</td>
+      <td col="B" row="19" style="text-align:center" >{=$theController->doFormatMoney($RS[19]['B']);}</td>
+      <td col="C" row="19" style="text-align:center" >{=$theController->doFormatMoney($RS[19]['C']);}</td>
+      <td col="D" row="19" style="text-align:center" >{=$theController->doFormatMoney($RS[19]['D']);}</td>
+      <td col="E" row="19" style="text-align:center" >{=$theController->doFormatMoney($RS[19]['E']);}</td>
+      <td col="F" row="19" style="text-align:center" >{=$theController->doFormatMoney($RS[19]['F']);}</td>
+      <td col="G" row="19" style="text-align:center" >{=$theController->doFormatMoney($RS[19]['G']);}</td>
+    </tr>
+    <tr row="20" >
+      <td colspan="2" col="AB" row="20" style="text-align:center" >合计</td>
+      <td col="B" row="20" style="text-align:center" >{=$theController->doFormatMoney($RS[20]['B']);}</td>
+      <td col="C" row="20" style="text-align:center" >{=$theController->doFormatMoney($RS[20]['C']);}</td>
+      <td col="D" row="20" style="text-align:center" >{=$theController->doFormatMoney($RS[20]['D']);}</td>
+      <td col="E" row="20" style="text-align:center" >{=$theController->doFormatMoney($RS[20]['E']);}</td>
+      <td col="F" row="20" style="text-align:center" >{=$theController->doFormatMoney($RS[20]['F']);}</td>
+      <td col="G" row="20" style="text-align:center" >{=$theController->doFormatMoney($RS[20]['G']);}</td>
+    </tr>
+  </tbody>
+</table-->
