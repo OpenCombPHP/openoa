@@ -1,0 +1,22 @@
+<div id="DeparmentManagement">
+	<h1>部门管理</h1>
+		<a href="?c=org.opencomb.oa.PersonnelManagement.Dep.AddDepartment">添加部门</a>
+		<table id="DeparmentManagement_table">
+			<thead>
+				<tr>
+					<th>部门名称</th>
+					<th>部门描述</th>
+					<th colspan=2>操作</th>
+				</tr>
+				<foreach for="$aDepartmentModel" item="aDep">
+				<tr>
+					<td>{=$aDep["DepartmentName"]}</td>
+					<td>{=$aDep["Description"]}</td>
+					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['did']}&name={=$aDep['DepartmentName']}">编辑</a></td>
+					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['did']}">删除</a></td>
+				</tr>
+				</foreach>
+			</thead>
+		</table>
+		<widget id="paginator" attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1" />
+</div>

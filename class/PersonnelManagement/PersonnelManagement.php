@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa;
+namespace org\opencomb\oa\PersonnelManagement;
 
 use org\opencomb\coresystem\auth\PurviewSetting;
 
@@ -14,18 +14,28 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
  * @author anubis
  *
  */
-class Oa extends Extension
+class PersonnelManagement extends Extension
 {
 	
 	/**
 	 * 载入扩展
 	 */
 	public function load()
-	{	
-		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
-		
+	{
 		//设置首页控制器
 		$aAccessRouter = AccessRouter::singleton() ;
+	}
+	
+	public function load()
+	{
+		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+	
+		//设置首页控制器
+		//$aAccessRouter = AccessRouter::singleton() ;
+		//$aAccessRouter->setDefaultController("org\\opencomb\\water\\index\\Index") ;
+		
+
+	
 	}
 	
 	static public function buildControlPanelMenu(array & $arrConfig)
@@ -40,15 +50,15 @@ class Oa extends Extension
 						'link' => '?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
 						'query' => 'c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
 				),
-				'item:positionmanagement' => array(
+				'item:jobmanagement' => array(
 						'title' => '职位管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.Dep.JobManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.Dep.JobManagement' ,
 				),
 				'item:employeemanagement' => array(
 						'title' => '员工管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.EmployeeManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.EmployeeManagement' ,
 				),
 				'item:personnelcontractmanagement' => array(
 						'title' => '人事合同管理' ,
