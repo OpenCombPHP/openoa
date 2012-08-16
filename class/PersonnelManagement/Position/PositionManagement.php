@@ -28,7 +28,7 @@ class PositionManagement extends ControlPanel{
 	);
 	
 	public function process() {
-		$aPositionModel = Model::Create('oa:PositionManagement');
+		$aPositionModel = Model::Create('openoa:PositionManagement');
 		$aPositionModel->load();
 		
 		$this->view()->setModel($aPositionModel);

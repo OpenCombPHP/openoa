@@ -40,15 +40,15 @@ class AddPosition extends ControlPanel{
 			return ;
 		}
 		
-		$aPositionModel = Model::Create('oa:PositionManagement');
-		$aPositionModel->load($this->params['name'] , 'PositionName');
+		$aPositionModel = Model::Create('openoa:PositionManagement');
+		$aPositionModel->load($this->params['name'] , 'name');
 		
 		if($aPositionModel->rowNum() > 0){
 			$this->view->createMessage(Message::error,"%s 已存在",'职位名称') ;
 			return ;
 		}
 		
-		$aPositionModel->addRow(array('PositionName'=>$this->params['name'] ));
+		$aPositionModel->addRow(array('name'=>$this->params['name'] ));
 		$nUpdateRows = $aPositionModel->replace();
 		
 		if($nUpdateRows > 0){

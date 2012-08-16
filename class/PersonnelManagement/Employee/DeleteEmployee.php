@@ -23,7 +23,7 @@ class DeleteEmployee extends ControlPanel{
 	);
 	
 	public function process() {
-		$aPositionModel = Model::Create('oa:EmployeeManagement');
+		$aPositionModel = Model::Create('openoa:EmployeeManagement');
 		if($aPositionModel->delete('eid='.$this->params['eid']))
 		{
 			$this->createMessage(Message::success,"删除成功") ;

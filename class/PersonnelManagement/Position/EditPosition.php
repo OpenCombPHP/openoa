@@ -4,6 +4,7 @@ namespace org\opencomb\oa\PersonnelManagement\Position;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\jecat\framework\lang\Exception;
 
 /*
  * 成本对比分析
@@ -18,12 +19,6 @@ class EditPosition extends ControlPanel{
 									'id'=>'edit_name',
 									'class'=>'text',
 									'title'=>'职位名称',
-							),
-							array(
-									'id'=>'hide_old_name',
-									'class'=>'text',
-									'type'=>'hidden',
-									'title'=>'old职位名称',
 							),
 							array(
 									'id'=>'hide_pid',
@@ -42,10 +37,9 @@ class EditPosition extends ControlPanel{
 	);
 	
 	public function process() {
-		$this->view->widget('hide_old_name')->setValue($this->params['name']);
 		$this->view->widget('hide_pid')->setValue($this->params['pid']);
 		$this->view->widget('edit_name')->setValue($this->params['name']);
-		$aPositionModel = Model::Create('oa:PositionManagement');
+		$aPositionModel = Model::Create('openoa:PositionManagement');
 		$aPositionModel->load($this->params['pid'] , 'pid');
 		$this->doActions();
 	}
@@ -57,18 +51,15 @@ class EditPosition extends ControlPanel{
 			return ;
 		}
 		
-		$aPositionModel = Model::Create('oa:PositionManagement');
-		$aPositionModel->load($this->params['edit_name'] , 'PositionName');
+		$aPositionModel = Model::Create('openoa:PositionManagement');
+		$aPositionModel->load($this->params['hide_pid'] , 'pid');
 		
-		if($aPositionModel->rowNum() > 0 && $this->params['hide_old_name']!=$this->params['edit_name']){
-			$this->view->createMessage(Message::error,"%s 已存在",'职位名称') ;
-			return ;
+		try{
+			$aPositionModel->update(array('name'=>$this->params['edit_name']) , "pid =".$this->params['hide_pid']);
+			$this->messageQueue ()->create ( Message::success, "编辑成功" );
+		}catch (Exception $e){
+			$this->messageQueue ()->create ( Message::error, "已存在此职位" );
 		}
-		
-		$aPositionModel->load();
-		$aPositionModel->update(array('PositionName'=>$this->params['edit_name']) , "pid =".$this->params['hide_pid']);
-		
-		$this->messageQueue()->create ( Message::success, "编辑成功" );
 		$this->location('?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement');
 	}	
 	

@@ -4,6 +4,7 @@ namespace org\opencomb\oa\PersonnelManagement\Dep;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\jecat\framework\lang\Exception;
 
 /*
  * 成本对比分析
@@ -48,12 +49,12 @@ class EditDepartment extends ControlPanel{
 	);
 	
 	public function process() {
-		$this->view->widget('hide_old_name')->setValue($this->params['name']);
 		$this->view->widget('hide_did')->setValue($this->params['did']);
 		$this->view->widget('edit_name')->setValue($this->params['name']);
-		$aDepartmentModel = Model::Create('oa:DepartmentManagement');
-		$aDepartmentModel->load($this->params['did'] , 'did');
-		$this->view->widget('edit_content')->setValue($aDepartmentModel['Description']);
+		
+		$aDepartmentModel = Model::Create('coresystem:group');
+		$aDepartmentModel->load($this->params['did'] , 'gid');
+		//$this->view->widget('edit_content')->setValue($aDepartmentModel['Description']);
 		$this->doActions();
 	}
 	
@@ -64,19 +65,24 @@ class EditDepartment extends ControlPanel{
 			return ;
 		}
 		
-		$aDepartmentModel = Model::Create('oa:DepartmentManagement');
-		$aDepartmentModel->load($this->params['edit_name'] , 'DepartmentName');
 		
-		if($aDepartmentModel->rowNum() > 0 && $this->params['hide_old_name']!=$this->params['edit_name']){
-			$this->view->createMessage(Message::error,"%s 已存在",'部门名称') ;
-			return ;
+		$aDepartmentModel = Model::Create('coresystem:group');
+		$aDepartmentModel->load($this->params['hide_did'] , 'gid');
+		
+// 		if($aDepartmentModel->rowNum() > 0 && $this->params['hide_old_name']!=$this->params['edit_name']){
+// 			$this->view->createMessage(Message::error,"%s 已存在",'部门名称') ;
+// 			return ;
+// 		}
+		
+// 		$aDepartmentModel->load();
+		try{
+			$aDepartmentModel->update(array('name'=>$this->params['edit_name']) , "gid =".$this->params['hide_did']);
+			$this->messageQueue()->create ( Message::success, "编辑成功" );
+		}catch (Exception $e){
+			$this->messageQueue ()->create ( Message::error, "已存在此部门" );
+			$this->location('?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement');
 		}
 		
-		$aDepartmentModel->load();
-		$aDepartmentModel->update(array('Description'=>$this->params['edit_content']) , "did =".$this->params['hide_did']);
-		
-		$this->messageQueue()->create ( Message::success, "编辑成功" );
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement');
 	}	
 	
 }

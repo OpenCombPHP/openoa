@@ -23,8 +23,8 @@ class DeleteDepartment extends ControlPanel{
 	);
 	
 	public function process() {
-		$aDepartmentModel = Model::Create('oa:DepartmentManagement');
-		if($aDepartmentModel->delete('did='.$this->params['did']))
+		$aDepartmentModel = Model::Create('coresystem:group');
+		if($aDepartmentModel->delete('gid='.$this->params['did']))
 		{
 			$this->createMessage(Message::success,"删除成功") ;
 		}

@@ -75,13 +75,13 @@ class AddEmployee extends ControlPanel{
 	);
 	
 	public function process() {
-		$aPositionModel = Model::Create('oa:PositionManagement');
+		$aPositionModel = Model::Create('openoa:PositionManagement');
 		$aPositionModel->load();
 		
 		$this->view()->setModel($aPositionModel);
 		$this->view->variables()->set('aPositionModel',$aPositionModel) ;
 		
-		$aDepatmentModel = Model::Create('oa:DepartmentManagement');
+		$aDepatmentModel = Model::Create('openoa:DepartmentManagement');
 		$aDepatmentModel->load();
 		
 		$this->view()->setModel($aDepatmentModel);
@@ -116,7 +116,7 @@ class AddEmployee extends ControlPanel{
 		
 		
 		
-		$aEmployeeModel = Model::Create('oa:EmployeeManagement');
+		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
 		$aEmployeeModel->load();
 		$aEmployeeModel->addRow(
 				array(

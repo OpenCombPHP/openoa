@@ -10,10 +10,10 @@
 				</tr>
 				<foreach for="$aDepartmentModel" item="aDep">
 				<tr>
-					<td>{=$aDep["DepartmentName"]}</td>
-					<td>{=$aDep["Description"]}</td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['did']}&name={=$aDep['DepartmentName']}">编辑</a></td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['did']}">删除</a></td>
+					<td>{=$aDep["name"]}</td>
+					<td>{=$aDep["name"]}</td>
+					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['gid']}&name={=$aDep['name']}">编辑</a></td>
+					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['gid']}">删除</a></td>
 				</tr>
 				</foreach>
 			</thead>

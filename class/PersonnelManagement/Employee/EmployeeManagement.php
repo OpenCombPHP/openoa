@@ -29,15 +29,21 @@ class EmployeeManagement extends ControlPanel{
 	
 	public function process() {
 		
-		$this->model('coresystem:user','user')
-					->hasOne('coresystem:userinfo','info')
-					->hasOne('oa:EmployeeManagement','employee');
+		$this->model('openoa:EmployeeManagement','employee')
+					->hasOne('coresystem:userinfo','uid','uid','userinfo')
+					->hasOne('coresystem:user','uid','uid','user')
+					->belongsTo('coresystem:group','department','gid','groups');
 				
-		$this->user;
+		$this->employee->load();
+		echo $this->employee->data('groups.name');
+		exit;
+		
+		
+		
 		//this->model('coresystem:user') ;
 		
-		$aEmployeeModel = Model::Create('oa:EmployeeManagement');
-		$aEmployeeModel->load();
+		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
+		$aEmployeeModel->load(5,'uid');
 		
 		$this->view()->setModel($aEmployeeModel);
 		$this->view->variables()->set('aEmployeeModel',$aEmployeeModel) ;

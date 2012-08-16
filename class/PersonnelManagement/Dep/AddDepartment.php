@@ -46,15 +46,15 @@ class AddDepartment extends ControlPanel{
 			return ;
 		}
 		
-		$aDepartmentModel = Model::Create('oa:DepartmentManagement');
-		$aDepartmentModel->load($this->params['name'] , 'DepartmentName');
+		$aDepartmentModel = Model::Create('coresystem:group');
+		$aDepartmentModel->load($this->params['name'] , 'name');
 		
 		if($aDepartmentModel->rowNum() > 0){
 			$this->view->createMessage(Message::error,"%s 已存在",'部门名称') ;
 			return ;
 		}
 		
-		$aDepartmentModel->addRow(array('DepartmentName'=>$this->params['name'] , "Description"=>$this->params['content']));
+		$aDepartmentModel->addRow(array('name'=>$this->params['name'] , /*"Description"=>$this->params['content']*/));
 		$nUpdateRows = $aDepartmentModel->replace();
 		
 		if($nUpdateRows > 0){

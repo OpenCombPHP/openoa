@@ -4,6 +4,7 @@ namespace org\opencomb\oa\PersonnelManagement\Dep;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\jecat\framework\lang\Exception;
 
 /*
  * 成本对比分析
@@ -40,7 +41,7 @@ class DepartmentManagement extends ControlPanel{
 	);
 	
 	public function process() {
-		$aDepartmentModel = Model::Create('oa:DepartmentManagement');
+		$aDepartmentModel = Model::Create('coresystem:group');
 		$aDepartmentModel->load();
 		
 		$this->view()->setModel($aDepartmentModel);

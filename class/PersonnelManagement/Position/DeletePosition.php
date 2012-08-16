@@ -23,7 +23,7 @@ class DeletePosition extends ControlPanel{
 	);
 	
 	public function process() {
-		$aPositionModel = Model::Create('oa:PositionManagement');
+		$aPositionModel = Model::Create('openoa:PositionManagement');
 		if($aPositionModel->delete('pid='.$this->params['pid']))
 		{
 			$this->createMessage(Message::success,"删除成功") ;
