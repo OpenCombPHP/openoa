@@ -20,11 +20,18 @@
 				</tr>
 				<tr>
 					<th>性别:</th>
-					<td><widget id="sex" type="text" /></td>
+					<td>				
+						<input type='radio' name='sex' value='1' checked/>男
+						<input type='radio' name='sex' value='2'/>女
+					</td>
 				</tr>
 				<tr>
-					<th>出生年月:</th>
-					<td><widget id="birthday" type="text" /></td>
+					<th >出生年月:</th>
+					<td>
+						<input name="birthday_y" type="text" size="4"/>年
+						<input name="birthday_m" type="text" size="2"/>月
+						<input name="birthday_d" type="text" size="2"/>日
+					</td>
 				</tr>
 				<tr>
 					<th>面貌:</th>
@@ -44,7 +51,11 @@
 				</tr>
 				<tr>
 					<th>毕业时间:</th>
-					<td><widget id="graduation" type="text" /></td>
+					<td>
+						<input name="graduation_y" type="text" size="4"/>年
+						<input name="graduation_m" type="text" size="2"/>月
+						<input name="graduation_d" type="text" size="2"/>日
+					</td>
 				</tr>
 				<tr>
 					<th>毕业学校:</th>
@@ -56,11 +67,21 @@
 				</tr>
 				<tr>
 					<th>入厂时间:</th>
-					<td><widget id="factorytime" type="text" /></td>
+					<td>
+						<input name="factory_y" type="text" size="4"/>年
+						<input name="factory_m" type="text" size="2"/>月
+						<input name="factory_d" type="text" size="2"/>日
+					</td>
 				</tr>
 				<tr>
 					<th>所在部门:</th>
-					<td><widget id="department" type="text" /></td>
+					<td>
+						<select name="department_select">
+							<foreach for="$aDepatmentModel" item='aDep'>
+								<option value="{=$aDep['did']}" size='10px'>{=$aDep['DepartmentName']}</option>
+							</foreach>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>手机:</th>

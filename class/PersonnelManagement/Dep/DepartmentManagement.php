@@ -14,14 +14,23 @@ class DepartmentManagement extends ControlPanel{
 			'view' => array (
 					'template' => 'PersonnelManagement/Dep/DepartmentManagement.html',
 			),
-			'widget:paginator' => array(  //分页器bean
-					'class' => 'paginator' ,
-					'count' => 10, //每页10项
-					'nums' => 5   //显示5个页码
-			) ,
-			'widget:paginator' => array(
-					'class' => 'paginator' ,
-			) ,
+			
+			'widgets'=>array(
+					array(
+							'id'=>'paginator',
+							'class'=>'paginator',
+							'count' => 10, //每页10项
+							'nums' => 5   //显示5个页码
+					),
+			),
+// 			'widget:paginator' => array(  //分页器bean
+// 					'class' => 'paginator' ,
+// 					'count' => 10, //每页10项
+// 					'nums' => 5   //显示5个页码
+// 			) ,
+// 			'widget:paginator' => array(
+// 					'class' => 'paginator' ,
+// 			) ,
 // 			'perms' => array (
 // 					// 权限类型的许可
 // 					'perm.purview' => array (
@@ -38,9 +47,4 @@ class DepartmentManagement extends ControlPanel{
 		$this->view->variables()->set('aDepartmentModel',$aDepartmentModel) ;
 		$this->doActions();
 	}
-	
-	public function form(){
-
-	}
-	
 }

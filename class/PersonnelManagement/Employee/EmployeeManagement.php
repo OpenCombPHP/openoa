@@ -28,6 +28,14 @@ class EmployeeManagement extends ControlPanel{
 	);
 	
 	public function process() {
+		
+		$this->model('coresystem:user','user')
+					->hasOne('coresystem:userinfo','info')
+					->hasOne('oa:EmployeeManagement','employee');
+				
+		$this->user;
+		//this->model('coresystem:user') ;
+		
 		$aEmployeeModel = Model::Create('oa:EmployeeManagement');
 		$aEmployeeModel->load();
 		
