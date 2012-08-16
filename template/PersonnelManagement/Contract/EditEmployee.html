@@ -1,0 +1,111 @@
+<div id="EditEmployee">
+	<h1>新增员工</h1>
+	<msgqueue/>
+	<form method="post">
+		<table id="EditEmployee_table">
+			<thead>
+				<tr>
+					<th>员工姓名:</th>
+					<td><widget id="name" type="text" /></td>
+				</tr>
+				<tr>
+					<th>职务:</th>
+					<td>
+						<select name="position_select">
+							<foreach for="$aPositionModel" item='aPos'>
+								<option value="{=$aPos['pid']}" size='10px' {=$sPosition==$aPos['pid'] ?'selected':'' }>{=$aPos['PositionName']}</option>
+							</foreach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>性别:</th>
+					<td>				
+						<input type='radio' name='sex' value='1' {=$sSex==1 ?'checked' :''}/>男
+						<input type='radio' name='sex' value='2' {=$sSex==2 ?'checked' :''}/>女
+					</td>
+				</tr>
+				<tr>
+					<th >出生年月:</th>
+					<td>
+						<input name="birthday_y" type="text" size="4"/>年
+						<input name="birthday_m" type="text" size="2"/>月
+						<input name="birthday_d" type="text" size="2"/>日
+					</td>
+				</tr>
+				<tr>
+					<th>面貌:</th>
+					<td><widget id="policital" type="text" /></td>
+				</tr>
+				<tr>
+					<th>工作时间:</th>
+					<td><widget id="worktime" type="text" /></td>
+				</tr>
+				<tr>
+					<th>技术职称:</th>
+					<td><widget id="protitle" type="text" /></td>
+				</tr>
+				<tr>
+					<th>学历:</th>
+					<td><widget id="education" type="text" /></td>
+				</tr>
+				<tr>
+					<th>毕业时间:</th>
+					<td>
+						<input name="graduation_y" type="text" size="4"/>年
+						<input name="graduation_m" type="text" size="2"/>月
+						<input name="graduation_d" type="text" size="2"/>日
+					</td>
+				</tr>
+				<tr>
+					<th>毕业学校:</th>
+					<td><widget id="school" type="text" /></td>
+				</tr>
+				<tr>
+					<th>所学专业:</th>
+					<td><widget id="major" type="text" /></td>
+				</tr>
+				<tr>
+					<th>入厂时间:</th>
+					<td>
+						<input name="factory_y" type="text" size="4"/>年
+						<input name="factory_m" type="text" size="2"/>月
+						<input name="factory_d" type="text" size="2"/>日
+					</td>
+				</tr>
+				<tr>
+					<th>所在部门:</th>
+					<td>
+						<select name="department_select">
+							<foreach for="$aDepatmentModel" item='aDep'>
+								<option value="{=$aDep['did']}" size='10px' {=$sDepartment == $aDep['did'] ?'selected':''}>{=$aDep['DepartmentName']}</option>
+							</foreach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>手机:</th>
+					<td><widget id="tel" type="text" /></td>
+				</tr>
+				<tr>
+					<th>座机/分机:</th>
+					<td><widget id="phone" type="text" /></td>
+				</tr>
+				<tr>
+					<th>状态:</th>
+					<td>
+						<select name="status">
+							<option value="1" size='10px' {=$sStatus ==1 ?'selected':''}>在职</option>
+							<option value="2" size='10px' {=$sStatus ==1 ?'selected':''}>离职</option>
+						</select>
+					</td>
+				</tr>
+			</thead>
+		</table>
+		<div>
+			<widget id="hide_eid" />
+			<input type="submit" value="保存" />
+			<input type="submit" value="取消"/>
+		</div>
+	</form>
+</div>
