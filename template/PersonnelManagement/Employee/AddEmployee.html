@@ -13,7 +13,7 @@
 					<td>
 						<select name="position_select">
 							<foreach for="$aPositionModel" item='aPos'>
-								<option value="{=$aPos['PositionName']}" size='10px'>{=$aPos['PositionName']}</option>
+								<option value="{=$aPos['pid']}" size='10px'>{=$aPos['name']}</option>
 							</foreach>
 						</select>
 					</td>
@@ -78,7 +78,7 @@
 					<td>
 						<select name="department_select">
 							<foreach for="$aDepatmentModel" item='aDep'>
-								<option value="{=$aDep['did']}" size='10px'>{=$aDep['DepartmentName']}</option>
+								<option value="{=$aDep['gid']}" size='10px'>{=$aDep['name']}</option>
 							</foreach>
 						</select>
 					</td>

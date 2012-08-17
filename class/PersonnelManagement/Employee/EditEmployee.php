@@ -81,23 +81,27 @@ class EditEmployee extends ControlPanel{
 	);
 	
 	public function process() {
-		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
-		$aEmployeeModel->load($this->params['eid'] , 'eid');
+		$aEmployeeModel = Model::Create('openoa:EmployeeManagement','employee')
+							->hasOne('coresystem:userinfo','uid','uid','userinfo')
+							->hasOne('coresystem:user','uid','uid','user')
+							->belongsTo('coresystem:group','department','gid','groups')
+							->belongsTo('openoa:PositionManagement','position','pid','position');
 		
+		$aEmployeeModel->load($this->params['eid'] , 'uid');
 		$aPositionModel = Model::Create('openoa:PositionManagement');
 		$aPositionModel->load();
 		
 		$this->view()->setModel($aPositionModel);
 		$this->view->variables()->set('aPositionModel',$aPositionModel) ;
 		
-		$aDepatmentModel = Model::Create('openoa:DepartmentManagement');
+		$aDepatmentModel = Model::Create('coresystem:group');
 		$aDepatmentModel->load();
 		
 		$this->view()->setModel($aDepatmentModel);
 		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
 		
-		$this->view->widget('name')->setValue($aEmployeeModel['name']);
-		$this->view->variables()->set('sPosition',$this->params['position']);
+		$this->view->widget('name')->setValue($aEmployeeModel['user.username']);
+		$this->view->variables()->set('sPosition',$aEmployeeModel['position']);
 		$this->view->variables()->set('sSex',$aEmployeeModel['sex']);
 		//$this->view->widget('birthday')->setValue($aEmployeeModel['name']);
 		$this->view->widget('policital')->setValue($aEmployeeModel['policital']);
@@ -108,7 +112,7 @@ class EditEmployee extends ControlPanel{
 		$this->view->widget('major')->setValue($aEmployeeModel['major']);
 		//$this->view->widget('factorytime')->setValue($aEmployeeModel['factorytime']);
 		$this->view->variables()->set('sDepartment',$aEmployeeModel['department']);
-		$this->view->widget('tel')->setValue($aEmployeeModel['tel']);
+		$this->view->widget('tel')->setValue($aEmployeeModel['userinfo.tel']);
 		$this->view->widget('phone')->setValue($aEmployeeModel['phone']);
 		$this->view->variables()->set('sStatus',$aEmployeeModel['status']);
 		$this->view->widget('hide_eid')->setValue($this->params['eid']);
@@ -142,12 +146,13 @@ class EditEmployee extends ControlPanel{
 		$sStatus = $this->params['status'];
 		
 		
-		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
+		$aEmployeeModel = Model::Create('openoa:EmployeeManagement','employee')
+							->hasOne('coresystem:userinfo','uid','uid','userinfo')
+							->hasOne('coresystem:user','uid','uid','user');
 		$aEmployeeModel->load();
-		
 		$aEmployeeModel->update(
 				array(
-					'name' => $sName
+					'user.username' => $sName
 					,'position' => $sPosition
 					,'sex' => $sSex
 					,'birthday' => $sBirthday
@@ -160,11 +165,11 @@ class EditEmployee extends ControlPanel{
 					,'major' => $sMajor
 					,'factorytime' => $sFactoryTime
 					,'department' => $sDepartment
-					,'tel' => $sTel
+					,'userinfo.tel' => $sTel
 					,'phone' => $sPhone
 					,'status' => $sStatus
 						
-				) , "eid =".$this->params['hide_eid']
+				) , "user.uid =".$this->params['hide_eid']
 		);
 		
 		$this->messageQueue()->create ( Message::success, "编辑成功" );

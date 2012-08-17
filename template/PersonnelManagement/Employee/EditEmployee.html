@@ -1,5 +1,5 @@
 <div id="EditEmployee">
-	<h1>新增员工</h1>
+	<h1>编辑</h1>
 	<msgqueue/>
 	<form method="post">
 		<table id="EditEmployee_table">
@@ -13,7 +13,7 @@
 					<td>
 						<select name="position_select">
 							<foreach for="$aPositionModel" item='aPos'>
-								<option value="{=$aPos['pid']}" size='10px' {=$sPosition==$aPos['pid'] ?'selected':'' }>{=$aPos['PositionName']}</option>
+								<option value="{=$aPos['pid']}" size='10px' {=$sPosition==$aPos['pid'] ?'selected':'' }>{=$aPos['name']}</option>
 							</foreach>
 						</select>
 					</td>
@@ -78,7 +78,7 @@
 					<td>
 						<select name="department_select">
 							<foreach for="$aDepatmentModel" item='aDep'>
-								<option value="{=$aDep['did']}" size='10px' {=$sDepartment == $aDep['did'] ?'selected':''}>{=$aDep['DepartmentName']}</option>
+								<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
 							</foreach>
 						</select>
 					</td>

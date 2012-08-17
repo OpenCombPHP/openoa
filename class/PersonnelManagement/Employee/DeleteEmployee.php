@@ -23,8 +23,16 @@ class DeleteEmployee extends ControlPanel{
 	);
 	
 	public function process() {
-		$aPositionModel = Model::Create('openoa:EmployeeManagement');
-		if($aPositionModel->delete('eid='.$this->params['eid']))
+		$this->model('openoa:EmployeeManagement','employee')
+							->hasOne('coresystem:userinfo','uid','uid','userinfo')
+							->hasOne('coresystem:user','uid','uid','user');
+		
+	
+		$nUser = $this->model('coresystem:user')->delete('uid='.$this->params['eid']);
+		$nUserInfo = $this->model('coresystem:userinfo')->delete('uid='.$this->params['eid']);
+		$nEmployee = $this->model('openoa:EmployeeManagement')->delete('uid='.$this->params['eid']);
+
+		if($nEmployee && $nUserInfo && $nUser)
 		{
 			$this->createMessage(Message::success,"删除成功") ;
 		}

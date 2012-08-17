@@ -25,9 +25,9 @@
 			</tr>
 			<foreach for="$aEmployeeModel" item="aEmp">
 				<tr>
-					<td>{=$aEmp["eid"]}</td>
-					<td>{=$aEmp["name"]}</td>
-					<td>{=$aEmp["position"]}</td>
+					<td>{=$aEmp["uid"]}</td>
+					<td>{=$aEmp["user.username"]}</td>
+					<td>{=$aEmp["position.name"]}</td>
 					<td>
 						<if "{=$aEmp["sex"]}==1">
 							男
@@ -44,8 +44,8 @@
 					<td>{=$aEmp["school"]}</td>
 					<td>{=$aEmp["major"]}</td>
 					<td>{=$aEmp["factorytime"]}</td>
-					<td>{=$aEmp["department"]}</td>
-					<td>{=$aEmp["tel"]}</td>
+					<td>{=$aEmp["group.name"]}</td>
+					<td>{=$aEmp["userinfo.tel"]}</td>
 					<td>{=$aEmp["phone"]}</td>
 					<td>
 						<if "{=$aEmp["status"]}==1">
@@ -54,8 +54,8 @@
 							离职
 						</if>
 					</td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Employee.EditEmployee&eid={=$aEmp["eid"]}&name={=$aEmp["name"]}">编辑</a></td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Employee.DeleteEmployee&eid={=$aEmp["eid"]}">删除</a></td>
+					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Employee.EditEmployee&eid={=$aEmp["uid"]}&name={=$aEmp["user.username"]}">编辑</a></td>
+					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Employee.DeleteEmployee&eid={=$aEmp["uid"]}">删除</a></td>
 				</tr>
 			</foreach>
 		</thead>

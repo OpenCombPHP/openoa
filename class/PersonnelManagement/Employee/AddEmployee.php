@@ -81,7 +81,7 @@ class AddEmployee extends ControlPanel{
 		$this->view()->setModel($aPositionModel);
 		$this->view->variables()->set('aPositionModel',$aPositionModel) ;
 		
-		$aDepatmentModel = Model::Create('openoa:DepartmentManagement');
+		$aDepatmentModel = Model::Create('coresystem:group');
 		$aDepatmentModel->load();
 		
 		$this->view()->setModel($aDepatmentModel);
@@ -116,11 +116,13 @@ class AddEmployee extends ControlPanel{
 		
 		
 		
-		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
+		$aEmployeeModel = Model::Create('openoa:EmployeeManagement','employee')
+							->hasOne('coresystem:userinfo','uid','uid','userinfo')
+							->hasOne('coresystem:user','uid','uid','user');
 		$aEmployeeModel->load();
 		$aEmployeeModel->addRow(
 				array(
-						'name' => $sName
+						'user.username' => $sName
 						,'position' => $sPosition
 						,'sex' => $sSex
 						,'birthday' => $sBirthday
@@ -133,12 +135,22 @@ class AddEmployee extends ControlPanel{
 						,'major' => $sMajor
 						,'factorytime' => $sFactoryTime
 						,'department' => $sDepartment
-						,'tel' => $sTel
+						,'userinfo.tel' => $sTel
 						,'phone' => $sPhone
 						,'status' => $sStatus
 				)
 		);
 		$nUpdateRows = $aEmployeeModel->replace();
+		/*
+		$this->model('openoa:EmployeeManagement','employee')
+		->hasOne('coresystem:userinfo','uid','uid','userinfo')
+		->hasOne('coresystem:user','uid','uid','user')
+		->belongsTo('coresystem:group','department','gid','groups')
+		->belongsTo('openoa:PositionManagement','position','pid','position');
+		
+		$this->employee->load();
+		*/
+		
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加员工成功") ;

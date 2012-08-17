@@ -60,6 +60,11 @@ class PersonnelManagement extends Extension
 						'link' => '?c=org.opencomb.oa.PersonnelManagement.EmployeeManagement' ,
 						'query' => 'c=org.opencomb.oa.PersonnelManagement.EmployeeManagement' ,
 				),
+				'item:demissionmanagement' => array(
+						'title' => '离职管理' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.DemissionManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.DemissionManagement' ,
+				),
 				'item:personnelcontractmanagement' => array(
 						'title' => '人事合同管理' ,
 						'link' => '?c=org.opencomb.oa.PersonnelManagement.PersonnelContractManagement' ,

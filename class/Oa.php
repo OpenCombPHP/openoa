@@ -50,6 +50,11 @@ class Oa extends Extension
 						'link' => '?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
 						'query' => 'c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
 				),
+				'item:demissionmanagement' => array(
+						'title' => '离职管理' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.Demission.DemissionManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.Demission.DemissionManagement' ,
+				),
 				'item:personnelcontractmanagement' => array(
 						'title' => '人事合同管理' ,
 						'link' => '?c=org.opencomb.oa.PersonnelManagement.PersonnelContractManagement' ,

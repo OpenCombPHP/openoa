@@ -10,7 +10,7 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
  * */
 class EmployeeManagement extends ControlPanel{
 	public $arrConfig = array (
-			'title' => '部门管理',
+			'title' => '人员管理',
 			'view' => array (
 					'template' => 'PersonnelManagement/Employee/EmployeeManagement.html',
 			),
@@ -32,21 +32,22 @@ class EmployeeManagement extends ControlPanel{
 		$this->model('openoa:EmployeeManagement','employee')
 					->hasOne('coresystem:userinfo','uid','uid','userinfo')
 					->hasOne('coresystem:user','uid','uid','user')
-					->belongsTo('coresystem:group','department','gid','groups');
+					->belongsTo('coresystem:group','department','gid','group')
+					->belongsTo('openoa:PositionManagement','position','pid','position');
 				
 		$this->employee->load();
-		echo $this->employee->data('groups.name');
-		exit;
+// 		echo $this->employee->data('groups.name');
+// 		exit;
 		
 		
 		
 		//this->model('coresystem:user') ;
 		
-		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
-		$aEmployeeModel->load(5,'uid');
+// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
+// 		$aEmployeeModel->load(5,'uid');
 		
-		$this->view()->setModel($aEmployeeModel);
-		$this->view->variables()->set('aEmployeeModel',$aEmployeeModel) ;
+		$this->view()->setModel($this->employee);
+		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
 		$this->doActions();
 	}
 	
