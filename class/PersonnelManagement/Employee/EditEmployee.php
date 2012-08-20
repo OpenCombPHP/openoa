@@ -15,6 +15,11 @@ class EditEmployee extends ControlPanel{
 					'template' => 'PersonnelManagement/Employee/EditEmployee.html',
 					'widgets'=>array(
 							array(
+									'id'=>'eid',
+									'class'=>'text',
+									'title'=>'员工工号',
+							),
+							array(
 									'id'=>'name',
 									'class'=>'text',
 									'title'=>'员工姓名',
@@ -100,6 +105,7 @@ class EditEmployee extends ControlPanel{
 		$this->view()->setModel($aDepatmentModel);
 		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
 		
+		$this->view->widget('eid')->setValue($aEmployeeModel['eid']);
 		$this->view->widget('name')->setValue($aEmployeeModel['user.username']);
 		$this->view->variables()->set('sPosition',$aEmployeeModel['position']);
 		$this->view->variables()->set('sSex',$aEmployeeModel['sex']);
@@ -137,6 +143,7 @@ class EditEmployee extends ControlPanel{
 			$this->view->createMessage(Message::error,"%s 不能为空",'员工姓名') ;
 			return ;
 		}
+		$sEid = $this->params['eid'];
 		$sName = $this->params['name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
@@ -188,7 +195,8 @@ class EditEmployee extends ControlPanel{
 		
 		$this->model('openoa:EmployeeManagement')->update(
 				array(
-						'name' => $sName
+						'eid' => $sEid
+						,'name' => $sName
 						,'position' => $sPosition
 						,'sex' => $sSex
 						//,'userinfo.birthday' => $sBirthday

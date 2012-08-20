@@ -27,46 +27,48 @@ class OpenOa extends Extension
 		
 		OpenOaController::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
 		
+		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+		
 		//设置首页控制器
 		$aAccessRouter = AccessRouter::singleton() ;
 	}
 	
 	static public function buildControlPanelMenu(array & $arrConfig)
 	{
-		$arrConfig['item:oa'] = array(
+		$arrConfig['item:openoa'] = array(
 				'title'=> '人事管理' ,
-				'link' => '?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
-				'query' => 'c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
+				'link' => '?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
+				'query' => 'c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
 				'menu' => 1,
 				'item:depatmentmanagement' => array(
 						'title' => '部门管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
 				),
 				'item:positionmanagement' => array(
 						'title' => '职位管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement' ,
 				),
 				'item:employeemanagement' => array(
 						'title' => '员工管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
 				),
 				'item:demissionmanagement' => array(
 						'title' => '离职管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Demission.DemissionManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Demission.DemissionManagement' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
 				),
 				'item:personnelcontractmanagement' => array(
 						'title' => '人事合同管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.PersonnelContractManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.PersonnelContractManagement' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
 				),
 				'item:contractexpireremind' => array(
 						'title' => '合同到期提醒' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.ContractExpireRemind' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.ContractExpireRemind' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.ContractExpireRemind' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.ContractExpireRemind' ,
 				),
 		);
 	}

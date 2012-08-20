@@ -25,17 +25,25 @@ class ContractManagement extends ControlPanel{
 	);
 	
 	public function process() {
-		$aPositionModel = Model::Create('oa:PositionManagement');
-		$aPositionModel->load();
+		$this->model('openoa:ContractManagement','contract')
+				->hasOne('coresystem:user','uid','uid','user')
+				->hasOne('coresystem:userinfo','uid','uid','userinfo');
+
 		
-		$this->view()->setModel($aPositionModel);
-		$this->view->variables()->set('aPositionModel',$aPositionModel) ;
+		$this->contract->load();
+		// 		echo $this->employee->data('groups.name');
+		// 		exit;
 		
-		$aDepatmentModel = Model::Create('oa:DepartmentManagement');
-		$aDepatmentModel->load();
 		
-		$this->view()->setModel($aDepatmentModel);
-		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
+		
+		//this->model('coresystem:user') ;
+		
+		// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
+		// 		$aEmployeeModel->load(5,'uid');
+		
+		$this->view()->setModel($this->contract);
+		$this->view->variables()->set('aContractModel',$this->contract) ;
+		$this->view->variables()->set('sNow',strtotime(date('Y-m-d'))) ;
 		$this->doActions();
 	}
 	

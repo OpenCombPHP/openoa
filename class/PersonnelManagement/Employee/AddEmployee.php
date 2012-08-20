@@ -15,6 +15,11 @@ class AddEmployee extends ControlPanel{
 					'template' => 'PersonnelManagement/Employee/AddEmployee.html',
 					'widgets'=>array(
 							array(
+									'id'=>'eid',
+									'class'=>'text',
+									'title'=>'员工工号',
+							),
+							array(
 									'id'=>'name',
 									'class'=>'text',
 									'title'=>'员工姓名',
@@ -96,6 +101,7 @@ class AddEmployee extends ControlPanel{
 			return ;
 		}
 		
+		$sEid = $this->params['eid'];
 		$sName = $this->params['name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
@@ -122,7 +128,8 @@ class AddEmployee extends ControlPanel{
 		$aEmployeeModel->load();
 		$aEmployeeModel->addRow(
 				array(
-						'user.username' => $sName
+						'eid' => $sEid
+						,'user.username' => $sName
 						,'position' => $sPosition
 						,'sex' => $sSex
 						,'userinfo.birthday' => $sBirthday
@@ -150,44 +157,44 @@ class AddEmployee extends ControlPanel{
 		
 		$this->employee->load();
 		*/
-		$this->model('openoa:EmployeeManagement')->update(
-				array(
-						'name' => $sName
-						,'position' => $sPosition
-						,'sex' => $sSex
-						//,'userinfo.birthday' => $sBirthday
-						,'policital' => $sPolicital
-						,'worktime' => $sWorkTime
-						,'prtitle' => $sProtile
-						,'education' => $sEducation
-						,'graduationtime' => $sGraduationTime
-						,'school' => $sSchool
-						,'major' => $sMajor
-						,'factorytime' => $sFactoryTime
-						,'department' => $sDepartment
-						//,'userinfo.tel' => $sTel
-						,'phone' => $sPhone
-						,'status' => $sStatus
+// 		$this->model('openoa:EmployeeManagement')->update(
+// 				array(
+// 						'name' => $sName
+// 						,'position' => $sPosition
+// 						,'sex' => $sSex
+// 						//,'userinfo.birthday' => $sBirthday
+// 						,'policital' => $sPolicital
+// 						,'worktime' => $sWorkTime
+// 						,'prtitle' => $sProtile
+// 						,'education' => $sEducation
+// 						,'graduationtime' => $sGraduationTime
+// 						,'school' => $sSchool
+// 						,'major' => $sMajor
+// 						,'factorytime' => $sFactoryTime
+// 						,'department' => $sDepartment
+// 						//,'userinfo.tel' => $sTel
+// 						,'phone' => $sPhone
+// 						,'status' => $sStatus
 		
-				) , "uid =".$this->params['hide_eid']
-		);
+// 				) , "uid =".$this->params['hide_eid']
+// 		);
 		
-		$this->model('coresystem:user')->update(
-				array(
-						'username' => $sName
-				) , "user.uid =".$this->params['hide_eid']
-		);
+// 		$this->model('coresystem:user')->update(
+// 				array(
+// 						'username' => $sName
+// 				) , "user.uid =".$this->params['hide_eid']
+// 		);
 		
-		$this->model('coresystem:userinfo')->update(
-				array(
-						'userinfo.birthday' => $sBirthday
-						,'userinfo.tel' => $sTel
-				) , "userinfo.uid =".$this->params['hide_eid']
-		);
+// 		$this->model('coresystem:userinfo')->update(
+// 				array(
+// 						'userinfo.birthday' => $sBirthday
+// 						,'userinfo.tel' => $sTel
+// 				) , "userinfo.uid =".$this->params['hide_eid']
+// 		);
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加员工成功") ;
-			$this->location('?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement');
+			$this->location('?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement');
 		}else{
 			$this->view->createMessage(Message::error,"添加员工失败") ;
 		}

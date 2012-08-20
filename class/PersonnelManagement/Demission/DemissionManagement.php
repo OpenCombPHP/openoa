@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa\PersonnelManagement\Demission;
+namespace org\opencomb\openoa\PersonnelManagement\Demission;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
