@@ -99,7 +99,7 @@ class AddEmployee extends ControlPanel{
 		$sName = $this->params['name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
-		$sBirthday = $this->params['brithday_y'].'-'.$this->params['brithday_m'].'-'.$this->params['brithday_d'];
+		$sBirthday = $this->params['birthday_y'].'-'.$this->params['birthday_m'].'-'.$this->params['birthday_d'];
 		$sPolicital = $this->params['policital'];
 		$sWorkTime = $this->params['worktime'];
 		$sProtile = $this->params['protitle'];
@@ -125,12 +125,12 @@ class AddEmployee extends ControlPanel{
 						'user.username' => $sName
 						,'position' => $sPosition
 						,'sex' => $sSex
-						,'birthday' => $sBirthday
+						,'userinfo.birthday' => $sBirthday
 						,'policital' => $sPolicital
 						,'worktime' => $sWorkTime
 						,'prtitle' => $sProtile
 						,'education' => $sEducation
-						,'graduation' => $sGraduationTime
+						,'graduationtime' => $sGraduationTime
 						,'school' => $sSchool
 						,'major' => $sMajor
 						,'factorytime' => $sFactoryTime
@@ -150,7 +150,40 @@ class AddEmployee extends ControlPanel{
 		
 		$this->employee->load();
 		*/
+		$this->model('openoa:EmployeeManagement')->update(
+				array(
+						'name' => $sName
+						,'position' => $sPosition
+						,'sex' => $sSex
+						//,'userinfo.birthday' => $sBirthday
+						,'policital' => $sPolicital
+						,'worktime' => $sWorkTime
+						,'prtitle' => $sProtile
+						,'education' => $sEducation
+						,'graduationtime' => $sGraduationTime
+						,'school' => $sSchool
+						,'major' => $sMajor
+						,'factorytime' => $sFactoryTime
+						,'department' => $sDepartment
+						//,'userinfo.tel' => $sTel
+						,'phone' => $sPhone
+						,'status' => $sStatus
 		
+				) , "uid =".$this->params['hide_eid']
+		);
+		
+		$this->model('coresystem:user')->update(
+				array(
+						'username' => $sName
+				) , "user.uid =".$this->params['hide_eid']
+		);
+		
+		$this->model('coresystem:userinfo')->update(
+				array(
+						'userinfo.birthday' => $sBirthday
+						,'userinfo.tel' => $sTel
+				) , "userinfo.uid =".$this->params['hide_eid']
+		);
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加员工成功") ;

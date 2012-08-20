@@ -1,3 +1,4 @@
+<lib name="jquery"/>
 <div id="EditEmployee">
 	<h1>编辑</h1>
 	<msgqueue/>
@@ -28,9 +29,9 @@
 				<tr>
 					<th >出生年月:</th>
 					<td>
-						<input name="birthday_y" type="text" size="4"/>年
-						<input name="birthday_m" type="text" size="2"/>月
-						<input name="birthday_d" type="text" size="2"/>日
+						<input name="birthday_y" id="birthday_y" value="{=$birthday_y}" style="width: 60px;"></input>年
+						<input name="birthday_m" id="birthday_m" value="{=$birthday_m}" style="width: 60px;"></</input>月
+						<input name="birthday_d" id="birthday_d" value="{=$birthday_d}" style="width: 60px;"></</input>日
 					</td>
 				</tr>
 				<tr>
@@ -52,9 +53,9 @@
 				<tr>
 					<th>毕业时间:</th>
 					<td>
-						<input name="graduation_y" type="text" size="4"/>年
-						<input name="graduation_m" type="text" size="2"/>月
-						<input name="graduation_d" type="text" size="2"/>日
+						<input name="graduation_y" id="graduation_y" value="{=$graduation_y}" style="width: 60px;"></input>年
+						<input name="graduation_m" id="graduation_m" value="{=$graduation_m}" style="width: 60px;"></input>月
+						<input name="graduation_d" id="graduation_d" value="{=$graduation_d}" style="width: 60px;"></input>日
 					</td>
 				</tr>
 				<tr>
@@ -68,9 +69,9 @@
 				<tr>
 					<th>入厂时间:</th>
 					<td>
-						<input name="factory_y" type="text" size="4"/>年
-						<input name="factory_m" type="text" size="2"/>月
-						<input name="factory_d" type="text" size="2"/>日
+						<input name="factory_y" id="factory_y" value="{=$factory_y}" style="width: 60px;"></input>年
+						<input name="factory_m" id="factory_m" value="{=$factory_m}" style="width: 60px;"></input>月
+						<input name="factory_d" id="factory_d" value="{=$factory_d}" style="width: 60px;"></input>日
 					</td>
 				</tr>
 				<tr>
@@ -108,4 +109,9 @@
 			<input type="submit" value="取消"/>
 		</div>
 	</form>
+	<script>
+		jquery(function($){
+			
+		})	
+	</script>
 </div>

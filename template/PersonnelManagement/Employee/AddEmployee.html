@@ -1,3 +1,4 @@
+<lib name="jquery"/>
 <div id="AddEmployee">
 	<h1>新增员工</h1>
 	<msgqueue/>
@@ -28,9 +29,9 @@
 				<tr>
 					<th >出生年月:</th>
 					<td>
-						<input name="birthday_y" type="text" size="4"/>年
-						<input name="birthday_m" type="text" size="2"/>月
-						<input name="birthday_d" type="text" size="2"/>日
+						<select name="birthday_y" id="birthday_y" style="width: 60px;"></select>年
+						<select name="birthday_m" id="birthday_m" style="width: 60px;"></select>月
+						<select name="birthday_d" id="birthday_d" style="width: 60px;"></select>日
 					</td>
 				</tr>
 				<tr>
@@ -52,9 +53,9 @@
 				<tr>
 					<th>毕业时间:</th>
 					<td>
-						<input name="graduation_y" type="text" size="4"/>年
-						<input name="graduation_m" type="text" size="2"/>月
-						<input name="graduation_d" type="text" size="2"/>日
+						<select name="graduation_y" id="graduation_y" style="width: 60px;"></select>年
+						<select name="graduation_m" id="graduation_m" style="width: 60px;"></select>月
+						<select name="graduation_d" id="graduation_d" style="width: 60px;"></select>日
 					</td>
 				</tr>
 				<tr>
@@ -68,9 +69,9 @@
 				<tr>
 					<th>入厂时间:</th>
 					<td>
-						<input name="factory_y" type="text" size="4"/>年
-						<input name="factory_m" type="text" size="2"/>月
-						<input name="factory_d" type="text" size="2"/>日
+						<select name="factory_y" id="factory_y" style="width: 60px;"></select>年
+						<select name="factory_m" id="factory_m" style="width: 60px;"></select>月
+						<select name="factory_d" id="factory_d" style="width: 60px;"></select>日
 					</td>
 				</tr>
 				<tr>
@@ -107,4 +108,99 @@
 			<input type="submit" value="取消"/>
 		</div>
 	</form>
+	<script>
+		jquery(function($){
+		var arrName = new Array('birthday', 'graduation', 'factory');
+		//arrName = {'birthday', 'graduation', 'factory'};
+		var today = new Date();
+		var toyear = today.getYear() + 1900;
+		var tomonth = today.getMonth(); //看上个月的
+		
+		function changeDateB(){
+			var year = $('#birthday_y').val();
+			var month = $('#birthday_m').val();
+			var time = new Date(year,month,0);
+			var day = time.getDate();
+			
+			$('#birthday_d').empty();
+			
+			for(var nDay=day ;nDay>=1; nDay--){
+				$('#birthday_d').prepend(
+					'	<option value="'+nDay+'">'+nDay+'</option>'		
+				);
+			}
+			
+		}
+		
+		function changeDateG(){
+			var year = $('#graduation_y').val();
+			var month = $('#graduation_m').val();
+			var time = new Date(year,month,0);
+			var day = time.getDate();
+			
+			$('#graduation_d').empty();
+			
+			for(var nDay=day ;nDay>=1; nDay--){
+				$('#graduation_d').prepend(
+					'	<option value="'+nDay+'">'+nDay+'</option>'		
+				);
+			}
+		}
+		
+		function changeDateF(){
+			var year = $('#factory_y').val();
+			var month = $('#factory_m').val();
+			var time = new Date(year,month,0);
+			var day = time.getDate();
+			
+			$('#factory_d').empty();
+			
+			for(var nDay=day ;nDay>=1; nDay--){
+				$('#factory_d').prepend(
+					'	<option value="'+nDay+'">'+nDay+'</option>'		
+				);
+			}
+		}
+		
+		for(key in arrName)
+		{
+			for(var nYear=1900 ;nYear<=toyear; nYear++){
+				console.log('#'+arrName[key]+'_y');
+				$('#'+arrName[key]+'_y').prepend(
+					'	<option value="'+nYear+'">'+nYear+'</option>'		
+				);
+			}
+		}
+		graduation_y
+		for(key in arrName)
+		{
+			for(var nMonth=12 ;nMonth>=1; nMonth--){
+				$('#'+arrName[key]+'_m').prepend(
+					'	<option value="'+nMonth+'">'+nMonth+'</option>'		
+				);
+			}
+		}
+		
+		for(key in arrName)
+		{
+			//console.log(arrName[key]);
+			for(var nDay=31 ;nDay>=1; nDay--){
+				$('#'+arrName[key]+'_d').prepend(
+					'	<option value="'+nDay+'">'+nDay+'</option>'		
+				);
+			}
+		}
+
+
+		$('#birthday_y').val(toyear).change( changeDateB);
+		$('#birthday_m').val(tomonth).change( changeDateB );
+		
+		$('#graduation_y').val(toyear).change( changeDateG );
+		$('#graduation_m').val(tomonth).change( changeDateG );
+		
+		$('#factory_y').val(toyear).change( changeDateF );
+		$('#factory_m').val(tomonth).change( changeDateF );
+		
+	})	
+	</script>
 </div>

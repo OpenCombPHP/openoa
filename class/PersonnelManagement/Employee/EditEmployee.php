@@ -103,14 +103,24 @@ class EditEmployee extends ControlPanel{
 		$this->view->widget('name')->setValue($aEmployeeModel['user.username']);
 		$this->view->variables()->set('sPosition',$aEmployeeModel['position']);
 		$this->view->variables()->set('sSex',$aEmployeeModel['sex']);
-		//$this->view->widget('birthday')->setValue($aEmployeeModel['name']);
+		$arrBrithday = explode('.',$aEmployeeModel['userinfo.birthday']);
+		$this->view->variables()->set('birthday_y',array_key_exists(0,$arrBrithday)==true ?$arrBrithday[0] :null);
+		$this->view->variables()->set('birthday_m',array_key_exists(1,$arrBrithday)==true ?$arrBrithday[1] :null);
+		$this->view->variables()->set('birthday_d',array_key_exists(2,$arrBrithday)==true ?$arrBrithday[2] :null);
 		$this->view->widget('policital')->setValue($aEmployeeModel['policital']);
 		$this->view->widget('worktime')->setValue($aEmployeeModel['worktime']);
 		$this->view->widget('protitle')->setValue($aEmployeeModel['protitle']);
-		//$this->view->widget('graduationtime')->setValue($aEmployeeModel['graduationtime']);
+		$this->view->widget('education')->setValue($aEmployeeModel['education']);
+		$arrGraduation = explode('.',$aEmployeeModel['graduationtime']);
+		$this->view->variables()->set('graduation_y',array_key_exists(0,$arrGraduation)==true ?$arrGraduation[0] :null);
+		$this->view->variables()->set('graduation_m',array_key_exists(1,$arrGraduation)==true ?$arrGraduation[1] :null);
+		$this->view->variables()->set('graduation_d',array_key_exists(2,$arrGraduation)==true ?$arrGraduation[2] :null);
 		$this->view->widget('school')->setValue($aEmployeeModel['school']);
 		$this->view->widget('major')->setValue($aEmployeeModel['major']);
-		//$this->view->widget('factorytime')->setValue($aEmployeeModel['factorytime']);
+		$arrFactory = explode('.',$aEmployeeModel['factorytime']);
+		$this->view->variables()->set('factory_y',array_key_exists(0,$arrFactory)==true ?$arrFactory[0] :null);
+		$this->view->variables()->set('factory_m',array_key_exists(1,$arrFactory)==true ?$arrFactory[1] :null);
+		$this->view->variables()->set('factory_d',array_key_exists(2,$arrFactory)==true ?$arrFactory[2] :null);
 		$this->view->variables()->set('sDepartment',$aEmployeeModel['department']);
 		$this->view->widget('tel')->setValue($aEmployeeModel['userinfo.tel']);
 		$this->view->widget('phone')->setValue($aEmployeeModel['phone']);
@@ -127,11 +137,11 @@ class EditEmployee extends ControlPanel{
 			$this->view->createMessage(Message::error,"%s 不能为空",'员工姓名') ;
 			return ;
 		}
-		
 		$sName = $this->params['name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
-		$sBirthday = $this->params['brithday_y'].'-'.$this->params['brithday_m'].'-'.$this->params['brithday_d'];
+		$sBirthday = $this->params['birthday_y'].'.'.$this->params['birthday_m'].'.'.$this->params['birthday_d'];
+		echo $sBirthday;
 		$sPolicital = $this->params['policital'];
 		$sWorkTime = $this->params['worktime'];
 		$sProtile = $this->params['protitle'];
@@ -146,30 +156,69 @@ class EditEmployee extends ControlPanel{
 		$sStatus = $this->params['status'];
 		
 		
-		$aEmployeeModel = Model::Create('openoa:EmployeeManagement','employee')
-							->hasOne('coresystem:userinfo','uid','uid','userinfo')
-							->hasOne('coresystem:user','uid','uid','user');
-		$aEmployeeModel->load();
-		$aEmployeeModel->update(
-				array(
-					'user.username' => $sName
-					,'position' => $sPosition
-					,'sex' => $sSex
-					,'birthday' => $sBirthday
-					,'policital' => $sPolicital
-					,'worktime' => $sWorkTime
-					,'prtitle' => $sProtile
-					,'education' => $sEducation
-					,'graduation' => $sGraduationTime
-					,'school' => $sSchool
-					,'major' => $sMajor
-					,'factorytime' => $sFactoryTime
-					,'department' => $sDepartment
-					,'userinfo.tel' => $sTel
-					,'phone' => $sPhone
-					,'status' => $sStatus
+// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement','employee')
+// 							->hasOne('coresystem:userinfo','uid','uid','userinfo')
+// 							->hasOne('coresystem:user','uid','uid','user');
+// 		$aEmployeeModel->load();
+// 		$aEmployeeModel->update(
+// 				array(
+// 					'user.username' => $sName
+// 					,'position' => $sPosition
+// 					,'sex' => $sSex
+// 					,'userinfo.birthday' => $sBirthday
+// 					,'policital' => $sPolicital
+// 					,'worktime' => $sWorkTime
+// 					,'protitle' => $sProtile
+// 					,'education' => $sEducation
+// 					,'graduationtime' => $sGraduationTime
+// 					,'school' => $sSchool
+// 					,'major' => $sMajor
+// 					,'factorytime' => $sFactoryTime
+// 					,'department' => $sDepartment
+// 					,'userinfo.tel' => $sTel
+// 					,'phone' => $sPhone
+// 					,'status' => $sStatus
 						
+// 				) , "user.uid =".$this->params['hide_eid']
+// 		);
+		
+		$this->model('openoa:EmployeeManagement','employee')
+					->hasOne('coresystem:userinfo','uid','uid','userinfo')
+					->hasOne('coresystem:user','uid','uid','user');
+		
+		$this->model('openoa:EmployeeManagement')->update(
+				array(
+						'name' => $sName
+						,'position' => $sPosition
+						,'sex' => $sSex
+						//,'userinfo.birthday' => $sBirthday
+						,'policital' => $sPolicital
+						,'worktime' => $sWorkTime
+						,'prtitle' => $sProtile
+						,'education' => $sEducation
+						,'graduationtime' => $sGraduationTime
+						,'school' => $sSchool
+						,'major' => $sMajor
+						,'factorytime' => $sFactoryTime
+						,'department' => $sDepartment
+						//,'userinfo.tel' => $sTel
+						,'phone' => $sPhone
+						,'status' => $sStatus
+		
+				) , "EmployeeManagement.uid =".$this->params['hide_eid']
+		);
+		
+		$this->model('coresystem:user')->update(
+				array(
+						'username' => $sName
 				) , "user.uid =".$this->params['hide_eid']
+		);
+		
+		$this->model('coresystem:userinfo')->update(
+				array(
+						'userinfo.birthday' => $sBirthday
+						,'userinfo.tel' => $sTel
+				) , "userinfo.uid =".$this->params['hide_eid']
 		);
 		
 		$this->messageQueue()->create ( Message::success, "编辑成功" );
