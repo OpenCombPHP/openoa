@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa;
+namespace org\opencomb\openoa;
 
 use org\opencomb\coresystem\auth\PurviewSetting;
 
@@ -14,7 +14,7 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
  * @author anubis
  *
  */
-class Oa extends Extension
+class OpenOa extends Extension
 {
 	
 	/**

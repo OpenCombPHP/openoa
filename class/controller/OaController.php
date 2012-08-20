@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa\controller;
+namespace org\opencomb\openoa\controller;
 
 use org\opencomb\coresystem\mvc\controller\Controller;
 /*

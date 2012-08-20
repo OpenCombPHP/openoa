@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa\PersonnelManagement;
+namespace org\opencomb\openoa\PersonnelManagement;
 
 use org\opencomb\coresystem\auth\PurviewSetting;
 

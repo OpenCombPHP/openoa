@@ -1,7 +1,7 @@
 <?php
-namespace org\opencomb\oa\index;
+namespace org\opencomb\openoa\index;
 
-use org\opencomb\oa\controller\OaController;
+use org\opencomb\openoa\controller\OaController;
 
 class Index extends OaController
 {

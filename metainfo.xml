@@ -7,8 +7,8 @@
 
 	<description>自动统计报表</description>
 	
-	<class>org.opencomb.oa.Oa</class>
-	<package folder="/class" namespace="org.opencomb.oa"/>
+	<class>org.opencomb.openoa.OpenOa</class>
+	<package folder="/class" namespace="org.opencomb.openoa"/>
 
 	<template folder="/template"/>
 	<template folder="/template_coresystem" for="coresystem"/>
@@ -20,6 +20,6 @@
 	
 	<data>
 		<version>0.1</version>
-		<installer>org\opencomb\oa\setup\DataInstaller</installer>
+		<installer>org\opencomb\openoa\setup\DataInstaller</installer>
 	</data>
 </Extension>

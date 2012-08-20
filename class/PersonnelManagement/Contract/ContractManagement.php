@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa\PersonnelManagement\Contract;
+namespace org\opencomb\openoa\PersonnelManagement\Contract;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;

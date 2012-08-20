@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\oa\PersonnelManagement\Position;
+namespace org\opencomb\openoa\PersonnelManagement\Position;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
