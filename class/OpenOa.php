@@ -1,6 +1,8 @@
 <?php
 namespace org\opencomb\openoa;
 
+use org\opencomb\openoa\controller\OpenOaController;
+
 use org\opencomb\coresystem\auth\PurviewSetting;
 
 use org\jecat\framework\system\AccessRouter;
@@ -22,7 +24,8 @@ class OpenOa extends Extension
 	 */
 	public function load()
 	{	
-		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+		
+		OpenOaController::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
 		
 		//设置首页控制器
 		$aAccessRouter = AccessRouter::singleton() ;

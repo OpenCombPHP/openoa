@@ -20,6 +20,5 @@
 	
 	<data>
 		<version>0.1</version>
-		<installer>org\opencomb\openoa\setup\DataInstaller</installer>
 	</data>
 </Extension>

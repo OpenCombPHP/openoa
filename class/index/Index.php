@@ -1,9 +1,9 @@
 <?php
 namespace org\opencomb\openoa\index;
 
-use org\opencomb\openoa\controller\OaController;
+use org\opencomb\openoa\controller\OpenOaController;
 
-class Index extends OaController
+class Index extends OpenOaController
 {
 	protected $arrConfig = array(
 		'title'=>'首页',
