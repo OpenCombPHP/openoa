@@ -46,6 +46,7 @@
 		this.regFormulaCells = /\$(([\w\d_\-]+):)?([A-Za-z]+)?(\d+)?/g ;
 		
 		this.bOnlyNaN = false ;
+		this.bLink = true ;
 		this.arrFormulas = [] ;
 		this.mapFormulas = {} ;
 		this.mapSheets = {} ;
@@ -60,6 +61,10 @@
 	}
 	$._formulas.prototype.onDataGridAfterEdit = function(row,col,value)
 	{
+		if( !this.bLink )
+		{
+		  return ;
+		}
 		var sKey = '*:'+col+':'+row ;
 		if( typeof(this.mapFormulas[sKey])=='undefined' )
 		{
@@ -73,6 +78,7 @@
 	$._formulas.prototype.applyAllFormulas = function()
 	{
 		this.bOnlyNaN = true ;
+		this.bLink = false ;
 		
 		for(var i=0;i<this.arrFormulas.length;i++)
 		{
@@ -80,6 +86,7 @@
 		}
 
 		this.bOnlyNaN = false ;
+		this.bLink = true ;
 		
 		// 
 		this.onDataGridAfterLoadData(this.e) ;

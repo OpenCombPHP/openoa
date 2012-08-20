@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background:#004dcf }
+.w_head_top{ height:36px; line-height:36px; width:100%; background:url(../images/headbglogin.jpg)}
+	.w_head_opencomb{ padding-left:45px; width:200px; height:36px; background:url(../images/opencomb.png) no-repeat 45px 0; float:left}
+	.w_head_opencomb a{ display:block; width:200px; height:36px;}
+	.w_head_user{ text-align:right; padding-right:45px; float:right; color:#c3e9ff;}
+	.w_head_user strong{ padding-right:15px; display:inline-block; height:36px; line-height:36px;}
+	.w_head_user span{ padding:0 35px 0 20px; display:inline-block;height:36px; line-height:36px; }
+	.w_head_user a{color:#c3e9ff;}
+	.ico_head_user{ background:url(../images/ico.png) no-repeat 0 9px}
+	.ico_head_login{background:url(../images/ico.png) no-repeat 0 -38px}
+	.ico_head_setup{background:url(../images/ico.png) no-repeat 0 -89px}
+	.ico_head_out{background:url(../images/ico.png) no-repeat 0 -140px}
+
+.w_login{ background:url(../images/loginbg.jpg) center; padding-top:80px;}
+.w_login_logo{ background:url(../images/loginlogo.png) no-repeat center 0; height:100px; margin-bottom:30px;}
+.w_login_bottom{ background:url(../images/loginboxbottm.png) no-repeat center 0 ; height:180px; margin-top:10px; }
+
+.loginForm{ width:428px; height:252px; background:url(../images/loginbgall.png) no-repeat bottom; margin:auto;-webkit-box-shadow:0px 0px 20px rgba(44,192,255,0.5);text-shadow:0 1px 0px rgba(255, 255, 255, 0.7);}
+
+.logininput,.reginput{ padding:80px 0 0 76px;}
+.logininput a{color:#888; text-decoration: underline; padding-left:60px;}
+#username{ color:#777; width:172px; height:31px; line-height:31px; border:0; background:url(../images/logininput.png) no-repeat; padding-left:40px;}
+#password{ color:#777; width:172px; height:31px; line-height:31px; border:0; margin-top:10px; background:url(../images/logininput.png) no-repeat 0 -40px; padding-left:40px;}
+#passwordRepeat{ color:#777; width:172px; height:31px; line-height:31px; border:0; margin-top:10px; background:url(../images/logininput.png) no-repeat 0 -40px; padding-left:40px;}
+.loginbtn{ background:url(../images/logininput.png) no-repeat 0 -156px; width:131px; height:31px; border:0; margin:15px 15px 0 0}
+#rememberme{ border:#b1b9c0 1px solid; vertical-align:-3px; margin-right:5px;}
+
+.jc_message_queue {background-color:inherit;border-color:inherit;border-width:0px;text-align: left;padding:0;}
+.jc_message_type_failed{color:#b52727; padding-left:20px; background:url(../images/logininput.png) no-repeat -198px -162px; font-weight:700; margin-top:15px;text-shadow:0 1px 0px rgba(255, 255, 255, 1);}
+
+.regForm{width:428px; height:332px; background:url(../images/loginbgall.png) no-repeat; margin:auto;-webkit-box-shadow:0px 0px 20px rgba(44,192,255,0.5);text-shadow:0 1px 0px rgba(255, 255, 255, 1);}
+.reginput span{ color:#8d8d8d}
+.regbutton{background:url(../images/logininput.png) no-repeat 0 -88px; width:131px; height:31px; border:0; margin:15px 15px 0 0}
+
+.jc_message_type_error{color:#b52727; padding-left:20px; background:url(../images/logininput.png) no-repeat -198px -93px; font-weight:700; margin-top:15px;text-shadow:0 1px 0px rgba(255, 255, 255, 1);}
+
+.regForm .jc_message_type_success{ width:100%; height:170px;background:url(../images/loginbgalls.png) no-repeat 35% 0; margin:auto;text-shadow:0 0px 0px rgba(255, 255, 255, 0); font-size:1px; color:#dcdfe3}
+
+.logininput .jc_message_type_success{ width:100%; height:130px;background:url(../images/loginbgalls.png) no-repeat 35% -240px; margin:auto;text-shadow:0 0px 0px rgba(255, 255, 255, 0); font-size:1px; color:#dcdfe3}
+
+.reginput select{ height:31px; padding-left:5px; width:212px; color:#888; margin-top:10px;}
+
+.logoutForm{ width:428px; height:252px; background:url(../images/logout.png) no-repeat bottom; margin:auto;-webkit-box-shadow:0px 0px 20px rgba(44,192,255,0.5);text-shadow:0 1px 0px rgba(255, 255, 255, 0.7);}
+
+.logoutForm .logouttext{ padding:120px 0 0 80px;}
+.logoutForm .logouttext li{ height:30px; line-height:30px; color:#888;}
+.logoutForm .logouttext a{ padding-top:30px; color:#888}
+.logoutForm .logouttext .jc_message_type_success{color:#289000; font-weight:700}
+
+

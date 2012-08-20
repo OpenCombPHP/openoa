@@ -1,5 +1,7 @@
 <?php
-namespace org\opencomb\openoa\PersonnelManagement;
+namespace org\opencomb\openoa;
+
+use org\opencomb\openoa\controller\OpenOaController;
 
 use org\opencomb\coresystem\auth\PurviewSetting;
 
@@ -14,28 +16,19 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
  * @author anubis
  *
  */
-class PersonnelManagement extends Extension
+class OpenOa extends Extension
 {
 	
 	/**
 	 * 载入扩展
 	 */
 	public function load()
-	{
+	{	
+		
+		OpenOaController::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+		
 		//设置首页控制器
 		$aAccessRouter = AccessRouter::singleton() ;
-	}
-	
-	public function load()
-	{
-		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
-	
-		//设置首页控制器
-		//$aAccessRouter = AccessRouter::singleton() ;
-		//$aAccessRouter->setDefaultController("org\\opencomb\\water\\index\\Index") ;
-		
-
-	
 	}
 	
 	static public function buildControlPanelMenu(array & $arrConfig)
@@ -50,20 +43,20 @@ class PersonnelManagement extends Extension
 						'link' => '?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
 						'query' => 'c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement' ,
 				),
-				'item:jobmanagement' => array(
+				'item:positionmanagement' => array(
 						'title' => '职位管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.Dep.JobManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.Dep.JobManagement' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement' ,
 				),
 				'item:employeemanagement' => array(
 						'title' => '员工管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.EmployeeManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.EmployeeManagement' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement' ,
 				),
 				'item:demissionmanagement' => array(
 						'title' => '离职管理' ,
-						'link' => '?c=org.opencomb.oa.PersonnelManagement.DemissionManagement' ,
-						'query' => 'c=org.opencomb.oa.PersonnelManagement.DemissionManagement' ,
+						'link' => '?c=org.opencomb.oa.PersonnelManagement.Demission.DemissionManagement' ,
+						'query' => 'c=org.opencomb.oa.PersonnelManagement.Demission.DemissionManagement' ,
 				),
 				'item:personnelcontractmanagement' => array(
 						'title' => '人事合同管理' ,
