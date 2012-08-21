@@ -1,0 +1,34 @@
+<lib name="jquery"/>
+<div id="addDemission">
+	<h1>离职申请</h1>
+	<form method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>
+						员工工号:
+					</th>
+					<td>
+						<widget id="eid" />
+					</td>
+				</tr>
+				<tr>
+					<th>提交日期:
+					</th>
+					<td>
+						<widget id="addtime" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						离职原因:
+					</th>
+					<td>
+						<widget id="reason" attr.rows="10" attr.cols="100"/>
+					</td>
+				</tr>			
+			</thead>
+		</table>
+		<input type="submit" value="提交" />
+	</form>
+</div>

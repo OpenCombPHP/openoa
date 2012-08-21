@@ -169,13 +169,14 @@
 		for(key in arrName)
 		{
 			for(var nYear=1900 ;nYear<=toyear; nYear++){
-				console.log('#'+arrName[key]+'_y');
+				//console.log('#'+arrName[key]+'_y');
+				//console.log("{=$arrY['birthday']}");
 				$('#'+arrName[key]+'_y').prepend(
 					'	<option value="'+nYear+'">'+nYear+'</option>'		
 				);
 			}
 		}
-		graduation_y
+		
 		for(key in arrName)
 		{
 			for(var nMonth=12 ;nMonth>=1; nMonth--){
@@ -194,7 +195,7 @@
 				);
 			}
 		}
-
+		\d{4}\b-\d{1,2}\b-\d{1,2}
 
 		$('#birthday_y').val(toyear).change( changeDateB);
 		$('#birthday_m').val(tomonth).change( changeDateB );

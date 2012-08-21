@@ -1,4 +1,8 @@
 <lib name="jquery"/>
+<script type="text/javascript" src="JS/jquery-ui-1.7.3/ui/jquery-ui-1.7.3.custom.js"></script>  
+<script type="text/javascript" src="JS/jquery-ui-1.7.3/ui/ui.datepicker.js"></script>  
+<script type="text/javascript" src="JS/jquery-ui-timepicker-addon.js"></script>  
+<link type="text/css" href="CSS/jquery-ui-1.7.3/redmond/jquery-ui-1.7.3.custom.css" rel="stylesheet" />  
 <div id="EditEmployee">
 	<h1>编辑</h1>
 	<msgqueue/>
@@ -7,11 +11,11 @@
 			<thead>
 				<tr>
 					<th>员工工号:</th>
-					<td><widget id="eid" type="text" /></td>
+					<td><widget id="e_id" type="text" /></td>
 				</tr>
 				<tr>
 					<th>员工姓名:</th>
-					<td><widget id="name" type="text" /></td>
+					<td><widget id="e_name" type="text" /></td>
 				</tr>
 				<tr>
 					<th>职务:</th>
@@ -113,9 +117,55 @@
 			<input type="submit" value="取消"/>
 		</div>
 	</form>
-	<script>
-		jquery(function($){
+ 
+	<script type="text/javascript">
+		jquery('form').submit(function(){
+			var birthday_y = jquery("#birthday_y").val();
+			var graduation_y = jquery("#graduation_y").val();
+			var factory_y = jquery("#factory_y").val();
 			
-		})	
-	</script>
+			var birthday_m = jquery("#birthday_m").val();
+			var graduation_m = jquery("#graduation_m").val();
+			var factory_m = jquery("#factory_m").val();
+			
+			var birthday_d = jquery("#birthday_d").val();
+			var graduation_d = jquery("#graduation_d").val();
+			var factory_d = jquery("#factory_d").val();
+			
+			//yyyy-mm-dd判断
+			//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+			var result_f_y = factory_y.match(/^(\d{4})$/);
+			var t_y = /^[0,1]{0,1}\d{1}$/;
+			var t_m = /^[0,1]{0,1}\d{1}$/;
+			var t_d = /^\d{1,2}$/;
+			
+			var factory_b = false;
+			var graduation_b = false;
+			var birthday_b = false;
+
+			
+			if(t_y.test(factory_y) && t_m.test(factory_m) && t_d.test(factory_d))
+			{
+				factory_b = true;
+			};
+			
+			if(t_y.test(birthday_y) && t_m.test(birthday_m) && t_d.test(birthday_d))
+			{
+				birthday_b = true;
+			};		
+			
+			if(t_y.test(graduation_y) && t_m.test(graduation_m) && t_d.test(graduation_d))
+			{
+				graduation_b = true;
+			}
+			
+			if(birthday_b && graduation_b && factory_b)
+			{
+				return true;	
+			}else{
+				alert(输入数据格式有错误);
+				return false;
+			}
+		})
+	</script> 
 </div>

@@ -28,7 +28,8 @@ class EmployeeManagement extends ControlPanel{
 	);
 	
 	public function process() {
-		
+		echo strtotime('2011-1-20')."<br/>";
+		echo strtotime('2011-01-20')."<br/>";
 		$this->model('openoa:EmployeeManagement','employee')
 					->hasOne('coresystem:userinfo','uid','uid','userinfo')
 					->hasOne('coresystem:user','uid','uid','user')

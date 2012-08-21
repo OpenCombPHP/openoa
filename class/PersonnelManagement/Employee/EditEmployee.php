@@ -15,12 +15,12 @@ class EditEmployee extends ControlPanel{
 					'template' => 'PersonnelManagement/Employee/EditEmployee.html',
 					'widgets'=>array(
 							array(
-									'id'=>'eid',
+									'id'=>'e_id',
 									'class'=>'text',
 									'title'=>'员工工号',
 							),
 							array(
-									'id'=>'name',
+									'id'=>'e_name',
 									'class'=>'text',
 									'title'=>'员工姓名',
 							),
@@ -105,8 +105,8 @@ class EditEmployee extends ControlPanel{
 		$this->view()->setModel($aDepatmentModel);
 		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
 		
-		$this->view->widget('eid')->setValue($aEmployeeModel['eid']);
-		$this->view->widget('name')->setValue($aEmployeeModel['user.username']);
+		$this->view->widget('e_id')->setValue($aEmployeeModel['eid']);
+		$this->view->widget('e_name')->setValue($aEmployeeModel['user.username']);
 		$this->view->variables()->set('sPosition',$aEmployeeModel['position']);
 		$this->view->variables()->set('sSex',$aEmployeeModel['sex']);
 		$arrBrithday = explode('.',$aEmployeeModel['userinfo.birthday']);
@@ -138,17 +138,17 @@ class EditEmployee extends ControlPanel{
 	
 	public function form(){
 		
-		if( empty($this->params['name']) )
+		if( empty($this->params['e_name']) )
 		{
 			$this->view->createMessage(Message::error,"%s 不能为空",'员工姓名') ;
 			return ;
 		}
-		$sEid = $this->params['eid'];
-		$sName = $this->params['name'];
+		$sEid = $this->params['e_id'];
+		$sName = $this->params['e_name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
 		$sBirthday = $this->params['birthday_y'].'.'.$this->params['birthday_m'].'.'.$this->params['birthday_d'];
-		echo $sBirthday;
+
 		$sPolicital = $this->params['policital'];
 		$sWorkTime = $this->params['worktime'];
 		$sProtile = $this->params['protitle'];
@@ -172,7 +172,7 @@ class EditEmployee extends ControlPanel{
 // 					'user.username' => $sName
 // 					,'position' => $sPosition
 // 					,'sex' => $sSex
-// 					,'userinfo.birthday' => $sBirthday
+// 					//,'userinfo.birthday' => $sBirthday
 // 					,'policital' => $sPolicital
 // 					,'worktime' => $sWorkTime
 // 					,'protitle' => $sProtile
@@ -183,7 +183,7 @@ class EditEmployee extends ControlPanel{
 // 					,'factorytime' => $sFactoryTime
 // 					,'department' => $sDepartment
 // 					,'userinfo.tel' => $sTel
-// 					,'phone' => $sPhone
+// 					,'employee.phone' => $sPhone
 // 					,'status' => $sStatus
 						
 // 				) , "user.uid =".$this->params['hide_eid']
@@ -192,7 +192,7 @@ class EditEmployee extends ControlPanel{
 		$this->model('openoa:EmployeeManagement','employee')
 					->hasOne('coresystem:userinfo','uid','uid','userinfo')
 					->hasOne('coresystem:user','uid','uid','user');
-		
+
 		$this->model('openoa:EmployeeManagement')->update(
 				array(
 						'eid' => $sEid
@@ -221,16 +221,16 @@ class EditEmployee extends ControlPanel{
 						'username' => $sName
 				) , "user.uid =".$this->params['hide_eid']
 		);
-		
+
 		$this->model('coresystem:userinfo')->update(
 				array(
-						'userinfo.birthday' => $sBirthday
-						,'userinfo.tel' => $sTel
+						'birthday' => $sBirthday
+						,'tel' => $sTel
 				) , "userinfo.uid =".$this->params['hide_eid']
 		);
 		
 		$this->messageQueue()->create ( Message::success, "编辑成功" );
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement');
 	}	
 	
 }

@@ -91,6 +91,7 @@ class AddEmployee extends ControlPanel{
 		
 		$this->view()->setModel($aDepatmentModel);
 		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
+		$this->view->variables()->set('arrY',array('birthday'=>'b','graduation'=>'g','factory'=>'f')) ;
 		$this->doActions();
 	}
 	
