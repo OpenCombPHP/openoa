@@ -1,6 +1,12 @@
 <div id="EmployeeManagement">
 	<h1>员工管理</h1>
 	<a href="?c=org.opencomb.openoa.PersonnelManagement.Employee.AddEmployee">新增员工</a>
+	<form method='post'>
+		<input type="text" name="searchkey"/>
+		<input type='radio' name="searchtype" value="eid" checked="true"/>员工工号
+		<input type='radio' name="searchtype" value="name"/>员工姓名
+		<input type='submit' value='搜索'/>
+	</form>
 	<table id="EmployeeManagement_table" border="1">
 		<thead>
 			<tr>

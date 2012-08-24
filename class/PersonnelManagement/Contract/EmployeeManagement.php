@@ -52,7 +52,17 @@ class EmployeeManagement extends ControlPanel{
 	}
 	
 	public function form(){
-
+		$sSearchKey = $this->params['searchkey'];
+		$sSearchType = $this->params['searchtype'];
+		
+		if($sSearchType=='eid')
+		{
+			$this->employee->load($sSearchKey,'eid');
+		}else if($sSearchType=='name'){
+			$this->employee->load($sSearchKey,'user.username');
+		}
+		
+		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
 	}
 	
 }

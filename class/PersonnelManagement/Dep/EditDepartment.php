@@ -80,7 +80,7 @@ class EditDepartment extends ControlPanel{
 			$this->messageQueue()->create ( Message::success, "编辑成功" );
 		}catch (Exception $e){
 			$this->messageQueue ()->create ( Message::error, "已存在此部门" );
-			$this->location('?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement');
+			$this->location('?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement');
 		}
 		
 	}	

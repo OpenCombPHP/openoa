@@ -29,6 +29,6 @@ class DeleteDepartment extends ControlPanel{
 			$this->createMessage(Message::success,"删除成功") ;
 		}
 		
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement');
 	}
 }

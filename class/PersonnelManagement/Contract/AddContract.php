@@ -55,6 +55,13 @@ class AddContract extends ControlPanel{
 	);
 	
 	public function process() {
+		$sUid = $this->params['uid'];
+		$sUserName = $this->params['username'];
+		if($sUid && $sUserName)
+		{
+			$this->view->variables()->set('sUserName',$sUserName) ;
+			$this->view->variables()->set('sUid',$sUid) ;
+		}
 		$this->doActions();
 	}
 	
@@ -86,6 +93,13 @@ class AddContract extends ControlPanel{
 				)
 		);
 		$nUpdateRows = $aContractModel->replace();
+		
+		$this->model('openoa:EmployeeManagement','employee');
+		$this->employee->load();
+		$this->employee->update(
+				array('contract' => 1,)
+				,'EmployeeManagement.uid ='.$sUid	
+		);
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加合同成功") ;

@@ -8,21 +8,16 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
 /*
  * 成本对比分析
  * */
-class AddDemission extends ControlPanel{
+class DemissionDefinition extends ControlPanel{
 	public $arrConfig = array (
 			'title' => '离职管理',
 			'view' => array (
-					'template' => 'PersonnelManagement/Demission/AddDemission.html',
+					'template' => 'PersonnelManagement/Demission/DemissionDefinition.html',
 					'widgets'=>array(
 							array(
 									'id'=>'eid',
 									'class'=>'text',
 									'title'=>'员工工号',
-							),
-							array(
-									'id'=>'gid',
-									'class'=>'text',
-									'title'=>'所在部门',
 							),
 							array(
 									'id'=> 'addtime',
@@ -47,17 +42,14 @@ class AddDemission extends ControlPanel{
 	);
 	
 	public function process() {
-		
+		$this->doActions();
 	}
 	
 	public function form(){
-		$sUid = $this->params['hidden_uid'];
-		$sName = $this->params['name'];
-		$sGid = $this->params['hidden_gid'];
-		$sGid = $this->params['hidden_gid'];
-		$sDepartment = $this->params['department'];
-		$sApplyTime = $this->params['addtime'];
-		$SReason = $this->prarms['reason'];
+		$arrDepartment = $this->params['Department_text'];
+		$arrManager = $this->params['Manager_text'];
+		$arrAccuse = $this->params['Accuse_text'];
+		var_dump($arrDepartment);exit;
 	}
 	
 }

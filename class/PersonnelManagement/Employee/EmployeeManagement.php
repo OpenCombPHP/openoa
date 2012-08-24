@@ -28,8 +28,6 @@ class EmployeeManagement extends ControlPanel{
 	);
 	
 	public function process() {
-		echo strtotime('2011-1-20')."<br/>";
-		echo strtotime('2011-01-20')."<br/>";
 		$this->model('openoa:EmployeeManagement','employee')
 					->hasOne('coresystem:userinfo','uid','uid','userinfo')
 					->hasOne('coresystem:user','uid','uid','user')
@@ -37,15 +35,6 @@ class EmployeeManagement extends ControlPanel{
 					->belongsTo('openoa:PositionManagement','position','pid','position');
 				
 		$this->employee->load();
-// 		echo $this->employee->data('groups.name');
-// 		exit;
-		
-		
-		
-		//this->model('coresystem:user') ;
-		
-// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
-// 		$aEmployeeModel->load(5,'uid');
 		
 		$this->view()->setModel($this->employee);
 		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
@@ -53,7 +42,24 @@ class EmployeeManagement extends ControlPanel{
 	}
 	
 	public function form(){
-
+		$sSearchKey = $this->params['searchkey'];
+		$sSearchType = $this->params['searchtype'];
+		
+// 		$this->model('openoa:EmployeeManagement','employee')
+// 			->hasOne('coresystem:userinfo','uid','uid','userinfo')
+// 			->hasOne('coresystem:user','uid','uid','user')
+// 			->belongsTo('coresystem:group','department','gid','group')
+// 			->belongsTo('openoa:PositionManagement','position','pid','position');
+		
+		if($sSearchType=='eid')
+		{
+			$this->employee->load($sSearchKey,'eid');
+		}else if($sSearchType=='name'){
+			$this->employee->load($sSearchKey,'user.username');
+		}
+		
+		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
+		
 	}
 	
 }

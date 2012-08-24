@@ -59,16 +59,23 @@ class OpenOa extends Extension
 						'title' => '离职管理' ,
 						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
 						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
+						'menu' => 1,
+						'item:demissiondefinition' => array(
+							'title' => '离职流程定义' ,
+							'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition' ,
+							'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition' ,
+						)
 				),
 				'item:personnelcontractmanagement' => array(
 						'title' => '人事合同管理' ,
 						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
 						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
-				),
-				'item:contractexpireremind' => array(
-						'title' => '合同到期提醒' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.ContractExpireRemind' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.ContractExpireRemind' ,
+						'menu' => 1,
+						'item:notsignedcontract' => array(
+							'title' => '未签合同管理' ,
+							'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
+							'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
+						)
 				),
 		);
 	}

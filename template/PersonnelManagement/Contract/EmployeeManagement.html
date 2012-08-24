@@ -2,6 +2,11 @@
 <div id="EmployeeList">
 	<h1>员工列表</h1>
 	<form method="post">
+		<input type="text" name="searchkey"/>
+		<input type='radio' name="searchtype" value="eid" checked="true"/>员工工号
+		<input type='radio' name="searchtype" value="name"/>员工姓名
+		<input type='submit' value='搜索'/>
+	</form>
 		<table id="EmployeeList_table" border="1">
 			<thead>
 				<tr>
@@ -12,7 +17,7 @@
 				</tr>
 				<foreach for="$aEmployeeModel" item="aEmp">
 					<tr>
-						<td><input type="radio" name="selectuid" id="selectuid" value="{=$aEmp["uid"]}.{=$aEmp["user.username"]}" /></td>
+						<td><input type="radio" name="selectuid" id="selectuid" value="{=$aEmp["uid"]}.{=$aEmp["user.username"]}.{=$aEmp["group.gid"]}.{=$aEmp["group.name"]}" /></td>
 						<td>{=$aEmp["eid"]}</td>
 						<td>{=$aEmp["user.username"]}</td>
 						<td>{=$aEmp["group.name"]}</td>
@@ -23,7 +28,6 @@
 		</table>
 		<input type="button" value="取消" onclick="window.close();"/>
 		<input type="button" value="确定" onclick="getEmployeeId()"/>
-	</form>
 </div>
 <script>
 	function getEmployeeId(){

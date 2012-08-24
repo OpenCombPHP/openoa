@@ -1,0 +1,30 @@
+<div id="EmployeeManagement">
+	<h1>合同管理</h1>
+		<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.AddContract">新建合同</a>
+		<table id="EmployeeManagement_table" border="1">
+			<thead>
+				<tr>
+					<th>员工姓名</th>
+					<th>性别</th>
+					<th>所属部门</th>
+					<th colspan="2">操作</th>
+				</tr>
+				<foreach for="$aEmployeeModel" item="aEmp">
+					<tr>
+						<td>
+							{=$aEmp['user.username']}
+						</td>
+						<td>
+							{=$aEmp['sex']=='1' ?'男':'女'}
+						</td>
+						<td>
+							{=$aEmp['group.name']}
+						</td>
+						<td>																									
+							<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.AddContract&uid={=$aEmp['uid']}&username={=$aEmp['user.username']}&department={=$aEmp['group.name']}&gid={=$aEmp['group.gid']}">新建合同</a>
+						</td>
+					</tr>
+				</foreach>
+			</thead>
+		</table>
+</div>
