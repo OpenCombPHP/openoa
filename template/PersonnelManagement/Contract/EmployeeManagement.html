@@ -31,7 +31,8 @@
 </div>
 <script>
 	function getEmployeeId(){
-		window.returnValue = jquery("input[type='radio']:checked").val();
+		//console.log(jquery("#selectuid:checked").val());
+		window.returnValue = jquery("#selectuid:checked").val();
 		window.close();		
 	}
 

@@ -36,7 +36,7 @@
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement&rspn=noframe");
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
 			if(uid!=null)
 			{
 				var arrValue = uid.split('.');
