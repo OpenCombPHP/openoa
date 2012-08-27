@@ -69,6 +69,7 @@ class AddProject extends ControlPanel{
 		$sType = $this->params['type'];
 		$sStartTime = strtotime($this->params['starttime']);
 		$sEndTime = strtotime($this->params['endtime']);
+		//echo $sStartTime.' ddd '.$sStartTime;exit;
 		$sContent = $this->params['content'];
 		$sPublisher = IdManager::singleton()->currentUserName();
 		$sResponsiblePerson = $this->params['hide_uid'];
