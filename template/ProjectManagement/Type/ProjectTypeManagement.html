@@ -1,0 +1,21 @@
+<lib name="jquery" />
+<div id="ProjectTypeManagement">
+	<h1>项目类别管理</h1>
+		<a href="?c=org.opencomb.openoa.ProjectManagement.Type.AddProjectType">添加类别</a>
+		<table id="PositionManagement_table" border="1">
+			<thead>
+				<tr>
+					<th>类别</th>
+					<th colspan=2>操作</th>
+				</tr>
+				<foreach for="$aTypeModel" item="aType">
+				<tr>
+					<td>{=$aType["type"]}</td>
+					<td><a href="?c=org.opencomb.openoa.ProjectManagement.Type.EditProjectType&pid={=$aType['pid']}&type={=$aType['type']}">编辑</a></td>
+					<td><a href="?c=org.opencomb.openoa.ProjectManagement.Type.DeleteProjectType&pid={=$aType['pid']}">删除</a></td>
+				</tr>
+				</foreach>
+			</thead>
+		</table>
+		<widget id="paginator" attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1" />
+</div>
