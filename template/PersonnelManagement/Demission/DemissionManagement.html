@@ -1,0 +1,90 @@
+<lib name='jquery'/>
+<div id="DemissionManagement">
+	<h1>离职管理</h1>
+	<a href="?c=org.opencomb.openoa.PersonnelManagement.Demission.AddDemission">离职申请</a>
+	<a href="?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition">离职流程定义</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>
+					申请日期
+				</th>
+				<th>
+					姓名
+				</th>
+				<th>
+					部门
+				</th>
+				<th>
+					离职时间
+				</th>
+				<th>
+					当前步骤
+				</th>
+				<th>
+					当前处理人
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- 
+			<foreach for="$aContractModel" item="aCon">
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+			</foreach>
+		 -->
+		</tbody>
+	
+	</table>
+	<select class="Demission_way_select_way" name="Demission_way">
+		<option value="demisstion" >辞职</option>
+		<option value="fire">辞退</option>
+		<option value="retired">离退休</option>
+	</select>
+	
+	<div id="demisstion">
+		<label>辞职:</label><br/>
+	</div>
+	
+	<div id="fire" style="display:none">
+		<label>辞退:</label><br/>
+	</div>
+	
+	<div id="retired" style="display:none">
+		<label>离退休:</label><br/>
+	</div>
+	
+<script type="text/javascript">
+	jquery(function(){
+		jquery('.Demission_way_select_way').change(function(){
+			if(jquery(this).val()=='demisstion')
+			{
+				jquery('#'+jquery(this).val()).show();
+				jquery('#'+'fire').hide();
+				jquery('#'+'demisstion').hide();
+			}else if(jquery(this).val()=='fire'){
+				console.log(jquery(this).val());
+				jquery('#'+jquery(this).val()).show();
+				jquery('#'+'demisstion').hide();
+				jquery('#'+'retired').hide();
+			}else{
+				jquery('#'+jquery(this).val()).show();
+				jquery('#'+'demisstion').hide();
+				jquery('#'+'fire').hide();
+			}
+		});
+	});
+</script>
+</div>

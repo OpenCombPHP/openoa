@@ -1,10 +1,16 @@
 <div id="EmployeeManagement">
 	<h1>员工管理</h1>
-	<a href="?c=org.opencomb.oa.PersonnelManagement.Employee.AddEmployee">新增员工</a>
+	<a href="?c=org.opencomb.openoa.PersonnelManagement.Employee.AddEmployee">新增员工</a>
+	<form method='post'>
+		<input type="text" name="searchkey"/>
+		<input type='radio' name="searchtype" value="eid" checked="true"/>员工工号
+		<input type='radio' name="searchtype" value="name"/>员工姓名
+		<input type='submit' value='搜索'/>
+	</form>
 	<table id="EmployeeManagement_table" border="1">
 		<thead>
 			<tr>
-				<th>工号</th>
+				<th>员工工号</th>
 				<th>姓名</th>
 				<th>职务</th>
 				<th>性别</th>
@@ -26,8 +32,8 @@
 			<foreach for="$aEmployeeModel" item="aEmp">
 				<tr>
 					<td>{=$aEmp["eid"]}</td>
-					<td>{=$aEmp["name"]}</td>
-					<td>{=$aEmp["position"]}</td>
+					<td>{=$aEmp["user.username"]}</td>
+					<td>{=$aEmp["position.name"]}</td>
 					<td>
 						<if "{=$aEmp["sex"]}==1">
 							男
@@ -35,7 +41,7 @@
 							女
 						</if>
 					</td>
-					<td>{=$aEmp["birthday"]}</td>
+					<td>{=$aEmp["userinfo.birthday"]}</td>
 					<td>{=$aEmp["policital"]}</td>
 					<td>{=$aEmp["worktime"]}</td>
 					<td>{=$aEmp["protitle"]}</td>
@@ -44,8 +50,8 @@
 					<td>{=$aEmp["school"]}</td>
 					<td>{=$aEmp["major"]}</td>
 					<td>{=$aEmp["factorytime"]}</td>
-					<td>{=$aEmp["department"]}</td>
-					<td>{=$aEmp["tel"]}</td>
+					<td>{=$aEmp["group.name"]}</td>
+					<td>{=$aEmp["userinfo.tel"]}</td>
 					<td>{=$aEmp["phone"]}</td>
 					<td>
 						<if "{=$aEmp["status"]}==1">
@@ -54,8 +60,8 @@
 							离职
 						</if>
 					</td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Employee.EditEmployee&eid={=$aEmp["eid"]}&name={=$aEmp["name"]}">编辑</a></td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Employee.DeleteEmployee&eid={=$aEmp["eid"]}">删除</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Employee.EditEmployee&eid={=$aEmp["uid"]}&name={=$aEmp["user.username"]}">编辑</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Employee.DeleteEmployee&eid={=$aEmp["uid"]}">删除</a></td>
 				</tr>
 			</foreach>
 		</thead>

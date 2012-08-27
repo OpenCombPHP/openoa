@@ -1,7 +1,7 @@
 <div id="PositionManagement">
 	<h1>职位管理</h1>
-		<a href="?c=org.opencomb.oa.PersonnelManagement.Position.AddPosition">添加职位</a>
-		<table id="PositionManagement_table">
+		<a href="?c=org.opencomb.openoa.PersonnelManagement.Position.AddPosition">添加职位</a>
+		<table id="PositionManagement_table" border="1">
 			<thead>
 				<tr>
 					<th>职位名称</th>
@@ -10,8 +10,8 @@
 				<foreach for="$aPositionModel" item="aPos">
 				<tr>
 					<td>{=$aPos["name"]}</td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Position.EditPosition&pid={=$aPos['pid']}&name={=$aPos['name']}">编辑</a></td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Position.DeletePosition&pid={=$aPos['pid']}">删除</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Position.EditPosition&pid={=$aPos['pid']}&name={=$aPos['name']}">编辑</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Position.DeletePosition&pid={=$aPos['pid']}">删除</a></td>
 				</tr>
 				</foreach>
 			</thead>

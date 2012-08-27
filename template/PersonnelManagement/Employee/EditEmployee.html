@@ -1,19 +1,28 @@
+<lib name="jquery"/>
+<script type="text/javascript" src="JS/jquery-ui-1.7.3/ui/jquery-ui-1.7.3.custom.js"></script>  
+<script type="text/javascript" src="JS/jquery-ui-1.7.3/ui/ui.datepicker.js"></script>  
+<script type="text/javascript" src="JS/jquery-ui-timepicker-addon.js"></script>  
+<link type="text/css" href="CSS/jquery-ui-1.7.3/redmond/jquery-ui-1.7.3.custom.css" rel="stylesheet" />  
 <div id="EditEmployee">
-	<h1>新增员工</h1>
+	<h1>编辑</h1>
 	<msgqueue/>
 	<form method="post">
 		<table id="EditEmployee_table">
 			<thead>
 				<tr>
+					<th>员工工号:</th>
+					<td><widget id="e_id" type="text" /></td>
+				</tr>
+				<tr>
 					<th>员工姓名:</th>
-					<td><widget id="name" type="text" /></td>
+					<td><widget id="e_name" type="text" /></td>
 				</tr>
 				<tr>
 					<th>职务:</th>
 					<td>
 						<select name="position_select">
 							<foreach for="$aPositionModel" item='aPos'>
-								<option value="{=$aPos['pid']}" size='10px' {=$sPosition==$aPos['pid'] ?'selected':'' }>{=$aPos['PositionName']}</option>
+								<option value="{=$aPos['pid']}" size='10px' {=$sPosition==$aPos['pid'] ?'selected':'' }>{=$aPos['name']}</option>
 							</foreach>
 						</select>
 					</td>
@@ -28,9 +37,9 @@
 				<tr>
 					<th >出生年月:</th>
 					<td>
-						<input name="birthday_y" type="text" size="4"/>年
-						<input name="birthday_m" type="text" size="2"/>月
-						<input name="birthday_d" type="text" size="2"/>日
+						<input name="birthday_y" id="birthday_y" value="{=$birthday_y}" style="width: 60px;"></input>年
+						<input name="birthday_m" id="birthday_m" value="{=$birthday_m}" style="width: 60px;"></</input>月
+						<input name="birthday_d" id="birthday_d" value="{=$birthday_d}" style="width: 60px;"></</input>日
 					</td>
 				</tr>
 				<tr>
@@ -52,9 +61,9 @@
 				<tr>
 					<th>毕业时间:</th>
 					<td>
-						<input name="graduation_y" type="text" size="4"/>年
-						<input name="graduation_m" type="text" size="2"/>月
-						<input name="graduation_d" type="text" size="2"/>日
+						<input name="graduation_y" id="graduation_y" value="{=$graduation_y}" style="width: 60px;"></input>年
+						<input name="graduation_m" id="graduation_m" value="{=$graduation_m}" style="width: 60px;"></input>月
+						<input name="graduation_d" id="graduation_d" value="{=$graduation_d}" style="width: 60px;"></input>日
 					</td>
 				</tr>
 				<tr>
@@ -68,9 +77,9 @@
 				<tr>
 					<th>入厂时间:</th>
 					<td>
-						<input name="factory_y" type="text" size="4"/>年
-						<input name="factory_m" type="text" size="2"/>月
-						<input name="factory_d" type="text" size="2"/>日
+						<input name="factory_y" id="factory_y" value="{=$factory_y}" style="width: 60px;"></input>年
+						<input name="factory_m" id="factory_m" value="{=$factory_m}" style="width: 60px;"></input>月
+						<input name="factory_d" id="factory_d" value="{=$factory_d}" style="width: 60px;"></input>日
 					</td>
 				</tr>
 				<tr>
@@ -78,7 +87,7 @@
 					<td>
 						<select name="department_select">
 							<foreach for="$aDepatmentModel" item='aDep'>
-								<option value="{=$aDep['did']}" size='10px' {=$sDepartment == $aDep['did'] ?'selected':''}>{=$aDep['DepartmentName']}</option>
+								<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
 							</foreach>
 						</select>
 					</td>
@@ -108,4 +117,55 @@
 			<input type="submit" value="取消"/>
 		</div>
 	</form>
+ 
+	<script type="text/javascript">
+		jquery('form').submit(function(){
+			var birthday_y = jquery("#birthday_y").val();
+			var graduation_y = jquery("#graduation_y").val();
+			var factory_y = jquery("#factory_y").val();
+			
+			var birthday_m = jquery("#birthday_m").val();
+			var graduation_m = jquery("#graduation_m").val();
+			var factory_m = jquery("#factory_m").val();
+			
+			var birthday_d = jquery("#birthday_d").val();
+			var graduation_d = jquery("#graduation_d").val();
+			var factory_d = jquery("#factory_d").val();
+			
+			//yyyy-mm-dd判断
+			//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+			var result_f_y = factory_y.match(/^(\d{4})$/);
+			var t_y = /^[0,1]{0,1}\d{1}$/;
+			var t_m = /^[0,1]{0,1}\d{1}$/;
+			var t_d = /^\d{1,2}$/;
+			
+			var factory_b = false;
+			var graduation_b = false;
+			var birthday_b = false;
+
+			
+			if(t_y.test(factory_y) && t_m.test(factory_m) && t_d.test(factory_d))
+			{
+				factory_b = true;
+			};
+			
+			if(t_y.test(birthday_y) && t_m.test(birthday_m) && t_d.test(birthday_d))
+			{
+				birthday_b = true;
+			};		
+			
+			if(t_y.test(graduation_y) && t_m.test(graduation_m) && t_d.test(graduation_d))
+			{
+				graduation_b = true;
+			}
+			
+			if(birthday_b && graduation_b && factory_b)
+			{
+				return true;	
+			}else{
+				alert(输入数据格式有错误);
+				return false;
+			}
+		})
+	</script> 
 </div>

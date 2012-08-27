@@ -8,11 +8,11 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
 /*
  * 成本对比分析
  * */
-class ContractManagement extends ControlPanel{
+class NoContract extends ControlPanel{
 	public $arrConfig = array (
 			'title' => '添加职位',
 			'view' => array (
-					'template' => 'PersonnelManagement/Contract/ContractManagement.html',
+					'template' => 'PersonnelManagement/Contract/NoContract.html',
 					'widgets'=>array(
 					)
 			),
@@ -25,25 +25,15 @@ class ContractManagement extends ControlPanel{
 	);
 	
 	public function process() {
-		$this->model('openoa:ContractManagement','contract')
+		$this->model('openoa:EmployeeManagement','employee')
 				->hasOne('coresystem:user','uid','uid','user')
-				->hasOne('coresystem:userinfo','uid','uid','userinfo');
+				->belongsTo('coresystem:group','department','gid','group');
 
 		
-		$this->contract->load();
-		// 		echo $this->employee->data('groups.name');
-		// 		exit;
-		
-		
-		
-		//this->model('coresystem:user') ;
-		
-		// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
-		// 		$aEmployeeModel->load(5,'uid');
-		
-		$this->view()->setModel($this->contract);
-		$this->view->variables()->set('aContractModel',$this->contract) ;
-		$this->view->variables()->set('sNow',strtotime(date('Y-m-d'))) ;
+		$this->employee->load(array('1','2'),array('status','contract'));
+		$this->view()->setModel($this->employee);
+		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
+		//$this->view->variables()->set('sNow',strtotime(date('Y-m-d'))) ;
 		$this->doActions();
 	}
 	

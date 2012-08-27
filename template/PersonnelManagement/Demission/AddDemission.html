@@ -1,0 +1,70 @@
+<lib name="jquery"/>
+<div id="addDemission">
+	<h1>离职申请</h1>
+	<form method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>
+						离职员工:
+					</th>
+					<td>
+						<input type="text" id="name" disabled="disabled" style="background-color:white"/><a id="selectuser" href="#">选择</a>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						离职类别:
+					</th>
+					<td>
+						<input type="radio" name="type" value='1'/>辞职
+						<input type="radio" name="type" value='2'/>辞退
+						<input type="radio" name="type" value='3'/>合同到期
+					</td>
+				</tr>
+				<tr>
+					<th>
+						所在部门:
+					</th>
+					<td>
+						<input type="text" id="department" disabled="disabled" style="background-color:white"/>
+					</td>
+				</tr>
+				<tr>
+					<th>提交日期:
+					</th>
+					<td>
+						<widget id="addtime" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						离职原因:
+					</th>
+					<td>
+						<widget id="reason" attr.rows="10" attr.cols="100"/>
+					</td>
+				</tr>			
+			</thead>
+		</table>
+		<input type="hidden" name="hide_uid" id="hide_uid"/>
+		<input type="hidden" name="hide_gid" id="hide_gid"/>
+		<input type="submit" value="提交" />
+	</form>
+</div>
+<script>
+	jQuery('#selectuser').click(
+		function selectEmployee(){
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
+			if(uid!=null)
+			{
+				var arrValue = uid.split('.');
+				console.log(arrValue);
+				jquery('#name').attr("value",arrValue[1]);
+				jquery('#hide_uid').attr("value",arrValue[0]);
+				jquery('#hide_gid').attr("value",arrValue[2]);
+				jquery('#department').attr("value",arrValue[3]);
+			}
+		}		
+	);	
+</script>

@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\PersonnelManagement\Employee;
+namespace org\opencomb\openoa\PersonnelManagement\Contract;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -12,7 +12,7 @@ class EmployeeManagement extends ControlPanel{
 	public $arrConfig = array (
 			'title' => '人员管理',
 			'view' => array (
-					'template' => 'PersonnelManagement/Employee/EmployeeManagement.html',
+					'template' => 'PersonnelManagement/Contract/EmployeeManagement.html',
 			),
 			'widget:paginator' => array(  //分页器bean
 					'class' => 'paginator' ,
@@ -28,6 +28,7 @@ class EmployeeManagement extends ControlPanel{
 	);
 	
 	public function process() {
+		
 		$this->model('openoa:EmployeeManagement','employee')
 					->hasOne('coresystem:userinfo','uid','uid','userinfo')
 					->hasOne('coresystem:user','uid','uid','user')
@@ -35,6 +36,15 @@ class EmployeeManagement extends ControlPanel{
 					->belongsTo('openoa:PositionManagement','position','pid','position');
 				
 		$this->employee->load();
+// 		echo $this->employee->data('groups.name');
+// 		exit;
+		
+		
+		
+		//this->model('coresystem:user') ;
+		
+// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement');
+// 		$aEmployeeModel->load(5,'uid');
 		
 		$this->view()->setModel($this->employee);
 		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
@@ -45,12 +55,6 @@ class EmployeeManagement extends ControlPanel{
 		$sSearchKey = $this->params['searchkey'];
 		$sSearchType = $this->params['searchtype'];
 		
-// 		$this->model('openoa:EmployeeManagement','employee')
-// 			->hasOne('coresystem:userinfo','uid','uid','userinfo')
-// 			->hasOne('coresystem:user','uid','uid','user')
-// 			->belongsTo('coresystem:group','department','gid','group')
-// 			->belongsTo('openoa:PositionManagement','position','pid','position');
-		
 		if($sSearchType=='eid')
 		{
 			$this->employee->load($sSearchKey,'eid');
@@ -59,7 +63,6 @@ class EmployeeManagement extends ControlPanel{
 		}
 		
 		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
-		
 	}
 	
 }

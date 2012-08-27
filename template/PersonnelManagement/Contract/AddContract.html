@@ -1,0 +1,80 @@
+<lib name='jquery'/>
+<div id="AddContract">
+	<h1>新建合同</h1>
+	<form method="post">
+		<table id="AddContract_table" border="1">
+			<thead>
+				<tr>
+					<th>合同编号:</th>
+					<td><widget id="cid" /></td>
+				</tr>
+				<tr>
+					<th>单位员工:</th>
+					<th>
+						<input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="#">选择</a>
+					</th>
+				</tr>
+				<tr>
+					<th>有效期始:</th>
+					<th><widget id="starttime" /></th>
+				</tr>
+				<tr>
+					<th>有效期止:</th>
+					<th><widget id="endtime" /></th>
+				</tr>
+				<tr>
+					<th>到期提醒时间:</th>
+					<th><widget id="remindtime" /></th>
+				</tr>
+			</thead>
+		</table>
+		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
+		<input type="submit" value="提交" />
+	</form>
+</div>
+<script>
+	jQuery('#selectuser').click(
+		
+		function selectEmployee(){
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
+			if(uid!=null)
+			{
+				var arrValue = uid.split('.');
+				jquery('#selectid').attr("value",arrValue[1]);
+				jquery('#hide_uid').attr("value",arrValue[0]);
+			}
+		}		
+	);
+	
+	jQuery('form').submit(function(){
+		//var dd = true;
+		//console.log(starttime,endtime);
+		//console.log('dddd');
+		var starttime = jquery("#starttime").val();
+		var endtime = jquery("#endtime").val();
+		var remindtime = jquery("#remindtime").val();
+		
+		//yyyy-mm-dd判断
+		//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+		//var result_f_y = factory_y.match(/^(\d{4})$/);
+		var t_y = /^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2})$/;
+		var time_b = false;
+
+		//console.log(starttime,endtime);
+		if(t_y.test(starttime) && t_m.test(endtime) && t_d.test(remindtime))
+		{
+			time_b = true;
+		};
+
+		
+		if(time_b)
+		{
+			return true;	
+		}else{
+			alert('输入数据格式有错误(例如日期为：1970-02-11)');
+			return false;
+		}
+	})
+	
+	
+</script>

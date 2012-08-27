@@ -1,7 +1,7 @@
 <div id="DeparmentManagement">
 	<h1>部门管理</h1>
-		<a href="?c=org.opencomb.oa.PersonnelManagement.Dep.AddDepartment">添加部门</a>
-		<table id="DeparmentManagement_table">
+		<a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.AddDepartment">添加部门</a>
+		<table id="DeparmentManagement_table" border="1">
 			<thead>
 				<tr>
 					<th>部门名称</th>
@@ -12,8 +12,8 @@
 				<tr>
 					<td>{=$aDep["name"]}</td>
 					<td>{=$aDep["name"]}</td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['gid']}&name={=$aDep['name']}">编辑</a></td>
-					<td><a href="?c=org.opencomb.oa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['gid']}">删除</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['gid']}&name={=$aDep['name']}">编辑</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['gid']}">删除</a></td>
 				</tr>
 				</foreach>
 			</thead>

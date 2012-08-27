@@ -59,7 +59,7 @@ class AddDepartment extends ControlPanel{
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加部门成功") ;
-			$this->location('?c=org.opencomb.oa.PersonnelManagement.Dep.DepartmentManagement');
+			$this->location('?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement');
 		}else{
 			$this->view->createMessage(Message::error,"添加部门失败") ;
 		}
