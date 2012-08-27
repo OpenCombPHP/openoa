@@ -1,0 +1,42 @@
+<form id="form1" name="form1" method="post" action="">
+  <p>姓名：
+    <input name="username" type="text" disabled="disabled" id="username" value="{=org\jecat\framework\auth\IdManager::singleton()->currentId()->username();}"/>
+  </p>
+  <p>时间：
+    <input name="date" type="text" id="date" value="{=date('Y-m-d')}" size="9" />
+    <select name="am" id="am">
+      <option value="8">8</option>
+      <option value="8:30" selected="selected">8:30</option>
+      <option value="9">9</option>
+    </select>
+    ~
+    <select name="pm" id="pm">
+      <option value="16:30">16:30</option>
+      <option value="17:00">17:00</option>
+      <option value="17:30" selected="selected">17:30</option>
+      <option value="18:00">18:00</option>
+    </select>
+  </p>
+  <p>类型：  
+    <select name="sort" id="sort">
+      <option value="1">事假</option>
+      <option value="2">病假</option>
+      <option value="3">婚假</option>
+      <option value="4">产假</option>
+      <option value="5">探亲假</option>
+      <option value="6">丧假</option>
+      <option value="7">年假</option>
+      <option value="8">出差</option>
+      <option value="9">外出</option>
+      <option value="10">调休</option>
+      <option value="11">旷工</option>
+      <option value="12">加班</option>
+    </select>
+  </p>
+  <p>备注：
+    <textarea name="explain" id="explain"></textarea>
+  </p>
+  <p>
+    <input type="submit" name="Submit" value="保存" />
+  </p>
+</form>

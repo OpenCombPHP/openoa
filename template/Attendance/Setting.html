@@ -1,0 +1,23 @@
+<form id="form1" name="form1" method="post" action="">
+<p>上班时间：
+  
+  <select name="am" id="am">
+    <option value="8" {=$am=='8'?'selected="selected"':''}>8</option>
+    <option value="8:30" {=$am=='8:30'?'selected="selected"':''}>8:30</option>
+    <option value="9" {=$am=='9'?'selected="selected"':''}>9</option>
+    </select>
+</p>
+
+  <p>下班时间：
+    
+<select name="pm" id="pm">
+  <option value="16:30" {=$pm=='16:30'?'selected="selected"':''}>16:30</option>
+  <option value="17:00" {=$pm=='17:00'?'selected="selected"':''}>17:00</option>
+  <option value="17:30" {=$pm=='17:30'?'selected="selected"':''}>17:30</option>
+  <option value="18:00" {=$pm=='18:00'?'selected="selected"':''}>18:00</option>
+</select>
+</p>
+  <p>
+    <input type="submit" name="Submit" value="保存" />
+  </p>
+</form>
