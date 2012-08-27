@@ -1,0 +1,14 @@
+<form id="form1" name="form1" method="post" action="">
+<p>休息日：
+  
+  <select name="Holidays" id="Holidays">
+    <option value="67" {=$Holidays=='67'?'selected="selected"':''}>周六日</option>
+    <option value="7" {=$Holidays=='7'?'selected="selected"':''}>周日</option>
+    <option value="0" {=$Holidays=='0'?'selected="selected"':''}>无休</option>
+    </select>
+</p>
+
+  <p>
+    <input type="submit" name="Submit" value="保存" />
+  </p>
+</form>

@@ -1,1 +1,16 @@
-fffffffffffffffff
+<if "$data['am']">
+<p>{=$data['am']}</p>
+<else/>
+<p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=am">上班签到</a></p>
+</if>
+
+<if "$data['pm']">
+<p>{=$data['pm']}</p>
+<else/>
+<p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=pm">下班签到</a></p>
+</if>
+
+<if "$data['pm']">
+<p>{=org\opencomb\openoa\Attendance\SortClass::get($data['sort'])}</p>
+</if>
+

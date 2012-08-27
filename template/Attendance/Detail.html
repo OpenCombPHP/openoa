@@ -1,0 +1,24 @@
+
+<b>考勤报表</b>
+			<table border="1">
+              <tr>
+                <td>姓名</td>
+                <td>工号</td>
+                <td>日期</td>
+                <td>上午</td>
+                <td>下午</td>
+                <td>分类</td>
+                <td>备注</td>
+              </tr>
+<foreach for='$data' item="aModel">
+              <tr>
+                <td>{=$aModel['userinfo.name']}</td>
+                <td>{=$aModel['userinfo.eid']}</td>
+                <td>{=$aModel['date']}</td>
+                <td>{=$aModel['am']}</td>
+                <td>{=$aModel['pm']}</td>
+                <td>{=org\opencomb\openoa\Attendance\SortClass::get($aModel['sort'])}</td>
+                <td>{=$aModel['explain']}</td>
+              </tr>
+</foreach>
+</table>
