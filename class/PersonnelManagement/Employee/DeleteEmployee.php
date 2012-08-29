@@ -38,6 +38,6 @@ class DeleteEmployee extends OpenOaController{
 			$this->createMessage(Message::success,"删除成功") ;
 		}
 		
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement');
 	}
 }

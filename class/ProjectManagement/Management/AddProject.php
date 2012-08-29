@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement;
+namespace org\opencomb\openoa\ProjectManagement\Management;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -10,11 +10,11 @@ use org\opencomb\openoa\controller\OpenOaController;
 /*
  * 成本对比分析
  * */
-class EditProject extends OpenOaController{
+class AddProject extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '新建项目',
 			'view' => array (
-					'template' => 'ProjectManagement/EditProject.html',
+					'template' => 'ProjectManagement/Management/AddProject.html',
 					'widgets'=>array(
 							array(
 									'id'=>'name',
@@ -58,8 +58,14 @@ class EditProject extends OpenOaController{
 	
 	public function process() {
 		$this->view->variables()->set('sCurrentUser' ,IdManager::singleton()->currentUserName());
+		$this->view->variables()->set('sAssignUid',IdManager::singleton()->currentUserId());
+		echo IdManager::singleton()->currentUserId();
 		$this->model('openoa:ProjectType','type');
 		$this->type->load();
+		$aDepatmentModel = Model::Create('coresystem:group');
+		$aDepatmentModel->load();
+		
+		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
 		$this->view->variables()->set('aProjectType',$this->type);
 		//->belongsTo('coresystem:group','department','gid','group')
 		$this->doActions();
@@ -74,23 +80,32 @@ class EditProject extends OpenOaController{
 		$sContent = $this->params['content'];
 		$sPublisher = IdManager::singleton()->currentUserName();
 		$sResponsiblePerson = $this->params['hide_uid'];
+		$sAssignId = $this->params['hide_assign_uid'];
 		$sPurview = $this->params['purview'];
+		$sDepartment = $this->params['department_select'];
 		
 		$this->model("openoa:ProjectManagement","project");
 		$this->project->load();
-		$this->project->replace(
-				array(
-					'name' => $sName
-					,'type' => $sType
-					,'starttime' => $sStartTime
-					,'endtime' => $sEndTime
-					,'content' => $sContent
-					,'publisher' => $sPublisher
-					,'responsibleperson' => $sResponsiblePerson
-					,'purview' => $sPurview
-						
-				)		
+		$nUpdateRows = $this->project->replace(
+							array(
+								'name' => $sName
+								,'type' => $sType
+								,'starttime' => $sStartTime
+								,'endtime' => $sEndTime
+								,'content' => $sContent
+								,'publisher' => $sPublisher
+								,'responsibleperson' => $sResponsiblePerson
+								,'purview' => $sPurview
+								,'assignid' => $sAssignId
+								,'department' => $sDepartment
+							)		
 		);
-		//exit;	
+		
+		if($nUpdateRows > 0){
+			$this->messageQueue()->create(Message::success,"添加项目成功") ;
+			$this->location('?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement');
+		}else{
+			$this->view->createMessage(Message::error,"添加项目失败") ;
+		}	
 	}	
 }

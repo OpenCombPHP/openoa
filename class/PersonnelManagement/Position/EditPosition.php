@@ -61,7 +61,7 @@ class EditPosition extends OpenOaController{
 		}catch (Exception $e){
 			$this->messageQueue ()->create ( Message::error, "已存在此职位" );
 		}
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement');
 	}	
 	
 }

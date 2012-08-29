@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement;
+namespace org\opencomb\openoa\ProjectManagement\Management;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -13,7 +13,7 @@ class DeleteProject extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门管理',
 			'view' => array (
-					'template' => 'ProjectManagement/DeleteProject.html',
+					'template' => 'ProjectManagement/Management/DeleteProject.html',
 			),
 // 			'perms' => array (
 // 					// 权限类型的许可

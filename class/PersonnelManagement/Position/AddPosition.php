@@ -54,7 +54,7 @@ class AddPosition extends OpenOaController{
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加职位成功") ;
-			$this->location('?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement');
+			$this->location('?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement');
 		}else{
 			$this->view->createMessage(Message::error,"添加职位失败") ;
 		}

@@ -93,6 +93,39 @@
 					责任人
 				</td>
 			</tr>
+			<tr>
+				<th>
+					 项目进度
+				</th>
+				<td>
+					<select name="rates">
+						<option value="10" {=$sPosition==$aPos['pid'] ?'selected':''>10%</option>
+						<option value="20" {=$sPosition==$aPos['pid'] ?'selected':''>20%</option>
+						<option value="30" {=$sPosition==$aPos['pid'] ?'selected':''>30%</option>
+						<option value="40" {=$sPosition==$aPos['pid'] ?'selected':''>40%</option>
+						<option value="50" {=$sPosition==$aPos['pid'] ?'selected':''>50%</option>
+						<option value="60" {=$sPosition==$aPos['pid'] ?'selected':''>60%</option>
+						<option value="70" {=$sPosition==$aPos['pid'] ?'selected':''>70%</option>
+						<option value="80" {=$sPosition==$aPos['pid'] ?'selected':''>80%</option>
+						<option value="90" {=$sPosition==$aPos['pid'] ?'selected':''>90%</option>
+						<option value="100" {=$sPosition==$aPos['pid'] ?'selected':''>100%</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 项目状态
+				</th>
+				<td>
+					<select name="status">
+						<option value="1" {=$sPosition==$aPos['pid'] ?'selected':''>进行中</option>
+						<option value="2" {=$sPosition==$aPos['pid'] ?'selected':''>终止</option>
+						<option value="3" {=$sPosition==$aPos['pid'] ?'selected':''>完成</option>
+						<option value="4" {=$sPosition==$aPos['pid'] ?'selected':''>暂停</option>
+						<option value="5" {=$sPosition==$aPos['pid'] ?'selected':''>延迟</option>
+					</select>
+				</td>
+			</tr>
 		</table>
 		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
 		<input type="submit" value="提交" />

@@ -40,13 +40,23 @@
 						{=date('Y-m-d',$aPro['endtime'])}
 					</td>
 					<td>
-						{=$aPro['name']}
+						<if '{=$aPro['status']}==1'>
+							进行中
+							<elseif '{=$aPro['status']}==2'/>
+							终止
+							<elseif '{=$aPro['status']}==3'/>
+							完成
+							<elseif '{=$aPro['status']}==4'/>
+							暂停
+							<elseif '{=$aPro['status']}==5'/>
+							延迟
+						</if>
 					</td>
 					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
 					</td>
 					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.DeleteProject&pid={=$aPro['pid']}">删除</a>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.DeleteProject&pid={=$aPro['pid']}">删除</a>
 					</td>
 				</tr>
 			</foreach>

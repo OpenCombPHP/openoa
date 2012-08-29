@@ -91,7 +91,7 @@ class NoContract extends OpenOaController{
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加员工成功") ;
-			$this->location('?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement');
+			$this->location('?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement');
 		}else{
 			$this->view->createMessage(Message::error,"添加员工失败") ;
 		}

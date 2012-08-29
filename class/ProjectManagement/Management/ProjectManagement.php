@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement\ProjectManagement;
+namespace org\opencomb\openoa\ProjectManagement\Management;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -9,11 +9,11 @@ use org\opencomb\openoa\controller\OpenOaController;
 /*
  * 成本对比分析
  * */
-class MyAssignmentProject extends OpenOaController{
+class ProjectManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '添加职位',
 			'view' => array (
-					'template' => 'ProjectManagement/ProjectManagement/MyAssignmentProject.html',
+					'template' => 'ProjectManagement/Management/ProjectManagement.html',
 					'widgets'=>array(
 					)
 			),

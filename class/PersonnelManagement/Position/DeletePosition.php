@@ -30,6 +30,6 @@ class DeletePosition extends OpenOaController{
 			$this->createMessage(Message::success,"删除成功") ;
 		}
 		
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement');
 	}
 }

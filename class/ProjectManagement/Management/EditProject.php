@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement\ProjectManagement;
+namespace org\opencomb\openoa\ProjectManagement\Management;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -10,11 +10,11 @@ use org\opencomb\openoa\controller\OpenOaController;
 /*
  * 成本对比分析
  * */
-class AddProject extends OpenOaController{
+class EditProject extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '新建项目',
 			'view' => array (
-					'template' => 'ProjectManagement/ProjectManagement/AddProject.html',
+					'template' => 'ProjectManagement/Management/EditProject.html',
 					'widgets'=>array(
 							array(
 									'id'=>'name',
@@ -57,9 +57,36 @@ class AddProject extends OpenOaController{
 	);
 	
 	public function process() {
+		
+		$aProjectModel = Model::Create('openoa:ProjectManagement','ProjectManagement')
+						->hasOne('coresystem:user','uid','uid','user')
+						->belongsTo('coresystem:group','department','gid','groups')
+						->belongsTo('openoa:ProjectType','type','type','ProjectType');
+		
+		$aProjectModel->load($this->params['pid'] , 'pid');
+
+		
+		$this->view()->setModel($aProjectModel);
+		$this->view->variables()->set('aProjectModel',$aProjectModel) ;
+		
+		$aDepatmentModel = Model::Create('coresystem:group');
+		$aDepatmentModel->load();
+		
+		$this->view()->setModel($aDepatmentModel);
+		$this->view->variables()->set('aDepatmentModel',$aDepatmentModel) ;
+		
+		//$this->view->widget('e_id')->setValue($aEmployeeModel['eid']);
+		$this->view->widget('e_name')->setValue($aProjectModel['name']);
+		$this->view->widget('e_type')->setValue($aProjectModel['ProjectType.type']);
+		$this->view->widget('e_starttime')->setValue($aProjectModel['name']);
+		$this->view->widget('e_endtime')->setValue($aProjectModel['name']);
+		$this->view->variables()->set('sPosition',$aEmployeeModel['position']);
+		$this->view->variables()->set('sSex',$aEmployeeModel['sex']);
+		$arrBrithday = explode('.',$aEmployeeModel['userinfo.birthday']);
+		
+		
 		$this->view->variables()->set('sCurrentUser' ,IdManager::singleton()->currentUserName());
 		$this->view->variables()->set('sAssignUid',IdManager::singleton()->currentUserId());
-		echo IdManager::singleton()->currentUserId();
 		$this->model('openoa:ProjectType','type');
 		$this->type->load();
 		$this->view->variables()->set('aProjectType',$this->type);
@@ -76,8 +103,9 @@ class AddProject extends OpenOaController{
 		$sContent = $this->params['content'];
 		$sPublisher = IdManager::singleton()->currentUserName();
 		$sResponsiblePerson = $this->params['hide_uid'];
-		$sAssignId = $this->params['hide_assign_uid'];
 		$sPurview = $this->params['purview'];
+		$sStatus = $this->params['status'];
+		$sRates = $this->params['rates'];
 		
 		$this->model("openoa:ProjectManagement","project");
 		$this->project->load();
@@ -91,7 +119,9 @@ class AddProject extends OpenOaController{
 					,'publisher' => $sPublisher
 					,'responsibleperson' => $sResponsiblePerson
 					,'purview' => $sPurview
-					,'assignid' => $sAssignId
+					,'status' => $sStatus
+					,'completerates' => $sRates
+						
 				)		
 		);
 		//exit;	

@@ -62,6 +62,18 @@
 			</tr>
 			<tr>
 				<th>
+					 部门
+				</th>
+				<td>
+					<select name="department_select">
+						<foreach for="$aDepatmentModel" item='aDep'>
+							<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
 					 项目责任人
 				</th>
 				<td>
