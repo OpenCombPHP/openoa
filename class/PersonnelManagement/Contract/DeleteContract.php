@@ -8,7 +8,7 @@ use org\opencomb\coresystem\mvc\controller\ControlPanel;
 /*
  * 成本对比分析
  * */
-class DeleteContract extends ControlPanel{
+class DeleteContract extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门管理',
 			'view' => array (

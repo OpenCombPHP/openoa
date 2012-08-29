@@ -1,12 +1,4 @@
-
 <lib name="jquery"/>
-<head>
-	jquery(function($){
- 
- 	alert('ddd');
- })
-</head>
-<lib name='jquery'/>
 <div id="addProject">
 	<h1>新建项目</h1>
 	<form method="post">
@@ -101,8 +93,17 @@
 					责任人
 				</td>
 			</tr>
+			<tr>
+				<th>
+					Test
+				</th>
+				<td>
+					<input name="test1" id="test1" type="text" />
+				</td>
+			</tr>
 		</table>
 		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
+		<input type="hidden" name="hide_assign_uid" id="hide_uid" value="{=$sAssignUid}"/>
 		<input type="submit" value="提交" />
 	</form>
 </div>
@@ -110,7 +111,7 @@
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
+			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement",document);
 			console.log(uid);
 			if(uid!=null)
 			{

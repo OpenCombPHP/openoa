@@ -4,11 +4,12 @@ namespace org\opencomb\openoa\PersonnelManagement\Position;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class AddPosition extends ControlPanel{
+class AddPosition extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '添加职位',
 			'view' => array (

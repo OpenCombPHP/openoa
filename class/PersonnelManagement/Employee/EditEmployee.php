@@ -4,11 +4,12 @@ namespace org\opencomb\openoa\PersonnelManagement\Employee;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class EditEmployee extends ControlPanel{
+class EditEmployee extends OpenOaController{
 	protected $arrConfig = array (
 			'title' => '编辑',
 			'view' => array (

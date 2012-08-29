@@ -1,19 +1,20 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement;
+namespace org\opencomb\openoa\ProjectManagement\ProjectManagement;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
 use org\jecat\framework\auth\IdManager ;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class AddProject extends ControlPanel{
+class AddProject extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '新建项目',
 			'view' => array (
-					'template' => 'ProjectManagement/AddProject.html',
+					'template' => 'ProjectManagement/ProjectManagement/AddProject.html',
 					'widgets'=>array(
 							array(
 									'id'=>'name',
@@ -57,6 +58,8 @@ class AddProject extends ControlPanel{
 	
 	public function process() {
 		$this->view->variables()->set('sCurrentUser' ,IdManager::singleton()->currentUserName());
+		$this->view->variables()->set('sAssignUid',IdManager::singleton()->currentUserId());
+		echo IdManager::singleton()->currentUserId();
 		$this->model('openoa:ProjectType','type');
 		$this->type->load();
 		$this->view->variables()->set('aProjectType',$this->type);
@@ -73,6 +76,7 @@ class AddProject extends ControlPanel{
 		$sContent = $this->params['content'];
 		$sPublisher = IdManager::singleton()->currentUserName();
 		$sResponsiblePerson = $this->params['hide_uid'];
+		$sAssignId = $this->params['hide_assign_uid'];
 		$sPurview = $this->params['purview'];
 		
 		$this->model("openoa:ProjectManagement","project");
@@ -87,7 +91,7 @@ class AddProject extends ControlPanel{
 					,'publisher' => $sPublisher
 					,'responsibleperson' => $sResponsiblePerson
 					,'purview' => $sPurview
-						
+					,'assignid' => $sAssignId
 				)		
 		);
 		//exit;	

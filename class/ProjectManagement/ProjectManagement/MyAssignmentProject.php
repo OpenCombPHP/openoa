@@ -1,18 +1,19 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement;
+namespace org\opencomb\openoa\ProjectManagement\ProjectManagement;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class ProjectManagement extends ControlPanel{
+class MyAssignmentProject extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '添加职位',
 			'view' => array (
-					'template' => 'ProjectManagement/ProjectManagement.html',
+					'template' => 'ProjectManagement/ProjectManagement/MyAssignmentProject.html',
 					'widgets'=>array(
 					)
 			),

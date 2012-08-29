@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\PersonnelManagement\Contract;
+namespace org\opencomb\openoa\ProjectManagement\ProjectManagement;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -9,11 +9,11 @@ use org\opencomb\openoa\controller\OpenOaController;
 /*
  * 成本对比分析
  * */
-class NoContract extends OpenOaController{
+class ProjectManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '添加职位',
 			'view' => array (
-					'template' => 'PersonnelManagement/Contract/NoContract.html',
+					'template' => 'ProjectManagement/ProjectManagement/ProjectManagement.html',
 					'widgets'=>array(
 					)
 			),
@@ -26,14 +26,13 @@ class NoContract extends OpenOaController{
 	);
 	
 	public function process() {
-		$this->model('openoa:EmployeeManagement','employee')
-				->hasOne('coresystem:user','uid','uid','user')
-				->belongsTo('coresystem:group','department','gid','group');
-
+		$this->model('openoa:ProjectManagement','ProjectManagement');
+				//->belongsTo('openoa:ProjectType','type','type','ProjectType');
+		$this->ProjectManagement->load();
 		
-		$this->employee->load(array('1','2'),array('status','contract'));
-		$this->view()->setModel($this->employee);
-		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
+		//var_dump($this->ProjectManagement);exit;
+		$this->view()->setModel($this->ProjectManagement);
+		$this->view->variables()->set('aProjectManagement',$this->ProjectManagement) ;
 		//$this->view->variables()->set('sNow',strtotime(date('Y-m-d'))) ;
 		$this->doActions();
 	}

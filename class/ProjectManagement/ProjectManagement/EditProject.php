@@ -5,11 +5,12 @@ use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
 use org\jecat\framework\auth\IdManager ;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class EditProject extends ControlPanel{
+class EditProject extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '新建项目',
 			'view' => array (
