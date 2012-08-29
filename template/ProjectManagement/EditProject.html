@@ -1,14 +1,6 @@
-
-<lib name="jquery"/>
-<head>
-	jquery(function($){
- 
- 	alert('ddd');
- })
-</head>
 <lib name='jquery'/>
-<div id="addProject">
-	<h1>新建项目</h1>
+<div id="editProject">
+	<h1>编辑项目</h1>
 	<form method="post">
 		<table>
 			<tr>
@@ -16,7 +8,7 @@
 					项目名称:
 				</th>
 				<td>
-					<widget id="name"/>
+					<widget id="eidt_name"/>
 				</td>
 			</tr>
 			<tr>
@@ -24,7 +16,7 @@
 					项目类别:
 				</th>
 				<td>
-					<select name="type">
+					<select name="edit_type">
 						<foreach for="$aProjectType" item="aType">
 							<option value="{=$aType['pid']}">{=$aType['type']}</option>
 						</foreach>
@@ -36,7 +28,7 @@
 					项目开始时间:
 				</th>
 				<td>
-					<widget id="starttime"/>
+					<widget id="edit_starttime"/>
 				</td>
 			</tr>
 			<tr>
@@ -44,7 +36,7 @@
 					项目结束时间:
 				</th>
 				<td>
-					<widget id="endtime"/>
+					<widget id="edit_endtime"/>
 				</td>
 			</tr>
 			<tr>
@@ -52,7 +44,7 @@
 					项目描述:
 				</th>
 				<td>
-					<textarea id="content" style="width:200px;height:200px"></textarea>
+					<textarea id="edit_content" style="width:200px;height:200px"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -73,7 +65,7 @@
 					 项目责任人
 				</th>
 				<td>
-					<input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="#">选择</a>
+					<input type="text" id="edit_selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="#">选择</a>
 				</td>
 			</tr>
 			<tr>
@@ -81,8 +73,8 @@
 					 项目权限
 				</th>
 				<td>
-					<input name="purview" type="radio" value='1'/>项目负责人
-					<input name="purview" type="radio" value='1'/>所有人
+					<input name="edit_purview" type="radio" value='1'/>项目负责人
+					<input name="edit_purview" type="radio" value='1'/>所有人
 				</td>
 			</tr>
 			<tr>
@@ -95,9 +87,9 @@
 					 提醒接受人
 				</th>
 				<td>
-					<input name="remind" type="checkbox"/>
+					<input name="edit_remind" type="checkbox"/>
 					分配人
-					<input name="remind" type="checkbox"/>
+					<input name="edit_remind" type="checkbox"/>
 					责任人
 				</td>
 			</tr>
@@ -115,7 +107,7 @@
 			if(uid!=null)
 			{
 				var arrValue = uid.split('.');
-				jquery('#selectid').attr("value",arrValue[1]);
+				jquery('#edit_selectid').attr("value",arrValue[1]);
 				jquery('#hide_uid').attr("value",arrValue[0]);
 			}
 		}		

@@ -1,0 +1,57 @@
+<lib name="jquery"/>
+<div id="divProjectManagement">
+	<h1>项目管理</h1>
+	<a href="?c=org.opencomb.openoa.ProjectManagement.AddProject">添加项目</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>
+					项目名称
+				</th>
+				<th>
+					项目负责人
+				</th>
+				<th>
+					开始
+				</th>
+				<th>
+					结束
+				</th>
+				<th>
+					状态 
+				</th>
+				<th colspan="2">
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<foreach for="$aProjectManagement" item="aPro">
+				<tr>
+					<td>
+						{=$aPro['name']}
+					</td>
+					<td>
+						{=$aPro['responsibleperson']}
+					</td>
+					<td>
+						{=date('Y-m-d',$aPro['starttime'])}
+					</td>
+					<td>
+						{=date('Y-m-d',$aPro['endtime'])}
+					</td>
+					<td>
+						{=$aPro['name']}
+					</td>
+					<td>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
+					</td>
+					<td>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.DeleteProject&pid={=$aPro['pid']}">删除</a>
+					</td>
+				</tr>
+			</foreach>
+		</tbody>
+	</table>
+
+</div>
