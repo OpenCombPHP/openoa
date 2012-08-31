@@ -26,8 +26,8 @@ class ProjectManagement extends OpenOaController{
 	);
 	
 	public function process() {
-		$this->model('openoa:ProjectManagement','ProjectManagement');
-				//->belongsTo('openoa:ProjectType','type','type','ProjectType');
+		$this->model('openoa:ProjectManagement','ProjectManagement')
+						->belongsTo('coresystem:user','responsibleperson','uid','user');
 		$this->ProjectManagement->load();
 		
 		//var_dump($this->ProjectManagement);exit;

@@ -57,6 +57,14 @@
 				<item id="Management_menu" title="我管理的项目" controller="org.opencomb.openoa.ProjectManagement.Management.MyManagementProject" />
 				<item id="add_menu" title="新建项目" controller="org.opencomb.openoa.ProjectManagement.Management.AddProject" />
 				<item id="type_menu" title="项目类别管理" controller="org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement" />
+				<item id="performance_menu" title="绩效统计" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" >
+					<item id="performance_menu_query" title="部门项目查询" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" />
+					<item id="performance_menu_depart" title="部门项目绩效" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCount" />
+					<item id="performance_menu_port" title="部门本月报表" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCurrentQuery" />
+					<item id="performance_plan" title="部门下月计划" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentNextQuery" />
+					<item id="performance_menu_person_port" title="本人本月报表" controller="org.opencomb.openoa.ProjectManagement.Performance.MyCurrentQuery" />
+					<item id="performance_menu_person_plan" title="本人下月计划" controller="org.opencomb.openoa.ProjectManagement.Performance.MyNextQuery" />
+				</item>	
 			</item>
 			<item id="inde4114x" title="个人办公" link="?c=org.opencomb.openoa.Dispatch.LargeUsers" perms.purview.name="openoa:DiaoDu">
 				<item id="DiaoDuXiTong_menu" title="调度系统(B/S软件)" controller="org.opencomb.openoa.shell.WaterShell&programName=dlsong&title=调度系统" />

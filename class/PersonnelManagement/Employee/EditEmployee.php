@@ -92,7 +92,7 @@ class EditEmployee extends OpenOaController{
 							->hasOne('coresystem:user','uid','uid','user')
 							->belongsTo('coresystem:group','department','gid','groups')
 							->belongsTo('openoa:PositionManagement','position','pid','position');
-		
+	
 		$aEmployeeModel->load($this->params['eid'] , 'uid');
 		$aPositionModel = Model::Create('openoa:PositionManagement');
 		$aPositionModel->load();
@@ -214,7 +214,7 @@ class EditEmployee extends OpenOaController{
 						,'phone' => $sPhone
 						,'status' => $sStatus
 		
-				) , "EmployeeManagement.uid =".$this->params['hide_eid']
+				) , "EmployeeManagement.uid =". $this->params['hide_eid']
 		);
 		
 		$this->model('coresystem:user')->update(
