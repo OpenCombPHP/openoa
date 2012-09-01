@@ -78,8 +78,21 @@ class AddProject extends OpenOaController{
 		$sContent = $this->params['content'];
 		$sPublisher = IdManager::singleton()->currentUserId();
 		$sResponsiblePerson = $this->params['hide_uid'];
-		$sAssignId = $this->params['hide_assign_uid'];
 		$sPurview = $this->params['purview'];
+		if(count($this->params['remind'])==2)
+		{
+			$sRemind = 3;
+		}else if(count($this->params['remind'])==1){
+			$arrRemind = $this->params['remind'];
+			if($arrRemind[0] == 1){
+				$sRemind = 1;
+			}else{
+				$sRemind = 2;
+			}
+		}else{
+			$sRemind = 0;
+		}
+		
 		$sDepartment = $this->params['department_select'];
 		
 		$this->model("openoa:ProjectManagement","project");
@@ -94,7 +107,7 @@ class AddProject extends OpenOaController{
 								,'publisher' => $sPublisher
 								,'responsibleperson' => $sResponsiblePerson
 								,'purview' => $sPurview
-								,'assignid' => $sAssignId
+								,'remind' => $sRemind
 								,'department' => $sDepartment
 							)		
 		);

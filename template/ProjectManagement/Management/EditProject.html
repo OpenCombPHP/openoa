@@ -86,8 +86,8 @@
 					 项目权限
 				</th>
 				<td>
-					<input name="edit_purview" type="radio" value='1'/>项目负责人
-					<input name="edit_purview" type="radio" value='1'/>所有人
+					<input name="edit_purview" type="radio" value='1' {=$sPurview=='1' ? 'checked':''}/>项目负责人
+					<input name="edit_purview" type="radio" value='2' {=$sPurview=='2' ? 'checked':''}/>所有人
 				</td>
 			</tr>
 			<tr>
@@ -100,10 +100,28 @@
 					 提醒接受人
 				</th>
 				<td>
-					<input name="edit_remind" type="checkbox"/>
-					分配人
-					<input name="edit_remind" type="checkbox"/>
-					责任人
+					<if '{=$sRemind}==0'>
+						<input name="edit_remind[]" type="checkbox" value="1"/>
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2"/>
+						责任人
+						<elseif '{=$sRemind}==1'/>
+						<input name="edit_remind[]" type="checkbox" value="1" checked/>
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2"/>
+						责任人
+						<elseif '{=$sRemind}==2'/>
+						<input name="edit_remind[]" type="checkbox" value="1" />
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2" checked/>
+						责任人
+						<elseif '{=$sRemind}==3'/>
+						<input name="edit_remind[]" type="checkbox" value="1" checked/>
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2" checked/>
+						责任人
+					</if>
+
 				</td>
 			</tr>
 			<tr>
@@ -140,7 +158,7 @@
 					</select>
 				</td>
 			</tr>
-		</table>{=$sResponsibleId}
+		</table>
 		<input type="hidden" name="hide_responsible_id" id="hide_responsible_id" value="{=$sResponsibleId}"/>
 		<input type="hidden" name="hide_pid" id="hide_pid" value="{=$pid}"/>
 		

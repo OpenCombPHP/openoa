@@ -77,6 +77,8 @@ class EditProject extends OpenOaController{
 		$this->view->variables()->set('sResponsibleName',$aProjectModel['user2.username']);
 		$this->view->variables()->set('sResponsibleId',$aProjectModel['responsibleperson']);
 		$this->view->variables()->set('sDepartment',$aProjectModel['department']);
+		$this->view->variables()->set('sPurview',$aProjectModel['purview']);
+		$this->view->variables()->set('sRemind',$aProjectModel['remind']);
 		$this->view->variables()->set('sStatus',$aProjectModel['status']);
 		$this->view->variables()->set('sRates',$aProjectModel['rates']);
 		
@@ -99,8 +101,20 @@ class EditProject extends OpenOaController{
 		$sDepartment = $this->params['department_select'];
 		$sPublisher = IdManager::singleton()->currentUserName();
 		$sResponsiblePerson = $this->params['hide_responsible_id'];
-		$sPurview = $this->params['purview'];
-		$sRemind = $this->params['remind'];
+		$sPurview = $this->params['edit_purview'];
+		if(count($this->params['edit_remind'])==2)
+		{
+			$sRemind = 3;
+		}else if(count($this->params['edit_remind'])==1){
+			$arrRemind = $this->params['edit_remind'];
+			if($arrRemind[0] == 1){
+				$sRemind = 1;
+			}else{
+				$sRemind = 2;
+			}
+		}else{
+			$sRemind = 0;
+		}
 		$sStatus = $this->params['status'];
 		$sRates = $this->params['rates'];
 		
@@ -115,8 +129,8 @@ class EditProject extends OpenOaController{
 					,'content' => $sContent
 					,'department' =>$sDepartment
 					,'reponsibleperson' => $sResponsiblePerson
-// 					,'ProjectManagement.purview' => $sPurview
-// 					,'ProjectManagement.remind' => $sRemind
+ 					,'purview' => $sPurview
+ 					,'remind' => $sRemind
 					,'status' => $sStatus
 					,'rates' => $sRates
 						
