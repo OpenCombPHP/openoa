@@ -20,12 +20,6 @@ class AddDepartment extends OpenOaController{
 									'class'=>'text',
 									'title'=>'部门名称',
 							),
-							array(
-									'id'=>'content',
-									'class'=>'text',
-									'type'=>'multiple',
-									'title'=>'部门描述',
-							),
 					)
 			),
 // 			'perms' => array (

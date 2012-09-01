@@ -59,7 +59,6 @@ class AddProject extends OpenOaController{
 	public function process() {
 		$this->view->variables()->set('sCurrentUser' ,IdManager::singleton()->currentUserName());
 		$this->view->variables()->set('sPublisher',IdManager::singleton()->currentUserId());
-		echo IdManager::singleton()->currentUserId();
 		$this->model('openoa:ProjectType','type');
 		$this->type->load();
 		$aDepatmentModel = Model::Create('coresystem:group');
@@ -76,7 +75,6 @@ class AddProject extends OpenOaController{
 		$sType = $this->params['type'];
 		$sStartTime = strtotime($this->params['starttime']);
 		$sEndTime = strtotime($this->params['endtime']);
-		//echo $sStartTime.' ddd '.$sStartTime;exit;
 		$sContent = $this->params['content'];
 		$sPublisher = IdManager::singleton()->currentUserId();
 		$sResponsiblePerson = $this->params['hide_uid'];

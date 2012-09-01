@@ -24,6 +24,11 @@ class MyNextQuery extends OpenOaController{
 	);
 	
 	public function process() {
+// 		echo strtotime('1970-01-01');
+// 		echo mktime(0,0,0,1,1,1970);exit;
+// 		$arrTest = $this->getCurrentTime();
+// 		echo strtotime('next month',$arrTest[0])."<br/>";
+// 		echo strtotime('2012-09-01',$arrTest[0]);exit;
 		//var_dump($this->getNextTime());exit; 
 		$arrNext = array();
 		$arrNext = $this->getNextTime();

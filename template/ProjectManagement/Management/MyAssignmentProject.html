@@ -1,7 +1,6 @@
 <lib name="jquery"/>
-<div id="divProjectManagement">
-	<h1>项目管理</h1>
-	<a href="?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject">添加项目</a>
+<div id="divMyPublisher">
+	<h1>我分配的项目</h1>
 	<table border="1">
 		<thead>
 			<tr>
@@ -9,19 +8,22 @@
 					项目名称
 				</th>
 				<th>
+					项目描述
+				</th>
+				<th>
 					项目负责人
+				</th>
+				<th>
+					项目进度
+				</th>
+				<th>
+					状态 
 				</th>
 				<th>
 					开始
 				</th>
 				<th>
 					结束
-				</th>
-				<th>
-					状态 
-				</th>
-				<th colspan="2">
-					操作
 				</th>
 			</tr>
 		</thead>
@@ -32,22 +34,32 @@
 						{=$aPro['name']}
 					</td>
 					<td>
-						{=$aPro['responsibleperson']}
+						{=$aPro['content']}
+					</td>
+					<td>
+						{=$aPro['user.username']}
+					</td>
+					<td>
+						{=$aPro['rates']}%
+					</td>
+					<td>
+						<if '{=$aPro['status']}==1'>
+							进行中
+							<elseif '{=$aPro['status']}==2'/>
+							终止
+							<elseif '{=$aPro['status']}==3'/>
+							完成
+							<elseif '{=$aPro['status']}==4'/>
+							暂停
+							<elseif '{=$aPro['status']}==5'/>
+							延迟
+						</if>
 					</td>
 					<td>
 						{=date('Y-m-d',$aPro['starttime'])}
 					</td>
 					<td>
 						{=date('Y-m-d',$aPro['endtime'])}
-					</td>
-					<td>
-						{=$aPro['name']}
-					</td>
-					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
-					</td>
-					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.DeleteProject&pid={=$aPro['pid']}">删除</a>
 					</td>
 				</tr>
 			</foreach>

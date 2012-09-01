@@ -28,6 +28,7 @@ class MyCurrentQuery extends OpenOaController{
 	);
 	
 	public function process() {
+
 		//echo IdManager::singleton()->currentUserId();exit;
 		//$this->view->variables()->set('sPublisher',IdManager::singleton()->currentUserId());
 		$arrCurrent = array();

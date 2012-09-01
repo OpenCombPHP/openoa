@@ -12,7 +12,7 @@ class DepartmentCurrentQuery extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门本月报表',
 			'view' => array (
-					'template' => 'ProjectManagement/Performance/DeparmentQuery.html',
+					'template' => 'ProjectManagement/Performance/DepartmentCurrentQuery.html',
 					'widgets'=>array(
 					)
 			),
@@ -41,6 +41,7 @@ class DepartmentCurrentQuery extends OpenOaController{
 	}
 	
 	public function form(){
+		
 	}
 
 	public function getCurrentTime(){

@@ -14,7 +14,7 @@ class DepartmentCount extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门项目绩效',
 			'view' => array (
-					'template' => 'ProjectManagement/Performance/DepartmentPerformanceCount.html',
+					'template' => 'ProjectManagement/Performance/DepartmentCount.html',
 					'widgets'=>array(
 					)
 			),
