@@ -5,11 +5,12 @@ use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
 use org\jecat\framework\lang\Exception;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class DepartmentManagement extends ControlPanel{
+class DepartmentManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门管理',
 			'view' => array (

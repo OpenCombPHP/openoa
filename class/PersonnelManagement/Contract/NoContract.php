@@ -4,11 +4,12 @@ namespace org\opencomb\openoa\PersonnelManagement\Contract;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class NoContract extends ControlPanel{
+class NoContract extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '添加职位',
 			'view' => array (
@@ -90,7 +91,7 @@ class NoContract extends ControlPanel{
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加员工成功") ;
-			$this->location('?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement');
+			$this->location('?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement');
 		}else{
 			$this->view->createMessage(Message::error,"添加员工失败") ;
 		}

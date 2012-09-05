@@ -20,7 +20,7 @@ class Punch extends OpenOaController
 	
 	public function process()
 	{
-	    $uid = IdManager::singleton()->currentId()->userId();
+	    $uid = IdManager::singleton()->currentId();
 	    
 	    $oModel = Model::create("openoa:attendance_detail"); 
 	    $oData = $oModel->load( array( $uid, date("Y-m-d")),array( 'uid', 'date'));

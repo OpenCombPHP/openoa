@@ -4,11 +4,12 @@ namespace org\opencomb\openoa\PersonnelManagement\Employee;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class DeleteEmployee extends ControlPanel{
+class DeleteEmployee extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门管理',
 			'view' => array (
@@ -37,6 +38,6 @@ class DeleteEmployee extends ControlPanel{
 			$this->createMessage(Message::success,"删除成功") ;
 		}
 		
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Employee.EmployeeManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement');
 	}
 }

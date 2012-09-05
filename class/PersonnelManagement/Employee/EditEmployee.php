@@ -4,11 +4,12 @@ namespace org\opencomb\openoa\PersonnelManagement\Employee;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class EditEmployee extends ControlPanel{
+class EditEmployee extends OpenOaController{
 	protected $arrConfig = array (
 			'title' => '编辑',
 			'view' => array (
@@ -91,7 +92,7 @@ class EditEmployee extends ControlPanel{
 							->hasOne('coresystem:user','uid','uid','user')
 							->belongsTo('coresystem:group','department','gid','groups')
 							->belongsTo('openoa:PositionManagement','position','pid','position');
-		
+	
 		$aEmployeeModel->load($this->params['eid'] , 'uid');
 		$aPositionModel = Model::Create('openoa:PositionManagement');
 		$aPositionModel->load();
@@ -213,7 +214,7 @@ class EditEmployee extends ControlPanel{
 						,'phone' => $sPhone
 						,'status' => $sStatus
 		
-				) , "EmployeeManagement.uid =".$this->params['hide_eid']
+				) , "EmployeeManagement.uid =". $this->params['hide_eid']
 		);
 		
 		$this->model('coresystem:user')->update(

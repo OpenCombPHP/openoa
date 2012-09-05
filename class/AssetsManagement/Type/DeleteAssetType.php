@@ -1,18 +1,19 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement;
+namespace org\opencomb\openoa\AssetsManagement\Type;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class DeleteProject extends ControlPanel{
+class DeleteAssetType extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门管理',
 			'view' => array (
-					'template' => 'ProjectManagement/DeleteProject.html',
+					'template' => 'AssetsManagement/Type/DeleteAssetType.html',
 			),
 // 			'perms' => array (
 // 					// 权限类型的许可
@@ -22,17 +23,13 @@ class DeleteProject extends ControlPanel{
 // 			)
 	);
 	
-	public function process() {
-		$this->model('openoa:ProjectManagement','ProjectManagement');
-		
-	
-		$nContract = $this->model('ProjectManagement')->delete('pid='.$this->params['pid']);
-
-		if($nContract)
+	public function process() {exit;
+		$aTypeModel = Model::Create('openoa:AssetType');
+		if($aTypeModel->delete('tid='.$this->params['tid']))
 		{
 			$this->createMessage(Message::success,"删除成功") ;
 		}
 		
-		$this->location('?c=org.opencomb.openoa.ProjectManagement.ProjectManagement');
+		$this->location('?c=org.opencomb.openoa.AssetTypeManagement.Type.AssetTypeManagement');
 	}
 }

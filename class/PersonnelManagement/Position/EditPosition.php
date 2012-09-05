@@ -5,11 +5,12 @@ use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
 use org\jecat\framework\lang\Exception;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class EditPosition extends ControlPanel{
+class EditPosition extends OpenOaController{
 	protected $arrConfig = array (
 			'title' => '编辑',
 			'view' => array (
@@ -60,7 +61,7 @@ class EditPosition extends ControlPanel{
 		}catch (Exception $e){
 			$this->messageQueue ()->create ( Message::error, "已存在此职位" );
 		}
-		$this->location('?c=org.opencomb.oa.PersonnelManagement.Position.PositionManagement');
+		$this->location('?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement');
 	}	
 	
 }

@@ -1,0 +1,182 @@
+<lib name='jquery'/>
+<msgqueue/>
+<div id="editProject">
+	<h1>编辑项目</h1>
+	<form method="post">
+		<table>
+			<tr>
+				<th>
+					项目名称:
+				</th>
+				<td>
+					<widget id="edit_name"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					项目类别:
+				</th>
+				<td>
+					<select name="edit_type">
+						<foreach for="$aProjectType" item="aType">
+							<option value="{=$aType['pid']}">{=$aType['type']}</option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					项目开始时间:
+				</th>
+				<td>
+					<widget id="edit_starttime"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					项目结束时间:
+				</th>
+				<td>
+					<widget id="edit_endtime"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					项目描述:
+				</th>
+				<td>
+					<textarea name="edit_content" id="edit_content" style="width:200px;height:200px"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2>项目人员设置</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 项目发布人
+				</th>
+				<td>
+					{=$sCurrentUser}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 部门
+				</th>
+				<td>
+					<select name="department_select">
+						<foreach for="$aDepatmentModel" item='aDep'>
+							<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 项目责任人
+				</th>
+				<td>
+					<input type="text" id="edit_selectid" disabled="disabled" style="background-color:white" value="{=$sResponsibleName}"/><a id="selectuser" href="#">选择</a>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 项目权限
+				</th>
+				<td>
+					<input name="edit_purview" type="radio" value='1' {=$sPurview=='1' ? 'checked':''}/>项目负责人
+					<input name="edit_purview" type="radio" value='2' {=$sPurview=='2' ? 'checked':''}/>所有人
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2>提醒设置</h2>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 提醒接受人
+				</th>
+				<td>
+					<if '{=$sRemind}==0'>
+						<input name="edit_remind[]" type="checkbox" value="1"/>
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2"/>
+						责任人
+						<elseif '{=$sRemind}==1'/>
+						<input name="edit_remind[]" type="checkbox" value="1" checked/>
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2"/>
+						责任人
+						<elseif '{=$sRemind}==2'/>
+						<input name="edit_remind[]" type="checkbox" value="1" />
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2" checked/>
+						责任人
+						<elseif '{=$sRemind}==3'/>
+						<input name="edit_remind[]" type="checkbox" value="1" checked/>
+						分配人
+						<input name="edit_remind[]" type="checkbox" value="2" checked/>
+						责任人
+					</if>
+
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 项目进度
+				</th>
+				<td>
+					<select name="rates">
+						<option value="0" {=$sRates== 0 ?'selected':''}>0%</option>
+						<option value="10" {=$sRates== 10 ?'selected':''}>10%</option>
+						<option value="20" {=$sRates== 20 ?'selected':''}>20%</option>
+						<option value="30" {=$sRates== 30 ?'selected':''}>30%</option>
+						<option value="40" {=$sRates== 40 ?'selected':''}>40%</option>
+						<option value="50" {=$sRates== 50 ?'selected':''}>50%</option>
+						<option value="60" {=$sRates== 60 ?'selected':''}>60%</option>
+						<option value="70" {=$sRates== 70 ?'selected':''}>70%</option>
+						<option value="80" {=$sRates== 80 ?'selected':''}>80%</option>
+						<option value="90" {=$sRates== 90 ?'selected':''}>90%</option>
+						<option value="100" {=$sRates== 100 ?'selected':''}>100%</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 项目状态
+				</th>
+				<td>
+					<select name="status">
+						<option value="1" {=$sStatus==1 ?'selected':''}>进行中</option>
+						<option value="2" {=$sStatus==2 ?'selected':''}>终止</option>
+						<option value="3" {=$sStatus==3 ?'selected':''}>完成</option>
+						<option value="4" {=$sStatus==4 ?'selected':''}>暂停</option>
+						<option value="5" {=$sStatus==5 ?'selected':''}>延迟</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="hide_responsible_id" id="hide_responsible_id" value="{=$sResponsibleId}"/>
+		<input type="hidden" name="hide_pid" id="hide_pid" value="{=$pid}"/>
+		
+		<input type="submit" value="提交" />
+	</form>
+</div>
+<script>
+	jQuery('#selectuser').click(
+		
+		function selectEmployee(){
+			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
+			console.log(uid);
+			if(uid!=null)
+			{
+				var arrValue = uid.split('.');
+				jquery('#edit_selectid').attr("value",arrValue[1]);
+				jquery('#hide_responsible_id').attr("value",arrValue[0]);
+			}
+		}		
+	);
+</script>
