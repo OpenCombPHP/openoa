@@ -1,0 +1,19 @@
+<msgqueue for="$theController->messageQueue()" />
+<form id="form1" name="form1" method="post" action="">
+  <p>收件人：
+    <input name="toname" type="text" id="toname" value="{=$row['userinfo.name']}" />
+</p>
+  <p>标题：
+    <input name="title" type="text" id="title" value="{=$row['title']}" />
+  </p>
+  <p>内容：
+    <textarea name="content" id="content">{=$row['content']}</textarea>
+  </p>
+  <p>
+    <input name="draft" type="hidden" id="draft" value="0" />
+    <input name="id" type="hidden" id="id" value="{=$theParams->get('id')}" />
+  </p>
+  <p>
+    <input type="submit" name="Submit" value="提交" />
+  </p>
+</form>
