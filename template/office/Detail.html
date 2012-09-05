@@ -1,0 +1,10 @@
+  <p>标题：
+  {=$row['title']}
+  </p>
+  <p>内容：
+    {=$row['content']}
+  </p>
+  <p>草稿：
+    {=org\opencomb\openoa\office\Tools::getDraftStr($row['draft'])}
+</p>
+  <p>&nbsp;</p>

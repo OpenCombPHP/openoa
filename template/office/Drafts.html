@@ -1,0 +1,14 @@
+<table border="1">
+  <tr>
+    <td>姓名</td>
+    <td>工号</td>
+    <td>标题</td>
+  </tr>
+  <foreach for='$list' item="aData">
+    <tr>
+      <td>{=$aData['userinfo.name']}</td>
+      <td>{=$aData['userinfo.eid']}</td>
+      <td><a href="?c=org.opencomb.openoa.office.DraftsDetail&id={=$aData['id']}">{=$aData['title']}</a></td>
+    </tr>
+  </foreach>
+</table>
