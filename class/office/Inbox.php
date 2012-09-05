@@ -24,6 +24,11 @@ class Inbox extends OpenOaController
 	
 	public function process()
 	{
+	    if(IdManager::singleton()->currentId() == null)
+	    {
+            $this->messageQueue ()->create ( Message::success, "请登陆" );
+            $this->location('?c=login');
+	    }
 	    $uid = IdManager::singleton()->currentId()->userId();
 	    
 	    $oModel = Model::create("openoa:message");
