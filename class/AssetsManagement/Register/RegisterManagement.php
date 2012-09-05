@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement\Performance;
+namespace org\opencomb\openoa\AssetsManagement\Register;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -10,11 +10,11 @@ use org\jecat\framework\db\DB;
 /*
  * 成本对比分析
  * */
-class EditAsset extends OpenOaController{
+class RegisterManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门项目绩效',
 			'view' => array (
-					'template' => 'ProjectManagement/Performance/DepartmentCount.html',
+					'template' => 'AssetsManagement/Register/RegisterManagement.html',
 					'widgets'=>array(
 					)
 			),
@@ -43,9 +43,6 @@ class EditAsset extends OpenOaController{
 							,'complete' => 	$aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status=3')
 							,'nocomplete' => $aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status<>3')
 			);
-			//echo $aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status=3');
-			//echo $aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status<>3');exit;
-			
 		}
 		$this->view->variables()->set('arrCount',$arrCount) ;
 		

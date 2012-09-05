@@ -10,11 +10,11 @@ use org\jecat\framework\db\DB;
 /*
  * 成本对比分析
  * */
-class EditAsset extends OpenOaController{
+class RegisterManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门项目绩效',
 			'view' => array (
-					'template' => 'ProjectManagement/Performance/DepartmentCount.html',
+					'template' => 'ProjectManagement/Performance/RegisterManagement.html',
 					'widgets'=>array(
 					)
 			),
