@@ -1,7 +1,6 @@
 <lib name="jquery"/>
 <div id="divProjectManagement">
 	<h1>项目管理</h1>
-	<a href="?c=org.opencomb.openoa.ProjectManagement.AddProject">添加项目</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -32,7 +31,7 @@
 						{=$aPro['name']}
 					</td>
 					<td>
-						{=$aPro['responsibleperson']}
+						{=$aPro['user.username']}
 					</td>
 					<td>
 						{=date('Y-m-d',$aPro['starttime'])}
@@ -41,17 +40,26 @@
 						{=date('Y-m-d',$aPro['endtime'])}
 					</td>
 					<td>
-						{=$aPro['name']}
+						<if '{=$aPro['status']}==1'>
+							进行中
+							<elseif '{=$aPro['status']}==2'/>
+							终止
+							<elseif '{=$aPro['status']}==3'/>
+							完成
+							<elseif '{=$aPro['status']}==4'/>
+							暂停
+							<elseif '{=$aPro['status']}==5'/>
+							延迟
+						</if>
 					</td>
 					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
 					</td>
 					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.DeleteProject&pid={=$aPro['pid']}">删除</a>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.DeleteProject&pid={=$aPro['pid']}">删除</a>
 					</td>
 				</tr>
 			</foreach>
 		</tbody>
 	</table>
-
 </div>

@@ -1,0 +1,69 @@
+<lib name="jquery"/>
+<div id="divMyManagement">
+	<h1>我管理的项目</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>
+					项目名称
+				</th>
+				<th>
+					项目描述
+				</th>
+				<th>
+					项目负责人
+				</th>
+				<th>
+					项目进度
+				</th>
+				<th>
+					状态 
+				</th>
+				<th>
+					开始
+				</th>
+				<th>
+					结束
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<foreach for="$aProjectManagement" item="aPro">
+				<tr>
+					<td>
+						{=$aPro['name']}
+					</td>
+					<td>
+						{=$aPro['content']}
+					</td>
+					<td>
+						{=$aPro['user.username']}
+					</td>
+					<td>
+						{=$aPro['rates']}%
+					</td>
+					<td>
+						<if '{=$aPro['status']}==1'>
+							进行中
+							<elseif '{=$aPro['status']}==2'/>
+							终止
+							<elseif '{=$aPro['status']}==3'/>
+							完成
+							<elseif '{=$aPro['status']}==4'/>
+							暂停
+							<elseif '{=$aPro['status']}==5'/>
+							延迟
+						</if>
+					</td>
+					<td>
+						{=date('Y-m-d',$aPro['starttime'])}
+					</td>
+					<td>
+						{=date('Y-m-d',$aPro['endtime'])}
+					</td>
+				</tr>
+			</foreach>
+		</tbody>
+	</table>
+
+</div>

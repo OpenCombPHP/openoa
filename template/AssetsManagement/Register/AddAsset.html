@@ -1,0 +1,32 @@
+<msgqueue/>
+<div id="divAddAseet">
+	<h1>添加资产</h1>
+	<form method="post">
+		<table>
+			<tr>
+				<th>固定资产编号</th>
+				<td><input name="sid" /></td>
+			</tr>
+			<tr>
+				<th>固定资产名称</th>
+				<td><input name="name" /></td>
+			</tr>
+			<tr>
+				<th>固定资产类别</th>
+				<td>
+					<select name="type">
+						<foreach  for="$aTypeModel" item="aType">
+							<option value="{=$aType['tid']}">{=$aType['name']}</option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>状态</th>
+				<td>在库</td>
+			</tr>	
+		</table>
+		<input type="submit" value="提交"/>
+		<input type="submit" value="取消"/>
+	</form>
+</div>

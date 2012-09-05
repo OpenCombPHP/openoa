@@ -1,0 +1,40 @@
+<lib name="jquery"/>
+<div id="divDepartmentCount">
+	<h1>部门项目绩效</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>
+					部门
+				</th>
+				<th>
+					负责人
+				</th>
+				<th>
+					完成项目数
+				</th>
+				<th>
+					未完成项目数
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<foreach for="$arrCount" item="aCount">
+				<tr>
+					<td>
+						{=$aCount['department']}
+					</td>
+					<td>
+						{=$aCount['responsible']}
+					</td>
+					<td>
+						{=$aCount['complete']}
+					</td>
+					<td>
+						{=$aCount['nocomplete']}
+					</td>
+				</tr>
+			</foreach>
+		</tbody>
+	</table>
+</div>

@@ -1,6 +1,6 @@
-<lib name='jquery'/>
-<div id="editProject">
-	<h1>编辑项目</h1>
+<lib name="jquery"/>
+<div id="addProject">
+	<h1>新建项目</h1>
 	<form method="post">
 		<table>
 			<tr>
@@ -8,7 +8,7 @@
 					项目名称:
 				</th>
 				<td>
-					<widget id="eidt_name"/>
+					<widget id="name"/>
 				</td>
 			</tr>
 			<tr>
@@ -16,7 +16,7 @@
 					项目类别:
 				</th>
 				<td>
-					<select name="edit_type">
+					<select name="type">
 						<foreach for="$aProjectType" item="aType">
 							<option value="{=$aType['pid']}">{=$aType['type']}</option>
 						</foreach>
@@ -28,7 +28,7 @@
 					项目开始时间:
 				</th>
 				<td>
-					<widget id="edit_starttime"/>
+					<widget id="starttime"/>
 				</td>
 			</tr>
 			<tr>
@@ -36,7 +36,7 @@
 					项目结束时间:
 				</th>
 				<td>
-					<widget id="edit_endtime"/>
+					<widget id="endtime"/>
 				</td>
 			</tr>
 			<tr>
@@ -44,7 +44,7 @@
 					项目描述:
 				</th>
 				<td>
-					<textarea id="edit_content" style="width:200px;height:200px"></textarea>
+					<textarea id="content" style="width:200px;height:200px"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -57,7 +57,19 @@
 					 项目发布人
 				</th>
 				<td>
-					{=$sCurrentUser}
+					{=$sCurrentUser}<input type='hidden' name="hide_publisher_id" id="hide_publisher_id" value="{=$sPublisher}"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					 部门
+				</th>
+				<td>
+					<select name="department_select">
+						<foreach for="$aDepatmentModel" item='aDep'>
+							<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
+						</foreach>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -65,7 +77,7 @@
 					 项目责任人
 				</th>
 				<td>
-					<input type="text" id="edit_selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="#">选择</a>
+					<label><input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="javascript:void(0)">选择</a></label>
 				</td>
 			</tr>
 			<tr>
@@ -73,8 +85,8 @@
 					 项目权限
 				</th>
 				<td>
-					<input name="edit_purview" type="radio" value='1'/>项目负责人
-					<input name="edit_purview" type="radio" value='1'/>所有人
+					<input name="purview" type="radio" value='1'/>项目负责人
+					<input name="purview" type="radio" value='2'/>所有人
 				</td>
 			</tr>
 			<tr>
@@ -87,14 +99,15 @@
 					 提醒接受人
 				</th>
 				<td>
-					<input name="edit_remind" type="checkbox"/>
+					<input name="remind[]" type="checkbox" value="1"/>
 					分配人
-					<input name="edit_remind" type="checkbox"/>
+					<input name="remind[]" type="checkbox" value="2"/>
 					责任人
 				</td>
 			</tr>
 		</table>
 		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
+		<input type="hidden" name="hide_assign_uid" id="hide_uid" value="{=$sAssignUid}"/>
 		<input type="submit" value="提交" />
 	</form>
 </div>
@@ -102,12 +115,12 @@
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
+			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement",document);
 			console.log(uid);
 			if(uid!=null)
 			{
 				var arrValue = uid.split('.');
-				jquery('#edit_selectid').attr("value",arrValue[1]);
+				jquery('#selectid').attr("value",arrValue[1]);
 				jquery('#hide_uid').attr("value",arrValue[0]);
 			}
 		}		

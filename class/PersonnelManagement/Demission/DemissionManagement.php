@@ -4,11 +4,12 @@ namespace org\opencomb\openoa\PersonnelManagement\Demission;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class DemissionManagement extends ControlPanel{
+class DemissionManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '离职管理',
 			'view' => array (

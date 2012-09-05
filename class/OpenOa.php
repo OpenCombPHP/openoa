@@ -27,7 +27,7 @@ class OpenOa extends Extension
 		
 		OpenOaController::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
 		
-		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+		//ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
 		
 		//设置首页控制器
 		$aAccessRouter = AccessRouter::singleton() ;
@@ -35,6 +35,7 @@ class OpenOa extends Extension
 	
 	static public function buildControlPanelMenu(array & $arrConfig)
 	{
+		/*
 		$arrConfig['item:openoapersonel'] = array(
 				'title'=> '人事管理' ,
 				'link' => '?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
@@ -82,13 +83,29 @@ class OpenOa extends Extension
 		
 		$arrConfig['item:openoaproject'] = array(
 				'title'=> '项目管理' ,
-				'link' => '?c=org.opencomb.openoa.ProjectManagement.AddProject' ,
-				'query' => 'c=org.opencomb.openoa.ProjectManagement.AddProject' ,
+				'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
+				'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
 				'menu' => 1,
 				'item:depatmentmanagement' => array(
 						'title' => '项目管理' ,
-						'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement' ,
-						'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement' ,
+						'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.ProjectManagement' ,
+						'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.ProjectManagement' ,
+						'menu' => 1,
+						'item:myassignmentproject' => array(
+								'title' => '我分配的项目' ,
+								'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyAssignmentProject' ,
+								'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyAssignmentProject' ,
+						),
+						'item:mymanagementproject' => array(
+								'title' => '我管理的项目' ,
+								'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyManagementProject' ,
+								'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyManagementProject' ,
+						),
+						'item:addproject' => array(
+								'title' => '新建项目' ,
+								'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
+								'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
+						),
 				),
 				'item:projecttype' => array(
 						'title' => '项目类别管理' ,
@@ -97,7 +114,7 @@ class OpenOa extends Extension
 				),
 				'item:employeemanagement' => array(
 						'title' => '员工管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
+						'link' => '?c=org.opencomb		.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
 						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
 				),
 				'item:demissionmanagement' => array(
@@ -122,7 +139,8 @@ class OpenOa extends Extension
 								'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
 						)
 				),
+				
 		);
-		
+		*/
 	}
 }

@@ -1,0 +1,63 @@
+<lib name="jquery"/>
+<msgqueue/>
+<div id="divAssetDisManagement">
+	<h1>资产报废</h1>
+	<form name="formSearch" method="post">
+		<table>
+			<tr>
+				<td>资产编号</td>
+				<td><input name="search_key" type="text"/></td>
+				<td><input type="submit" value="搜索"/></td>
+			</tr>
+		</table>
+	</form>
+	<form method="post">
+		<table border="1">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="checkAll"/>全选</th>
+					<th>资产编号</th>
+					<th>资产名称</th>
+					<th>所属类别</th>
+					<th>资产状态</th>
+					<th colspan="2">操作</th>
+				</tr>
+			</thead>
+			<tboday>
+				<foreach for="$aAssetManagementModel" item="aAss">
+					<tr>
+						<td><input type="checkbox" name="id_key[]" value="{=$aAss['aid']}"/></td>
+						<td>{=$aAss['sid']}</td>
+						<td>{=$aAss['name']}</td>
+						<td>{=$aAss['type.name']}</td>
+						<td>
+							<if '{=$aAss['status']}==1'>
+								在库
+								<elseif '{=$aAss['status']}==2'/>
+								领用
+								<elseif '{=$aAss['status']}==3'/>
+								维修
+								<elseif '{=$aAss['status']}==4'/>
+								报废
+							</if>
+						</td>
+						<td><a href="?c=org.opencomb.openoa.AssetsManagement.Management.EditAsset&aid={=$aAss['aid']}">编辑</a></td>
+						<td><a href="?c=org.opencomb.openoa.AssetsManagement.Management.DeleteAsset&aid={=$aAss['aid']}">删除</a></td>
+					</tr>
+				</foreach>
+			</tboday>
+		</table>
+		<input type="submit" name="报废"/>
+	</form>
+</div>
+<script>
+	jquery("#checkAll").toggle(
+		function(){
+			jquery("input:checkbox").attr('checked',true);
+		},
+		function(){
+			jquery("input:checkbox").attr('checked',false);
+		}
+	)
+
+</script>

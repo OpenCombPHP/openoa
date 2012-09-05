@@ -8,9 +8,10 @@
 		<div class="w_head_top">
 			<div class="w_head_topmenu">
 				<ul>
-					<li><a href="#">人事管理</a></li>
-					<li><a href="#">项目管理</a></li>
-					<li><a href="?c=org.opencomb.openoa.office.Inbox">个人办公</a></li>
+					<li><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">人事管理</a></li>
+					<li><a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">项目管理</a></li>
+					<li><a href="?c=org.opencomb.openoa.AssetsManagement.Register.AddAsset">固定资产</a></li>
+					<li><a href="#">个人办公</a></li>
 					<li><a href="?c=org.opencomb.openoa.Attendance.Punch">考勤管理</a></li>
 					<li><a href="#">审批流转</a></li>
 					<li><a href="#">收发公文</a></li>
@@ -43,11 +44,36 @@
 		<!--div class="w_head_logo"></div>
 		<div class="w_head_menu">
 			<widget id="mainMenu" type='menu' attr.showDepths="1">
-			<item id="index" title="人事管理" controller="org.opencomb.openoa.index.Index" perms.purview.name="openoa:JingLi">
-				<item id="4444" title="财务月报" link="?c=org.opencomb.openoa.output.BaoGao" />
+			<item id="PersonnelManagement" title="人事管理" link="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">
+				<item id="Overtime_menu" title="部门管理" controller="org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement" />
+				<item id="Position_menu" title="职位管理" controller="org.opencomb.openoa.PersonnelManagement.Position.PositionManagement" />
+				<item id="Employee_menu" title="员工管理" controller="org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement" />
+				<item id="Demission_menu" title="离职管理" controller="org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement" />
+				<item id="Personnel_menu" title="人事合同管理" controller="org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" />
+				<item id="Personnel_menu" title="未签合同管理" controller="org.opencomb.openoa.PersonnelManagement.Contract.NoContract" />
 			</item>
-			<item id="inde44x" title="项目管理" link="?c=org.opencomb.openoa.output.BaoGao" perms.purview.name="openoa:CaiWu">
-				<item id="YongYou_menu" title="用友(C/S软件)" controller="org.opencomb.openoa.shell.WaterShell&programName=portal&title=用友" />
+			<item id="ProjectManagement" title="项目管理" link="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">
+				<item id="ProjectManagement_menu" title="项目管理" controller="org.opencomb.openoa.ProjectManagement.Management.ProjectManagement" />
+				<item id="Assign_menu" title="我分配的项目" controller="org.opencomb.openoa.ProjectManagement.Management.MyAssignmentProject" />
+				<item id="Management_menu" title="我管理的项目" controller="org.opencomb.openoa.ProjectManagement.Management.MyManagementProject" />
+				<item id="add_menu" title="新建项目" controller="org.opencomb.openoa.ProjectManagement.Management.AddProject" />
+				<item id="type_menu" title="项目类别管理" controller="org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement" />
+				<item id="performance_menu" title="绩效统计" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" >
+					<item id="performance_menu_query" title="部门项目查询" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" />
+					<item id="performance_menu_depart" title="部门项目绩效" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCount" />
+					<item id="performance_menu_port" title="部门本月报表" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCurrentQuery" />
+					<item id="performance_plan" title="部门下月计划" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentNextQuery" />
+					<item id="performance_menu_person_port" title="本人本月报表" controller="org.opencomb.openoa.ProjectManagement.Performance.MyCurrentQuery" />
+					<item id="performance_menu_person_plan" title="本人下月计划" controller="org.opencomb.openoa.ProjectManagement.Performance.MyNextQuery" />
+				</item>	
+			</item>
+			<item id="AssetsManagement" title="固定资产" link="?c=org.opencomb.openoa.AssetsManagement.AssetsManagement.AssetsManagement">
+				<item id="AssetManagement_menu" title="固定资产" controller="org.opencomb.openoa.AssetsManagement.Management.AssetsManagement" />
+				<item id="AssetRegister_menu" title="资产登记" controller="org.opencomb.openoa.AssetsManagement.Register.AddAsset" />
+				<item id="AssetDiscard_menu" title="资产报废" controller="org.opencomb.openoa.AssetsManagement.Discard.AssetDiscardManagement" />
+				<item id="AssetTypeManagement_menu" title="类别维护" controller="org.opencomb.openoa.AssetsManagement.Type.AssetTypeManagement">
+					<item id="AddAssetType" title="添加类别" controller="org.opencomb.openoa.AssetsManagement.Type.AddAssetType"/>
+				</item>
 			</item>
 			<item id="inde4114x" title="个人办公" link="?c=org.opencomb.openoa.office.Inbox" perms.purview.name="openoa:Inbox">
 				<item id="Inbox_menu" title="消息信箱" controller="org.opencomb.openoa.office.Inbox">
