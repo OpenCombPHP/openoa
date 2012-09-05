@@ -10,6 +10,7 @@
 				<ul>
 					<li><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">人事管理</a></li>
 					<li><a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">项目管理</a></li>
+					<li><a href="?c=org.opencomb.openoa.AssetsManagement.Register.AddAsset">固定资产</a></li>
 					<li><a href="#">个人办公</a></li>
 					<li><a href="?c=org.opencomb.openoa.Attendance.Punch">考勤管理</a></li>
 					<li><a href="#">审批流转</a></li>
@@ -65,6 +66,14 @@
 					<item id="performance_menu_person_port" title="本人本月报表" controller="org.opencomb.openoa.ProjectManagement.Performance.MyCurrentQuery" />
 					<item id="performance_menu_person_plan" title="本人下月计划" controller="org.opencomb.openoa.ProjectManagement.Performance.MyNextQuery" />
 				</item>	
+			</item>
+			<item id="AssetsManagement" title="固定资产" link="?c=org.opencomb.openoa.AssetsManagement.AssetsManagement.AssetsManagement">
+				<item id="AssetManagement_menu" title="固定资产" controller="org.opencomb.openoa.AssetsManagement.Management.AssetsManagement" />
+				<item id="AssetRegister_menu" title="资产登记" controller="org.opencomb.openoa.AssetsManagement.Register.AddAsset" />
+				<item id="AssetDiscard_menu" title="资产报废" controller="org.opencomb.openoa.AssetsManagement.Discard.AssetDiscardManagement" />
+				<item id="AssetTypeManagement_menu" title="类别维护" controller="org.opencomb.openoa.AssetsManagement.Type.AssetTypeManagement">
+					<item id="AddAssetType" title="添加类别" controller="org.opencomb.openoa.AssetsManagement.Type.AddAssetType"/>
+				</item>
 			</item>
 			<item id="inde4114x" title="个人办公" link="?c=org.opencomb.openoa.Dispatch.LargeUsers" perms.purview.name="openoa:DiaoDu">
 				<item id="DiaoDuXiTong_menu" title="调度系统(B/S软件)" controller="org.opencomb.openoa.shell.WaterShell&programName=dlsong&title=调度系统" />

@@ -65,4 +65,100 @@
 			</foreach>
 		</tbody>
 	</table>
+	<table id="datas">
+		<tr id="testtotal">
+			<td id="testtd1"></td>
+			<td id="testtd2"></td>
+			<td id="testtd3"></td>
+			<td id="testtd4"></td>
+			<td id="testtd5"></td>
+		</tr>
+		<tr>
+			<td id="user" >
+				<select id="testse" multiple ondblclick="moveUser()">
+					<option value="1">1sdf</option>
+					<option value="2">2sdf</option>
+					<option value="3">3sdf</option>
+					<option value="4">4sdf</option>
+					<option value="5">5sdf</option>
+					<option value="6">6sdf</option>
+					<option value="7">7sdf</option>
+					<option value="8">8</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+	<input type='text' name='testvalue' id="testvalue"/>
+	<input type="button" value="test" onclick="test()"/>
 </div>
+<script>
+	function moveUser(){
+		var row = jquery('#user select option:selected').clone();
+		console.log(row);
+		row.appendTo("#testse");
+		//console.log(jquery('#user select option:selected').remove());
+	}
+	
+	function test(){
+		/*
+		jquery.ajax({
+			url : "?c=org.opencomb.openoa.ProjectManagement.Performance.MyNextQueryTest&testid=2",
+			//data:"testid=2";		
+			//dataType : "jsonp",
+			//jsonp : "callback",
+			//jsonpCallback : "useCheck",
+			success : function(data){
+				console.log(data);
+			}
+		})
+		*/
+		setInterval(test2,'2000');
+		/*
+		setInterval("
+		jquery.ajax({
+			//url : '?c=org.opencomb.openoa.ProjectManagement.Performance.MyNextQueryTest&testid=2',
+			success : function(data){
+				console.log(data);
+			}
+		})",'5000');
+		*/
+		
+	}
+	
+	function test2(){
+		jquery.ajax({
+			url : '?c=org.opencomb.openoa.ProjectManagement.Performance.MyNextQueryTest&testid=2',
+			dataType:"json",
+			success : function(data){
+
+				var ds = new Array();
+				ds[0] = 1;
+				ds[1] = 22;
+				jquery.each(data,function(i,v){
+				var row = jquery("#testtotal").clone();
+				console.log(row);
+				
+					row.find('#testtd1').text(v);
+					row.find('#testtd2').text(v);
+					row.find('#testtd3').text(v);
+					row.find('#testtd4').text(v);
+					row.find('#testtd5').text(v);
+					row.appendTo("#datas");
+					
+				//console.log(i);
+				})
+				/*
+				console.log(ds);
+				for(dd in data)
+				{
+					jquery('#testvalue').attr('value',data.dd);
+					console.log(dd);
+				}
+				*/
+
+				//var dd = {'sdfdsf':iiwesdf,'sdfsde':kksddf, 'sdfsf':{}}
+			}
+		});
+	}
+
+</script>
