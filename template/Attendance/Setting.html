@@ -17,6 +17,19 @@
   <option value="18:00" {=$pm=='18:00'?'selected="selected"':''}>18:00</option>
 </select>
 </p>
+  <p>午休时间：
+    <select name="wxs" id="wxs">
+      <option value="11:00" {=$wxs=='11:00'?'selected="selected"':''}>11:00</option>
+      <option value="11:30" {=$wxs=='11:30'?'selected="selected"':''}>11:30</option>
+      <option value="12:00" {=$wxs=='12:00'?'selected="selected"':''}>12:00</option>
+    </select>
+    ~
+    <select name="wxt" id="wxt">
+        <option value="13:00" {=$wxt=='13:00'?'selected="selected"':''}>13:00</option>
+        <option value="13:30" {=$wxt=='13:30'?'selected="selected"':''}>13:30</option>
+        <option value="14:00" {=$wxt=='14:00'?'selected="selected"':''}>14:00</option>
+      </select>
+  </p>
   <p>
     <input type="submit" name="Submit" value="保存" />
   </p>

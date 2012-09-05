@@ -26,14 +26,25 @@ class Setting extends OpenOaController
 	    
 	    if($_POST)
 	    {
-	        $am = $aSetting->setItem("/",'openoa_am',$_POST['am']);
-	        $pm = $aSetting->setItem("/",'openoa_pm',$_POST['pm']);
+	        $aSetting->setItem("/",'openoa_am',$_POST['am']);
+	        $aSetting->setItem("/",'openoa_pm',$_POST['pm']);
+	        $aSetting->setItem("/",'openoa_wxs',$_POST['wxs']);
+	        $aSetting->setItem("/",'openoa_wxt',$_POST['wxt']);
+	        
+	        $this->view()->variables()->set('message', "保存成功" );
+	        $this->location('?c=org.opencomb.openoa.Attendance.Setting');
 	    }else {
 	        $am = $aSetting->item("/",'openoa_am');
 	        $pm = $aSetting->item("/",'openoa_pm');
+	        $wxs = $aSetting->item("/",'openoa_wxs');
+	        $wxt = $aSetting->item("/",'openoa_wxt');
+	        
+    	    $this->view()->variables()->set('am', $am );
+    	    $this->view()->variables()->set('pm', $pm );
+    	    $this->view()->variables()->set('wxs', $wxs );
+    	    $this->view()->variables()->set('wxt', $wxt );
 	    }
 	    
-	    $this->view()->variables()->set('am', $am );
-	    $this->view()->variables()->set('pm', $pm );
+	    
 	}
 }

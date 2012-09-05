@@ -50,5 +50,6 @@ class Punch extends OpenOaController
 	        
 	    }
 	    $this->view()->variables()->set('message', "打卡成功" );
+        $this->location('?c=org.opencomb.openoa.Attendance.Punch');
 	}
 }

@@ -10,7 +10,7 @@
 				<ul>
 					<li><a href="#">人事管理</a></li>
 					<li><a href="#">项目管理</a></li>
-					<li><a href="#">个人办公</a></li>
+					<li><a href="?c=org.opencomb.openoa.office.Inbox">个人办公</a></li>
 					<li><a href="?c=org.opencomb.openoa.Attendance.Punch">考勤管理</a></li>
 					<li><a href="#">审批流转</a></li>
 					<li><a href="#">收发公文</a></li>
@@ -49,8 +49,28 @@
 			<item id="inde44x" title="项目管理" link="?c=org.opencomb.openoa.output.BaoGao" perms.purview.name="openoa:CaiWu">
 				<item id="YongYou_menu" title="用友(C/S软件)" controller="org.opencomb.openoa.shell.WaterShell&programName=portal&title=用友" />
 			</item>
-			<item id="inde4114x" title="个人办公" link="?c=org.opencomb.openoa.Dispatch.LargeUsers" perms.purview.name="openoa:DiaoDu">
-				<item id="DiaoDuXiTong_menu" title="调度系统(B/S软件)" controller="org.opencomb.openoa.shell.WaterShell&programName=dlsong&title=调度系统" />
+			<item id="inde4114x" title="个人办公" link="?c=org.opencomb.openoa.office.Inbox" perms.purview.name="openoa:Inbox">
+				<item id="Inbox_menu" title="消息信箱" controller="org.opencomb.openoa.office.Inbox">
+					<item id="Send_menu" title="发送消息" controller="org.opencomb.openoa.office.Send" />
+					<item id="Inbox_menu" title="已收消息" controller="org.opencomb.openoa.office.Inbox" >
+						<query bean.type="string">org.opencomb.openoa.office.Detail&fromMenu=Inbox</query>
+					</item>
+					<item id="Receiver_menu" title="已发消息" controller="org.opencomb.openoa.office.Outbox" >
+						<query bean.type="string">org.opencomb.openoa.office.Detail&fromMenu=Outbox</query>
+					</item>
+					<item id="Drafts_menu" title="草稿箱" controller="org.opencomb.openoa.office.Drafts" >
+						<query bean.type="string">org.opencomb.openoa.office.DraftsDetail</query>
+					</item>
+				</item>
+				<item id="fileInbox_menu" title="文件收发" controller="org.opencomb.openoa.office.fileInbox">
+					<item id="fileSend_menu" title="发送文件" controller="org.opencomb.openoa.office.fileSend" />
+					<item id="Receiver_menu" title="已发文件" controller="org.opencomb.openoa.office.fileOutbox" >
+						<query bean.type="string">org.opencomb.openoa.office.fileDetail&fromMenu=fileOutbox</query>
+					</item>
+					<item id="fileInbox_menu" title="接收文件" controller="org.opencomb.openoa.office.fileInbox" >
+						<query bean.type="string">org.opencomb.openoa.office.fileDetail&fromMenu=fileInbox</query>
+					</item>
+				</item>
 			</item>
 			<item id="indeAtt1" title="考勤管理" link="?c=org.opencomb.openoa.Attendance.Punch" perms.purview.name="openoa:Punch">
 				<item id="Punch_menu" title="打卡签到" controller="org.opencomb.openoa.Attendance.Punch" />

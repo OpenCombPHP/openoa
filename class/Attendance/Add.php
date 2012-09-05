@@ -2,11 +2,11 @@
 
 namespace org\opencomb\openoa\Attendance;
 
+use org\opencomb\openoa\controller\OpenOaController;
+
 use org\jecat\framework\auth\IdManager;
 
 use org\jecat\framework\mvc\model\Model;
-
-use org\opencomb\openoa\controller\OpenOaController;
 
 class Add extends OpenOaController
 {
