@@ -1,5 +1,5 @@
 <?php
-namespace org\opencomb\openoa\ProjectManagement\Performance;
+namespace org\opencomb\openoa\AssetsManagement\Register;
 
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
@@ -10,11 +10,11 @@ use org\jecat\framework\db\DB;
 /*
  * 成本对比分析
  * */
-class EditAsset extends OpenOaController{
+class RegisterManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门项目绩效',
 			'view' => array (
-					'template' => 'ProjectManagement/Performance/DepartmentCount.html',
+					'template' => 'AssetsManagement/Register/RegisterManagement.html',
 					'widgets'=>array(
 					)
 			),
@@ -27,37 +27,10 @@ class EditAsset extends OpenOaController{
 	);
 	
 	public function process() {
-		$this->model('openoa:ProjectManagement','ProjectManagement')
-					->group('responsibleperson')
- 					->belongsTo('coresystem:user','responsibleperson','uid','user')
-					->belongsTo('coresystem:group','department','gid','group')
- 					->order('department');
-		$this->ProjectManagement->load();
-		$arrCount = array();
-		foreach($this->ProjectManagement as $aProject)
-		{
-			$aTempModel = Model::create('openoa:ProjectManagement');
-			$arrCount[] = array(
-							'department' => $aProject['group.name']
-							,'responsible' => 	$aProject['user.username']
-							,'complete' => 	$aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status=3')
-							,'nocomplete' => $aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status<>3')
-			);
-			//echo $aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status=3');
-			//echo $aTempModel->queryCount('responsibleperson='.$aProject['responsibleperson'].' and '.'status<>3');exit;
-			
-		}
-		$this->view->variables()->set('arrCount',$arrCount) ;
-		
-// 		$sPrefix = DB::singleton()->tableNamePrefix();
-// 		$sSQLcomplete = "select *,count(*) from ".$sPrefix."openoa_ProjectManagement"." group by responsibleperson"." order by department";
-// 		$aComplete = DB::singleton()->query($sSQLcomplete);
-// 		var_dump($aComplete->fetchAll());exit;
-		
-// 		$sSQLNocomplete = "select *,count(*) from ".$sPrefix."openoa_ProjectManagement"." where status<>3"." group by responsibleperson"." order by department";
-// 		$aNoComplete = DB::singleton()->query($sSQLNocomplete);
-// 		var_dump($aNoComplete->fetchAll());
-
+		$aAssetManagementModel = Model::create('openoa:AssetManagement')
+								->belongsTo('openoa:AssetType','type','tid','type');
+		$aAssetManagementModel->load();
+		$this->view->variables()->set('aAssetManagementModel',$aAssetManagementModel);
 		$this->doActions();
 	}
 	
