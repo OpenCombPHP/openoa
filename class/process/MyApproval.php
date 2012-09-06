@@ -12,19 +12,19 @@ use org\jecat\framework\mvc\model\Model;
 
 use org\opencomb\openoa\controller\OpenOaController;
 
-class Task extends OpenOaController
+class MyApproval extends OpenOaController
 {
 	protected $arrConfig = array
 	(
 		'title'=>'',
 		'view' => array (
-				'template' => 'process/Task.html',
+				'template' => 'process/MyApproval.html',
 		),
 	) ;
 	
 	public function process()
 	{
-	    $oModel = Model::create("openoa:Process_Task");
+	    $oModel = Model::create("openoa:Process_Node");
 	    $oList = $oModel->load( );
 	    $this->view()->variables()->set('list', $oList );
 	}

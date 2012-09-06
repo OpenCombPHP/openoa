@@ -1,12 +1,14 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <table border="1">
   <tr>
-    <td>流程名称</td>
+    <td>功能</td>
     <td>&nbsp;</td>
   </tr>
   <foreach for='$list' item="aData">
     <tr>
       <td>{=$aData['name']}</td>
-      <td><a href="?c=org.opencomb.openoa.process.Node&tid={=$aData['id']}">步骤</a></td>
+      <td><a href="?c=org.opencomb.openoa.process.CreateRecord&tid={=$aData['id']}">申请</a></td>
     </tr>
   </foreach>
 </table>

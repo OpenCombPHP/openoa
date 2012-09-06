@@ -12,13 +12,13 @@ use org\jecat\framework\mvc\model\Model;
 
 use org\opencomb\openoa\controller\OpenOaController;
 
-class Task extends OpenOaController
+class Record extends OpenOaController
 {
 	protected $arrConfig = array
 	(
 		'title'=>'',
 		'view' => array (
-				'template' => 'process/Task.html',
+				'template' => 'process/Record.html',
 		),
 	) ;
 	

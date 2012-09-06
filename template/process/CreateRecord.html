@@ -1,0 +1,30 @@
+<form id="form1" name="form1" method="post" action="">
+  <b>{=$row['name']}</b>
+  <p>姓名：{=org\jecat\framework\auth\IdManager::singleton()->currentId()->username()}</p>
+  <p>标题：
+    <input name="uid" type="text" id="uid"/>
+  </p>
+  <p>开始日期：
+    <input name="date1" type="text" id="date1" value="{=date('Y-m-d H:i:s')}"/>
+  </p>
+  <p>结束日期：
+    <input name="date2" type="text" id="date2" value="{=date('Y-m-d H:i:s')}"/>
+  </p>
+  <p>备注：
+    <textarea name="explain" id="explain"></textarea>
+  </p>
+  <p>流程说明：</p>
+  <table border="1">
+  <foreach for='$list' item="aData" key="key">
+    <tr>
+      <td>第{=$key+1}步</td>
+      <td>{=$aData['name']}</td>
+      </tr>
+  </foreach>
+</table>
+  <p>
+    <input type="submit" name="Submit" value="申请" />
+    <input name="tid" type="hidden" id="tid" value="{=$theParams->get('tid')}" />
+    <input name="uid" type="hidden" id="uid" value="{=org\jecat\framework\auth\IdManager::singleton()->currentId()->userId()}" />
+  </p>
+</form>

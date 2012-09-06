@@ -1,0 +1,37 @@
+<form id="form1" name="form1" method="post" action="">
+  <p>步骤名称：
+    <input name="name" type="text" id="name" value="{=$row['name']}"/>
+  </p>
+  <p>审核部门：
+  
+<select name="gid" id="gid">
+<option value="0">请选择</option>
+<foreach for='$GroupModel' item="aData">
+<option value="{=$aData['gid']}" {=$aData['gid']==$row['gid']?'selected="selected"':''}>{=$aData['name']}</option>
+</foreach>
+</select>
+  </p>
+  <p>&nbsp;</p>
+  <p>状态一：
+    <input name="status[1]" type="text" id="status[1]" value="{=@$row['stat'][0]['name']}"/>
+    <input name="sid[1]" type="hidden" id="sid[1]" value="{=@$row['stat'][0]['id']}" />
+  </p>
+  <p>状态二：
+    <input name="status[2]" type="text" id="status[2]" value="{=@$row['stat'][1]['name']}"/>
+    <input name="sid[2]" type="hidden" id="sid[2]" value="{=@$row['stat'][1]['id']}" />
+  </p>
+  <p>状态三：
+    <input name="status[3]" type="text" id="status[3]" value="{=@$row['stat'][2]['name']}"/>
+    <input name="sid[3]" type="hidden" id="sid[3]" value="{=@$row['stat'][2]['id']}" />
+  </p>
+  <p>状态四：
+    <input name="status[4]" type="text" id="status[4]" value="{=@$row['stat'][3]['name']}"/>
+    <input name="sid[4]" type="hidden" id="sid[4]" value="{=@$row['stat'][3]['id']}" />
+  </p>
+  <p>&nbsp;  </p>
+  <p>
+    <input type="submit" name="Submit" value="保存" />
+    <input name="tid" type="hidden" id="tid" value="{=$theParams->get('tid')}" />
+    <input name="nid" type="hidden" id="nid" value="{=$theParams->get('nid')}" />
+  </p>
+  </form>
