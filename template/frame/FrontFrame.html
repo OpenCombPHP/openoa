@@ -108,8 +108,12 @@
 				<item id="Overtime_menu" title="加班规则" controller="org.opencomb.openoa.Attendance.Overtime" />
 			</item>
 			<item id="inde4w44x" title="审批流转" link="?c=org.opencomb.openoa.process.Record" perms.purview.name="openoa:Record">
-				<item id="Record_menu" title="功能申请" controller="org.opencomb.openoa.process.Record" />
-				<item id="MyRecord_menu" title="我的申请" controller="org.opencomb.openoa.process.MyRecord" />
+				<item id="Record_menu" title="功能申请" controller="org.opencomb.openoa.process.Record" >
+					<query bean.type="string">c=org.opencomb.openoa.process.CreateRecord</query>
+				</item>
+				<item id="MyRecord_menu" title="我的申请" controller="org.opencomb.openoa.process.MyRecord" >
+					<query bean.type="string">c=org.opencomb.openoa.process.DetailsRecord</query>
+				</item>
 				<item id="MyApproval_menu" title="待我审核" controller="org.opencomb.openoa.process.MyApproval" />
 			</item>
 			</widget>

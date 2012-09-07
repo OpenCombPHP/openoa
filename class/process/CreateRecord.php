@@ -62,6 +62,7 @@ class CreateRecord extends OpenOaController
 	    $this->view()->variables()->set('row', $oRow );
 	    
 	    $oModel = Model::create("openoa:Process_Node");
+	    $oModel->hasOne('coresystem:group',"gid","gid");
 	    $oList = $oModel->load( array( $this->params()->get('tid')) , array('tid'));
 	    $this->view()->variables()->set('list', $oList );
 	}

@@ -13,7 +13,7 @@
       <td>{=$aData['task.name']}</td>
       <td>{=$aData['title']}</td>
       <td>{=$aData['user.name']}</td>
-      <td>{=$aData['node.name']}</td>
+      <td>{=$aData['statname']}</td>
       <td><foreach for='$aData["stat"]' item="aData2">[<a href="?c=org.opencomb.openoa.process.ActionApproval&rid={=$aData['id']}&tid={=$aData['tid']}&sid={=$aData2['id']}">{=$aData2['name']}</a>] </foreach></td>
     </tr>
   </foreach>

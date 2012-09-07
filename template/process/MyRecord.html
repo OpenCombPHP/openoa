@@ -5,12 +5,14 @@
       <td>类型</td>
       <td>标题</td>
       <td>状态</td>
+      <td>&nbsp;</td>
     </tr>
   <foreach for='$list' item="aData">
     <tr>
       <td>{=$aData['task.name']}</td>
       <td>{=$aData['title']}</td>
-      <td>{=$aData['node.name']}</td>
+      <td>{=$aData['stat']}</td>
+      <td><a href="?c=org.opencomb.openoa.process.DetailsRecord&rid={=$aData['id']}">审核记录</a></td>
     </tr>
   </foreach>
 </table>

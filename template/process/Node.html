@@ -1,15 +1,10 @@
 <table border="1">
-  <tr>
-    <td>&nbsp;</td>
-    <td>审核步骤</td>
-    <td>&nbsp;</td>
-  </tr>
   <foreach for='$list' item="aData" key="key">
     <tr>
       <td>第{=$key+1}步</td>
-      <td>{=$aData['name']}</td>
+      <td>{=$aData['group.name']}</td>
       <td><a href="?c=org.opencomb.openoa.process.EditNode&tid={=$theParams->get('tid')}&nid={=$aData['id']}">修改</a></td>
     </tr>
   </foreach>
 </table>
-<p><a href="?c=org.opencomb.openoa.process.CreateNode&tid={=$aData['id']}">增加审核步骤</a></p>
+<p><a href="?c=org.opencomb.openoa.process.CreateNode&tid={=$theParams->get('tid')}">增加审核步骤</a></p>

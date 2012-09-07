@@ -27,7 +27,9 @@ class Node extends ControlPanel
 	public function process()
 	{
 	    $oModel = Model::create("openoa:Process_Node");
+	    $oModel->hasOne('coresystem:group',"gid","gid");
 	    $oList = $oModel->load( );
+	    
 	    $this->view()->variables()->set('list', $oList );
 	}
 }

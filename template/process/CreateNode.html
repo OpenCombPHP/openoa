@@ -1,15 +1,12 @@
 <form id="form1" name="form1" method="post" action="">
-  <p>步骤名称：
-    <input name="name" type="text" id="name"/>
-  </p>
   <p>审核部门：
   
-<select name="gid" id="gid">
-<option value="0" selected="selected">请选择</option>
-<foreach for='$GroupModel' item="aData">
-<option value="{=$aData['gid']}">{=$aData['name']}</option>
-</foreach>
-</select>
+    <select name="gid" id="gid">
+      <option value="0" selected="selected">请选择</option>
+      <foreach for='$GroupModel' item="aData">
+        <option value="{=$aData['gid']}">{=$aData['name']}</option>
+      </foreach>
+    </select>
   </p>
   <p>&nbsp;</p>
   <p>状态一：
@@ -17,7 +14,7 @@
   </p>
   <p>状态二：
     <input name="status[2]" type="text" id="status[2]" value="不同意"/>
-</p>
+  </p>
   <p>状态三：
     <input name="status[3]" type="text" id="status[3]" value="打回"/>
   </p>

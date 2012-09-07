@@ -37,7 +37,7 @@ class EditNode extends ControlPanel
 	        $oNodeModel->update( array(
 	                'gid'=>$_POST['gid'],
 	                'name'=>$_POST['name'],
-	        ),"id = ".$_POST['tid']);
+	        ),"id = ".$_POST['nid']);
 	        
 	        for($i = 1; $i <= 4; $i++)
 	        {
@@ -46,6 +46,7 @@ class EditNode extends ControlPanel
 	                $oStatusModel = Model::create("openoa:Process_Status");
 	                $oStatusModel->update( array(
 	                        'name'=>$_POST['status'][$i],
+	                        'tonid'=>$_POST['tonid'][$i],
 	                ),"id = ".$_POST['sid'][$i]);
 	            }
 	        }
@@ -60,6 +61,12 @@ class EditNode extends ControlPanel
         $oModel->hasMany("openoa:Process_Status","id","nid","stat");
 	    $oRow = $oModel->load( array( $this->params()->get('nid')) , array('id'));
 	    $this->view()->variables()->set('row', $oRow );
+	    
+	    // 节点
+	    $oNodeModel = Model::create("openoa:Process_Node");
+	    $oNodeModel->hasOne('coresystem:group',"gid","gid");
+	    $oNodeModel = $oNodeModel->load( array( $this->params()->get('tid')) , array('tid'));
+	    $this->view()->variables()->set('listNode', $oNodeModel );
 	    
 	    // 群组
 	    $aGroupModel = Model::create('coresystem:group');

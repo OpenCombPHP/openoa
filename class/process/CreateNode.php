@@ -49,13 +49,19 @@ class CreateNode extends ControlPanel
 	                $oStatusModel->insert( array(
 	                        'nid'=>$nid,
 	                        'name'=>$_POST['status'][$i],
+	                        'tonid'=>0,
 	                ));
 	            }
 	        }
 	        
             $this->messageQueue ()->create ( Message::success, "成功" );
-            $this->location('?c=org.opencomb.openoa.process.Node&tid='.$_POST['tid']);
+            $this->location('?=org.opencomb.openoa.process.Node&tid='.$this->params()->get('tid'));
 	    }
+	    
+	    // 节点
+	    $oNodeModel = Model::create("openoa:Process_Node");
+	    $oNodeModel = $oNodeModel->load( array( $this->params()->get('tid')) , array('tid'));
+	    $this->view()->variables()->set('listNode', $oNodeModel );
 	    
 	    // 群组
 	    $aGroupModel = Model::create('coresystem:group');
