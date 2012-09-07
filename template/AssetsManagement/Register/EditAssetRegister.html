@@ -1,0 +1,40 @@
+<msgqueue/>
+<div id="divEditAseetRegister">
+	<h1>编辑资产登记</h1>
+	<form method="post">
+		<table>
+			<tr>
+				<th>固定资产编号</th>
+				<td><input name="edit_sid" value="{=$aAssetModel['sid']}"/></td>
+			</tr>
+			<tr>
+				<th>固定资产名称</th>
+				<td><input name="edit_name" value="{=$aAssetModel['name']}"/></td>
+			</tr>
+			<tr>
+				<th>固定资产类别</th>
+				<td>
+					<select name="edit_type">
+						<foreach  for="$aTypeModel" item="aType">
+							<option value="{=$aType['tid']}" {=$aAssetModel['type'] == $aType['tid'] ?'selected' :''}>{=$aType['name']}</option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>状态</th>
+				<td>
+					<select name="edit_status">
+						<option value="1" {=$aAssetModel['status'] == 1 ?'selected' :''}>在库</option>
+						<option value="2" {=$aAssetModel['status'] == 2 ?'selected' :''}>领用</option>
+						<option value="3" {=$aAssetModel['status'] == 3 ?'selected' :''}>维修</option>
+						<option value="4" {=$aAssetModel['status'] == 4 ?'selected' :''}>报废</option>
+					</select>				
+				</td>
+			</tr>	
+		</table>
+		<input type="hidden" value="{=$aAssetModel['aid']}" name="edit_hide_aid"/>
+		<input type="submit" value="提交"/>
+		<input type="submit" value="取消"/>
+	</form>
+</div>
