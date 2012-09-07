@@ -47,6 +47,8 @@ class ActionApproval extends OpenOaController
 	        'datetime'=>date("Y-m-d H:i:s"),        
         ));
 	    
+	    $this->messageQueue ()->create ( Message::success, "成功" );
+	    $this->location('?c=org.opencomb.openoa.process.MyApproval');
 	    
 	}
 }

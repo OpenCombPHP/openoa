@@ -36,7 +36,6 @@ class EditNode extends ControlPanel
 	        $oNodeModel = Model::create("openoa:Process_Node");
 	        $oNodeModel->update( array(
 	                'gid'=>$_POST['gid'],
-	                'name'=>$_POST['name'],
 	        ),"id = ".$_POST['nid']);
 	        
 	        for($i = 1; $i <= 4; $i++)

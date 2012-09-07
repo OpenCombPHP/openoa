@@ -39,11 +39,11 @@ class MyRecord extends OpenOaController
 	            $aGroupModel->load($oList[$i]['node.gid'],'gid');
 	            $oList[$i]['stat'] = "等待(".$aGroupModel['name'].")审核";
 	        }elseif($oList[$i]['nowNid'] == "-1"){
-	            $oList[$i]['stat'] = "完成";
+	            $oList[$i]['stat'] = "结束(完成)";
 	        }elseif($oList[$i]['nowNid'] == "-2"){
-	            $oList[$i]['stat'] = "拒绝";
+	            $oList[$i]['stat'] = "结束(拒绝)";
 	        }elseif($oList[$i]['nowNid'] == "-3"){
-	            $oList[$i]['stat'] = "终止";
+	            $oList[$i]['stat'] = "结束(终止)";
 	        }
 	        
 	    }

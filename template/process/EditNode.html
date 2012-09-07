@@ -15,11 +15,11 @@
   下一步骤
   <select name="tonid[1]" id="tonid[1]">
 	<foreach for='$listNode' item="aData">
-	<option value="{=$aData['gid']}" {=@$row['stat'][0]['tonid']==$aData['gid']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
+	<option value="{=$aData['id']}" {=@$row['stat'][0]['tonid']==$aData['id']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
 	</foreach>
-    <option value="-3" {=@$row['stat'][0]['tonid']=='-3'?'selected="selected"':""}>终止</option>
-    <option value="-2" {=@$row['stat'][0]['tonid']=='-2'?'selected="selected"':""}>拒绝</option>
-    <option value="-1" {=@$row['stat'][0]['tonid']=='-1'?'selected="selected"':""}>完成</option>
+    <option value="-3" {=@$row['stat'][0]['tonid']=='-3'?'selected="selected"':""}>结束(终止)</option>
+    <option value="-2" {=@$row['stat'][0]['tonid']=='-2'?'selected="selected"':""}>结束(拒绝)</option>
+    <option value="-1" {=@$row['stat'][0]['tonid']=='-1'?'selected="selected"':""}>结束(完成)</option>
   </select>
   </p>
   <p>状态二：
@@ -28,11 +28,11 @@
   下一步骤
   <select name="tonid[2]" id="tonid[2]">
 	<foreach for='$listNode' item="aData">
-	<option value="{=$aData['gid']}" {=@$row['stat'][1]['tonid']==$aData['gid']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
+	<option value="{=$aData['id']}" {=@$row['stat'][1]['tonid']==$aData['id']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
 	</foreach>
-    <option value="-3" {=@$row['stat'][1]['tonid']=='-3'?'selected="selected"':""}>终止</option>
-    <option value="-2" {=@$row['stat'][1]['tonid']=='-2'?'selected="selected"':""}>拒绝</option>
-    <option value="-1" {=@$row['stat'][1]['tonid']=='-1'?'selected="selected"':""}>完成</option>
+    <option value="-3" {=@$row['stat'][1]['tonid']=='-3'?'selected="selected"':""}>结束(终止)</option>
+    <option value="-2" {=@$row['stat'][1]['tonid']=='-2'?'selected="selected"':""}>结束(拒绝)</option>
+    <option value="-1" {=@$row['stat'][1]['tonid']=='-1'?'selected="selected"':""}>结束(完成)</option>
   </select>
 </p>
   <p>状态三：
@@ -41,11 +41,11 @@
   下一步骤
   <select name="tonid[3]" id="tonid[3]">
 	<foreach for='$listNode' item="aData">
-	<option value="{=$aData['gid']}" {=@$row['stat'][2]['tonid']==$aData['gid']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
+	<option value="{=$aData['id']}" {=@$row['stat'][2]['tonid']==$aData['id']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
 	</foreach>
-    <option value="-3" {=@$row['stat'][2]['tonid']=='-3'?'selected="selected"':""}>终止</option>
-    <option value="-2" {=@$row['stat'][2]['tonid']=='-2'?'selected="selected"':""}>拒绝</option>
-    <option value="-1" {=@$row['stat'][2]['tonid']=='-1'?'selected="selected"':""}>完成</option>
+    <option value="-3" {=@$row['stat'][2]['tonid']=='-3'?'selected="selected"':""}>结束(终止)</option>
+    <option value="-2" {=@$row['stat'][2]['tonid']=='-2'?'selected="selected"':""}>结束(拒绝)</option>
+    <option value="-1" {=@$row['stat'][2]['tonid']=='-1'?'selected="selected"':""}>结束(完成)</option>
   </select>
 </p>
   <p>状态四：
@@ -54,11 +54,11 @@
   下一步骤
   <select name="tonid[4]" id="tonid[4]">
 	<foreach for='$listNode' item="aData">
-	<option value="{=$aData['gid']}" {=@$row['stat'][3]['tonid']==$aData['gid']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
+	<option value="{=$aData['id']}" {=@$row['stat'][3]['tonid']==$aData['id']?'selected="selected"':""}>{=$aData['group.name']}审核</option>
 	</foreach>
-    <option value="-3" {=@$row['stat'][3]['tonid']=='-3'?'selected="selected"':""}>终止</option>
-    <option value="-2" {=@$row['stat'][3]['tonid']=='-2'?'selected="selected"':""}>拒绝</option>
-    <option value="-1" {=@$row['stat'][3]['tonid']=='-1'?'selected="selected"':""}>完成</option>
+    <option value="-3" {=@$row['stat'][3]['tonid']=='-3'?'selected="selected"':""}>结束(终止)</option>
+    <option value="-2" {=@$row['stat'][3]['tonid']=='-2'?'selected="selected"':""}>结束(拒绝)</option>
+    <option value="-1" {=@$row['stat'][3]['tonid']=='-1'?'selected="selected"':""}>结束(完成)</option>
   </select>
 </p>
   <p>&nbsp;  </p>

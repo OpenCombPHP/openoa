@@ -38,10 +38,22 @@ class DetailsRecord extends OpenOaController
 	        
 	        if($aData[$i]['type'] == "node")
 	        {
-	            $oRecordNodeModel = Model::create("openoa:Process_Node");
-	            $oRecordNodeModel->hasOne('coresystem:group',"gid","gid");
-	            $oRecordNodeModel->load( array( $aData[$i]['ids']) , array('id'));
-	            $aData[$i]['name'] = "第".$setp."布：".$oRecordNodeModel['group.name'];
+	            if($aData[$i]['ids'] > 0)
+	            {
+    	            $oRecordNodeModel = Model::create("openoa:Process_Node");
+    	            $oRecordNodeModel->hasOne('coresystem:group',"gid","gid");
+    	            $oRecordNodeModel->load( array( $aData[$i]['ids']) , array('id'));
+	                $aData[$i]['name'] = "第".$setp."步：".$oRecordNodeModel['group.name'];
+	            }else{
+	                if($aData[$i]['ids'] == "-1"){
+	                    $aData[$i]['name'] = "第".$setp."步：结束(完成)";
+	                }elseif($aData[$i]['ids'] == "-2"){
+	                    $aData[$i]['name'] = "第".$setp."步：结束(拒绝)";
+	                }elseif($aData[$i]['ids'] == "-3"){
+	                    $aData[$i]['name'] = "第".$setp."步：结束(终止)";
+	                }
+	            }
+	            
 	            $setp++;
 	        }
 	        if($aData[$i]['type'] == "status")
