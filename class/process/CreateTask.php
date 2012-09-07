@@ -2,6 +2,8 @@
 
 namespace org\opencomb\openoa\process;
 
+use org\opencomb\coresystem\mvc\controller\ControlPanel;
+
 use org\opencomb\platform\ext\Extension;
 
 use org\jecat\framework\message\Message;
@@ -12,7 +14,7 @@ use org\jecat\framework\mvc\model\Model;
 
 use org\opencomb\openoa\controller\OpenOaController;
 
-class CreateTask extends OpenOaController
+class CreateTask extends ControlPanel
 {
 	protected $arrConfig = array
 	(

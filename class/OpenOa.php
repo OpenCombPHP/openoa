@@ -25,9 +25,9 @@ class OpenOa extends Extension
 	public function load()
 	{	
 		
-		OpenOaController::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+		//OpenOaController::registerMenuHandler( array(__CLASS__,'buildOpenOaControllerMenu') ) ;
 		
-		//ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
+		ControlPanel::registerMenuHandler( array(__CLASS__,'buildControlPanelMenu') ) ;
 		
 		//设置首页控制器
 		$aAccessRouter = AccessRouter::singleton() ;
@@ -35,112 +35,26 @@ class OpenOa extends Extension
 	
 	static public function buildControlPanelMenu(array & $arrConfig)
 	{
-		/*
 		$arrConfig['item:openoapersonel'] = array(
-				'title'=> '人事管理' ,
-				'link' => '?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
-				'query' => 'c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
+				'title'=> '流程管理' ,
+				'link' => '?c=org.opencomb.openoa.process.Task' ,
+				'query' => 'c=org.opencomb.openoa.process.Task' ,
 				'menu' => 1,
-				'item:depatmentmanagement' => array(
-						'title' => '部门管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
+				'item:CreateTask' => array(
+						'title' => '新建流程' ,
+						'link' => '?c=org.opencomb.openoa.process.CreateTask' ,
+						'query' => 'c=org.opencomb.openoa.process.CreateTask' ,
 				),
-				'item:positionmanagement' => array(
-						'title' => '职位管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement' ,
-				),
-				'item:employeemanagement' => array(
-						'title' => '员工管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
-				),
-				'item:demissionmanagement' => array(
-						'title' => '离职管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
-						'menu' => 1,
-						'item:demissiondefinition' => array(
-							'title' => '离职流程定义' ,
-							'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition' ,
-							'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition' ,
-						)
-				),
-				'item:personnelcontractmanagement' => array(
-						'title' => '人事合同管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
-						'menu' => 1,
-						'item:notsignedcontract' => array(
-							'title' => '未签合同管理' ,
-							'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
-							'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
-						)
+				'item:Task' => array(
+						'title' => '流程管理' ,
+						'link' => '?c=org.opencomb.openoa.process.Task' ,
+						'query' => array(
+					            'c=org.opencomb.openoa.process.CreateNode',
+						        'c=org.opencomb.openoa.process.EditNode' ,
+						        'c=org.opencomb.openoa.process.Node' ,
+				        ) ,
 				),
 
 		);
-		
-		$arrConfig['item:openoaproject'] = array(
-				'title'=> '项目管理' ,
-				'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
-				'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
-				'menu' => 1,
-				'item:depatmentmanagement' => array(
-						'title' => '项目管理' ,
-						'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.ProjectManagement' ,
-						'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.ProjectManagement' ,
-						'menu' => 1,
-						'item:myassignmentproject' => array(
-								'title' => '我分配的项目' ,
-								'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyAssignmentProject' ,
-								'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyAssignmentProject' ,
-						),
-						'item:mymanagementproject' => array(
-								'title' => '我管理的项目' ,
-								'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyManagementProject' ,
-								'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.MyManagementProject' ,
-						),
-						'item:addproject' => array(
-								'title' => '新建项目' ,
-								'link' => '?c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
-								'query' => 'c=org.opencomb.openoa.ProjectManagement.ProjectManagement.AddProject' ,
-						),
-				),
-				'item:projecttype' => array(
-						'title' => '项目类别管理' ,
-						'link' => '?c=org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement' ,
-						'query' => 'c=org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement' ,
-				),
-				'item:employeemanagement' => array(
-						'title' => '员工管理' ,
-						'link' => '?c=org.opencomb		.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement' ,
-				),
-				'item:demissionmanagement' => array(
-						'title' => '离职管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement' ,
-						'menu' => 1,
-						'item:demissiondefinition' => array(
-								'title' => '离职流程定义' ,
-								'link' => '?c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition' ,
-								'query' => 'c=org.opencomb.openoa.PersonnelManagement.Demission.DemissionDefinition' ,
-						)
-				),
-				'item:personnelcontractmanagement' => array(
-						'title' => '人事合同管理' ,
-						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
-						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement' ,
-						'menu' => 1,
-						'item:notsignedcontract' => array(
-								'title' => '未签合同管理' ,
-								'link' => '?c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
-								'query' => 'c=org.opencomb.openoa.PersonnelManagement.Contract.NoContract' ,
-						)
-				),
-				
-		);
-		*/
 	}
 }

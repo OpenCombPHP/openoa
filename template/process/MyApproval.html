@@ -1,0 +1,20 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border="1">
+    <tr>
+      <td>类型</td>
+      <td>标题</td>
+      <td>姓名</td>
+      <td>状态</td>
+      <td>&nbsp;</td>
+    </tr>
+  <foreach for='$list' item="aData">
+    <tr>
+      <td>{=$aData['task.name']}</td>
+      <td>{=$aData['title']}</td>
+      <td>{=$aData['user.name']}</td>
+      <td>{=$aData['node.name']}</td>
+      <td><foreach for='$aData["stat"]' item="aData2">[<a href="?c=org.opencomb.openoa.process.ActionApproval&rid={=$aData['id']}&tid={=$aData['tid']}&sid={=$aData2['id']}">{=$aData2['name']}</a>] </foreach></td>
+    </tr>
+  </foreach>
+</table>

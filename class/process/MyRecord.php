@@ -24,8 +24,13 @@ class MyRecord extends OpenOaController
 	
 	public function process()
 	{
-	    $oModel = Model::create("openoa:Process_Node");
-	    $oList = $oModel->load( );
+	    $uid = IdManager::singleton()->currentId()->userId();
+	    
+	    $oRecordModel = Model::create("openoa:Process_Record");
+	    $oRecordModel->hasOne("openoa:Process_Task" ,"tid","id","task");
+	    $oRecordModel->hasOne("openoa:Process_Node" ,"nowNid","id","node");
+	    $oList = $oRecordModel->load( array($uid), array("uid"));
+	    
 	    $this->view()->variables()->set('list', $oList );
 	}
 }

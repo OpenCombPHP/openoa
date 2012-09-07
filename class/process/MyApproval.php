@@ -24,8 +24,23 @@ class MyApproval extends OpenOaController
 	
 	public function process()
 	{
-	    $oModel = Model::create("openoa:Process_Node");
-	    $oList = $oModel->load( );
+	    $uid = IdManager::singleton()->currentId()->userId();
+	    
+	    $oGroupModel = Model::create("coresystem:group_user_link");
+	    $oGroupModel->load($uid,"uid");
+	    $aUGroup = array();
+	    foreach ($oGroupModel as $rGroup){
+	        $aUGroup[] = $rGroup['gid'];
+	    }
+	    
+	    $oRecordModel = Model::create("openoa:Process_Record");
+	    $oRecordModel->hasOne("openoa:EmployeeManagement" ,"uid","uid","user");
+	    $oRecordModel->hasOne("openoa:Process_Task" ,"tid","id","task");
+	    $oRecordModel->hasOne("openoa:Process_Node" ,"nowNid","id","node");
+	    $oRecordModel->hasMany("openoa:Process_Status" ,"nowNid","nid","stat");
+	    $oRecordModel->where("node.gid in(".implode(",", $aUGroup).")");
+	    $oList = $oRecordModel->load( );
+	    
 	    $this->view()->variables()->set('list', $oList );
 	}
 }

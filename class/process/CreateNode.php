@@ -2,6 +2,8 @@
 
 namespace org\opencomb\openoa\process;
 
+use org\opencomb\coresystem\mvc\controller\ControlPanel;
+
 use org\jecat\framework\db\DB;
 
 use org\jecat\framework\mvc\model\Category;
@@ -16,7 +18,7 @@ use org\jecat\framework\mvc\model\Model;
 
 use org\opencomb\openoa\controller\OpenOaController;
 
-class CreateNode extends OpenOaController
+class CreateNode extends ControlPanel
 {
 	protected $arrConfig = array
 	(

@@ -1,0 +1,16 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border="1">
+    <tr>
+      <td>类型</td>
+      <td>标题</td>
+      <td>状态</td>
+    </tr>
+  <foreach for='$list' item="aData">
+    <tr>
+      <td>{=$aData['task.name']}</td>
+      <td>{=$aData['title']}</td>
+      <td>{=$aData['node.name']}</td>
+    </tr>
+  </foreach>
+</table>
