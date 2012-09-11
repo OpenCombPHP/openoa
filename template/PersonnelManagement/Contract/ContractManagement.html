@@ -6,23 +6,34 @@
 				<tr>
 					<th>合同编号</th>
 					<th>员工姓名</th>
-					<th>有效期始</th>
-					<th>有效期止</th>
+					<th>开始日期</th>
+					<th>结束日期</th>
 					<th>到期提醒</th>
 					<th colspan="2">操作</th>
 				</tr>
 				<foreach for="$aContractModel" item="aCon">
-					<if "$aCon['remindtime']>=$sNow">
-						
-						<tr class="" style="background-color:yellow">
-							<th width="100px">{=$aCon['cid']}</th>
-							<th>{=$aCon['user.username']}</th>
-							<th>{=date('Y-m-d',$aCon['starttime'])}</th>
-							<th>{=date('Y-m-d',$aCon['endtime'])}</th>{=time()}
-							<th>{=(time()-$aCon['remindtime'])/3600/24}天</th>
-							<th><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.EditContract&id={=$aCon['id']}">修改</a></th>
-							<th><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.DeleteContract&id={=$aCon['id']}">删除</a></th>
-						</tr>
+					<if "$aCon['endtime']>=$sNow">
+						<if "$aCon['remindtime']<=$sNow">
+							<tr class="" style="background-color:yellow">
+								<th width="100px">{=$aCon['cid']}</th>
+								<th>{=$aCon['user.username']}</th>
+								<th>{=date('Y-m-d',$aCon['starttime'])}</th>
+								<th>{=date('Y-m-d',$aCon['endtime'])}</th>
+								<th>{=($aCon['endtime']-$sNow)/3600/24}天</th>
+								<th><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.EditContract&id={=$aCon['id']}">修改</a></th>
+								<th><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.DeleteContract&id={=$aCon['id']}">删除</a></th>
+							</tr>
+							<else/>
+							<tr>
+								<th width="100px">{=$aCon['cid']}</th>
+								<th>{=$aCon['user.username']}</th>
+								<th>{=date('Y-m-d',$aCon['starttime'])}</th>
+								<th>{=date('Y-m-d',$aCon['endtime'])}</th>
+								<th></th>
+								<th><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.EditContract&id={=$aCon['id']}">修改</a></th>
+								<th><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.DeleteContract&id={=$aCon['id']}">删除</a></th>
+							</tr>
+						</if>
 						<else/>
 						<tr>
 							<th width="100px">{=$aCon['cid']}</th>
