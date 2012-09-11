@@ -1,0 +1,58 @@
+<css src="openoa:css/base.css" />
+<css src="openoa:css/oa.css" />
+<lib name='jquery'/>
+
+<div class="oa_all">
+	<!--head-->
+	<div class="oa_head">
+		<div class="oa_head_logo">
+		</div>
+		<div class="oa_head_user">
+			<if "$aId=\org\jecat\framework\auth\IdManager::singleton()->currentId()">
+			<span class="oa_user_ico">
+				<select onchange="window.location.href='?c=org.opencomb.coresystem.user.SwichId&uid=' + this.options[this.selectedOption].value">
+					<foreach for="\org\jecat\framework\auth\IdManager::singleton()->iterator()" item='aId'>
+					<option value="{=$aId->userId()}"{= $aId===$aCurrentId? ' selected': ''}>{=$aId->displayName()}</option>
+					</foreach>
+				</select>
+			</span>
+			<if "\org\opencomb\coresystem\auth\PurviewQuery::singleton()->hasPurview($aId,\org\opencomb\coresystem\auth\Id::PLATFORM_ADMIN,'coresystem')">
+			<span class="oa_setup_ico">
+				<a href="?c=control.panel">控制面板</a>
+			</span>
+			</if>
+			<span class="oa_quit_ico">
+				<a href="?c=logout">退出</a>
+			</span>
+			<else />
+			<span class="oa_login_ico">
+				<a href="?c=login">登录</a>
+			</span>
+			</if>
+		</div>
+		<div class="clr"></div>
+		<div class="oa_menu">
+			<ul>
+				<li><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">人事管理</a></li>
+				<li><a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">项目管理</a></li>
+				<li><a href="?c=org.opencomb.openoa.AssetsManagement.Management.AssetsManagement">固定资产</a></li>
+				<li><a href="?c=org.opencomb.openoa.office.Inbox">个人办公</a></li>
+				<li><a href="?c=org.opencomb.openoa.Attendance.Punch">考勤管理</a></li>
+				<li><a href="?c=org.opencomb.openoa.process.Record">审批流转</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--body-->
+	<div class="oa_body">
+		<div class="oa_left">
+			<widget id="mainMenu" type='menu' attr.depth="1" attr.showDepths="2" />
+		</div>
+		<div class="oa_right">
+			<views />
+		</div>
+	</div>
+	<!--footer-->
+	<div class="oa_footer">
+		© 2012 OpenComb. cando Inc. All Rights Reserved
+	</div>
+</div>

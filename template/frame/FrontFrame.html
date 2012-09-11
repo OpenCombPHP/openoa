@@ -1,48 +1,55 @@
 <css src="openoa:css/base.css" />
-<css src="openoa:css/watertable.css" />
+<css src="openoa:css/oa.css" />
+<css src="openoa:css/oabody.css" />
 <lib name='jquery'/>
-<div class="w_all">
 
-<!--top-->
-	<div class="w_head">
-		<div class="w_head_top">
-			<div class="w_head_topmenu">
-				<ul>
-					<li><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">人事管理</a></li>
-					<li><a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">项目管理</a></li>
-					<li><a href="?c=org.opencomb.openoa.AssetsManagement.Management.AssetsManagement">固定资产</a></li>
-					<li><a href="?c=org.opencomb.openoa.office.Inbox">个人办公</a></li>
-					<li><a href="?c=org.opencomb.openoa.Attendance.Punch">考勤管理</a></li>
-					<li><a href="?c=org.opencomb.openoa.process.Record">审批流转</a></li>
-				</ul>
-			</div>
-			<!--div class="w_head_opencomb">
-				<a href="#" class="frontframe-logo"></a>
-			</div-->
-			<div class="w_head_user">
-				<if "$aId=\org\jecat\framework\auth\IdManager::singleton()->currentId()">
-					<strong>Hi,</strong>
-					<span class="ico_head_user">
-						<select onchange="window.location.href='?c=org.opencomb.coresystem.user.SwichId&uid=' + this.options[this.selectedOption].value">
-							<foreach for="\org\jecat\framework\auth\IdManager::singleton()->iterator()" item='aId'>
-							<option value="{=$aId->userId()}"{= $aId===$aCurrentId? ' selected': ''}>{=$aId->displayName()}</option>
-							</foreach>
-						</select>
-					</span>
-					<if "\org\opencomb\coresystem\auth\PurviewQuery::singleton()->hasPurview($aId,\org\opencomb\coresystem\auth\Id::PLATFORM_ADMIN,'coresystem')">
-						<span class="ico_head_setup">
-							<a href="?c=control.panel">控制面板</a>
-						</span>
-					</if>
-					<span class="ico_head_out"><a href="?c=logout">退出</a></span>
-				<else />
-					<span class="ico_head_login"><a href="?c=login">登录</a></span>
-				</if>
-			</div>	
+<div class="oa_all">
+	<!--head-->
+	<div class="oa_head">
+		<div class="oa_head_logo">
 		</div>
-		<!--div class="w_head_logo"></div>
-		<div class="w_head_menu">
-			<widget id="mainMenu" type='menu' attr.showDepths="1">
+		<div class="oa_head_user">
+			<if "$aId=\org\jecat\framework\auth\IdManager::singleton()->currentId()">
+			<span class="oa_user_ico">
+				<select onchange="window.location.href='?c=org.opencomb.coresystem.user.SwichId&uid=' + this.options[this.selectedOption].value">
+					<foreach for="\org\jecat\framework\auth\IdManager::singleton()->iterator()" item='aId'>
+					<option value="{=$aId->userId()}"{= $aId===$aCurrentId? ' selected': ''}>{=$aId->displayName()}</option>
+					</foreach>
+				</select>
+			</span>
+			<if "\org\opencomb\coresystem\auth\PurviewQuery::singleton()->hasPurview($aId,\org\opencomb\coresystem\auth\Id::PLATFORM_ADMIN,'coresystem')">
+			<span class="oa_setup_ico">
+				<a href="?c=control.panel">控制面板</a>
+			</span>
+			</if>
+			<span class="oa_quit_ico">
+				<a href="?c=logout">退出</a>
+			</span>
+			<else />
+			<span class="oa_login_ico">
+				<a href="?c=login">登录</a>
+			</span>
+			</if>
+		</div>
+		<div class="clr"></div>
+		<div class="oa_menu">
+			<ul>
+				<li><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">人事管理</a></li>
+				<li><a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">项目管理</a></li>
+				<li><a href="?c=org.opencomb.openoa.AssetsManagement.Management.AssetsManagement">固定资产</a></li>
+				<li><a href="?c=org.opencomb.openoa.office.Inbox">个人办公</a></li>
+				<li><a href="?c=org.opencomb.openoa.Attendance.Punch">考勤管理</a></li>
+				<li><a href="?c=org.opencomb.openoa.process.Record">审批流转</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--body-->
+	<div class="oa_body">
+		<div class="oa_left">
+		<!-- attr.depth from depth show
+			attr.showDepths total show depths
+		-->
+			<widget id="mainMenu" type='menu' attr.depth="1">
 			<item id="PersonnelManagement" title="人事管理" link="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">
 				<item id="Overtime_menu" title="部门管理" controller="org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement" />
 				<item id="Position_menu" title="职位管理" controller="org.opencomb.openoa.PersonnelManagement.Position.PositionManagement" />
@@ -57,7 +64,7 @@
 				<item id="Management_menu" title="我管理的项目" controller="org.opencomb.openoa.ProjectManagement.Management.MyManagementProject" />
 				<item id="add_menu" title="新建项目" controller="org.opencomb.openoa.ProjectManagement.Management.AddProject" />
 				<item id="type_menu" title="项目类别管理" controller="org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement" />
-				<item id="performance_menu" title="绩效统计" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" >
+				<item id="performance_menu" title="绩效统计" >
 					<item id="performance_menu_query" title="部门项目查询" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" />
 					<item id="performance_menu_depart" title="部门项目绩效" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCount" />
 					<item id="performance_menu_port" title="部门本月报表" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCurrentQuery" />
@@ -77,7 +84,7 @@
 				</item>
 			</item>
 			<item id="inde4114x" title="个人办公" link="?c=org.opencomb.openoa.office.Inbox" perms.purview.name="openoa:Inbox">
-				<item id="Inbox_menu" title="消息信箱" controller="org.opencomb.openoa.office.Inbox">
+				<item id="Inbox_menu" title="消息信箱">
 					<item id="Send_menu" title="发送消息" controller="org.opencomb.openoa.office.Send" />
 					<item id="Inbox_menu" title="已收消息" controller="org.opencomb.openoa.office.Inbox" >
 						<query bean.type="string">c=org.opencomb.openoa.office.Detail&fromMenu=Inbox</query>
@@ -89,7 +96,7 @@
 						<query bean.type="string">c=org.opencomb.openoa.office.DraftsDetail</query>
 					</item>
 				</item>
-				<item id="fileInbox_menu" title="文件收发" controller="org.opencomb.openoa.office.fileInbox">
+				<item id="fileInbox_menu" title="文件收发">
 					<item id="fileSend_menu" title="发送文件" controller="org.opencomb.openoa.office.fileSend" />
 					<item id="Receiver_menu" title="已发文件" controller="org.opencomb.openoa.office.fileOutbox" >
 						<query bean.type="string">c=org.opencomb.openoa.office.fileDetail&fromMenu=fileOutbox</query>
@@ -117,100 +124,14 @@
 				<item id="MyApproval_menu" title="待我审核" controller="org.opencomb.openoa.process.MyApproval" />
 			</item>
 			</widget>
-		</div-->
+		</div>
+		<div class="oa_right">
+			<views />
+		</div>
+		<div class="clr"></div>
 	</div>
-<!--topend-->
-<div class="w_body">
-<!--left-->
-<div class="w_leftall" >
-	<div class="w_left">
-		<!-- <div class="w_left_onbutton"></div> -->
-		<a href="javascript:;" onclick="w_left_offbutton()" id="w_left_button" class="w_left_offbutton">&nbsp;</a>
-		<widget id="mainMenu" type='menu' attr.depth="1" attr.showDepths="2" />
-		<div style="clear:both"></div>
+	<!--footer-->
+	<div class="oa_footer">
+		<p>&copy; 2012 OpenComb. cando Inc. All Rights Reserved</p>
 	</div>
 </div>
-<!--leftend-->
-<!--right-->
-	<div class="w_right">
-		<views />
-	</div>
-<!--rightend--->
-<!--footer-->
-	<div class="clr"></div>
-	<div class="w_footer">
-		<p>大连开发区自来水公司 &copy; 版权所有 2012</p>
-		<p>Water company of dalian economic and technological development zone All Rights Reserved.</p>
-	</div>
-<!--footerend-->
-</div>
-</div>
-
-
-<script>
-/**
- * 收缩按钮
- */
-function w_left_offbutton(){
-	
-	//侧边状态
-	var w_left_width = jQuery(".w_left").width();
-	if(w_left_width > 0){
-		jQuery("body").addClass("bodynobg");
-		
-		jQuery(".w_left").animate({width: '0px'}, "slow",function(){
-		});
-		
-		//按钮缩小（需要增加滚动条然偏移量）
-		var leftScroll = parseInt( jQuery(window).scrollLeft() );
-		jQuery("#w_left_button").animate({left: '-'+leftScroll+'px'}, "slow" ,function(){
-			//自定义事件
-			jQuery(".w_left").trigger('afterSlideIn');
-			jQuery("#w_left_button").removeClass("w_left_offbutton");
-			jQuery("#w_left_button").addClass("w_left_onbutton");
-		});
-	}else{
-		jQuery(".w_left").animate({width: '205px'}, "slow",function(){
-			jQuery("body").removeClass("bodynobg");
-		});
-		jQuery("#w_left_button").animate({left: '216px'}, "slow" , function(){
-			jQuery(".w_left").trigger('afterSlideOut');
-			jQuery("#w_left_button").addClass("w_left_offbutton");
-			jQuery("#w_left_button").removeClass("w_left_onbutton");
-		});
-	}
-}
-
-
-/**
- * 滚动事件
- */
-function auto_W_left_offbutton ()
-{
-	//侧边状态
-	var w_left_width = jQuery(".w_left").width();
-	if(w_left_width > 0){
-		var divLeft = 216;
-	}else{
-		var divLeft = 0;
-	}
-	var leftScroll = parseInt( jQuery(window).scrollLeft() );
-	var divLeft_now = parseInt( jQuery("#w_left_button").css("left") );
-	if(divLeft_now != divLeft - leftScroll){
-		jQuery("#w_left_button").css("left",divLeft - leftScroll);
-	}
-}
-
-jquery(function(){
-	jquery('.namecard_simple_card_id_select').change(function(){
-		window.location.href='?c=org.opencomb.coresystem.user.SwichId&uid=' + jquery(this).val();
-	});
-
-	auto_W_left_offbutton();
-	jQuery(window).scroll(auto_W_left_offbutton);
-	
-	var w_bodyH = jQuery(".w_body").height();
-	jQuery(".w_left").height(w_bodyH);
-	
-});
-</script>

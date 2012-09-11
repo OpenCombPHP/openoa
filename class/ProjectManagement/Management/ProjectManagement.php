@@ -15,6 +15,12 @@ class ProjectManagement extends OpenOaController{
 			'view' => array (
 					'template' => 'ProjectManagement/Management/ProjectManagement.html',
 					'widgets'=>array(
+    					array(
+    							'id'=>'paginator',
+    							'class'=>'paginator',
+    							'count' => 10, //每页10项
+    							'nums' => 5   //显示5个页码
+    					),
 					)
 			),
 // 			'perms' => array (

@@ -1,20 +1,33 @@
 <div id="PositionManagement">
-	<h1>职位管理</h1>
-		<a href="?c=org.opencomb.openoa.PersonnelManagement.Position.AddPosition">添加职位</a>
-		<table id="PositionManagement_table" border="1">
+
+	<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				职位管理
+			</div>
+			<div class="oa_tablehead_button">
+				<div class="oa_button_left">
+					<a href="?c=org.opencomb.openoa.PersonnelManagement.Position.AddPosition" class="oa_button_right">添加职位</a>
+				</div>
+			</div>
+		</div>
+		<div class="oa_table">
+			<table id="PositionManagement_table">
 			<thead>
 				<tr>
 					<th>职位名称</th>
-					<th colspan=2>操作</th>
+					<th>操作</th>
 				</tr>
+			</thead>
+			<tbody>
 				<foreach for="$aPositionModel" item="aPos">
 				<tr>
 					<td>{=$aPos["name"]}</td>
-					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Position.EditPosition&pid={=$aPos['pid']}&name={=$aPos['name']}">编辑</a></td>
-					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Position.DeletePosition&pid={=$aPos['pid']}">删除</a></td>
+					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Position.EditPosition&pid={=$aPos['pid']}&name={=$aPos['name']}" class="oa_button_edit" title="编辑"></a><a href="?c=org.opencomb.openoa.PersonnelManagement.Position.DeletePosition&pid={=$aPos['pid']}" class="oa_button_del" title="删除"></a></td>
 				</tr>
 				</foreach>
-			</thead>
+			</tbody>
 		</table>
 		<widget id="paginator" attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1" />
+		</div>
+
 </div>
