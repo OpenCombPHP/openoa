@@ -1,22 +1,33 @@
-<div id="DeparmentManagement">
-	<h1>部门管理</h1>
-		<a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.AddDepartment">添加部门</a>
-		<table id="DeparmentManagement_table" border="1">
-			<thead>
-				<tr>
-					<th>部门名称</th>
-					<th>部门描述</th>
-					<th colspan=2>操作</th>
-				</tr>
-				<foreach for="$aDepartmentModel" item="aDep">
-				<tr>
-					<td>{=$aDep["name"]}</td>
-					<td>{=$aDep["name"]}</td>
-					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['gid']}&name={=$aDep['name']}">编辑</a></td>
-					<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['gid']}">删除</a></td>
-				</tr>
-				</foreach>
-			</thead>
-		</table>
-		<widget type='paginator' attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1"/>
+<div id="DeparmentManagement">		
+		<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				部门管理
+			</div>
+			<div class="oa_tablehead_button">
+				<div class="oa_button_left">
+					<a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.AddDepartment" class="oa_button_right">添加部门</a>
+				</div>
+			</div>
+		</div>
+		<div class="oa_table">
+			<table id="DeparmentManagement_table">
+				<thead>
+					<tr>
+						<th>部门名称</th>
+						<th>部门描述</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach for="$aDepartmentModel" item="aDep">
+					<tr>
+						<td>{=$aDep["name"]}</td>
+						<td>{=$aDep["name"]}</td>
+						<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.EditDepartment&did={=$aDep['gid']}&name={=$aDep['name']}" class="oa_button_edit" title="编辑"></a><a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DeleteDepartment&did={=$aDep['gid']}" class="oa_button_del" title="删除"></a></td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<widget type='paginator' attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1"/>
+		</div>
 </div>

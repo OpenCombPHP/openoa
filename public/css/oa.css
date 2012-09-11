@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:#f4f4f4;text-shadow: 0 1px 0px rgba(255, 255, 255, 1); text-align:center; font-size:12px}
+.clr{ clear:both}
+.oa_all{width:95%; padding-top:20px; margin:auto;}
+.ao_head{}
+	.oa_head_logo{ background:url(../images/oaframe/logo.png) no-repeat; width:199px; height:45px; float:left;}
+	.oa_head_user{ width:60%; text-align:right; float:right;}
+	.oa_head_user span{padding:10px 25px;}
+	.oa_head_user span a{ color:#bebebe;}
+	.oa_head_user .oa_user_ico{background:url(../images/oaframe/ico.png) no-repeat 0 -54px;}
+	.oa_head_user .oa_setup_ico{background:url(../images/oaframe/ico.png) no-repeat 0 8px;}
+	.oa_head_user .oa_quit_ico{background:url(../images/oaframe/ico.png) no-repeat 0 -179px;}
+	.oa_head_user .oa_login_ico{background:url(../images/oaframe/ico.png) no-repeat 0 -114px;}
+	
+	.oa_menu{ background:url(../images/oaframe/menubg.png) repeat-x; height:33px; padding:2px 0 2px 25px; margin:20px 0 0 0; }
+		.oa_menu ul{ height:33px; line-height:33px; background:url(../images/oaframe/menu.png) no-repeat center; }
+		.oa_menu ul li{ display:inline-block; padding:0 25px; float:left}
+.oa_left{ width:160px; padding:40px 0 0 10px; float:left; text-align:left;}
+	.oa_left a{color:#777;display:block; padding-left:10px;}
+	.oa_left a:hover{ color:#009acd;background:url(../images/oaframe/leftbg.png) repeat-x; height:33px; margin-bottom:1px}
+	.oa_left .jc-widget-menu-item-depth-2{ line-height:35px;background:url(../images/oaframe/menubg.png) repeat-x bottom;}
+	.oa_left .jc-widget-menu-item-depth-3{ background:url(../images/oaframe/bullet_add_2.png) no-repeat 10px 50%}
+	.oa_left .jc-widget-menu-item-depth-3 a{ padding-left:25px; color:#999}
+	.oa_left .jc-widget-menu-item-depth-3 a:hover{background:#fbfbfb url(../images/oaframe/bullet_add_2.png) no-repeat 10px 50%;color:#009acd;}
+	.oa_left .jc-widget-menu-depth-2 .jc-widget-menu-item-active a{background:url(../images/oaframe/leftbg.png) repeat-x;color:#009acd;}
+	.oa_left .jc-widget-menu-depth-2 .jc-widget-menu-item-active .jc-widget-menu-depth-3 a{padding-left:25px; color:#999; background:none}
+	.oa_left .jc-widget-menu-depth-2 .jc-widget-menu-item-active .jc-widget-menu-depth-3 a:hover{background:#fbfbfb url(../images/oaframe/bullet_add_2.png) no-repeat 10px 50%;color:#009acd;}
+	.oa_left .jc-widget-menu-depth-2 .jc-widget-menu-depth-3 .jc-widget-menu-item-active a{background:#fbfbfb url(../images/oaframe/bullet_add_2.png) no-repeat 10px 50%;color:#009acd;}
+.oa_right{ width:80%; padding-left:2%; float:left; padding-top:25px; text-align:left}
+.oa_footer{ background:url(../images/oaframe/footline.png) top repeat-x; margin-top:30px; padding-top:40px;}
+.oa_footer p{background:url(../images/oaframe/foot_logo.png) no-repeat right; height:61px; width:95%; margin:auto; text-align:left; color:#d5d5d5}
