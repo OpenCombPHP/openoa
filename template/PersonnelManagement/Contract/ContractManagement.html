@@ -14,7 +14,7 @@
 				<foreach for="$aContractModel" item="aCon">
 					<if "$aCon['remindtime']==$sNow">
 						
-						<tr style="background-color:yellow">
+						<tr class="" style="background-color:yellow">
 							<th width="100px">{=$aCon['cid']}</th>
 							<th>{=$aCon['user.username']}</th>
 							<th>{=date('Y-m-d',$aCon['starttime'])}</th>

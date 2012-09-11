@@ -28,7 +28,8 @@ class ContractManagement extends OpenOaController{
 	public function process() {
 		$this->model('openoa:ContractManagement','contract')
 				->hasOne('coresystem:user','uid','uid','user')
-				->hasOne('coresystem:userinfo','uid','uid','userinfo');
+				->hasOne('coresystem:userinfo','uid','uid','userinfo')
+				->order('remindtime');
 
 		
 		$this->contract->load();
