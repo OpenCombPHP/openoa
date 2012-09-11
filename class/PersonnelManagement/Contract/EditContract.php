@@ -86,7 +86,8 @@ class EditContract extends OpenOaController{
 		
 		$sStartTime = strtotime($this->params['starttime']);
 		$sEndTime = strtotime($this->params['endtime']);
-		$sRemindTime = strtotime($this->params['remindtime']);
+		$nRemindDays = mktime(0,0,0,12,1,2001)-mktime(0,0,0,10,1,2001);
+		$sRemindTime = $sEndTime - $nRemindDays;//var_dump($sRemindTime);exit;
 
 		$aContractModel = Model::Create('openoa:ContractManagement');
 		$aContractModel->load($sId,'id');
