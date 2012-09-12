@@ -1,7 +1,15 @@
 <lib name="jquery"/>
 <div id="divProjectManagement">
-	<h1>项目管理</h1>
-	<table border="1">
+
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			项目管理
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+	<table>
 		<thead>
 			<tr>
 				<th>
@@ -19,7 +27,7 @@
 				<th>
 					状态 
 				</th>
-				<th colspan="2">
+				<th>
 					操作
 				</th>
 			</tr>
@@ -53,14 +61,12 @@
 						</if>
 					</td>
 					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}">编辑</a>
-					</td>
-					<td>
-						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.DeleteProject&pid={=$aPro['pid']}">删除</a>
+						<a href="?c=org.opencomb.openoa.ProjectManagement.Management.EditProject&pid={=$aPro['pid']}&name={=$aPro['name']}" class="oa_button_edit" title="编辑"></a><a href="?c=org.opencomb.openoa.ProjectManagement.Management.DeleteProject&pid={=$aPro['pid']}" class="oa_button_del" title="删除"></a>
 					</td>
 				</tr>
 			</foreach>
 		</tbody>
 	</table>
+	<widget type='paginator' id='paginator' attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1"/>
+	</div>
 </div>
-<widget type='paginator' id='paginator' attr.nums="10" attr.showFirst="1" attr.showLast="1" attr.showTotal="1" attr.showPre="1" attr.showNext="1"/>

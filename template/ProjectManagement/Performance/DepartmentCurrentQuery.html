@@ -1,7 +1,14 @@
 <lib name="jquery"/>
 <div id="divDepartmentCountCurrent">
-	<h1>部门本月报表</h1>
-	<table border="1">
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			部门本月报表
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+	<table>
 		<thead>
 			<tr>
 				<th>
@@ -43,17 +50,17 @@
 						{=$aPro['rates']}%
 					</td>
 					<td>
-						<if '{=$aPro['status']}==1'>
-							进行中
-							<elseif '{=$aPro['status']}==2'/>
-							终止
-							<elseif '{=$aPro['status']}==3'/>
-							完成
-							<elseif '{=$aPro['status']}==4'/>
-							暂停
-							<elseif '{=$aPro['status']}==5'/>
-							延迟
-						</if>
+								<if '{=$aPro['status']}==1'>
+									<span class="oa_mode_conduct">进行中</span>
+									<elseif '{=$aPro['status']}==2'/>
+									<span class="oa_mode_termination">终止</span>
+									<elseif '{=$aPro['status']}==3'/>
+									<span class="oa_mode_complete">完成</span>
+									<elseif '{=$aPro['status']}==4'/>
+									<span class="oa_mode_pause">暂停</span>
+									<elseif '{=$aPro['status']}==5'/>
+									<span class="oa_mode_delay">延迟</span>
+								</if>
 					</td>
 					<td>
 						{=date('Y-m-d',$aPro['starttime'])}
@@ -65,4 +72,5 @@
 			</foreach>
 		</tbody>
 	</table>
+	</div>
 </div>

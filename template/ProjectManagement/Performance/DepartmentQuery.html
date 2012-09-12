@@ -1,11 +1,20 @@
 <lib name="jquery"/>
 <div id="divDepartmentQuery">
-	<h1>部门项目查询</h1>
-	<form method="post">
-		日期:<input type="text" placeholder="输入查询内容" name="select_time" size="10"/>
-		<input type="submit" value="查询"/>
-	</form>
-	<table border="1">
+		<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				部门项目查询
+			</div>
+			<div class="oa_tablehead_button">
+				<div class="oa_tablehead_button_from">
+					<form method="post">
+						<input type="text" placeholder="输入日期查询" name="select_time" size="15"/>
+						<input type="submit" class="oa_form_button" value="查询"/>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="oa_table">
+		<table>
 		<thead>
 			<tr>
 				<th>
@@ -48,16 +57,16 @@
 					</td>
 					<td>
 						<if '{=$aPro['status']}==1'>
-							进行中
-							<elseif '{=$aPro['status']}==2'/>
-							终止
-							<elseif '{=$aPro['status']}==3'/>
-							完成
-							<elseif '{=$aPro['status']}==4'/>
-							暂停
-							<elseif '{=$aPro['status']}==5'/>
-							延迟
-						</if>
+									<span class="oa_mode_conduct">进行中</span>
+									<elseif '{=$aPro['status']}==2'/>
+									<span class="oa_mode_termination">终止</span>
+									<elseif '{=$aPro['status']}==3'/>
+									<span class="oa_mode_complete">完成</span>
+									<elseif '{=$aPro['status']}==4'/>
+									<span class="oa_mode_pause">暂停</span>
+									<elseif '{=$aPro['status']}==5'/>
+									<span class="oa_mode_delay">延迟</span>
+								</if>
 					</td>
 					<td>
 						{=date('Y-m-d',$aPro['starttime'])}
@@ -69,4 +78,5 @@
 			</foreach>
 		</tbody>
 	</table>
+		</div>
 </div>

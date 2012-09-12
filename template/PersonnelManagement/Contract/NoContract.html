@@ -1,6 +1,13 @@
 <div id="EmployeeManagement">
-	<h1>合同管理</h1>
-		<table id="EmployeeManagement_table" border="1">
+	<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				合同管理
+			</div>
+			<div class="oa_tablehead_button">
+			</div>
+		</div>
+		<div class="oa_table">
+			<table id="EmployeeManagement_table">
 			<thead>
 				<tr>
 					<th>员工姓名</th>
@@ -8,6 +15,8 @@
 					<th>所属部门</th>
 					<th colspan="2">操作</th>
 				</tr>
+			</thead>
+			<tbody>
 				<foreach for="$aEmployeeModel" item="aEmp">
 					<tr>
 						<td>
@@ -20,10 +29,12 @@
 							{=$aEmp['group.name']}
 						</td>
 						<td>																									
-							<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.AddContract&uid={=$aEmp['uid']}&username={=$aEmp['user.username']}&department={=$aEmp['group.name']}&gid={=$aEmp['group.gid']}">签订合同</a>
+							<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.AddContract&uid={=$aEmp['uid']}&username={=$aEmp['user.username']}&department={=$aEmp['group.name']}&gid={=$aEmp['group.gid']}" class="oa_button_contract">签订合同</a>
 						</td>
 					</tr>
 				</foreach>
-			</thead>
+			</tbody>
 		</table>
+		</div>
+		
 </div>
