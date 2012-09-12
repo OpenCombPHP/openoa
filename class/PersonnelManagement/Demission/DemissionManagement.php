@@ -29,7 +29,17 @@ class DemissionManagement extends OpenOaController{
 	);
 	
 	public function process() {
+		$this->model('openoa:EmployeeManagement','employee')
+			->hasOne('coresystem:userinfo','uid','uid','userinfo')
+			->hasOne('coresystem:user','uid','uid','user')
+			->belongsTo('coresystem:group','department','gid','group')
+			->belongsTo('openoa:PositionManagement','position','pid','position');
 		
+		$this->employee->load(2,'status');
+		
+		$this->view()->setModel($this->employee);
+		$this->view->variables()->set('aEmployeeModel',$this->employee) ;
+		$this->doActions();
 	}
 	
 	public function form(){

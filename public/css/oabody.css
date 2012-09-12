@@ -7,12 +7,16 @@
 	.oa_tablehead_button a,.oa_tablehead_button input,.oa_tablehead_button select{ color:#777}
 .oa_table_overflow{ overflow:auto}
 	body .oa_table_overflow table{width:2000px; margin:0 20px;}
-.oa_table{ border:#ccc 1px solid; border-top:none; width:100%; background:#fff; text-align:center}
+.oa_table{ border:#ccc 1px solid; border-top:none; padding:20px 0 40px; width:100%; background:#fff; text-align:center}
 	.oa_table table{ border:0; width:95%; font-size:12px; margin:auto}
 	.oa_table table thead th{ height:45px; line-height:45px; font-weight:700; color:#999; border-bottom:#ddd 1px solid; padding-left:10px; text-align:left}
 	.oa_table table tbody td{ height:40px; line-height:40px; color:#797979; border-bottom:#ddd 1px solid; padding-left:10px; text-align:left}
 	.oa_table table tbody tr:nth-child(odd){ background:#fbfbfb}
 	.oa_table table tbody tr{background-color:expression(this.rowIndex%2==0 ? "#ffffff":"#fbfbfb");}
+	.oa_table table tbody tr.oa_contract_expire{ background:#fff2f2;}
+	.oa_table tr.oa_contract_expire td{color:#980000}
+	.oa_table tr td.oa_contract_expire_day{ font-weight:700; color:#db0000; font-family: Helvetica,Arial,sans-serif; font-size:18px; padding-left:20px; background:url(../images/oaframe/ts.gif) no-repeat left 11px}
+	.oa_table td.oa_contract_expire_day span{ font-weight:normal; font-size:12px; padding-left:3px; vertical-align:1px;}
 	
 /***按钮****/
 .oa_button_left {display: block;height: 25px;line-height: 25px;background: url(../images/oaframe/box_sc.png) -739px -245px no-repeat;padding-left: 27px; float:right; margin-top:14px;}
@@ -20,5 +24,13 @@
 
 .oa_button_edit{ display:block; float:left; width:16px; height:16px; background:url(../images/oaframe/edit.png) no-repeat; margin:0 10px 0 0}
 .oa_button_del{ display:block; float:left; width:16px; height:16px; background:url(../images/oaframe/del.png) no-repeat}
+.oa_button_contract{background:url(../images/oaframe/contract.png) no-repeat 0 1px; padding:3px 0 3px 22px;}
 
 .oa_form_button{ width:71px; height:25px; line-height:25px; padding-left:16px; background:url(../images/oaframe/box_sc.png) no-repeat -360px -113px; cursor:hand; border:0}
+
+/***状态样式*******/
+.oa_mode_conduct{ color:#176cc4}
+.oa_mode_termination{ color:#e74747}
+.oa_mode_complete{ color:#95b111}
+.oa_mode_pause{ color:#edbd57}
+.oa_mode_delay{ color:#f264d0}

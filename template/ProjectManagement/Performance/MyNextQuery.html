@@ -1,164 +1,50 @@
 <lib name="jquery"/>
 <div id="divDepartmentCountCurrent">
-	<h1>本人下月计划</h1>
-	<table border="1">
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			本人下月计划
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+	<table>
 		<thead>
 			<tr>
-				<th>
-					部门
-				</th>
-				<th>
-					负责人
-				</th>
-				<th>
-					项目描述
-				</th>
-				<th>
-					完成进度
-				</th>
-				<th>
-					状态 
-				</th>
-				<th>
-					开始时间 
-				</th>
-				<th>
-					结束时间 
-				</th>
+				<th>部门</th>
+				<th>负责人</th>
+				<th>项目描述</th>
+				<th>完成进度</th>
+				<th>状态</th>
+				<th>开始时间</th>
+				<th>结束时间</th>
 			</tr>
 		</thead>
 		<tbody>
 			<foreach for="$aProjectManagement" item="aPro">
 				<tr>
-					<td>
-						{=$aPro['group.name']}
-					</td>
-					<td>
-						{=$aPro['user.username']}
-					</td>
-					<td>
-						{=$aPro['content']}
-					</td>
-					<td>
-						{=$aPro['rates']}%
-					</td>
+					<td>{=$aPro['group.name']}</td>
+					<td>{=$aPro['user.username']}</td>
+					<td>{=$aPro['content']}</td>
+					<td>{=$aPro['rates']}%</td>
 					<td>
 						<if '{=$aPro['status']}==1'>
-							进行中
+							<span class="oa_mode_conduct">进行中</span>
 							<elseif '{=$aPro['status']}==2'/>
-							终止
+							<span class="oa_mode_termination">终止</span>
 							<elseif '{=$aPro['status']}==3'/>
-							完成
+							<span class="oa_mode_complete">完成</span>
 							<elseif '{=$aPro['status']}==4'/>
-							暂停
+							<span class="oa_mode_pause">暂停</span>
 							<elseif '{=$aPro['status']}==5'/>
-							延迟
+							<span class="oa_mode_delay">延迟</span>
 						</if>
 					</td>
-					<td>
-						{=date('Y-m-d',$aPro['starttime'])}
-					</td>
-					<td>
-						{=date('Y-m-d',$aPro['endtime'])}
-					</td>
+					<td>{=date('Y-m-d',$aPro['starttime'])}</td>
+					<td>{=date('Y-m-d',$aPro['endtime'])}</td>
 				</tr>
 			</foreach>
 		</tbody>
 	</table>
-	<table id="datas">
-		<tr id="testtotal">
-			<td id="testtd1"></td>
-			<td id="testtd2"></td>
-			<td id="testtd3"></td>
-			<td id="testtd4"></td>
-			<td id="testtd5"></td>
-		</tr>
-		<tr>
-			<td id="user" >
-				<select id="testse" multiple ondblclick="moveUser()">
-					<option value="1">1sdf</option>
-					<option value="2">2sdf</option>
-					<option value="3">3sdf</option>
-					<option value="4">4sdf</option>
-					<option value="5">5sdf</option>
-					<option value="6">6sdf</option>
-					<option value="7">7sdf</option>
-					<option value="8">8</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-	<input type='text' name='testvalue' id="testvalue"/>
-	<input type="button" value="test" onclick="test()"/>
+	</div>
 </div>
-<script>
-	function moveUser(){
-		var row = jquery('#user select option:selected').clone();
-		console.log(row);
-		row.appendTo("#testse");
-		//console.log(jquery('#user select option:selected').remove());
-	}
-	
-	function test(){
-		/*
-		jquery.ajax({
-			url : "?c=org.opencomb.openoa.ProjectManagement.Performance.MyNextQueryTest&testid=2",
-			//data:"testid=2";		
-			//dataType : "jsonp",
-			//jsonp : "callback",
-			//jsonpCallback : "useCheck",
-			success : function(data){
-				console.log(data);
-			}
-		})
-		*/
-		setInterval(test2,'2000');
-		/*
-		setInterval("
-		jquery.ajax({
-			//url : '?c=org.opencomb.openoa.ProjectManagement.Performance.MyNextQueryTest&testid=2',
-			success : function(data){
-				console.log(data);
-			}
-		})",'5000');
-		*/
-		
-	}
-	
-	function test2(){
-		jquery.ajax({
-			url : '?c=org.opencomb.openoa.ProjectManagement.Performance.MyNextQueryTest&testid=2',
-			dataType:"json",
-			success : function(data){
-
-				var ds = new Array();
-				ds[0] = 1;
-				ds[1] = 22;
-				jquery.each(data,function(i,v){
-				var row = jquery("#testtotal").clone();
-				console.log(row);
-				
-					row.find('#testtd1').text(v);
-					row.find('#testtd2').text(v);
-					row.find('#testtd3').text(v);
-					row.find('#testtd4').text(v);
-					row.find('#testtd5').text(v);
-					row.appendTo("#datas");
-					
-				//console.log(i);
-				})
-				/*
-				console.log(ds);
-				for(dd in data)
-				{
-					jquery('#testvalue').attr('value',data.dd);
-					console.log(dd);
-				}
-				*/
-
-				//var dd = {'sdfdsf':iiwesdf,'sdfsde':kksddf, 'sdfsf':{}}
-			}
-		});
-	}
-
-</script>

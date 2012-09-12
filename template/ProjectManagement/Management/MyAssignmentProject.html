@@ -1,69 +1,49 @@
 <lib name="jquery"/>
 <div id="divMyPublisher">
-	<h1>我分配的项目</h1>
-	<table border="1">
+<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				我分配的项目
+			</div>
+			<div class="oa_tablehead_button">
+			</div>
+		</div>
+		<div class="oa_table">
+			<table>
 		<thead>
 			<tr>
-				<th>
-					项目名称
-				</th>
-				<th>
-					项目描述
-				</th>
-				<th>
-					项目负责人
-				</th>
-				<th>
-					项目进度
-				</th>
-				<th>
-					状态 
-				</th>
-				<th>
-					开始
-				</th>
-				<th>
-					结束
-				</th>
+				<th>项目名称</th>
+				<th>项目描述</th>
+				<th>项目负责人</th>
+				<th>项目进度</th>
+				<th>状态</th>
+				<th>开始</th>
+				<th>结束</th>
 			</tr>
 		</thead>
 		<tbody>
 			<foreach for="$aProjectManagement" item="aPro">
 				<tr>
-					<td>
-						{=$aPro['name']}
-					</td>
-					<td>
-						{=$aPro['content']}
-					</td>
-					<td>
-						{=$aPro['user.username']}
-					</td>
-					<td>
-						{=$aPro['rates']}%
-					</td>
-					<td>
-						<if '{=$aPro['status']}==1'>
-							进行中
+					<td>{=$aPro['name']}</td>
+					<td>{=$aPro['content']}</td>
+					<td>{=$aPro['user.username']}</td>
+					<td>{=$aPro['rates']}%</td>
+					<td><if '{=$aPro['status']}==1'>
+							<span class="oa_mode_conduct">进行中</span>
 							<elseif '{=$aPro['status']}==2'/>
-							终止
+							<span class="oa_mode_termination">终止</span>
 							<elseif '{=$aPro['status']}==3'/>
-							完成
+							<span class="oa_mode_complete">完成</span>
 							<elseif '{=$aPro['status']}==4'/>
-							暂停
+							<span class="oa_mode_pause">暂停</span>
 							<elseif '{=$aPro['status']}==5'/>
-							延迟
+							<span class="oa_mode_delay">延迟</span>
 						</if>
 					</td>
-					<td>
-						{=date('Y-m-d',$aPro['starttime'])}
-					</td>
-					<td>
-						{=date('Y-m-d',$aPro['endtime'])}
-					</td>
+					<td>{=date('Y-m-d',$aPro['starttime'])}</td>
+					<td>{=date('Y-m-d',$aPro['endtime'])}</td>
 				</tr>
 			</foreach>
 		</tbody>
 	</table>
-
+		</div>
 </div>
