@@ -1,20 +1,30 @@
 <div id="divAssetTypeManagement">
-	<h1></h1>
-	<table border="1">
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			类别维护
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left">
+				<a href="?c=org.opencomb.openoa.AssetsManagement.Type.AddAssetType" class="oa_button_right">添加类别</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+	<table>
 		<thead>
 			<tr>
-				<td>类别名称</td>
-				<td colspan="2">操作</td>
+				<th>类别名称</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
 		<foreach for="$aTypeModel" item="aType">
 			<tr>
 				<td>{=$aType['name']}</td>
-				<td><a href="?c=org.opencomb.openoa.AssetsManagement.Type.EditAssetType&name={=$aType['name']}&tid={=$aType['tid']}">编辑</a></td>
-				<td><a href="?c=org.opencomb.openoa.AssetsManagement.Type.DeleteAssetType&tid={=$aType['tid']}">删除</a></td>
+				<td><a href="?c=org.opencomb.openoa.AssetsManagement.Type.EditAssetType&name={=$aType['name']}&tid={=$aType['tid']}" class="oa_button_edit" title="编辑"></a><a href="?c=org.opencomb.openoa.AssetsManagement.Type.DeleteAssetType&tid={=$aType['tid']}" class="oa_button_del" title="删除"></a></td>
 			</tr>
 		</foreach>
 		</tbody>
 	</table>
+	</div>
 </div>

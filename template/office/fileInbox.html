@@ -1,16 +1,25 @@
-<table border="1">
-  <tr>
-    <td>姓名</td>
-    <td>工号</td>
-    <td>标题</td>
-    <td>&nbsp;</td>
-  </tr>
-  <foreach for='$list' item="aData">
-    <tr>
-      <td>{=$aData['userinfo.name']}</td>
-      <td>{=$aData['userinfo.eid']}</td>
-      <td><a href="?c=org.opencomb.openoa.office.fileDetail&fromMenu=fileInbox&id={=$aData['id']}">{=$aData['title']}</a></td>
-      <td><a href="{=$aData['att'][0]['file']}">下载</a></td>
-    </tr>
-  </foreach>
-</table>
+		<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				接收文件
+			</div>
+			<div class="oa_tablehead_button">
+			</div>
+		</div>
+		<div class="oa_table">
+			<table>
+			  <tr>
+			 	<td>标题</td>
+				<td>姓名</td>
+				<td>工号</td>
+				<td>操作</td>
+			  </tr>
+			  <foreach for='$list' item="aData">
+				<tr>
+				  <td><a href="?c=org.opencomb.openoa.office.fileDetail&fromMenu=fileInbox&id={=$aData['id']}">{=$aData['title']}</a></td>
+				  <td>{=$aData['userinfo.name']}</td>
+				  <td>{=$aData['userinfo.eid']}</td>
+				  <td><a href="{=$aData['att'][0]['file']}" class="oa_button_down" title="下载"></a></td>
+				</tr>
+			  </foreach>
+			</table>
+		</div>

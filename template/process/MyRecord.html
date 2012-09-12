@@ -1,18 +1,29 @@
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table border="1">
-    <tr>
-      <td>类型</td>
-      <td>标题</td>
-      <td>状态</td>
-      <td>&nbsp;</td>
-    </tr>
-  <foreach for='$list' item="aData">
-    <tr>
-      <td>{=$aData['task.name']}</td>
-      <td>{=$aData['title']}</td>
-      <td>{=$aData['stat']}</td>
-      <td><a href="?c=org.opencomb.openoa.process.DetailsRecord&rid={=$aData['id']}">审核记录</a></td>
-    </tr>
-  </foreach>
-</table>
+		<div class="oa_tablehead">
+			<div class="oa_tablehead_tilte">
+				我的申请
+			</div>
+			<div class="oa_tablehead_button">
+			</div>
+		</div>
+		<div class="oa_table">
+			<table>
+			<thead>
+				<tr>
+				  <th>类型</th>
+				  <th>标题</th>
+				  <th>状态</th>
+				  <th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			  <foreach for='$list' item="aData">
+				<tr>
+				  <td>{=$aData['task.name']}</td>
+				  <td>{=$aData['title']}</td>
+				  <td>{=$aData['stat']}</td>
+				  <td><a href="?c=org.opencomb.openoa.process.DetailsRecord&rid={=$aData['id']}">审核记录</a></td>
+				</tr>
+			  </foreach>
+			 </tbody>
+			</table>
+		</div>

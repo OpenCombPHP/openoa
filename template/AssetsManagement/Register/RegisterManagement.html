@@ -1,15 +1,19 @@
 <msgqueue/>
 <div id="divAssetsManagement">
-	<h1>固定资产管理</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">固定资产管理</div>
+		<div class="oa_tablehead_button"></div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table border="1">
+		<table>
 			<thead>
 				<tr>
 					<th>资产编号</th>
 					<th>资产名称</th>
 					<th>所属类别</th>
 					<th>资产状态</th>
-					<th colspan="2">操作</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tboday>
@@ -20,20 +24,20 @@
 						<td>{=$aAss['type.name']}</td>
 						<td>
 							<if '{=$aAss['status']}==1'>
-								在库
-								<elseif '{=$aAss['status']}==2'/>
-								领用
-								<elseif '{=$aAss['status']}==3'/>
-								维修
-								<elseif '{=$aAss['status']}==4'/>
-								报废
+									<span class="oa_mode_reserve">在库</span>
+									<elseif '{=$aAss['status']}==2'/>
+									<span class="oa_mode_consuming">领用</span>
+									<elseif '{=$aAss['status']}==3'/>
+									<span class="oa_mode_maintain">维修</span>
+									<elseif '{=$aAss['status']}==4'/>
+									<span class="oa_mode_scrap">报废</span>
 							</if>
 						</td>
-						<td><a href="?c=org.opencomb.openoa.AssetsManagement.Register.EditAssetRegister&aid={=$aAss['aid']}">编辑</a></td>
-						<td><a href="?c=org.opencomb.openoa.AssetsManagement.Register.DeleteAssetRegister&aid={=$aAss['aid']}">删除</a></td>
+						<td><a href="?c=org.opencomb.openoa.AssetsManagement.Register.EditAssetRegister&aid={=$aAss['aid']}" class="oa_button_edit" title="编辑"></a><a href="?c=org.opencomb.openoa.AssetsManagement.Register.DeleteAssetRegister&aid={=$aAss['aid']}" class="oa_button_del" title="删除"></a></td>
 					</tr>
 				</foreach>
 			</tboday>
 		</table>
 	</form>
+	</div>
 </div>
