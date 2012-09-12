@@ -2,6 +2,8 @@
 
 namespace org\opencomb\openoa\process;
 
+use org\opencomb\openoa\process\api\Process;
+
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
 
 use org\jecat\framework\db\DB;
@@ -33,27 +35,16 @@ class EditNode extends ControlPanel
 	    $uid = IdManager::singleton()->currentId()->userId();
 	    if( !empty($_POST['Submit']))
 	    {
-	        $oNodeModel = Model::create("openoa:Process_Node");
-	        $oNodeModel->update( array(
-	                'gid'=>$_POST['gid'],
-	        ),"id = ".$_POST['nid']);
-	        
-	        for($i = 1; $i <= 4; $i++)
+	        $oProcess = new Process();
+	        if( $oProcess->EditNode( $_POST, $this->params()->get('nid')))
 	        {
-	            if( !empty($_POST['status'][$i]) )
-	            {
-	                $oStatusModel = Model::create("openoa:Process_Status");
-	                $oStatusModel->update( array(
-	                        'name'=>$_POST['status'][$i],
-	                        'tonid'=>$_POST['tonid'][$i],
-	                ),"id = ".$_POST['sid'][$i]);
-	            }
+	            $this->messageQueue ()->create ( Message::success, "保存成功" );
+	            $this->location('?c=org.opencomb.openoa.process.Node&tid='.$_POST['tid']);
+	        }else{
+	            $this->messageQueue ()->create ( Message::success, "保存失败" );
+	            $this->location('?c=org.opencomb.openoa.process.Node&tid='.$_POST['tid']);
 	        }
-	        
-            $this->messageQueue ()->create ( Message::success, "成功" );
-            $this->location('?c=org.opencomb.openoa.process.Node&tid='.$_POST['tid']);
 	    }
-	    
 	    
 	    
 	    $oModel = Model::create("openoa:Process_Node");

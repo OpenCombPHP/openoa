@@ -1,10 +1,10 @@
-<if "$data['am'] != '00:00:00'">
+<if "$data['am'] && $data['am'] != '00:00:00'">
 <p>{=$data['am']}{=$aData['am']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($data,'am')}</p>
 <else/>
 <p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=am">上班签到</a></p>
 </if>
 
-<if "$data['pm'] != '00:00:00'">
+<if "$data['pm'] && $data['pm'] != '00:00:00'">
 <p>{=$data['pm']}{=$aData['am']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($data,'pm')}</p>
 <else/>
 <p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=pm">下班签到</a></p>
