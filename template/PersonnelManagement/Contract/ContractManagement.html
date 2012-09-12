@@ -28,7 +28,7 @@
 								<td>{=$aCon['user.username']}</td>
 								<td>{=date('Y-m-d',$aCon['starttime'])}</td>
 								<td>{=date('Y-m-d',$aCon['endtime'])}</td>
-								<td class="oa_contract_expire_day">{=($aCon['endtime']-$aCon['remindtime'])/3600/24}<span>天</span></td>
+								<td class="oa_contract_expire_day">{=($aCon['endtime']-$sNow)/3600/24}<span>天</span></td>
 								<td><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.EditContract&id={=$aCon['id']}" class="oa_button_edit" title="编辑"></a><a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.DeleteContract&id={=$aCon['id']}" class="oa_button_del" title="删除"></a></td>
 							</tr>
 							<else/>
