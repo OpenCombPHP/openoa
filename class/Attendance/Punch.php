@@ -20,16 +20,14 @@ class Punch extends OpenOaController
 	
 	public function process()
 	{
-	    $uid = IdManager::singleton()->currentId();
+	    $uid = IdManager::singleton()->currentId()->userId();
 	    
 	    $oModel = Model::create("openoa:attendance_detail"); 
 	    $oData = $oModel->load( array( $uid, date("Y-m-d")),array( 'uid', 'date'));
-	    
 	    if( empty($_GET["a"]) )
 	    {
 	        $this->view()->variables()->set('data', $oData);
 	        return ;
-	        
 	    }else{
 	        if( $oData->rowNum() > 0 )
 	        {
@@ -38,7 +36,6 @@ class Punch extends OpenOaController
                 );
 	            $oModel->update( $aRs , "date = '".date('Y-m-d')."' AND uid='{$uid}'");
 	        }else{
-	            
                 $aRs = array(
 	                'uid'=>$uid,
 	                'date'=>date("Y-m-d"),
@@ -46,8 +43,6 @@ class Punch extends OpenOaController
 	            );
     	        $oModel->insert( $aRs);
 	        }
-	        
-	        
 	    }
 	    $this->view()->variables()->set('message', "打卡成功" );
         $this->location('?c=org.opencomb.openoa.Attendance.Punch');

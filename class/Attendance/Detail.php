@@ -90,7 +90,6 @@ class Detail extends OpenOaController
 	        }else{
 	            @$aUserData[$v['uid']]['13'] += $this->sumDate( $v['am'], $v['pm']);
 	            @$aUserData[$v['uid']]['14'] += $this->sumDate( $am, $v['am']);
-	            echo "<pre>";print_r($v['pm'] . "|" . $pm);echo "</pre>";
 	            @$aUserData[$v['uid']]['15'] += $this->sumDate( $v['pm'] ,$pm);
 	        }
 	    }
