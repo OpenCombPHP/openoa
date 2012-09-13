@@ -1,117 +1,83 @@
 <lib name="jquery"/>
 <div id="AddEmployee">
-	<h1>新增员工</h1>
-	<msgqueue/>
-	<form method="post">
-		<table id="AddEmployee_table">
-			<thead>
-				<tr>
-					<th>员工工号:</th>
-					<td><widget id="eid" type="text" /></td>
-				</tr>
-				<tr>
-					<th>员工姓名:</th>
-					<td><widget id="name" type="text" /></td>
-				</tr>
-				<tr>
-					<th>职务:</th>
-					<td>
-						<select name="position_select">
-							<foreach for="$aPositionModel" item='aPos'>
-								<option value="{=$aPos['pid']}" size='10px'>{=$aPos['name']}</option>
-							</foreach>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th>性别:</th>
-					<td>				
-						<input type='radio' name='sex' value='1' checked/>男
-						<input type='radio' name='sex' value='2'/>女
-					</td>
-				</tr>
-				<tr>
-					<th >出生年月:</th>
-					<td>
-						<select name="birthday_y" id="birthday_y" style="width: 60px;"></select>年
-						<select name="birthday_m" id="birthday_m" style="width: 60px;"></select>月
-						<select name="birthday_d" id="birthday_d" style="width: 60px;"></select>日
-					</td>
-				</tr>
-				<tr>
-					<th>面貌:</th>
-					<td><widget id="policital" type="text" /></td>
-				</tr>
-				<tr>
-					<th>工作时间:</th>
-					<td><widget id="worktime" type="text" /></td>
-				</tr>
-				<tr>
-					<th>技术职称:</th>
-					<td><widget id="protitle" type="text" /></td>
-				</tr>
-				<tr>
-					<th>学历:</th>
-					<td><widget id="education" type="text" /></td>
-				</tr>
-				<tr>
-					<th>毕业时间:</th>
-					<td>
-						<select name="graduation_y" id="graduation_y" style="width: 60px;"></select>年
-						<select name="graduation_m" id="graduation_m" style="width: 60px;"></select>月
-						<select name="graduation_d" id="graduation_d" style="width: 60px;"></select>日
-					</td>
-				</tr>
-				<tr>
-					<th>毕业学校:</th>
-					<td><widget id="school" type="text" /></td>
-				</tr>
-				<tr>
-					<th>所学专业:</th>
-					<td><widget id="major" type="text" /></td>
-				</tr>
-				<tr>
-					<th>入厂时间:</th>
-					<td>
-						<select name="factory_y" id="factory_y" style="width: 60px;"></select>年
-						<select name="factory_m" id="factory_m" style="width: 60px;"></select>月
-						<select name="factory_d" id="factory_d" style="width: 60px;"></select>日
-					</td>
-				</tr>
-				<tr>
-					<th>所在部门:</th>
-					<td>
-						<select name="department_select">
-							<foreach for="$aDepatmentModel" item='aDep'>
-								<option value="{=$aDep['gid']}" size='10px'>{=$aDep['name']}</option>
-							</foreach>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th>手机:</th>
-					<td><widget id="tel" type="text" /></td>
-				</tr>
-				<tr>
-					<th>座机/分机:</th>
-					<td><widget id="phone" type="text" /></td>
-				</tr>
-				<tr>
-					<th>状态:</th>
-					<td>
-						<select name="status">
-							<option value="1" size='10px'>在职</option>
-							<option value="2" size='10px'>离职</option>
-						</select>
-					</td>
-				</tr>
-			</thead>
-		</table>
-		<div>
-			<input type="submit" value="保存" />
-			<input type="submit" value="取消"/>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			新增员工
 		</div>
-	</form>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement" class="oa_button_right">返回员工管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+	<form method="post">
+		<div id="AddEmployee_table" class="oa_table_form">
+				<h1>员工工号</h1>
+				<widget id="eid" type="text" class="text" />
+				<h1>员工姓名</h1>
+				<widget id="name" type="text" class="text" />
+				<h1>职务</h1>
+				<select name="position_select">
+					<foreach for="$aPositionModel" item='aPos'>
+						<option value="{=$aPos['pid']}" size='10px'>{=$aPos['name']}</option>
+					</foreach>
+				</select>
+				<h1>性别</h1>
+				<input type='radio' name='sex' value='1' checked/> 男
+				<input type='radio' name='sex' value='2'/> 女
+				<h1>出生年月</h1>
+				<select name="birthday_y" id="birthday_y"></select>
+				<select name="birthday_m" id="birthday_m"></select>
+				<select name="birthday_d" id="birthday_d"></select>
+				<h1>面貌</h1>
+				<widget id="policital" type="text" class="text" />
+				<h1>工作时间</h1>
+				<widget id="worktime" type="text" class="text" />
+				<h1>技术职称</h1>
+				<widget id="protitle" type="text" class="text" />
+				<h1>学历</h1>
+				<widget id="education" type="text" class="text" />
+				<h1>毕业时间</h1>
+				<select name="graduation_y" id="graduation_y" ></select>
+				<select name="graduation_m" id="graduation_m" ></select>
+				<select name="graduation_d" id="graduation_d" ></select>
+				<h1>毕业学校</h1>
+				<widget id="school" type="text" class="text" />
+				<h1>所学专业</h1>
+				<widget id="major" type="text" class="text" />
+				<h1>入厂时间</h1>
+				<select name="factory_y" id="factory_y"></select>
+				<select name="factory_m" id="factory_m"></select>
+				<select name="factory_d" id="factory_d"></select>
+				<h1>所在部门</h1>
+				<select name="department_select">
+					<foreach for="$aDepatmentModel" item='aDep'>
+						<option value="{=$aDep['gid']}" size='10px'>{=$aDep['name']}</option>
+					</foreach>
+				</select>
+				<h1>手机</h1>
+				<widget id="tel" type="text" class="text" />
+				<h1>座机/分机</h1>
+				<widget id="phone" type="text" class="text" />
+				<h1>状态</h1>
+				<select name="status">
+					<option value="1" size='10px'>在职</option>
+					<option value="2" size='10px'>离职</option>
+				</select>
+				
+				<div class="oa_table_form_info">
+				<p>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
+
 	<script>
 		jquery(function($){
 		var arrName = new Array('birthday', 'graduation', 'factory');

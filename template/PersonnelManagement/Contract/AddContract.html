@@ -1,36 +1,40 @@
 <lib name='jquery'/>
 <div id="AddContract">
-	<h1>新建合同</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			新建合同
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" class="oa_button_right">返回人事合同管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table id="AddContract_table" border="1">
-			<thead>
-				<tr>
-					<th>合同编号:</th>
-					<td><widget id="cid" /></td>
-				</tr>
-				<tr>
-					<th>单位员工:</th>
-					<th>
-						<input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="#">选择</a>
-					</th>
-				</tr>
-				<tr>
-					<th>开始日期:</th>
-					<th><widget id="starttime" /></th>
-				</tr>
-				<tr>
-					<th>结束日期:</th>
-					<th><widget id="endtime" /></th>
-				</tr>
-				<tr>
-					<th>到期提醒时间:</th>
-					<th><widget id="remindtime" /></th>
-				</tr>
-			</thead>
-		</table>
-		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
-		<input type="submit" value="提交" />
-	</form>
+		<div id="AddContract_table" class="oa_table_form">
+				<h1>合同编号</h1>
+				<widget id="cid" class="text" />
+				<h1>单位员工</h1>
+				<a id="selectuser" href="#"><input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"  class="text" /></a>
+				<h1>开始日期</h1>
+				<widget id="starttime" class="text" />
+				<h1>结束日期</h1>
+				<widget id="endtime" class="text" />
+				<h1>到期提醒时间</h1>
+				<widget id="remindtime" class="text" />
+				<div class="oa_table_form_info">
+				<p>
+					<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>
 <script>
 	jQuery('#selectuser').click(
