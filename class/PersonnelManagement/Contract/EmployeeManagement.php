@@ -9,7 +9,7 @@ use org\opencomb\openoa\controller\OpenOaController;
 /*
  * 成本对比分析
  * */
-class EmployeeManagement extends ControlPanel{
+class EmployeeManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '人员管理',
 			'view' => array (

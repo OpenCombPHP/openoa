@@ -1,58 +1,80 @@
 <lib name='jquery'/>
-<lib name="jquery.ui" />
+<lib name="jquery.ui"/>
 <div id="AddContract">
-	<h1>新建合同</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			新建合同
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" class="oa_button_right">返回人事合同管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table id="AddContract_table" border="1">
-			<thead>
-				<tr>
-					<th>合同编号:</th>
-					<td><widget id="cid" /></td>
-				</tr>
-				<tr>
-					<th>单位员工:</th>
-					<th>
-						<input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="#">选择</a>
-					</th>
-				</tr>
-				<tr>
-					<th>开始日期:</th>
-					<th><widget id="starttime" /></th>
-				</tr>
-				<tr>
-					<th>结束日期:</th>
-					<th><widget id="endtime" /></th>
-				</tr>
-			</thead>
-		</table>
-		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
-		<input type="submit" value="提交" />
-	</form>
+		<div id="AddContract_table" class="oa_table_form">
+				<h1>合同编号</h1>
+				<widget id="cid" class="text" />
+				<h1>单位员工</h1>
+				<a id="selectuser" href="#"><input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"  class="text" /></a>
+				<h1>开始日期</h1>
+				<widget id="starttime" class="text" />
+				<h1>结束日期</h1>
+				<widget id="endtime" class="text" />
+				<h1>到期提醒时间</h1>
+				<widget id="remindtime" class="text" />
+				<div class="oa_table_form_info">
+				<p>
+					<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>
-<input type="text" id="model_select_uid" />
 <script>
+	if(document.all){document.getElementByIdx("a3").click(); }         
+	else  
+	 {  //firefox下面执行
+	      var evt = document.createEvent("MouseEvents");  
+	       evt.initEvent("click",true,true);  
+	       document.getElementByIdx("a3").dispatchEvent(evt);  
+	  } 
+
+
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagementIframe");
-			if(uid!=null)
-			{
-				var arrValue = uid.split('.');
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement", window);
+			if (uid == undefined) {
+				var arrValue = window.returnValue.split('.');
 				jquery('#selectid').attr("value",arrValue[1]);
 				jquery('#hide_uid').attr("value",arrValue[0]);
-			}
+		    }
 		}		
 	);
 	
 	jQuery('form').submit(function(){
+		//var dd = true;
+		//console.log(starttime,endtime);
+		//console.log('dddd');
 		var starttime = jquery("#starttime").val();
 		var endtime = jquery("#endtime").val();
 		var remindtime = jquery("#remindtime").val();
 		
+		//yyyy-mm-dd判断
+		//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+		//var result_f_y = factory_y.match(/^(\d{4})$/);
 		var t_y = /^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2})$/;
 		var time_b = false;
 
-		if(t_y.test(starttime) && t_y.test(endtime) && t_y.test(remindtime))
+		//console.log(starttime,endtime);
+		if(t_y.test(starttime) && t_m.test(endtime) && t_d.test(remindtime))
 		{
 			time_b = true;
 		};

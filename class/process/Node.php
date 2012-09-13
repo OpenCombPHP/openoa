@@ -28,7 +28,7 @@ class Node extends ControlPanel
 	{
 	    $oModel = Model::create("openoa:Process_Node");
 	    $oModel->hasOne('coresystem:group',"gid","gid");
-	    $oList = $oModel->load( );
+	    $oList = $oModel->load(array($this->params()->get('tid')),array('tid'));
 	    
 	    $this->view()->variables()->set('list', $oList );
 	}

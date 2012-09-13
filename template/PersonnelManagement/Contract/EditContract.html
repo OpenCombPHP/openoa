@@ -1,43 +1,58 @@
 <lib name='jquery'/>
-<lib name="jquery.ui" />
 <div id="EditContract">
-	<h1>新增员工</h1>
-	<msgqueue/>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			合同编辑
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" class="oa_button_right">返回人事合同管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 		<form method="post">
-		<table id="EditContract_table" border="1">
-			<thead>
-				<tr>
-					<th>合同编号:</th>
-					<td><widget id="cid" /></td>
-				</tr>
-				<tr>
-					<th>单位员工:</th>
-					<th><widget id="name" /></th>
-				</tr>
-				<tr>
-					<th>开始日期:</th>
-					<th><widget id="starttime" /></th>
-				</tr>
-				<tr>
-					<th>结束日期:</th>
-					<th><widget id="endtime" /></th>
-				</tr>
-			</thead>
-		</table>
-		<widget id="hide_id"/>
-		<input type="submit" value="提交" />
-	</form>
+		<div id="EditContract_table" class="oa_table_form">
+				<h1>合同编号</h1>
+				<widget id="cid" class="text" />
+				<h1>单位员工</h1>
+				<widget id="name" class="text" />
+				<h1>开始日期</h1>
+				<widget id="starttime" class="text" />
+				<h1>结束日期</h1>
+				<widget id="endtime" class="text" />
+				<div class="oa_table_form_info">
+				<p><widget id="hide_id"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
+	
 </div>
 <script>
 	jQuery('form').submit(function(){
+		//return false;
+		//var dd = true;
+		//console.log(starttime,endtime);
+		//console.log('dddd');
 		var starttime = jquery("#starttime").val();
 		var endtime = jquery("#endtime").val();
 		var remindtime = jquery("#remindtime").val();
 		
+		//yyyy-mm-dd判断
+		//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+		//var result_f_y = factory_y.match(/^(\d{4})$/);
 		var t_y = /^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2})$/;
 		var time_b = false;
 	
-		if(t_y.test(starttime) && t_y.test(endtime) && t_y.test(remindtime))
+		//console.log(starttime,endtime);
+		//return false;
+		if(t_y.test(starttime) && t_m.test(endtime) && t_d.test(remindtime))
 		{
 			time_b = true;
 		};

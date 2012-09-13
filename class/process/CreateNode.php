@@ -37,13 +37,15 @@ class CreateNode extends ControlPanel
 	    if( !empty($_POST['Submit']))
 	    {
 	        $oProcess = new Process();
-	        if( $oProcess->CreateNode( $_POST, $this->params()->get('tid')))
+	        $aRow['gid'] =  $_POST['gid'];
+	        $aRow['status'] =  $_POST['status'];
+	        if( $oProcess->CreateNode( $aRow, $this->params()->get('tid')))
 	        {
 	            $this->messageQueue ()->create ( Message::success, "保存成功" );
-	            $this->location('?=org.opencomb.openoa.process.Node&tid='.$this->params()->get('tid'));
+	            $this->location('?c=org.opencomb.openoa.process.Node&tid='.$this->params()->get('tid'));
 	        }else{
 	            $this->messageQueue ()->create ( Message::success, "保存失败" );
-	            $this->location('?=org.opencomb.openoa.process.Node&tid='.$this->params()->get('tid'));
+	            $this->location('?c=org.opencomb.openoa.process.Node&tid='.$this->params()->get('tid'));
 	        }
 	    }
 	    
