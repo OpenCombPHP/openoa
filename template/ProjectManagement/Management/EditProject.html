@@ -168,16 +168,13 @@
 </div>
 <script>
 	jQuery('#selectuser').click(
-		
-		function selectEmployee(){
-			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
-			console.log(uid);
-			if(uid!=null)
-			{
-				var arrValue = uid.split('.');
+		function selectEmployee(){			
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement", window);
+			if (uid == undefined) {
+				var arrValue = window.returnValue.split('.');
 				jquery('#edit_selectid').attr("value",arrValue[1]);
 				jquery('#hide_responsible_id').attr("value",arrValue[0]);
-			}
+		    }
 		}		
 	);
 	

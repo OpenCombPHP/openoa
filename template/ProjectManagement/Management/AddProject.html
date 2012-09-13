@@ -116,14 +116,12 @@
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = window.showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement",document);
-			console.log(uid);
-			if(uid!=null)
-			{
-				var arrValue = uid.split('.');
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement", window);
+			if (uid == undefined) {
+				var arrValue = window.returnValue.split('.');
 				jquery('#selectid').attr("value",arrValue[1]);
 				jquery('#hide_uid').attr("value",arrValue[0]);
-			}
+		    }
 		}		
 	);
 	
