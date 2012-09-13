@@ -1,4 +1,5 @@
 <lib name='jquery'/>
+<lib name='jquery.ui'/>
 <div id="EditContract">
 	<div class="oa_tablehead">
 		<div class="oa_tablehead_tilte">
@@ -36,22 +37,13 @@
 </div>
 <script>
 	jQuery('form').submit(function(){
-		//return false;
-		//var dd = true;
-		//console.log(starttime,endtime);
-		//console.log('dddd');
 		var starttime = jquery("#starttime").val();
 		var endtime = jquery("#endtime").val();
 		var remindtime = jquery("#remindtime").val();
 		
-		//yyyy-mm-dd判断
-		//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
-		//var result_f_y = factory_y.match(/^(\d{4})$/);
 		var t_y = /^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2})$/;
 		var time_b = false;
 	
-		//console.log(starttime,endtime);
-		//return false;
 		if(t_y.test(starttime) && t_m.test(endtime) && t_d.test(remindtime))
 		{
 			time_b = true;

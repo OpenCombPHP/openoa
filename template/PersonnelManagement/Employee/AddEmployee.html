@@ -28,9 +28,7 @@
 				<input type='radio' name='sex' value='1' checked/> 男
 				<input type='radio' name='sex' value='2'/> 女
 				<h1>出生年月</h1>
-				<select name="birthday_y" id="birthday_y"></select>
-				<select name="birthday_m" id="birthday_m"></select>
-				<select name="birthday_d" id="birthday_d"></select>
+				<input type="text" id="birthday"/>
 				<h1>面貌</h1>
 				<widget id="policital" type="text" class="text" />
 				<h1>工作时间</h1>
@@ -40,17 +38,13 @@
 				<h1>学历</h1>
 				<widget id="education" type="text" class="text" />
 				<h1>毕业时间</h1>
-				<select name="graduation_y" id="graduation_y" ></select>
-				<select name="graduation_m" id="graduation_m" ></select>
-				<select name="graduation_d" id="graduation_d" ></select>
+				<input type="text" id="graduation_time"/>
 				<h1>毕业学校</h1>
 				<widget id="school" type="text" class="text" />
 				<h1>所学专业</h1>
 				<widget id="major" type="text" class="text" />
 				<h1>入厂时间</h1>
-				<select name="factory_y" id="factory_y"></select>
-				<select name="factory_m" id="factory_m"></select>
-				<select name="factory_d" id="factory_d"></select>
+				<input type="text" id="factory_time"/>
 				<h1>所在部门</h1>
 				<select name="department_select">
 					<foreach for="$aDepatmentModel" item='aDep'>
