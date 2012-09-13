@@ -36,7 +36,13 @@
 		//obj.getElementById('test1').value=22222;
 		
 		//console.log(jquery("#selectuid:checked").val());
-		window.returnValue = jquery("#selectuid:checked").val();
+		if (window.opener != undefined) {
+		       //for chrome
+		       window.opener.returnValue = jquery("#selectuid:checked").val();
+		}
+		else {
+		       window.returnValue = jquery("#selectuid:checked").val();
+		}
 		window.close();		
 	}
 

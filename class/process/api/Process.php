@@ -47,13 +47,12 @@ class Process
 	        throw new \Exception("Tid不能为空");
 	    }
 	    
-	    if( !empty($aData['name']))
+	    if( !empty($aData['gid']))
 	    {
 	        $oNodeModel = Model::create("openoa:Process_Node");
 	        $oNodeModel->insert( array(
 	                'tid'=>$tid,
-	                'gid'=>$aData['gid'],
-	                'name'=>$aData['name'],
+	                'gid'=>implode(",", $aData['gid']),
 	        ));
 	        $nid = DB::singleton()->lastInsertId();
 	
@@ -88,7 +87,7 @@ class Process
 	    {
 	        $oNodeModel = Model::create("openoa:Process_Node");
 	        $oNodeModel->update( array(
-	                'gid'=>$aData['gid'],
+	                'gid'=>implode(",", $aData['gid']),
 	        ),"id = ".$nid);
 	
 	        for($i = 1; $i <= 4; $i++)
@@ -180,6 +179,6 @@ class Process
 	    ));
 	
 	    return true;
-	
 	}
+	
 }
