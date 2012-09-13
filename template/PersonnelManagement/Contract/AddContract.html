@@ -1,4 +1,5 @@
 <lib name='jquery'/>
+<lib name="jquery.ui" />
 <div id="AddContract">
 	<h1>新建合同</h1>
 	<form method="post">
@@ -22,10 +23,6 @@
 					<th>结束日期:</th>
 					<th><widget id="endtime" /></th>
 				</tr>
-				<tr>
-					<th>到期提醒时间:</th>
-					<th><widget id="remindtime" /></th>
-				</tr>
 			</thead>
 		</table>
 		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
@@ -47,21 +44,14 @@
 	);
 	
 	jQuery('form').submit(function(){
-		//var dd = true;
-		//console.log(starttime,endtime);
-		//console.log('dddd');
 		var starttime = jquery("#starttime").val();
 		var endtime = jquery("#endtime").val();
 		var remindtime = jquery("#remindtime").val();
 		
-		//yyyy-mm-dd判断
-		//var result=str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
-		//var result_f_y = factory_y.match(/^(\d{4})$/);
 		var t_y = /^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2})$/;
 		var time_b = false;
 
-		//console.log(starttime,endtime);
-		if(t_y.test(starttime) && t_m.test(endtime) && t_d.test(remindtime))
+		if(t_y.test(starttime) && t_y.test(endtime) && t_y.test(remindtime))
 		{
 			time_b = true;
 		};
@@ -76,5 +66,26 @@
 		}
 	})
 	
+	//设置日期插件配置
+	var dateOption = {
+		dateFormat:'yy-mm-dd'
+			,changeYear:true
+			,changeMonth:true
+			,monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+			,monthNamesShort:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+			,dayNames:['周日','周一','周二','周三','周四','周五','周六']
+			,dayNamesMin:['周日','周一','周二','周三','周四','周五','周六']
+			,dayNamesShort:['周日','周一','周二','周三','周四','周五','周六']
+			,yearRange:'1940:2020'
+			,showOn:'both'
+			,duration:'slow'
+			//,buttonText:'日期'
+			,buttonImage:'' 		//填写图片路径
+			,buttonImageOnly:true
+			,appendText:'(yyyy-mm-dd)'
+	};
 	
+	//使用日期插件
+	jquery('#starttime').datepicker(dateOption);
+	jquery('#endtime').datepicker(dateOption);
 </script>

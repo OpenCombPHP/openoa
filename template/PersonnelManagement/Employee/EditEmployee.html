@@ -1,4 +1,5 @@
 <lib name="jquery"/>
+<lib name="jquery.ui" />
 <script type="text/javascript" src="JS/jquery-ui-1.7.3/ui/jquery-ui-1.7.3.custom.js"></script>  
 <script type="text/javascript" src="JS/jquery-ui-1.7.3/ui/ui.datepicker.js"></script>  
 <script type="text/javascript" src="JS/jquery-ui-timepicker-addon.js"></script>  
@@ -37,9 +38,7 @@
 				<tr>
 					<th >出生年月:</th>
 					<td>
-						<input name="birthday_y" id="birthday_y" value="{=$birthday_y}" style="width: 60px;"></input>年
-						<input name="birthday_m" id="birthday_m" value="{=$birthday_m}" style="width: 60px;"></</input>月
-						<input name="birthday_d" id="birthday_d" value="{=$birthday_d}" style="width: 60px;"></</input>日
+						<input type="text" id="birthday"/>
 					</td>
 				</tr>
 				<tr>
@@ -61,9 +60,7 @@
 				<tr>
 					<th>毕业时间:</th>
 					<td>
-						<input name="graduation_y" id="graduation_y" value="{=$graduation_y}" style="width: 60px;"></input>年
-						<input name="graduation_m" id="graduation_m" value="{=$graduation_m}" style="width: 60px;"></input>月
-						<input name="graduation_d" id="graduation_d" value="{=$graduation_d}" style="width: 60px;"></input>日
+						<input type="text" id="graduation_time"/>
 					</td>
 				</tr>
 				<tr>
@@ -77,9 +74,7 @@
 				<tr>
 					<th>入厂时间:</th>
 					<td>
-						<input name="factory_y" id="factory_y" value="{=$factory_y}" style="width: 60px;"></input>年
-						<input name="factory_m" id="factory_m" value="{=$factory_m}" style="width: 60px;"></input>月
-						<input name="factory_d" id="factory_d" value="{=$factory_d}" style="width: 60px;"></input>日
+						<input type="text" id="factory_time"/>
 					</td>
 				</tr>
 				<tr>
@@ -167,5 +162,29 @@
 				return false;
 			}
 		})
+		
+		//设置日期插件配置
+		var dateOption = {
+				dateFormat:'yy-mm-dd'
+					,changeYear:true
+					,changeMonth:true
+					,monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+					,monthNamesShort:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+					,dayNames:['周日','周一','周二','周三','周四','周五','周六']
+					,dayNamesMin:['周日','周一','周二','周三','周四','周五','周六']
+					,dayNamesShort:['周日','周一','周二','周三','周四','周五','周六']
+					,yearRange:'1940:2020'
+					,showOn:'both'
+					,duration:'slow'
+					//,buttonText:'日期'
+					,buttonImage:'' 		//填写图片路径
+					,buttonImageOnly:true
+					,appendText:'(yyyy-mm-dd)'
+			};
+		
+		//使用日期插件
+		jquery('#birthday').datepicker(dateOption);
+		jquery('#graduation_time').datepicker(dateOption);
+		jquery('#factory_time').datepicker(dateOption);
 	</script> 
 </div>
