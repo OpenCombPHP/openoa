@@ -118,9 +118,11 @@
 		function selectEmployee(){
 			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement&rspn=noframe", window);
 			if (uid == undefined) {
-				var arrValue = window.returnValue.split('.');
-				jquery('#selectid').attr("value",arrValue[1]);
-				jquery('#hide_uid').attr("value",arrValue[0]);
+				if(window.returnValue){
+					var arrValue = window.returnValue.split('.');
+					jquery('#edit_selectid').attr("value",arrValue[1]);
+					jquery('#hide_responsible_id').attr("value",arrValue[0]);
+				}
 		    }
 		}		
 	);
