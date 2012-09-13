@@ -1,18 +1,28 @@
 <div id="AddDeparment">
-	<h1>添加部门</h1>
-	<msgqueue/>
-	<form method="post">
-		<table id="AddDeparment_table">
-			<thead>
-				<tr>
-					<th>部门名称:</th>
-					<td><widget id="name" type="text" /></td>
-				</tr>
-			</thead>
-		</table>
-		<div>
-			<input type="submit" value="保存" />
-			<input type="submit" value="取消"/>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			添加部门
 		</div>
-	</form>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement" class="oa_button_right">返回部门管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+		<form method="post">
+		<div id="AddDeparment_table" class="oa_table_form">
+				<h1>部门名称</h1>
+				<widget id="name" type="text" class="text" />
+				<div class="oa_table_form_info">
+				<p>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>

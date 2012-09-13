@@ -17,11 +17,24 @@
 	.oa_table tr.oa_contract_expire td{color:#980000}
 	.oa_table tr td.oa_contract_expire_day{ font-weight:700; color:#db0000; font-family: Helvetica,Arial,sans-serif; font-size:18px; padding-left:20px; background:url(../images/oaframe/ts.gif) no-repeat left 11px}
 	.oa_table td.oa_contract_expire_day span{ font-weight:normal; font-size:12px; padding-left:3px; vertical-align:1px;}
-
+.oa_table_form{ text-align:left; width:95%; margin:auto}
+	.oa_table_form h1{ height:40px; line-height:40px; color:#999; margin-top:10px;}
+	.oa_table_form_info{ margin-top:20px;}
+	.oa_table_form p{ color:#999;width:210px;float:left}
+	.oa_table_form input.text{background:#fdfdfd;border: 1px solid #BBB; width:50%;font-size: 14px;color: #666;padding: 7px;border-radius: 3px;outline: none;vertical-align: middle; _padding:0px 7px; _height:32px; _line-height:32px;}
+	.oa_table_form select{ font-size:14px; padding:3px; background:#fdfdfd;border: 1px solid #BBB; color:#666; border-radius:3px; }
+	.oa_table_form select option{ color:#666;}
+	.oa_table_form textarea{ background:#fdfdfd; height:60px;border: 1px solid #BBB; width:50%;font-size: 14px;color: #666;padding: 7px;border-radius: 3px;outline: none;vertical-align: middle; _padding:7px 7px;}
+	.oa_table_form #birthday_y,.oa_table_form #graduation_y,.oa_table_form #factory_y{width:80px;}
+	.oa_table_form #birthday_m,.oa_table_form #graduation_m,.oa_table_form #factory_m,.oa_table_form #birthday_d,.oa_table_form #graduation_d,.oa_table_form #factory_d{ width:50px;}
+	.oa_table_form .jc_message_queue{ display:inline-block;float:left; background:none; border:none; height:30px; padding:0; line-height:30px; font-weight:700}
+	.oa_table_form .jc_message_queue .jc_message_type_error{ padding-left:25px; background:url(../images/oaframe/stop.png) no-repeat left center; color:#b30000}
+	.oa_table_form .jc_message_queue .jc_message_type_success{ padding-left:25px; background:url(../images/oaframe/ok.png) no-repeat left center; color:#289000}
 .oa_table_foot{ width:95%; text-align:left; margin:auto}
 /***按钮****/
-.oa_button_left {display: block;height: 25px;line-height: 25px;background: url(../images/oaframe/box_sc.png) -739px -245px no-repeat;padding-left: 27px; float:right; margin-top:14px;}
+.oa_button_left {height: 25px;line-height: 25px;background: url(../images/oaframe/box_sc.png) -739px -245px no-repeat;padding-left: 27px; float:right; margin-top:14px;}
 .oa_button_right {display: block;height: 25px;line-height: 25px;padding-right: 20px;background: url(../images/oaframe/box_sc.png) right -188px no-repeat;float: left;}
+.oa_button_left_back{height: 25px;line-height: 25px;background: url(../images/oaframe/box_sc.png) -739px -288px no-repeat;padding-left: 27px; float:right; margin-top:14px;}
 
 .oa_button_edit{ display:block; float:left; width:16px; height:16px; background:url(../images/oaframe/edit.png) no-repeat; margin:0 10px 0 0}
 .oa_button_del{ display:block; float:left; width:16px; height:16px; background:url(../images/oaframe/del.png) no-repeat}
@@ -31,6 +44,10 @@
 .oa_form_button{ width:71px; height:25px; line-height:25px; padding-left:16px; background:url(../images/oaframe/box_sc.png) no-repeat -360px -113px; cursor:hand; border:0}
 
 .oa_table_footer_button{ background:url(../images/oaframe/box_sc.png) no-repeat -145px -191px; width:61px; height:30px; border:0; margin-top:20px;}
+
+.oa_button_save{background:url(../images/oaframe/box_sc.png) no-repeat -256px -191px; width:101px; height:30px; line-height:30px; border:0;font-weight:700;color:#3C2200; margin-right:10px; cursor:hand}
+.oa_button_cancel{background:url(../images/oaframe/box_sc.png) no-repeat -145px -191px; width:61px; height:30px; border:0; color:#999; cursor:hand}
+
 /***状态样式*******/
 .oa_mode_conduct{ color:#176cc4}
 .oa_mode_termination{ color:#e74747}

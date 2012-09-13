@@ -1,31 +1,38 @@
 <lib name='jquery'/>
 <div id="EditContract">
-	<h1>新增员工</h1>
-	<msgqueue/>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			合同编辑
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" class="oa_button_right">返回人事合同管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 		<form method="post">
-		<table id="EditContract_table" border="1">
-			<thead>
-				<tr>
-					<th>合同编号:</th>
-					<td><widget id="cid" /></td>
-				</tr>
-				<tr>
-					<th>单位员工:</th>
-					<th><widget id="name" /></th>
-				</tr>
-				<tr>
-					<th>开始日期:</th>
-					<th><widget id="starttime" /></th>
-				</tr>
-				<tr>
-					<th>结束日期:</th>
-					<th><widget id="endtime" /></th>
-				</tr>
-			</thead>
-		</table>
-		<widget id="hide_id"/>
-		<input type="submit" value="提交" />
-	</form>
+		<div id="EditContract_table" class="oa_table_form">
+				<h1>合同编号</h1>
+				<widget id="cid" class="text" />
+				<h1>单位员工</h1>
+				<widget id="name" class="text" />
+				<h1>开始日期</h1>
+				<widget id="starttime" class="text" />
+				<h1>结束日期</h1>
+				<widget id="endtime" class="text" />
+				<div class="oa_table_form_info">
+				<p><widget id="hide_id"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
+	
 </div>
 <script>
 	jQuery('form').submit(function(){
@@ -59,5 +66,27 @@
 			return false;
 		}
 	})
-
+	
+	//设置日期插件配置
+	var dateOption = {
+		dateFormat:'yy-mm-dd'
+			,changeYear:true
+			,changeMonth:true
+			,monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+			,monthNamesShort:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+			,dayNames:['周日','周一','周二','周三','周四','周五','周六']
+			,dayNamesMin:['周日','周一','周二','周三','周四','周五','周六']
+			,dayNamesShort:['周日','周一','周二','周三','周四','周五','周六']
+			,yearRange:'1940:2020'
+			,showOn:'both'
+			,duration:'slow'
+			//,buttonText:'日期'
+			,buttonImage:'' 		//填写图片路径
+			,buttonImageOnly:true
+			,appendText:'(yyyy-mm-dd)'
+	};
+	
+	//使用日期插件
+	jquery('#starttime').datepicker(dateOption);
+	jquery('#endtime').datepicker(dateOption);
 </script>
