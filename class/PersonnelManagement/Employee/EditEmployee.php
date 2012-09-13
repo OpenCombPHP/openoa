@@ -154,33 +154,6 @@ class EditEmployee extends OpenOaController{
 		$sPhone = $this->params['phone'];
 		$sStatus = $this->params['status'];
 		
-		
-// 		$aEmployeeModel = Model::Create('openoa:EmployeeManagement','employee')
-// 							->hasOne('coresystem:userinfo','uid','uid','userinfo')
-// 							->hasOne('coresystem:user','uid','uid','user');
-// 		$aEmployeeModel->load();
-// 		$aEmployeeModel->update(
-// 				array(
-// 					'user.username' => $sName
-// 					,'position' => $sPosition
-// 					,'sex' => $sSex
-// 					//,'userinfo.birthday' => $sBirthday
-// 					,'policital' => $sPolicital
-// 					,'worktime' => $sWorkTime
-// 					,'protitle' => $sProtile
-// 					,'education' => $sEducation
-// 					,'graduationtime' => $sGraduationTime
-// 					,'school' => $sSchool
-// 					,'major' => $sMajor
-// 					,'factorytime' => $sFactoryTime
-// 					,'department' => $sDepartment
-// 					,'userinfo.tel' => $sTel
-// 					,'employee.phone' => $sPhone
-// 					,'status' => $sStatus
-						
-// 				) , "user.uid =".$this->params['hide_eid']
-// 		);
-		
 		$this->model('openoa:EmployeeManagement','employee')
 					->hasOne('coresystem:userinfo','uid','uid','userinfo')
 					->hasOne('coresystem:user','uid','uid','user');
@@ -191,7 +164,7 @@ class EditEmployee extends OpenOaController{
 						,'name' => $sName
 						,'position' => $sPosition
 						,'sex' => $sSex
-						//,'userinfo.birthday' => $sBirthday
+						,'userinfo.birthday' => $sBirthday
 						,'policital' => $sPolicital
 						,'worktime' => $sWorkTime
 						,'prtitle' => $sProtile
@@ -201,7 +174,7 @@ class EditEmployee extends OpenOaController{
 						,'major' => $sMajor
 						,'factorytime' => $sFactoryTime
 						,'department' => $sDepartment
-						//,'userinfo.tel' => $sTel
+						,'userinfo.tel' => $sTel
 						,'phone' => $sPhone
 						,'status' => $sStatus
 		
