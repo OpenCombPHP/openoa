@@ -17,7 +17,7 @@
 				<h1>合同编号</h1>
 				<widget id="cid" class="text" />
 				<h1>单位员工</h1>
-				<a id="selectuser" href="#"><input type="text" id="selectid" disabled="disabled" style="background-color:white" value="{=$sUserName}"  class="text" /></a>
+				<a id="selectuser" href="javascript:;" onClick="selectEmployee()"><input type="text" id="selectid" readonly="readonly" style="background-color:white" value="{=$sUserName}"  class="text" /></a>
 				<h1>开始日期</h1>
 				<widget id="starttime" class="text" />
 				<h1>结束日期</h1>
@@ -38,26 +38,14 @@
 	</div>
 </div>
 <script>
-	if(document.all){document.getElementByIdx("a3").click(); }         
-	else  
-	 {  //firefox下面执行
-	      var evt = document.createEvent("MouseEvents");  
-	       evt.initEvent("click",true,true);  
-	       document.getElementByIdx("a3").dispatchEvent(evt);  
-	  } 
-
-
-	jQuery('#selectuser').click(
-		
-		function selectEmployee(){
-			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement", window);
-			if (uid == undefined) {
-				var arrValue = window.returnValue.split('.');
-				jquery('#selectid').attr("value",arrValue[1]);
-				jquery('#hide_uid').attr("value",arrValue[0]);
-		    }
-		}		
-	);
+	function selectEmployee(){
+		var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement", window);
+		if (uid == undefined) {
+			var arrValue = window.returnValue.split('.');
+			jquery('#selectid').attr("value",arrValue[1]);
+			jquery('#hide_uid').attr("value",arrValue[0]);
+	    }
+	};
 	
 	jQuery('form').submit(function(){
 		//var dd = true;
