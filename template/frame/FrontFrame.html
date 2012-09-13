@@ -51,19 +51,38 @@
 		-->
 			<widget id="mainMenu" type='menu' attr.depth="1">
 			<item id="PersonnelManagement" title="人事管理" link="?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement">
-				<item id="Overtime_menu" title="部门管理" controller="org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement" />
-				<item id="Position_menu" title="职位管理" controller="org.opencomb.openoa.PersonnelManagement.Position.PositionManagement" />
-				<item id="Employee_menu" title="员工管理" controller="org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement" />
-				<item id="Demission_menu" title="离职管理" controller="org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement" />
-				<item id="ContractManagement_menu" title="人事合同管理" controller="org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" />
-				<item id="NoContract_menu" title="未签合同管理" controller="org.opencomb.openoa.PersonnelManagement.Contract.NoContract" />
+				<item id="Overtime_menu" title="部门管理" controller="org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Dep.EditDepartment</query>
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Dep.AddDepartment</query>
+				</item>
+				<item id="Position_menu" title="职位管理" controller="org.opencomb.openoa.PersonnelManagement.Position.PositionManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Position.EditPosition</query>
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Position.AddPosition</query>
+				</item>
+				<item id="Employee_menu" title="员工管理" controller="org.opencomb.openoa.PersonnelManagement.Employee.EmployeeManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Employee.AddEmployee</query>
+				</item>
+				<item id="Demission_menu" title="离职管理" controller="org.opencomb.openoa.PersonnelManagement.Demission.DemissionManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Employee.EditEmployee</query>
+				</item>
+				<item id="ContractManagement_menu" title="人事合同管理" controller="org.opencomb.openoa.PersonnelManagement.Contract.ContractManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Contract.EditContract</query>
+				</item>
+				<item id="NoContract_menu" title="未签合同管理" controller="org.opencomb.openoa.PersonnelManagement.Contract.NoContract" >
+					<query bean.type="string">c=org.opencomb.openoa.PersonnelManagement.Contract.AddContract</query>
+				</item>
 			</item>
 			<item id="ProjectManagement" title="项目管理" link="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement">
-				<item id="ProjectManagement_menu" title="项目管理" controller="org.opencomb.openoa.ProjectManagement.Management.ProjectManagement" />
+				<item id="ProjectManagement_menu" title="项目管理" controller="org.opencomb.openoa.ProjectManagement.Management.ProjectManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.ProjectManagement.Management.EditProject</query>
+				</item>
 				<item id="Assign_menu" title="我分配的项目" controller="org.opencomb.openoa.ProjectManagement.Management.MyAssignmentProject" />
 				<item id="Management_menu" title="我管理的项目" controller="org.opencomb.openoa.ProjectManagement.Management.MyManagementProject" />
 				<item id="add_menu" title="新建项目" controller="org.opencomb.openoa.ProjectManagement.Management.AddProject" />
-				<item id="type_menu" title="项目类别管理" controller="org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement" />
+				<item id="type_menu" title="项目类别管理" controller="org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.ProjectManagement.Type.EditProjectType</query>
+					<query bean.type="string">c=org.opencomb.openoa.ProjectManagement.Type.AddProjectType</query>
+				</item>
 				<item id="performance_menu" title="绩效统计" >
 					<item id="performance_menu_query" title="部门项目查询" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentQuery" />
 					<item id="performance_menu_depart" title="部门项目绩效" controller="org.opencomb.openoa.ProjectManagement.Performance.DepartmentCount" />

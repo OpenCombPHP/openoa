@@ -2,6 +2,8 @@
 
 namespace org\opencomb\openoa\process;
 
+use org\opencomb\openoa\process\api\Process;
+
 use org\jecat\framework\db\DB;
 
 use org\opencomb\platform\ext\Extension;
@@ -29,31 +31,16 @@ class CreateRecord extends OpenOaController
 	    $uid = IdManager::singleton()->currentId()->userId();
 	    if( !empty($_POST['Submit']))
 	    {
-	        $oNodeModel = Model::create("openoa:Process_Node");
-	        $oNodeModel -> limit(1);
-	        $oNodeModel->load( array($_POST['tid']), array("tid"));
-	        
-            $oRecordModel = Model::create("openoa:Process_Record");
-            $oRecordModel->insert( array(
-                'uid'=>$uid,
-                'tid'=>$_POST['tid'],
-                'title'=>$_POST['title'],
-                'date1'=>$_POST['date1'],
-                'date2'=>$_POST['date2'],
-                'explain'=>$_POST['explain'],
-                'nowNid'=>$oNodeModel['id'],
-            ));
+            $oProcess = new Process();
+            if( $oProcess->CreateRecord( $_POST, $this->params()->get('tid')))
+            {
+                $this->messageQueue ()->create ( Message::success, "保存成功" );
+                $this->location('?c=org.opencomb.openoa.process.MyRecord');
+            }else{
+                $this->messageQueue ()->create ( Message::success, "保存失败" );
+                $this->location('?c=org.opencomb.openoa.process.MyRecord');
+            }
             
-            $oRecordDetailsModel = Model::create("openoa:Process_Record_Details");
-            $oRecordDetailsModel->insert( array(
-                'rid'=>DB::singleton()->lastInsertId(),
-                'ids'=>$oNodeModel['id'],
-                'type'=>'node',
-                'datetime'=>date("Y-m-d H:i:s"),
-            ));
-            
-            $this->messageQueue ()->create ( Message::success, "保存成功" );
-            $this->location('?c=org.opencomb.openoa.process.MyRecord');
 	    }
 	    
 	    $oModel = Model::create("openoa:Process_Task");

@@ -2,6 +2,8 @@
 
 namespace org\opencomb\openoa\process;
 
+use org\opencomb\openoa\process\api\Process;
+
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
 
 use org\opencomb\platform\ext\Extension;
@@ -29,13 +31,15 @@ class CreateTask extends ControlPanel
 	    $uid = IdManager::singleton()->currentId()->userId();
 	    if( !empty($_POST['Submit']))
 	    {
-            $oTaskModel = Model::create("openoa:Process_Task");
-            $oTaskModel->insert( array(
-                'name'=>$_POST['name'],
-                'explain'=>$_POST['explain'],
-            ));
-            $this->messageQueue ()->create ( Message::success, "保存成功" );
-            $this->location('?c=org.opencomb.openoa.process.CreateTask');
+	        $oProcess = new Process();
+	        if( $oProcess->CreateTask( $_POST))
+	        {
+	            $this->messageQueue ()->create ( Message::success, "保存成功" );
+	            $this->location('?c=org.opencomb.openoa.process.Task');
+	        }else{
+	            $this->messageQueue ()->create ( Message::success, "保存失败" );
+	            $this->location('?c=org.opencomb.openoa.process.CreateTask');
+	        }
 	    }
 	}
 }
