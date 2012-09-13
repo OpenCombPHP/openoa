@@ -4,16 +4,17 @@ namespace org\opencomb\openoa\PersonnelManagement\Contract;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\coresystem\mvc\controller\Controller;
 use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析
  * */
-class EmployeeManagement extends ControlPanel{
+class EmployeeManagementIframe extends Controller{
 	public $arrConfig = array (
 			'title' => '人员管理',
 			'view' => array (
-					'template' => 'PersonnelManagement/Contract/EmployeeManagement.html',
+					'template' => 'PersonnelManagement/Contract/EmployeeManagementIframe.html',
 			),
 			'widget:paginator' => array(  //分页器bean
 					'class' => 'paginator' ,

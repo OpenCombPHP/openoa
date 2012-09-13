@@ -29,11 +29,12 @@
 		<input type="submit" value="提交" />
 	</form>
 </div>
+<input type="text" id="model_select_uid" />
 <script>
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement");
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagementIframe");
 			if(uid!=null)
 			{
 				var arrValue = uid.split('.');

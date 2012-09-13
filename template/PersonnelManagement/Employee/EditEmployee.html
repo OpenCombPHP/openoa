@@ -186,5 +186,17 @@
 		jquery('#birthday').datepicker(dateOption);
 		jquery('#graduation_time').datepicker(dateOption);
 		jquery('#factory_time').datepicker(dateOption);
+		
+		function ss (){
+			this._mvcstruct = null;
+			this.parentObject = null;
+			this.asc = {};
+			this.selectType = "";
+			this.maxTextLength = 20;
+			
+			//this.allowSelectClass = '{=$sAllowSelectClass}';
+		}
+		var structBrowser = new ss();
+		console.log(structBrowser);
 	</script> 
 </div>
