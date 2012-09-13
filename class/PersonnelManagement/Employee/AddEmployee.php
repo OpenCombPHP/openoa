@@ -107,15 +107,15 @@ class AddEmployee extends OpenOaController{
 		$sName = $this->params['name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
-		$sBirthday = $this->params['birthday_y'].'-'.$this->params['birthday_m'].'-'.$this->params['birthday_d'];
+		$sBirthday = strtotime($this->params['birthday']);
 		$sPolicital = $this->params['policital'];
 		$sWorkTime = $this->params['worktime'];
 		$sProtile = $this->params['protitle'];
 		$sEducation = $this->params['education'];
-		$sGraduationTime = $this->params['graduation_y'].'.'.$this->params['graduation_m'].'.'.$this->params['graduation_d'];
+		$sGraduationTime = strtotime($this->params['graduation_time']);
 		$sSchool = $this->params['school'];
 		$sMajor = $this->params['major'];
-		$sFactoryTime = $this->params['factory_y'].'.'.$this->params['factory_m'].'.'.$this->params['factory_d'];
+		$sFactoryTime = strtotime($this->params['factory_time']);
 		$sDepartment = $this->params['department_select'];
 		$sTel = $this->params['tel'];
 		$sPhone = $this->params['phone'];
@@ -150,49 +150,6 @@ class AddEmployee extends OpenOaController{
 				)
 		);
 		$nUpdateRows = $aEmployeeModel->replace();
-		/*
-		$this->model('openoa:EmployeeManagement','employee')
-		->hasOne('coresystem:userinfo','uid','uid','userinfo')
-		->hasOne('coresystem:user','uid','uid','user')
-		->belongsTo('coresystem:group','department','gid','groups')
-		->belongsTo('openoa:PositionManagement','position','pid','position');
-		
-		$this->employee->load();
-		*/
-// 		$this->model('openoa:EmployeeManagement')->update(
-// 				array(
-// 						'name' => $sName
-// 						,'position' => $sPosition
-// 						,'sex' => $sSex
-// 						//,'userinfo.birthday' => $sBirthday
-// 						,'policital' => $sPolicital
-// 						,'worktime' => $sWorkTime
-// 						,'prtitle' => $sProtile
-// 						,'education' => $sEducation
-// 						,'graduationtime' => $sGraduationTime
-// 						,'school' => $sSchool
-// 						,'major' => $sMajor
-// 						,'factorytime' => $sFactoryTime
-// 						,'department' => $sDepartment
-// 						//,'userinfo.tel' => $sTel
-// 						,'phone' => $sPhone
-// 						,'status' => $sStatus
-		
-// 				) , "uid =".$this->params['hide_eid']
-// 		);
-		
-// 		$this->model('coresystem:user')->update(
-// 				array(
-// 						'username' => $sName
-// 				) , "user.uid =".$this->params['hide_eid']
-// 		);
-		
-// 		$this->model('coresystem:userinfo')->update(
-// 				array(
-// 						'userinfo.birthday' => $sBirthday
-// 						,'userinfo.tel' => $sTel
-// 				) , "userinfo.uid =".$this->params['hide_eid']
-// 		);
 		
 		if($nUpdateRows > 0){
 			$this->messageQueue()->create(Message::success,"添加员工成功") ;
