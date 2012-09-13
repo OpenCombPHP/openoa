@@ -116,7 +116,7 @@
 	jQuery('#selectuser').click(
 		
 		function selectEmployee(){
-			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement", window);
+			var uid = showModalDialog("?c=org.opencomb.openoa.PersonnelManagement.Contract.EmployeeManagement&rspn=noframe", window);
 			if (uid == undefined) {
 				var arrValue = window.returnValue.split('.');
 				jquery('#selectid').attr("value",arrValue[1]);
