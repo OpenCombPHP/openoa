@@ -1,19 +1,32 @@
-<msgqueue for="$theController->messageQueue()" />
-<form id="form1" name="form1" method="post" action="">
-  <p>收件人：
-    <input name="toname" type="text" id="toname" value="{=$row['userinfo.name']}" />
-</p>
-  <p>标题：
-    <input name="title" type="text" id="title" value="{=$row['title']}" />
-  </p>
-  <p>内容：
-    <textarea name="content" id="content">{=$row['content']}</textarea>
-  </p>
-  <p>
-    <input name="draft" type="hidden" id="draft" value="0" />
-    <input name="id" type="hidden" id="id" value="{=$theParams->get('id')}" />
-  </p>
-  <p>
-    <input type="submit" name="Submit" value="提交" />
-  </p>
-</form>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			编辑草稿
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.office.Drafts" class="oa_button_right">返回草稿管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+	<form id="form1" name="form1" method="post" action="">
+		<div class="oa_table_form">
+				<h1>收件人</h1>
+				<input name="toname" type="text" id="toname" value="{=$row['userinfo.name']}" class="text" />
+				<h1>标题</h1>
+				<input name="title" type="text" id="title" value="{=$row['title']}" class="text" />
+				<h1>内容</h1>
+				<textarea name="content" id="content">{=$row['content']}</textarea>
+				<div class="oa_table_form_info">
+				<p>
+					<input name="draft" type="hidden" id="draft" value="0" />
+   					<input name="id" type="hidden" id="id" value="{=$theParams->get('id')}" />
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue for="$theController->messageQueue()" />
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>

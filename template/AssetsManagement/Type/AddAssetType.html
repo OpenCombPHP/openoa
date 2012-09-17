@@ -1,12 +1,28 @@
 <div id="divAddType">
-	<h1>添加类别</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			添加资产类别
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.AssetsManagement.Type.AssetTypeManagement" class="oa_button_right">返回资产类别管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table>
-			<tr>
-				<th>类别名称</th>
-				<td><input type="text" name="name" /></td>
-			</tr>
-		</table>
-		<input type="submit" value="保存"/>
-	</form>
+		<div class="oa_table_form">
+				<h1>资产类别名称</h1>
+				<input type="text" name="name" class="text" />
+				<div class="oa_table_form_info">
+				<p>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>

@@ -1,18 +1,28 @@
-<msgqueue for="$theController->messageQueue()" />
-<form id="form1" name="form1" method="post" action="">
-  <p>收件人：
-    <input name="toname" type="text" id="toname" />
-</p>
-  <p>标题：
-    <input name="title" type="text" id="title" />
-  </p>
-  <p>内容：
-    <textarea name="content" id="content"></textarea>
-  </p>
-  <p>草稿：
-    <input name="draft" type="checkbox" id="draft" value="1" />
-</p>
-  <p>
-    <input type="submit" name="Submit" value="提交" />
-  </p>
-</form>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			发送新消息
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+	<form id="form1" name="form1" method="post" action="">
+		<div class="oa_table_form">
+				<h1>收件人</h1>
+				<input name="toname" type="text" id="toname" class="text" />
+				<h1>标题</h1>
+				 <input name="title" type="text" id="title" class="text" />
+				<h1>内容</h1>
+				<textarea name="content" id="content"></textarea>
+				<h1><input name="draft" type="checkbox" id="draft" value="1" /> 草稿</h1>
+				<div class="oa_table_form_info">
+				<p>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue for="$theController->messageQueue()" />
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>

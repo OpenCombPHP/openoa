@@ -2,105 +2,47 @@
 <lib name="jquery.ui" />
 <msgqueue/>
 <div id="editProject">
-	<h1>编辑项目</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			编辑项目
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement" class="oa_button_right">返回项目管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table>
-			<tr>
-				<th>
-					项目名称:
-				</th>
-				<td>
-					<widget id="edit_name"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目类别:
-				</th>
-				<td>
-					<select name="edit_type">
-						<foreach for="$aProjectType" item="aType">
-							<option value="{=$aType['pid']}">{=$aType['type']}</option>
-						</foreach>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目开始时间:
-				</th>
-				<td>
-					<widget id="edit_starttime"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目结束时间:
-				</th>
-				<td>
-					<widget id="edit_endtime"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目描述:
-				</th>
-				<td>
-					<textarea name="edit_content" id="edit_content" style="width:200px;height:200px"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h2>项目人员设置</h2>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目发布人
-				</th>
-				<td>
-					{=$sCurrentUser}
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 部门
-				</th>
-				<td>
-					<select name="department_select">
-						<foreach for="$aDepatmentModel" item='aDep'>
-							<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
-						</foreach>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目责任人
-				</th>
-				<td>
-					<input type="text" id="edit_selectid" readonly="readonly" style="background-color:white" value="{=$sResponsibleName}"/><a id="selectuser" href="#">选择</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目权限
-				</th>
-				<td>
-					<input name="edit_purview" type="radio" value='1' {=$sPurview=='1' ? 'checked':''}/>项目负责人
-					<input name="edit_purview" type="radio" value='2' {=$sPurview=='2' ? 'checked':''}/>所有人
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h2>提醒设置</h2>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 提醒接受人
-				</th>
-				<td>
+		<div class="oa_table_form">
+				<h1>项目名称</h1>
+				<widget id="edit_name" class="text" />
+				<h1>项目类别</h1>
+				<select name="edit_type">
+					<foreach for="$aProjectType" item="aType">
+						<option value="{=$aType['pid']}">{=$aType['type']}</option>
+					</foreach>
+				</select>
+				<h1>项目开始时间</h1>
+				<widget id="edit_starttime" class="text" />
+				<h1>项目结束时间</h1>
+				<widget id="edit_endtime" class="text" />
+				<h1>项目描述</h1>
+				<textarea name="edit_content" id="edit_content"></textarea>
+				<h1>项目发布人</h1>
+				{=$sCurrentUser}
+				<h1>部门</h1>
+				<select name="department_select">
+					<foreach for="$aDepatmentModel" item='aDep'>
+						<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
+					</foreach>
+				</select>
+				<h1>项目责任人</h1>
+				<a id="selectuser" href="#"><input type="text" id="edit_selectid" readonly="readonly" value="{=$sResponsibleName}" class="text"/></a>
+				<h1>项目权限</h1>
+				<input name="edit_purview" type="radio" value='1' {=$sPurview=='1' ? 'checked':''}/>项目负责人
+				<input name="edit_purview" type="radio" value='2' {=$sPurview=='2' ? 'checked':''}/>所有人
+				<h1>提醒接受人</h1>
 					<if '{=$sRemind}==0'>
 						<input name="edit_remind[]" type="checkbox" value="1"/>
 						分配人
@@ -122,14 +64,7 @@
 						<input name="edit_remind[]" type="checkbox" value="2" checked/>
 						责任人
 					</if>
-
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目进度
-				</th>
-				<td>
+				<h1>项目进度</h1>
 					<select name="rates">
 						<option value="0" {=$sRates== 0 ?'selected':''}>0%</option>
 						<option value="10" {=$sRates== 10 ?'selected':''}>10%</option>
@@ -143,13 +78,7 @@
 						<option value="90"starttime {=$sRates== 90 ?'selected':''}>90%</option>
 						<option value="100" {=$sRates== 100 ?'selected':''}>100%</option>
 					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目状态
-				</th>
-				<td>
+				<h1>项目状态</h1>
 					<select name="status">
 						<option value="1" {=$sStatus==1 ?'selected':''}>进行中</option>
 						<option value="2" {=$sStatus==2 ?'selected':''}>终止</option>
@@ -157,14 +86,19 @@
 						<option value="4" {=$sStatus==4 ?'selected':''}>暂停</option>
 						<option value="5" {=$sStatus==5 ?'selected':''}>延迟</option>
 					</select>
-				</td>
-			</tr>
-		</table>
-		<input type="hidden" name="hide_responsible_id" id="hide_responsible_id" value="{=$sResponsibleId}"/>
-		<input type="hidden" name="hide_pid" id="hide_pid" value="{=$pid}"/>
-		
-		<input type="submit" value="提交" />
-	</form>
+				<div class="oa_table_form_info">
+				<p>
+					<input type="hidden" name="hide_responsible_id" id="hide_responsible_id" value="{=$sResponsibleId}"/>
+					<input type="hidden" name="hide_pid" id="hide_pid" value="{=$pid}"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>
 <script>
 	jQuery('#selectuser').click(

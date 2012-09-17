@@ -1,16 +1,37 @@
-<if "$data['am'] && $data['am'] != '00:00:00'">
-<p>{=$data['am']}{=$aData['am']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($data,'am')}</p>
-<else/>
-<p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=am">上班签到</a></p>
-</if>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			打卡签到
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+		<div class="oa_form_work">
+		<if "$data['am'] && $data['am'] != '00:00:00'">
+			<p>
+				<span class="towork"><strong>{=$data['am']}{=$aData['am']}</strong>{=org\opencomb\openoa\Attendance\Tools::getLateStr($data,'am')}</span>
+			</p>
+			<else/>
+			<p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=am" class="oa_form_towork" title="上班签到"></a></p>
+			</if>
+			
+			<if "$data['pm'] && $data['pm'] != '00:00:00'">
+			<p>
+				<span class="offwork"><strong>{=$data['pm']}{=$aData['am']}</strong>{=org\opencomb\openoa\Attendance\Tools::getLateStr($data,'pm')}</span>
+			</p>
+			<else/>
+			<p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=pm" class="oa_form_offwork" title="下班签到"></a></p>
+			</if>
+			
+			<if "$data['pm']">
+			<p>{=org\opencomb\openoa\Attendance\Tools::getSotrStr($data['sort'])}</p>
+		</if>
+		</div>
+	</div>
 
-<if "$data['pm'] && $data['pm'] != '00:00:00'">
-<p>{=$data['pm']}{=$aData['am']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($data,'pm')}</p>
-<else/>
-<p><a href="?c=org.opencomb.openoa.Attendance.Punch&a=pm">下班签到</a></p>
-</if>
 
-<if "$data['pm']">
-<p>{=org\opencomb\openoa\Attendance\Tools::getSotrStr($data['sort'])}</p>
-</if>
+
+
+
+
 

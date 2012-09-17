@@ -1,10 +1,23 @@
-  <p>标题：
-  {=$row['title']}
-  </p>
-  <p>内容：
-    {=$row['content']}
-  </p>
-  <p>草稿：
-    {=org\opencomb\openoa\office\Tools::getDraftStr($row['draft'])}
-</p>
-  <p>&nbsp;</p>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			{=$row['title']}
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.office.Inbox" class="oa_button_right">返回已收消息管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+	<form method="post">
+		<div id="AddPosition_table" class="oa_table_form">
+				<div class="oa_table_form_detail">
+					<h2>{=$row['title']}</h2>
+					{=$row['content']}{=$row['content']}{=$row['content']}{=$row['content']}{=$row['content']}
+				</div>
+				<h1>草稿：{=org\opencomb\openoa\office\Tools::getDraftStr($row['draft'])}</h1>
+				
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
