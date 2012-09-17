@@ -21,6 +21,8 @@
 	.oa_table h6 strong{ padding:5px 20px;font-weight:700; background:#fff url(../images/oaframe/time.png) no-repeat 0 3px;}
 	.oa_time_input{ text-align:left; height:40px; line-height:40px; color:#666; width:93%; padding-left:2%; margin:auto; background:#f9f9f9; border:#f1f1f1 1px solid;}
 	.oa_time_input select,.oa_time_input input{ color:#666}
+	.oa_table_form_apply span{ width:30%;}
+	.oa_table_form_apply strong{ width:70%;}
 	
 .oa_table_form{ text-align:left; width:95%; margin:auto; color:#666}
 	.oa_table_form h1{ height:40px; line-height:40px; color:#999; margin-top:10px;}

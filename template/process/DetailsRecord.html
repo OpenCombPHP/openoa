@@ -1,20 +1,23 @@
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table border="1">
-  <foreach for='$list' item="aData" key=key>
-    <tr>
-      <td>
-      <if "$aData['type']=='node'">
-      <span>{=$aData['name']}</span>
-      <else/>
-      <strong>{=$aData['name']}</strong>
-      </if>
-      </td>
-    </tr>
-    <if "($key+1) % 2 ==0">
-    <tr>
-      <td></td>
-    </tr>
-    </if>
-  </foreach>
-</table>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			我的申请
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+		<div id="AddDeparment_table" class="oa_table_form oa_table_form_apply">
+			<foreach for='$list' item="aData" key=key>
+				<if "$aData['type']=='node'">
+				  <span>{=$aData['name']}</span>
+				  <else/>
+				  <strong>[ {=$aData['name']} ]</strong>
+				  </if>
+				  <if "($key+1) % 2 ==0">
+				    |
+				  </if>
+			</foreach>
+			<div class="clr"></div>
+			
+		</div>
+	</div>
