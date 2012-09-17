@@ -1,16 +1,21 @@
-
-<p><b>考勤报表</b></p>
-<form id="form1" name="form1" method="post" action="">
-  姓名
-    <select name="uid" id="uid">
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			考勤报表
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+	<div class="oa_time_input">
+		<form id="form1" name="form1" method="post" action="">
+  姓名 <select name="uid" id="uid">
       <option value="0">请选择</option>
 	  <foreach for='$users' item="user">
       <option value="{=$user['uid']}">{=$user['name']}</option>
 	  </foreach>
-    </select>
-  工号
-  <input name="eid" type="text" id="eid" />
- 日期  
+    </select>&nbsp;&nbsp;
+  工号 <input name="eid" type="text" id="eid" size="5" />
+&nbsp;&nbsp;日期  
  <select name="y" id="y" >
       		<option value="0">不限</option>
    <foreach for='$dateY' item='row'>
@@ -21,7 +26,6 @@
          </if>
    </foreach>
  </select>
- 年
  <select name="m" id="m" >
       	<option value="0">不限</option>
    <foreach for='$dateM' item='row'>
@@ -32,15 +36,14 @@
          </if>
    </foreach>
  </select>
- 月
  <select name="d" id="d" >
       <option value="0">不限</option>
    <foreach for='$dateD' item='row'>
        <option value="{=$row}">{=$row}</option>
    </foreach>
  </select>
-日
- 分类  
+ 
+&nbsp;&nbsp;分类  
  <select name="sort" id="sort">
    <option value="0">请选择</option>
    <option value="1">事假</option>
@@ -56,73 +59,83 @@
    <option value="11">旷工</option>
    <option value="12">加班</option>
  </select>
- <input type="submit" name="Submit" value="查询" />
+ <input type="submit" name="Submit" value="查询" class="oa_form_button" />
 </form>
-<p>&nbsp;</p>
-<table border="1">
-              <tr>
-                <td>姓名</td>
-                <td>工号</td>
-                <td>事假</td>
-                <td>病假</td>
-                <td>婚假</td>
-                <td>产假</td>
-                <td>探亲假</td>
-                <td>丧假</td>
-                <td>年假</td>
-                <td>出差</td>
-                <td>外出</td>
-                <td>调休</td>
-                <td>旷工</td>
-                <td>加班</td>
-                <td>出勤</td>
-                <td>迟到</td>
-                <td>早退</td>
-              </tr>
-<foreach for='$data2' item="aData">
-              <tr>
-                <td>{=@$aData['name']}</td>
-                <td>{=@$aData['eid']}</td>
-                <td>{=@$aData['1']}</td>
-                <td>{=@$aData['2']}</td>
-                <td>{=@$aData['3']}</td>
-                <td>{=@$aData['4']}</td>
-                <td>{=@$aData['5']}</td>
-                <td>{=@$aData['6']}</td>
-                <td>{=@$aData['7']}</td>
-                <td>{=@$aData['8']}</td>
-                <td>{=@$aData['9']}</td>
-                <td>{=@$aData['10']}</td>
-                <td>{=@$aData['11']}</td>
-                <td>{=@$aData['12']}</td>
-                <td>{=@$aData['13']}</td>
-                <td>{=@$aData['14']}</td>
-                <td>{=@$aData['15']}</td>
-              </tr>
-</foreach>
-</table>
-<p>&nbsp;</p>
-<table border="1">
-  <tr>
-    <td>姓名</td>
-    <td>工号</td>
-    <td>日期</td>
-    <td>开始时间</td>
-    <td>结束时间</td>
-    <td>时长（小时）</td>
-    <td>分类</td>
-    <td>备注</td>
-  </tr>
-  <foreach for='$data' item="aData">
-    <tr>
-      <td>{=$aData['userinfo.name']}</td>
-      <td>{=$aData['userinfo.eid']}</td>
-      <td>{=$aData['date']}</td>
-      <td>{=$aData['am']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($aData,'am')}</td>
-      <td>{=$aData['pm']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($aData,'pm')}</td>
-      <td>{=$theController->sumDate($aData['am'],$aData['pm'])}</td>
-      <td>{=org\opencomb\openoa\Attendance\Tools::getSotrStr($aData['sort'])}</td>
-      <td>{=$aData['explain']}</td>
-    </tr>
-  </foreach>
-</table>
+</div>
+<h6><strong>考勤总计</strong></h6>
+		<table>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>工号</th>
+					<th>事假</th>
+					<th>病假</th>
+					<th>婚假</th>
+					<th>产假</th>
+					<th>探亲假</th>
+					<th>丧假</th>
+					<th>年假</th>
+					<th>出差</th>
+					<th>外出</th>
+					<th>调休</th>
+					<th>旷工</th>
+					<th>加班</th>
+					<th>出勤</th>
+					<th>迟到</th>
+					<th>早退</th>
+				</tr>
+			</thead>
+			<tbody>
+			<foreach for='$data2' item="aData">
+					  <tr>
+						<td>{=@$aData['name']}</td>
+						<td>{=@$aData['eid']}</td>
+						<td>{=@$aData['1']}</td>
+						<td>{=@$aData['2']}</td>
+						<td>{=@$aData['3']}</td>
+						<td>{=@$aData['4']}</td>
+						<td>{=@$aData['5']}</td>
+						<td>{=@$aData['6']}</td>
+						<td>{=@$aData['7']}</td>
+						<td>{=@$aData['8']}</td>
+						<td>{=@$aData['9']}</td>
+						<td>{=@$aData['10']}</td>
+						<td>{=@$aData['11']}</td>
+						<td>{=@$aData['12']}</td>
+						<td>{=@$aData['13']}</td>
+						<td>{=@$aData['14']}</td>
+						<td>{=@$aData['15']}</td>
+					  </tr>
+			</foreach>
+			</tbody>
+		</table>
+<h6><strong>考勤详细</strong></h6>
+		<table>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>工号</th>
+					<th>日期</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>时长（小时）</th>
+					<th>分类</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach for='$data' item="aData">
+				<tr>
+				  <td>{=$aData['userinfo.name']}</td>
+				  <td>{=$aData['userinfo.eid']}</td>
+				  <td>{=$aData['date']}</td>
+				  <td>{=$aData['am']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($aData,'am')}</td>
+				  <td>{=$aData['pm']}{=org\opencomb\openoa\Attendance\Tools::getLateStr($aData,'pm')}</td>
+				  <td>{=$theController->sumDate($aData['am'],$aData['pm'])}</td>
+				  <td>{=org\opencomb\openoa\Attendance\Tools::getSotrStr($aData['sort'])}</td>
+				  <td>{=$aData['explain']}</td>
+				</tr>
+				</foreach>
+			</tbody>
+		</table>
+	</div>

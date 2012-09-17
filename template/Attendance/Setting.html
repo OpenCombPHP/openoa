@@ -1,36 +1,47 @@
-<form id="form1" name="form1" method="post" action="">
-<p>上班时间：
-  
-  <select name="am" id="am">
-    <option value="8" {=$am=='8'?'selected="selected"':''}>8</option>
-    <option value="8:30" {=$am=='8:30'?'selected="selected"':''}>8:30</option>
-    <option value="9" {=$am=='9'?'selected="selected"':''}>9</option>
-    </select>
-</p>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			基本考勤设置
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+		<form id="form1" name="form1" method="post" action="">
+		<div class="oa_table_form">
+			<h1>上班时间</h1>			  
+			  <select name="am" id="am">
+				<option value="8" {=$am=='8'?'selected="selected"':''}>8</option>
+				<option value="8:30" {=$am=='8:30'?'selected="selected"':''}>8:30</option>
+				<option value="9" {=$am=='9'?'selected="selected"':''}>9</option>
+				</select>
+				
+			<h1>下班时间</h1>
+			<select name="pm" id="pm">
+			  <option value="16:30" {=$pm=='16:30'?'selected="selected"':''}>16:30</option>
+			  <option value="17:00" {=$pm=='17:00'?'selected="selected"':''}>17:00</option>
+			  <option value="17:30" {=$pm=='17:30'?'selected="selected"':''}>17:30</option>
+			  <option value="18:00" {=$pm=='18:00'?'selected="selected"':''}>18:00</option>
+			</select>
+			
+			<h1>午休时间</h1>
+				<select name="wxs" id="wxs">
+				  <option value="11:00" {=$wxs=='11:00'?'selected="selected"':''}>11:00</option>
+				  <option value="11:30" {=$wxs=='11:30'?'selected="selected"':''}>11:30</option>
+				  <option value="12:00" {=$wxs=='12:00'?'selected="selected"':''}>12:00</option>
+				</select>
+				~
+				<select name="wxt" id="wxt">
+					<option value="13:00" {=$wxt=='13:00'?'selected="selected"':''}>13:00</option>
+					<option value="13:30" {=$wxt=='13:30'?'selected="selected"':''}>13:30</option>
+					<option value="14:00" {=$wxt=='14:00'?'selected="selected"':''}>14:00</option>
+				  </select>
+			 <div class="oa_table_form_info">
+				<input type="submit" value="保存" class="oa_button_save" />
+				<input type="submit" value="取消" class="oa_button_cancel"/>
+			</div>
+			</div>
+		</form>
 
-  <p>下班时间：
-    
-<select name="pm" id="pm">
-  <option value="16:30" {=$pm=='16:30'?'selected="selected"':''}>16:30</option>
-  <option value="17:00" {=$pm=='17:00'?'selected="selected"':''}>17:00</option>
-  <option value="17:30" {=$pm=='17:30'?'selected="selected"':''}>17:30</option>
-  <option value="18:00" {=$pm=='18:00'?'selected="selected"':''}>18:00</option>
-</select>
-</p>
-  <p>午休时间：
-    <select name="wxs" id="wxs">
-      <option value="11:00" {=$wxs=='11:00'?'selected="selected"':''}>11:00</option>
-      <option value="11:30" {=$wxs=='11:30'?'selected="selected"':''}>11:30</option>
-      <option value="12:00" {=$wxs=='12:00'?'selected="selected"':''}>12:00</option>
-    </select>
-    ~
-    <select name="wxt" id="wxt">
-        <option value="13:00" {=$wxt=='13:00'?'selected="selected"':''}>13:00</option>
-        <option value="13:30" {=$wxt=='13:30'?'selected="selected"':''}>13:30</option>
-        <option value="14:00" {=$wxt=='14:00'?'selected="selected"':''}>14:00</option>
-      </select>
-  </p>
-  <p>
-    <input type="submit" name="Submit" value="保存" />
-  </p>
-</form>
+	</div>
+
+
