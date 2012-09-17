@@ -26,7 +26,7 @@ class Process
 	public function CreateTask( $aData)
 	{
 	    $uid = IdManager::singleton()->currentId()->userId();
-	    if( !empty($aData['name']) && !empty($aData['explain']))
+	    if( !empty($aData['name']))
 	    {
             $oTaskModel = Model::create("openoa:Process_Task");
             $bIs = $oTaskModel->insert( array(
@@ -52,7 +52,7 @@ class Process
 	        $oNodeModel = Model::create("openoa:Process_Node");
 	        $oNodeModel->insert( array(
 	                'tid'=>$tid,
-	                'gid'=>implode(",", $aData['gid']),
+	                'gid'=>$aData['gid'],
 	        ));
 	        $nid = DB::singleton()->lastInsertId();
 	
@@ -87,7 +87,7 @@ class Process
 	    {
 	        $oNodeModel = Model::create("openoa:Process_Node");
 	        $oNodeModel->update( array(
-	                'gid'=>implode(",", $aData['gid']),
+	                'gid'=>$aData['gid'],
 	        ),"id = ".$nid);
 	
 	        for($i = 1; $i <= 4; $i++)

@@ -3,7 +3,13 @@
 <table border="1">
   <foreach for='$list' item="aData">
     <tr>
-      <td>{=$aData['name']}</td>
+      <td>
+      <if "$aData['type']=='node'">
+      <span>{=$aData['name']}</span>
+      <else/>
+      <strong>{=$aData['name']}</strong>
+      </if>
+      </td>
     </tr>
   </foreach>
 </table>
