@@ -1,8 +1,11 @@
 	<div class="oa_tablehead">
 		<div class="oa_tablehead_tilte">
-			我的申请
+			申请审核记录
 		</div>
 		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.process.MyRecord" class="oa_button_right">返回我的申请记录</a>
+			</div>
 		</div>
 	</div>
 	<div class="oa_table">
@@ -11,10 +14,10 @@
 				<if "$aData['type']=='node'">
 				  <span>{=$aData['name']}</span>
 				  <else/>
-				  <strong>[ {=$aData['name']} ]</strong>
+				  <strong>[{=$aData['name']}]</strong>
 				  </if>
 				  <if "($key+1) % 2 ==0">
-				    |
+				  <div class="clr"></div>
 				  </if>
 			</foreach>
 			<div class="clr"></div>

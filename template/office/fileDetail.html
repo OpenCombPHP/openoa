@@ -1,9 +1,17 @@
-  <p>标题：
-  {=$row['title']}
-  </p>
-  <p>文件：
-    
-  <a href="{=$row['att'][0]['file']}">下载</a></p>
-<p>&nbsp;</p>
-<<<<<<< HEAD
-  <p>&nbsp;</p>
+	<div class="oa_tablehead oa_message">
+		<div class="oa_tablehead_tilte">
+			{=$row['title']}
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.office.fileOutbox" class="oa_button_right">返回已发文件管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+		<div class="oa_table_form">
+				<h1 style="margin-bottom:10px;">标题：{=$row['title']}</h1>
+				<a href="{=$row['att'][0]['file']}" class="oa_button_down"></a><a href="{=$row['att'][0]['file']}" style="color:#009ACD"> 下载</a>
+				<div class="clr"></div>
+		</div>
+	</div>

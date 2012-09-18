@@ -1,8 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 .oa_tablehead{ width:100%;height:54px; padding-left:2px; background:url(../images/oaframe/tabletitlecenter.png) no-repeat left}
-	.oa_tablehead_tilte{ width:60%; height:54px; padding-left:20px; line-height:54px; font-weight:700; float:left; overflow:hidden}
-	.oa_tablehead_button{ width:20%; height:54px; padding-right:20px;float:right; background:url(../images/oaframe/tabletitleright.png) no-repeat right}
+	.oa_tablehead_tilte{ width:20%; height:54px; padding-left:20px; line-height:54px; font-weight:700; float:left; overflow:hidden}
+	.oa_tablehead_button{ width:60%; height:54px; padding-right:20px;float:right; background:url(../images/oaframe/tabletitleright.png) no-repeat right}
+	.oa_message .oa_tablehead_tilte{ width:60%; height:54px; padding-left:20px; line-height:54px; font-weight:700; float:left; overflow:hidden}
+	.oa_message .oa_tablehead_button{ width:20%; height:54px; padding-right:20px;float:right; background:url(../images/oaframe/tabletitleright.png) no-repeat right}
 	.oa_tablehead_button_from{ float:right; width:300px; margin:14px 10px 0 0;}
 	.oa_tablehead_button a,.oa_tablehead_button input,.oa_tablehead_button select{ color:#777}
 .oa_table_overflow{ overflow:auto}
@@ -21,8 +23,8 @@
 	.oa_table h6 strong{ padding:5px 20px;font-weight:700; background:#fff url(../images/oaframe/time.png) no-repeat 0 3px;}
 	.oa_time_input{ text-align:left; height:40px; line-height:40px; color:#666; width:93%; padding-left:2%; margin:auto; background:#f9f9f9; border:#f1f1f1 1px solid;}
 	.oa_time_input select,.oa_time_input input{ color:#666}
-	.oa_table_form_apply span{ width:30%;}
-	.oa_table_form_apply strong{ width:70%;}
+	.oa_table_form_apply span,.oa_table_form_apply strong{ line-height:35px;}
+	.oa_table_form_apply strong{ padding-left:5px; font-weight:700; color:#C00}
 	
 .oa_table_form{ text-align:left; width:95%; margin:auto; color:#666}
 	.oa_table_form h1{ height:40px; line-height:40px; color:#999; margin-top:10px;}
