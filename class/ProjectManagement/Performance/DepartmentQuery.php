@@ -35,7 +35,6 @@ class DepartmentQuery extends OpenOaController{
 	}
 	
 	public function form(){
-		var_dump($_POST);exit;
 		$time = $this->params['select_time'];
 		$arrSelectTime = $this->getSelectTime($time);
 		
