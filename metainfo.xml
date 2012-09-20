@@ -19,6 +19,6 @@
 	<require type="extension" item="advancedcomponent"><![CDATA[ =0.2 ]]></require>
 	
 	<data>
-		<version>0.1</version>
-	</data>
+		<version>0.1.0.0</version>
+	<installer>org\opencomb\openoa\setup\DataInstaller</installer></data>
 </Extension>
