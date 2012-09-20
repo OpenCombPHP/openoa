@@ -143,8 +143,11 @@
 				</item>
 				<item id="MyRecord_menu" title="我的申请" controller="org.opencomb.openoa.process.MyRecord" >
 					<query bean.type="string">c=org.opencomb.openoa.process.DetailsRecord</query>
+					<query bean.type="string">c=org.opencomb.openoa.process.DetailRecord</query>
 				</item>
-				<item id="MyApproval_menu" title="待我审核" controller="org.opencomb.openoa.process.MyApproval" />
+				<item id="MyApproval_menu" title="待我审核" controller="org.opencomb.openoa.process.MyApproval" >
+					<query bean.type="string">c=org.opencomb.openoa.process.DetailApproval</query>
+				</item>
 			</item>
 			</widget>
 		</div>

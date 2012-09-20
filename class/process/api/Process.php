@@ -181,4 +181,14 @@ class Process
 	    return true;
 	}
 	
+	public function getTid( $sExtName)
+	{
+	    if(empty($sExtName))
+	    {
+	        throw new \Exception("ExtName = null");
+	    }
+	    $oModel = Model::create("openoa:Process_Task");
+	    $oModel->load( $sExtName, "extension");
+	    return $oModel;
+	}
 }

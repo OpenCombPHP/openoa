@@ -1,0 +1,26 @@
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			审核
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.process.MyApproval" class="oa_button_right">返回我的审核记录</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+		<div class="oa_table_form">
+				<h1>&nbsp;</h1>
+				<h1>标题</h1>
+				{=$row[0]['title']}
+				<h1>开始日期</h1>
+				{=$row[0]['date1']}
+				<h1>结束日期</h1>
+				{=$row[0]['date2']}
+				<h1>备注</h1>
+				{=$row[0]['explain']}
+				<h1>&nbsp;</h1>
+				<h2><foreach for='$row[0]["stat"]' item="aData2">[<a href="?c=org.opencomb.openoa.process.ActionApproval&rid={=$row[0]['id']}&tid={=$row[0]['tid']}&sid={=$aData2['id']}">{=$aData2['name']}</a>] </foreach></h2>
+				  <div class="clr"></div>
+		</div>
+	</div>

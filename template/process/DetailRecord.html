@@ -1,0 +1,25 @@
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			申请
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.process.MyRecord" class="oa_button_right">返回我的申请记录</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+		<div class="oa_table_form">
+				<h1>&nbsp;</h1>
+				<h1>标题</h1>
+				{=$list[0]['record.title']}
+				<h1>开始日期</h1>
+				{=$list[0]['record.date1']}
+				<h1>结束日期</h1>
+				{=$list[0]['record.date2']}
+				<h1>备注</h1>
+				{=$list[0]['record.explain']}
+				<h1>&nbsp;</h1>
+				  <div class="clr"></div>
+		</div>
+	</div>

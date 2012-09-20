@@ -14,6 +14,7 @@
 				  <td>姓名</td>
 				  <td>状态</td>
 				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,6 +25,7 @@
 				  <td>{=$aData['user.name']}</td>
 				  <td>{=$aData['statname']}</td>
 				  <td><foreach for='$aData["stat"]' item="aData2">[<a href="?c=org.opencomb.openoa.process.ActionApproval&rid={=$aData['id']}&tid={=$aData['tid']}&sid={=$aData2['id']}">{=$aData2['name']}</a>] </foreach></td>
+				  <td><a href="?c=org.opencomb.openoa.process.DetailApproval&rid={=$aData['id']}">查看</a></td>
 				</tr>
 			  </foreach>
 			  </tbody>
