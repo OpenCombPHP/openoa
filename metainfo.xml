@@ -3,9 +3,9 @@
 
 	<name>openoa</name>
 	<version>0.1</version>
-	<title>自来水统计系统</title>
+	<title>OA办公自动化系统</title>
 
-	<description>自动统计报表</description>
+	<description>OA办公自动化系统</description>
 	
 	<class>org.opencomb.openoa.OpenOa</class>
 	<package folder="/class" namespace="org.opencomb.openoa"/>
