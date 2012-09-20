@@ -64,7 +64,6 @@ class DetailsRecord extends OpenOaController
 	        }
 	        
 	    }
-	    
 	    $this->view()->variables()->set('list', $aData );
 	}
 }

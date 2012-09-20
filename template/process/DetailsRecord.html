@@ -1,9 +1,26 @@
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table border="1">
-  <foreach for='$list' item="aData">
-    <tr>
-      <td>{=$aData['name']}</td>
-    </tr>
-  </foreach>
-</table>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			申请审核记录
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.process.MyRecord" class="oa_button_right">返回我的申请记录</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+		<div id="AddDeparment_table" class="oa_table_form oa_table_form_apply">
+			<foreach for='$list' item="aData" key=key>
+				<if "$aData['type']=='node'">
+				  <span>{=$aData['name']}</span>
+				  <else/>
+				  <strong>[{=$aData['name']}]</strong>
+				  </if>
+				  <if "($key+1) % 2 ==0">
+				  <div class="clr"></div>
+				  </if>
+			</foreach>
+			<div class="clr"></div>
+			
+		</div>
+	</div>

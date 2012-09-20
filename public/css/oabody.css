@@ -1,8 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 .oa_tablehead{ width:100%;height:54px; padding-left:2px; background:url(../images/oaframe/tabletitlecenter.png) no-repeat left}
-	.oa_tablehead_tilte{ width:20%; height:54px; padding-left:20px; line-height:54px; font-weight:700; float:left;}
+	.oa_tablehead_tilte{ width:20%; height:54px; padding-left:20px; line-height:54px; font-weight:700; float:left; overflow:hidden}
 	.oa_tablehead_button{ width:60%; height:54px; padding-right:20px;float:right; background:url(../images/oaframe/tabletitleright.png) no-repeat right}
+	.oa_message .oa_tablehead_tilte{ width:60%; height:54px; padding-left:20px; line-height:54px; font-weight:700; float:left; overflow:hidden}
+	.oa_message .oa_tablehead_button{ width:20%; height:54px; padding-right:20px;float:right; background:url(../images/oaframe/tabletitleright.png) no-repeat right}
 	.oa_tablehead_button_from{ float:right; width:300px; margin:14px 10px 0 0;}
 	.oa_tablehead_button a,.oa_tablehead_button input,.oa_tablehead_button select{ color:#777}
 .oa_table_overflow{ overflow:auto}
@@ -17,8 +19,17 @@
 	.oa_table tr.oa_contract_expire td{color:#980000}
 	.oa_table tr td.oa_contract_expire_day{ font-weight:700; color:#db0000; font-family: Helvetica,Arial,sans-serif; font-size:18px; padding-left:20px; background:url(../images/oaframe/ts.gif) no-repeat left 11px}
 	.oa_table td.oa_contract_expire_day span{ font-weight:normal; font-size:12px; padding-left:3px; vertical-align:1px;}
-.oa_table_form{ text-align:left; width:95%; margin:auto}
+	.oa_table h6{height:40px; line-height:40px;  padding-top:50px; text-align:left; width:95%; margin:auto; background:url(../images/oaframe/timeline.png) repeat-x 0 70px}
+	.oa_table h6 strong{ padding:5px 20px;font-weight:700; background:#fff url(../images/oaframe/time.png) no-repeat 0 3px;}
+	.oa_time_input{ text-align:left; height:40px; line-height:40px; color:#666; width:93%; padding-left:2%; margin:auto; background:#f9f9f9; border:#f1f1f1 1px solid;}
+	.oa_time_input select,.oa_time_input input{ color:#666}
+	.oa_table_form_apply span,.oa_table_form_apply strong{ line-height:35px;}
+	.oa_table_form_apply strong{ padding-left:5px; font-weight:700; color:#C00}
+	
+.oa_table_form{ text-align:left; width:95%; margin:auto; color:#666}
 	.oa_table_form h1{ height:40px; line-height:40px; color:#999; margin-top:10px;}
+	.oa_table_form_detail{ color:#666; padding-top:10px; line-height:28px;}
+		.oa_table_form_detail h2{ padding:5px 0 10px 0; font-weight:700; background:url(../images/oaframe/x.png) no-repeat left 10px; padding-left:23px;}
 	.oa_table_form_info{ margin-top:20px;}
 	.oa_table_form p{ color:#999;width:210px;float:left}
 	.oa_table_form input.text{background:#fdfdfd;border: 1px solid #BBB; width:50%;font-size: 14px;color: #666;padding: 7px;border-radius: 3px;outline: none;vertical-align: middle; _padding:0px 7px; _height:32px; _line-height:32px;}
@@ -30,6 +41,13 @@
 	.oa_table_form .jc_message_queue{ display:inline-block;float:left; background:none; border:none; height:30px; padding:0; line-height:30px; font-weight:700}
 	.oa_table_form .jc_message_queue .jc_message_type_error{ padding-left:25px; background:url(../images/oaframe/stop.png) no-repeat left center; color:#b30000}
 	.oa_table_form .jc_message_queue .jc_message_type_success{ padding-left:25px; background:url(../images/oaframe/ok.png) no-repeat left center; color:#289000}
+	.oa_form_work{ padding:20px 0 0 40px;}
+		.oa_form_work p{ padding:30px 0;}
+			.oa_form_work p span.towork{ display:block; width:240px; height:48px; line-height:48px;background:url(../images/oaframe/work.png) no-repeat left top; padding-left:85px; text-align:left; font-weight:700; color:#ae1616;}
+			.oa_form_work p span strong{ padding-right:10px; font-size:38px; font-weight:700; color:#2E3A4E; font-family:Helvetica,Arial,sans-serif;}
+			.oa_form_work p span.offwork{ display:block; width:240px; height:48px; line-height:48px;background:url(../images/oaframe/work.png) no-repeat left bottom; padding-left:85px; text-align:left}
+		.oa_form_work .oa_form_towork{ width:185px; height:48px; background:url(../images/oaframe/towork.png) no-repeat; display:block;}
+		.oa_form_work .oa_form_offwork{ width:185px; height:48px; background:url(../images/oaframe/offwork.png) no-repeat; display:block;}
 .oa_table_foot{ width:95%; text-align:left; margin:auto}
 /***按钮****/
 .oa_button_left {height: 25px;line-height: 25px;background: url(../images/oaframe/box_sc.png) -739px -245px no-repeat;padding-left: 27px; float:right; margin-top:14px;}

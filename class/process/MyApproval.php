@@ -41,8 +41,8 @@ class MyApproval extends OpenOaController
 	    $oRecordModel->where("node.gid in(".implode(",", $aUGroup).")");
 	    $oList = $oRecordModel->load( )->alldata();
 	    
-	    for($i = 0; $i < sizeof($oList); $i++){
-	    
+	    for($i = 0; $i < sizeof($oList); $i++)
+	    {
 	        if($oList[$i]['nowNid'] > 0)
 	        {
 	            $aGroupModel = Model::create('coresystem:group');

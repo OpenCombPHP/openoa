@@ -1,18 +1,30 @@
 <div id="divEditType">
-	<h1>编辑</h1>
-	<form method="post">
-		<table id="EditType_table" border="1">
-			<thead>
-				<tr>
-					<th>类别名称:</th>
-					<td><widget id="edit_name" /></td>
-				</tr>
-			</thead>
-		</table>
-		<div>
-			<widget id="hide_pid" />  
-			<input type="submit" value="保存" />
-			<input type="submit" value="取消"/>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			项目类别编辑
 		</div>
-	</form>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.ProjectManagement.Type.ProjectTypeManagement" class="oa_button_right">返回项目类别管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
+	<form method="post">
+		<div id="EditType_table" class="oa_table_form">
+				<h1>类别名称</h1>
+				<widget id="edit_name" class="text" />
+				<div class="oa_table_form_info">
+				<p>
+					<widget id="hide_pid" /> 
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
+
 </div>

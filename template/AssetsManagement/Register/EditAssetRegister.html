@@ -1,40 +1,44 @@
-<msgqueue/>
 <div id="divEditAseetRegister">
-	<h1>编辑资产登记</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			编辑资产登记
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.PersonnelManagement.Position.PositionManagement" class="oa_button_right">返回固定资产管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table>
-			<tr>
-				<th>固定资产编号</th>
-				<td><input name="edit_sid" value="{=$aAssetModel['sid']}"/></td>
-			</tr>
-			<tr>
-				<th>固定资产名称</th>
-				<td><input name="edit_name" value="{=$aAssetModel['name']}"/></td>
-			</tr>
-			<tr>
-				<th>固定资产类别</th>
-				<td>
-					<select name="edit_type">
-						<foreach  for="$aTypeModel" item="aType">
-							<option value="{=$aType['tid']}" {=$aAssetModel['type'] == $aType['tid'] ?'selected' :''}>{=$aType['name']}</option>
-						</foreach>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>状态</th>
-				<td>
-					<select name="edit_status">
-						<option value="1" {=$aAssetModel['status'] == 1 ?'selected' :''}>在库</option>
-						<option value="2" {=$aAssetModel['status'] == 2 ?'selected' :''}>领用</option>
-						<option value="3" {=$aAssetModel['status'] == 3 ?'selected' :''}>维修</option>
-						<option value="4" {=$aAssetModel['status'] == 4 ?'selected' :''}>报废</option>
-					</select>				
-				</td>
-			</tr>	
-		</table>
-		<input type="hidden" value="{=$aAssetModel['aid']}" name="edit_hide_aid"/>
-		<input type="submit" value="提交"/>
-		<input type="submit" value="取消"/>
-	</form>
+		<div class="oa_table_form">
+				<h1>固定资产编号</h1>
+				<input name="edit_sid" value="{=$aAssetModel['sid']}" class="text" />
+				<h1>固定资产名称</h1>
+				<input name="edit_name" value="{=$aAssetModel['name']}" class="text" />
+				<h1>固定资产类别</h1>
+				<select name="edit_type">
+					<foreach  for="$aTypeModel" item="aType">
+						<option value="{=$aType['tid']}" {=$aAssetModel['type'] == $aType['tid'] ?'selected' :''}>{=$aType['name']}</option>
+					</foreach>
+				</select>
+				<h1>固定资产状态</h1>
+				<select name="edit_status">
+					<option value="1" {=$aAssetModel['status'] == 1 ?'selected' :''}>在库</option>
+					<option value="2" {=$aAssetModel['status'] == 2 ?'selected' :''}>领用</option>
+					<option value="3" {=$aAssetModel['status'] == 3 ?'selected' :''}>维修</option>
+					<option value="4" {=$aAssetModel['status'] == 4 ?'selected' :''}>报废</option>
+				</select>
+				<div class="oa_table_form_info">
+				<p>
+					<input type="hidden" value="{=$aAssetModel['aid']}" name="edit_hide_aid"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>

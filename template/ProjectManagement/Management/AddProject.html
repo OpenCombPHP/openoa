@@ -1,116 +1,67 @@
 <lib name="jquery"/>
 <lib name="jquery.ui" />
 <div id="addProject">
-	<h1>新建项目</h1>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			新建项目
+		</div>
+		<div class="oa_tablehead_button">
+			<div class="oa_button_left_back">
+				<a href="?c=org.opencomb.openoa.ProjectManagement.Management.ProjectManagement" class="oa_button_right">返回项目管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="oa_table">
 	<form method="post">
-		<table>
-			<tr>
-				<th>
-					项目名称:
-				</th>
-				<td>
-					<widget id="name"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目类别:
-				</th>
-				<td>
-					<select name="type">
-						<foreach for="$aProjectType" item="aType">
-							<option value="{=$aType['pid']}">{=$aType['type']}</option>
-						</foreach>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目开始时间:
-				</th>
-				<td>
-					<widget id="starttime"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目结束时间:
-				</th>
-				<td>
-					<widget id="endtime"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					项目描述:
-				</th>
-				<td>
-					<textarea id="content" name="content" style="width:200px;height:200px"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h2>项目人员设置</h2>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目发布人
-				</th>
-				<td>
-					{=$sCurrentUser}<input type='hidden' name="hide_publisher_id" id="hide_publisher_id" value="{=$sPublisher}"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 部门
-				</th>
-				<td>
-					<select name="department_select">
-						<foreach for="$aDepatmentModel" item='aDep'>
-							<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
-						</foreach>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目责任人
-				</th>
-				<td>
-					<label><input type="text" id="selectid" readonly="readonly" style="background-color:white" value="{=$sUserName}"/><a id="selectuser" href="javascript:void(0)">选择</a></label>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 项目权限
-				</th>
-				<td>
-					<input name="purview" type="radio" value='1'/>项目负责人
-					<input name="purview" type="radio" value='2'/>所有人
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h2>提醒设置</h2>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					 提醒接受人
-				</th>
-				<td>
-					<input name="remind[]" type="checkbox" value="1"/>
-					分配人
-					<input name="remind[]" type="checkbox" value="2"/>
-					责任人
-				</td>
-			</tr>
-		</table>
-		<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
-		<input type="hidden" name="hide_assign_uid" id="hide_uid" value="{=$sAssignUid}"/>
-		<input type="submit" value="提交" />
-	</form>
+		<div class="oa_table_form">
+				<h1>项目名称</h1>
+				<widget id="name" class="text" />
+				<h1>项目类别</h1>
+				<select name="type">
+					<foreach for="$aProjectType" item="aType">
+						<option value="{=$aType['pid']}">{=$aType['type']}</option>
+					</foreach>
+				</select>
+				<h1>项目开始时间</h1>
+				<widget id="starttime" class="text" />
+				<h1>项目结束时间</h1>
+				<widget id="endtime" class="text" />
+				<h1>项目描述</h1>
+				<textarea id="content" name="content"></textarea>
+				<h1>项目发布人</h1>
+				{=$sCurrentUser}<input type='hidden' name="hide_publisher_id" id="hide_publisher_id" value="{=$sPublisher}" class="text"/>
+				<h1>部门</h1>
+				<select name="department_select">
+					<foreach for="$aDepatmentModel" item='aDep'>
+						<option value="{=$aDep['gid']}" size='10px' {=$sDepartment == $aDep['gid'] ?'selected':''}>{=$aDep['name']}</option>
+					</foreach>
+				</select>
+				<h1>项目责任人</h1>
+				<a id="selectuser" href="javascript:void(0)"><input type="text" id="selectid" readonly="readonly" class="text" value="{=$sUserName}"/></a>
+				<h1>项目权限</h1>
+				<input name="purview" type="radio" value='1'/>
+				项目负责人
+				<input name="purview" type="radio" value='2'/>
+				所有人
+				<h1>提醒接受人</h1>
+				<input name="remind[]" type="checkbox" value="1"/>
+				分配人
+				<input name="remind[]" type="checkbox" value="2"/>
+				责任人
+				
+				<div class="oa_table_form_info">
+				<p>
+					<input type="hidden" name="hide_uid" id="hide_uid" value="{=$sUid}"/>
+					<input type="hidden" name="hide_assign_uid" id="hide_uid" value="{=$sAssignUid}"/>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue/>
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>
 </div>
 <script>
 	jQuery('#selectuser').click(

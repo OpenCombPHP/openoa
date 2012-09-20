@@ -1,15 +1,27 @@
-<msgqueue for="$theController->messageQueue()" />
-<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <p>收件人：
-    <input name="toname" type="text" id="toname" />
-</p>
-  <p>标题：
-    <input name="title" type="text" id="title" />
-  </p>
-  <p>文件：
-    <input type="file" name="file" />
-</p>
-  <p>
-    <input type="submit" name="Submit" value="提交" />
-  </p>
-</form>
+	<div class="oa_tablehead">
+		<div class="oa_tablehead_tilte">
+			发送文件
+		</div>
+		<div class="oa_tablehead_button">
+		</div>
+	</div>
+	<div class="oa_table">
+	<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
+		<div class="oa_table_form">
+				<h1>收件人</h1>
+				<input name="toname" type="text" id="toname" class="text" />
+				<h1>标题</h1>
+				<input name="title" type="text" id="title" class="text" />
+				<h1>文件</h1>
+				<input type="file" name="file" />
+				<div class="oa_table_form_info">
+				<p>
+					<input type="submit" value="保存" class="oa_button_save" />
+					<input type="submit" value="取消" class="oa_button_cancel"/>
+				</p>
+				<msgqueue for="$theController->messageQueue()" />
+				</div>
+				<div class="clr"></div>
+		</div>
+		</form>
+	</div>

@@ -95,10 +95,14 @@
 			<item id="AssetsManagement" title="固定资产" link="?c=org.opencomb.openoa.AssetsManagement.AssetsManagement.AssetsManagement">
 				<item id="AssetManagement_menu" title="固定资产" controller="org.opencomb.openoa.AssetsManagement.Management.AssetsManagement"/>
 				<item id="AssetRegister_menu" title="资产登记" controller="org.opencomb.openoa.AssetsManagement.Register.RegisterManagement" >
+						<query bean.type="string">c=org.opencomb.openoa.AssetsManagement.Register.EditAssetRegister</query>
 						<item id="AssetAdd_menu" title="添加资产" controller="org.opencomb.openoa.AssetsManagement.Register.AddAsset"/>
 				</item>
-				<item id="AssetDiscard_menu" title="资产报废" controller="org.opencomb.openoa.AssetsManagement.Discard.AssetDiscardManagement" />
+				<item id="AssetDiscard_menu" title="资产报废" controller="org.opencomb.openoa.AssetsManagement.Discard.AssetDiscardManagement" >
+					<query bean.type="string">c=org.opencomb.openoa.AssetsManagement.Management.EditAsset</query>
+				</item>
 				<item id="AssetTypeManagement_menu" title="类别维护" controller="org.opencomb.openoa.AssetsManagement.Type.AssetTypeManagement">
+						<query bean.type="string">c=org.opencomb.openoa.AssetsManagement.Type.EditAssetType</query>
 					<item id="AddAssetType" title="添加类别" controller="org.opencomb.openoa.AssetsManagement.Type.AddAssetType"/>
 				</item>
 			</item>
