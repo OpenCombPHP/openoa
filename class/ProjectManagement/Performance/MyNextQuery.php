@@ -30,6 +30,11 @@ class MyNextQuery extends OpenOaController{
 // 		echo strtotime('next month',$arrTest[0])."<br/>";
 // 		echo strtotime('2012-09-01',$arrTest[0]);exit;
 		//var_dump($this->getNextTime());exit; 
+		if(IdManager::singleton()->currentUserId() == null)
+		{
+			$this->messageQueue ()->create ( Message::success, "请登陆" );
+			$this->location('?c=login');
+		}
 		$arrNext = array();
 		$arrNext = $this->getNextTime();
 		$this->model('openoa:ProjectManagement','ProjectManagement')

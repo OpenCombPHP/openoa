@@ -31,6 +31,11 @@ class MyCurrentQuery extends OpenOaController{
 
 		//echo IdManager::singleton()->currentUserId();exit;
 		//$this->view->variables()->set('sPublisher',IdManager::singleton()->currentUserId());
+		if(IdManager::singleton()->currentUserId() == null)
+		{
+			$this->messageQueue ()->create ( Message::success, "请登陆" );
+			$this->location('?c=login');
+		}
 		$arrCurrent = array();
 		$arrCurrent = $this->getCurrentTime();
 		$this->model('openoa:ProjectManagement','ProjectManagement')
