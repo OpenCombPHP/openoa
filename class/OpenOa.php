@@ -40,6 +40,11 @@ class OpenOa extends Extension
 				'link' => '?c=org.opencomb.openoa.process.Task' ,
 				'query' => 'c=org.opencomb.openoa.process.Task' ,
 				'menu' => 1,
+				'item:Index' => array(
+						'title' => '进入首页' ,
+						'link' => '?c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
+						'query' => 'c=org.opencomb.openoa.PersonnelManagement.Dep.DepartmentManagement' ,
+				),
 				'item:CreateTask' => array(
 						'title' => '新建流程' ,
 						'link' => '?c=org.opencomb.openoa.process.CreateTask' ,
