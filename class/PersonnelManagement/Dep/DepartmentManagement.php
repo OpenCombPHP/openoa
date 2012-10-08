@@ -14,7 +14,7 @@ class DepartmentManagement extends OpenOaController{
 	public $arrConfig = array (
 			'title' => '部门管理',
 			'view' => array (
-					'template' => 'PersonnelManagement/Dep/DepartmentManagement.html',
+					'template' => 'openoa:PersonnelManagement/Dep/DepartmentManagement.html',
 			),
 			
 			'widgets'=>array(
