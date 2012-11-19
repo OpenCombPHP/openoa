@@ -20,7 +20,7 @@
 				<h1>合同编号</h1>
 				<widget id="cid" class="text" />
 				<h1>单位员工</h1>
-				<a id="selectuser" href="javascript:;" onClick="selectEmployee()"><input type="text" id="selectid" readonly="readonly" style="background-color:white" value="{=$sUserName}"  class="text" /></a>
+				<a id="selectuser" href="javascript:;" onClick="selectEmployee()"><input type="text" id="selectid" readonly="readonly" style="background-color:white" value="{=$sUserName}"  class="text"/></a>
 				<h1>开始日期</h1>
 				<widget id="starttime" class="text" />
 				<h1>结束日期</h1>
@@ -44,8 +44,8 @@
 		if (uid == undefined) {
 			if(window.returnValue){
 				var arrValue = window.returnValue.split('.');
-				jquery('#edit_selectid').attr("value",arrValue[1]);
-				jquery('#hide_responsible_id').attr("value",arrValue[0]);
+				jquery('#selectid').attr("value",arrValue[1]);
+				jquery('#hide_uid').attr("value",arrValue[0]);
 			}
 	    }
 	};
@@ -84,12 +84,12 @@
 			,dayNamesMin:['周日','周一','周二','周三','周四','周五','周六']
 			,dayNamesShort:['周日','周一','周二','周三','周四','周五','周六']
 			,yearRange:'1940:2020'
-			,showOn:'both'
+			//,showOn:'both'
 			,duration:'slow'
 			//,buttonText:'日期'
-			,buttonImage:'' 		//填写图片路径
-			,buttonImageOnly:true
-			,appendText:'(yyyy-mm-dd)'
+			//,buttonImage:'' 		//填写图片路径
+			//,buttonImageOnly:true
+			//,appendText:'(yyyy-mm-dd)'
 	};
 	
 	//使用日期插件

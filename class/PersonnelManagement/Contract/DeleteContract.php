@@ -4,6 +4,7 @@ namespace org\opencomb\openoa\PersonnelManagement\Contract;
 use org\jecat\framework\message\Message;
 use org\jecat\framework\mvc\model\Model;
 use org\opencomb\coresystem\mvc\controller\ControlPanel;
+use org\opencomb\openoa\controller\OpenOaController;
 
 /*
  * 成本对比分析

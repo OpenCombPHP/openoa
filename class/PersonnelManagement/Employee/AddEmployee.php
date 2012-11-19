@@ -107,15 +107,15 @@ class AddEmployee extends OpenOaController{
 		$sName = $this->params['name'];
 		$sPosition = $this->params['position_select'];
 		$sSex = $this->params['sex'];
-		$sBirthday = strtotime($this->params['birthday']);
+		$sBirthday = strtotime($this->params['birthday']) == false ? null:strtotime($this->params['birthday']) ;
 		$sPolicital = $this->params['policital'];
 		$sWorkTime = $this->params['worktime'];
 		$sProtile = $this->params['protitle'];
 		$sEducation = $this->params['education'];
-		$sGraduationTime = strtotime($this->params['graduation_time']);
+		$sGraduationTime = strtotime($this->params['graduation_time']) == false ? null:strtotime($this->params['graduation_time']) ;
 		$sSchool = $this->params['school'];
 		$sMajor = $this->params['major'];
-		$sFactoryTime = strtotime($this->params['factory_time']);
+		$sFactoryTime = strtotime($this->params['factory_time']) == false ? null:strtotime($this->params['factory_time']) ;
 		$sDepartment = $this->params['department_select'];
 		$sTel = $this->params['tel'];
 		$sPhone = $this->params['phone'];
