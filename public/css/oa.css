@@ -4,7 +4,8 @@ body{background:#f4f4f4;text-shadow: 0 1px 0px rgba(255, 255, 255, 1); text-alig
 .clr{ clear:both}
 .oa_all{width:95%; padding-top:20px; margin:auto;}
 .ao_head{}
-	.oa_head_logo{ background:url(../images/oaframe/logo.png) no-repeat; width:199px; height:45px; float:left;}
+	/*暂时注释掉，换成城市矿产EIP.oa_head_logo{ background:url(../images/oaframe/logo.png) no-repeat; width:199px; height:45px; float:left;}*/
+	.oa_head_logo{ background:url(../images/oaframe/logo_eip.png) no-repeat; width:199px; height:49px; float:left;}
 	.oa_head_user{ width:60%; text-align:right; float:right;}
 	.oa_head_user span{padding:10px 25px;}
 	.oa_head_user span a{ color:#bebebe;}

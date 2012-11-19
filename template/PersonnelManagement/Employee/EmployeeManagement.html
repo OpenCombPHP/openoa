@@ -61,15 +61,15 @@
 									女
 								</if>
 							</td>
-							<td>{=$aEmp["userinfo.birthday"]}</td>
+							<td>{=date('Y-m-d',$aEmp["userinfo.birthday"])}</td>
 							<td>{=$aEmp["policital"]}</td>
 							<td>{=$aEmp["worktime"]}</td>
 							<td>{=$aEmp["protitle"]}</td>
 							<td>{=$aEmp["education"]}</td>
-							<td>{=$aEmp["graduationtime"]}</td>
+							<td>{=date('Y-m-d',$aEmp["graduationtime"])}</td>
 							<td>{=$aEmp["school"]}</td>
 							<td>{=$aEmp["major"]}</td>
-							<td>{=$aEmp["factorytime"]}</td>
+							<td>{=date('Y-m-d',$aEmp["factorytime"])}</td>
 							<td>{=$aEmp["group.name"]}</td>
 							<td>{=$aEmp["userinfo.tel"]}</td>
 							<td>{=$aEmp["phone"]}</td>
